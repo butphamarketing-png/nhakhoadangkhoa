@@ -1,0 +1,282 @@
+Create a premium modern dental clinic website for “Hệ Thống Nha Khoa Đăng Khoa” located in Tây Ninh, Vietnam.
+
+STYLE & BRANDING:
+- Luxury, clean, modern UI/UX
+- Main colors: gold (#C89B3C), white (#FFFFFF), dark navy (#0D1B2A)
+- Soft gradients, glassmorphism effects, smooth shadows
+- Premium medical aesthetic similar to high-end Korean dental clinics
+- Rounded corners (20px–32px)
+- Smooth hover animations and transitions
+- Elegant typography, bold headlines
+- Responsive design for desktop, tablet, and mobile
+- Modern spacing and section layout
+- Use subtle gold glow effects
+- High-end medical luxury feeling
+- Minimal but visually impressive
+
+WEBSITE TYPE:
+- Full landing page / corporate dental website
+- Conversion-focused UI
+- SEO-friendly structure
+- Modern premium clinic branding
+
+BUSINESS INFORMATION:
+Brand Name:
+HỆ THỐNG NHA KHOA ĐĂNG KHOA
+
+Slogan:
+“Uy tín – Chất lượng – Tận tâm”
+
+Hotline:
+08.86.86.87.86
+
+Website:
+hethongnhakhoadangkhoa.vn
+
+Address:
+345 - 347 Điện Biên Phủ,
+Khu Phố Ninh Phúc,
+Phường Ninh Thạnh,
+Tỉnh Tây Ninh
+
+DESIGN DIRECTION:
+The website should look like a premium dental hospital with:
+- Large hero section
+- Beautiful dental clinic photography
+- Modern 3D tooth visual
+- Golden lighting accents
+- Professional doctor images
+- Clean white background sections
+- Navy luxury section dividers
+- Strong call-to-action buttons
+
+LAYOUT STRUCTURE:
+
+1. STICKY HEADER
+- Transparent at top, solid white on scroll
+- Left: logo + brand name
+- Center: navigation menu
+  + Trang chủ
+  + Giới thiệu
+  + Dịch vụ
+  + Bảng giá
+  + Kiến thức
+  + Khách hàng
+  + Liên hệ
+- Right:
+  + Gold hotline button
+  + “Đặt lịch ngay” CTA
+- Mobile hamburger menu
+
+2. HERO SECTION
+Split layout:
+LEFT SIDE:
+- Elegant text
+- Small slogan above
+- Huge bold heading:
+  “TỰ TIN TỎA SÁNG”
+- Subheading:
+  “Cùng Nha Khoa Đăng Khoa”
+- 3 feature highlights:
+  + Uy tín
+  + Chất lượng
+  + Tận tâm
+- CTA buttons:
+  + Đặt lịch khám
+  + Tư vấn miễn phí
+
+RIGHT SIDE:
+- Large modern dental clinic image
+- Floating 3D tooth model
+- Gold glowing circle behind tooth
+- Floating UI cards
+- Elegant lighting effects
+
+Add floating contact buttons on right side:
+- Gọi ngay
+- Zalo
+- Messenger
+- Đặt lịch
+
+3. TRUST INDICATORS SECTION
+White floating cards with icons:
+- 10+ năm kinh nghiệm
+- 15.000+ khách hàng
+- Bác sĩ chuyên môn cao
+- Thiết bị hiện đại
+- Quy trình chuẩn y khoa
+
+4. SERVICES SECTION
+Grid layout with luxury cards
+Use hover animations
+
+Services:
+- Implant nha khoa
+- Niềng răng chỉnh nha
+- Răng sứ thẩm mỹ
+- Tẩy trắng răng
+- Điều trị nội nha
+- Nhổ răng khôn
+
+Each card includes:
+- Image
+- Icon
+- Title
+- Description
+- CTA button
+
+5. ABOUT SECTION
+2-column layout
+
+LEFT:
+- Premium clinic interior image gallery
+- Video play button overlay
+
+RIGHT:
+- Section title:
+  “Về Nha Khoa Đăng Khoa”
+- Detailed introduction
+- Feature grid:
+  + Đội ngũ bác sĩ chuyên môn cao
+  + Trang thiết bị hiện đại
+  + Quy trình chuẩn y khoa
+  + Bảo hành dài hạn rõ ràng
+  + Không gian sang trọng
+  + Chăm sóc tận tâm
+
+Gold CTA button:
+“Tìm hiểu thêm”
+
+6. WHY CHOOSE US SECTION
+Dark navy luxury background
+Gold icons
+Family smiling image
+
+Reasons:
+- Bác sĩ giàu kinh nghiệm
+- Công nghệ hiện đại
+- Vật liệu chính hãng
+- Chi phí minh bạch
+- Hỗ trợ trả góp
+- Chăm sóc sau điều trị
+
+7. DOCTOR TEAM SECTION
+Modern doctor profile cards
+
+Include:
+- Doctor image
+- Name
+- Specialty
+- Short intro
+- Social icons
+- Hover animation
+
+8. TECHNOLOGY SECTION
+Carousel or horizontal slider
+
+Show advanced equipment:
+- Máy CT Cone Beam 3D
+- Máy Scan Itero
+- Công nghệ CAD/CAM
+- Máy tẩy trắng Laser
+
+Luxury medical product card style
+
+9. CUSTOMER TESTIMONIAL SECTION
+Elegant testimonial slider
+Google review style cards
+5-star ratings
+Real patient style layout
+
+10. PROMOTION SECTION
+Large premium gold banner
+
+Include:
+- Giảm giá niềng răng
+- Giảm giá răng sứ
+- Ưu đãi implant
+- Tẩy trắng giá tốt
+
+Luxury golden gradient design
+
+11. BLOG / NEWS SECTION
+Modern article cards
+
+Topics:
+- Kiến thức nha khoa
+- Chăm sóc răng miệng
+- Implant
+- Niềng răng
+- Tẩy trắng
+
+12. BOOKING CTA SECTION
+Large luxury CTA section
+
+Include:
+- Hotline
+- Booking button
+- Quick consultation
+- Beautiful doctor image
+
+13. FOOTER
+Dark navy + gold footer
+
+Columns:
+- Brand intro
+- Contact info
+- Services
+- Support
+- Google Maps embed
+
+Include:
+- Social icons
+- Copyright
+- Floating back-to-top button
+
+TECHNICAL REQUIREMENTS:
+- Use React + TailwindCSS
+- Modern animation library (Framer Motion)
+- Responsive on all devices
+- SEO optimized
+- Smooth scrolling
+- Lazy loading images
+- Premium UI effects
+- Sticky floating action buttons
+- Professional spacing system
+- High performance
+- Use modern component architecture
+
+ANIMATION REQUIREMENTS:
+- Fade in on scroll
+- Hover lift effects
+- Floating glow animations
+- Smooth card transitions
+- Elegant loading effects
+- Animated counters
+- Soft parallax effect in hero
+
+IMAGE STYLE:
+- Premium Korean dental clinic
+- Luxury white interior
+- Gold lighting accents
+- Professional smiling doctors
+- Happy family patients
+- Clean medical environment
+- High-end technology visuals
+
+OVERALL FEELING:
+The website should feel:
+- Trustworthy
+- Premium
+- Modern
+- Medical
+- Luxurious
+- Professional
+- Conversion-focused
+- Similar to top Korean dental clinic websites
+
+IMPORTANT:
+Do NOT make the design too crowded.
+Keep clean whitespace.
+Use premium visual hierarchy.
+Make it look like a million-dollar dental brand website.

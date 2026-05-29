@@ -1,0 +1,512 @@
+# PREMIUM ADMIN PANEL DESCRIPTION — HỆ THỐNG NHA KHOA ĐĂNG KHOA
+
+## TỔNG QUAN ADMIN SYSTEM
+
+Thiết kế một hệ thống quản trị (Admin Dashboard) hiện đại dành cho Hệ Thống Nha Khoa Đăng Khoa.
+
+Admin panel không được giống dashboard cũ kỹ thông thường.
+
+Phong cách phải:
+
+* Luxury
+* Medical premium
+* Clean UI
+* Corporate
+* Hiện đại như SaaS cao cấp
+* Dễ thao tác
+* Quản lý chuyên nghiệp
+
+Phong cách tham khảo:
+
+* Notion
+* Stripe Dashboard
+* Linear
+* Modern CRM
+* Korean medical systems
+
+==================================================
+ADMIN STYLE
+===========
+
+Màu sắc:
+
+* Navy dark: #0D1B2A
+* Gold luxury: #C89B3C
+* White: #FFFFFF
+* Soft gray background
+
+UI:
+
+* Sidebar glassmorphism
+* Floating cards
+* Soft shadow
+* Rounded corners
+* Premium spacing
+* Elegant charts
+
+Animation:
+
+* Smooth transition
+* Hover glow
+* Fade effects
+* Card hover lift
+* Loading skeleton
+
+==================================================
+ADMIN LOGIN PAGE
+================
+
+Luxury login page.
+
+LEFT SIDE:
+
+* Large branding image
+* Dental clinic background
+* Gold overlay
+* Tooth 3D visual
+
+RIGHT SIDE:
+
+* Login form
+* Logo
+* Email input
+* Password input
+* Remember me
+* Forgot password
+* Login button
+
+Background:
+
+* White + gold gradient
+* Blur effects
+
+==================================================
+ADMIN LAYOUT
+============
+
+LEFT SIDEBAR:
+
+* Logo
+* Brand name
+* Navigation menu
+* User profile
+* Logout button
+
+CENTER:
+
+* Main content area
+
+TOPBAR:
+
+* Search bar
+* Notification bell
+* Messages
+* Admin profile
+* Dark mode toggle
+
+==================================================
+SIDEBAR MENU
+============
+
+Dashboard
+Lịch hẹn
+Khách hàng
+Dịch vụ
+Bác sĩ
+Bài viết
+Khuyến mãi
+Đánh giá
+Thư viện ảnh
+Tin nhắn
+Cài đặt
+Báo cáo
+Doanh thu
+SEO
+Phân quyền
+
+==================================================
+
+1. DASHBOARD OVERVIEW
+   ==================================================
+
+Main admin homepage.
+
+Hiển thị:
+
+* Tổng số khách hàng
+* Lịch hẹn hôm nay
+* Doanh thu tháng
+* Khách hàng mới
+* Tỉ lệ chuyển đổi
+* Tổng cuộc gọi
+
+Dashboard cards:
+
+* Floating premium cards
+* Animated statistics
+* Icon luxury style
+
+Charts:
+
+* Revenue chart
+* Booking chart
+* Service popularity chart
+* Customer growth
+
+Quick actions:
+
+* Tạo lịch hẹn
+* Thêm khách hàng
+* Tạo bài viết
+* Thêm ưu đãi
+
+==================================================
+2. APPOINTMENT MANAGEMENT
+=========================
+
+Quản lý lịch hẹn.
+
+Features:
+
+* Calendar view
+* Daily schedule
+* Weekly schedule
+* Drag and drop booking
+* Booking status
+
+Status:
+
+* Chờ xác nhận
+* Đã xác nhận
+* Đang điều trị
+* Hoàn thành
+* Đã hủy
+
+Appointment detail popup:
+
+* Tên khách hàng
+* SĐT
+* Dịch vụ
+* Bác sĩ phụ trách
+* Ghi chú
+* Hình thức liên hệ
+
+Có:
+
+* SMS reminder
+* Zalo reminder
+* Email reminder
+
+==================================================
+3. CUSTOMER MANAGEMENT
+======================
+
+CRM khách hàng.
+
+Hiển thị:
+
+* Danh sách khách hàng
+* Avatar
+* Phone
+* Service history
+* Treatment status
+* Customer notes
+
+Features:
+
+* Search customer
+* Filter
+* Export Excel
+* Customer tags
+* Treatment timeline
+
+Customer detail page:
+
+* Medical history
+* Images
+* Before/after
+* Appointment history
+* Notes
+
+==================================================
+4. SERVICE MANAGEMENT
+=====================
+
+Quản lý dịch vụ nha khoa.
+
+Có thể:
+
+* Thêm dịch vụ
+* Sửa dịch vụ
+* Xóa dịch vụ
+* Quản lý giá
+* Upload hình ảnh
+* SEO content
+
+Mỗi dịch vụ:
+
+* Banner
+* Gallery
+* Description
+* FAQ
+* Pricing
+* CTA
+
+==================================================
+5. DOCTOR MANAGEMENT
+====================
+
+Quản lý bác sĩ.
+
+Bao gồm:
+
+* Ảnh đại diện
+* Chuyên môn
+* Chứng chỉ
+* Kinh nghiệm
+* Lịch làm việc
+* Booking assigned
+
+Doctor profile:
+
+* Social links
+* Education
+* Awards
+* Specialization
+
+==================================================
+6. BLOG MANAGEMENT
+==================
+
+CMS viết bài SEO.
+
+Features:
+
+* Rich text editor
+* SEO title
+* Meta description
+* Upload thumbnail
+* Category
+* Tags
+* Draft/Publish
+
+Editor style:
+
+* Notion-like editor
+* Drag image upload
+* Auto save
+* Preview mode
+
+==================================================
+7. PROMOTION MANAGEMENT
+=======================
+
+Quản lý ưu đãi.
+
+Có thể:
+
+* Tạo banner
+* Flash sale
+* Popup ưu đãi
+* Countdown timer
+* Coupon code
+
+==================================================
+8. REVIEW MANAGEMENT
+====================
+
+Quản lý đánh giá khách hàng.
+
+Features:
+
+* Approve review
+* Hide review
+* Reply review
+* Upload video review
+* Highlight review
+
+==================================================
+9. MEDIA LIBRARY
+================
+
+Quản lý hình ảnh/video.
+
+Features:
+
+* Upload drag/drop
+* Folder management
+* Search image
+* Image compression
+* Video upload
+
+Gallery style:
+
+* Pinterest grid
+* Luxury preview modal
+
+==================================================
+10. LIVE CHAT / MESSAGES
+========================
+
+Quản lý tin nhắn website.
+
+Channels:
+
+* Messenger
+* Zalo
+* Website chat
+* Contact form
+
+Features:
+
+* Auto reply
+* Assign staff
+* Conversation history
+
+==================================================
+11. SEO MANAGEMENT
+==================
+
+SEO tools dashboard.
+
+Features:
+
+* SEO score
+* Meta management
+* Sitemap
+* Redirect
+* Google indexing
+* Keyword analysis
+
+==================================================
+12. ANALYTICS & REPORTS
+=======================
+
+Báo cáo doanh thu & marketing.
+
+Charts:
+
+* Revenue
+* Conversion
+* Booking source
+* Top services
+* Customer behavior
+
+Export:
+
+* PDF
+* Excel
+
+==================================================
+13. ROLE & PERMISSION
+=====================
+
+Phân quyền tài khoản.
+
+Roles:
+
+* Super Admin
+* Manager
+* Receptionist
+* Doctor
+* Content Editor
+* Marketing
+
+Permission control:
+
+* Edit content
+* View customer
+* Manage appointments
+* Financial access
+
+==================================================
+14. SETTINGS PAGE
+=================
+
+Website settings:
+
+* Logo
+* Hotline
+* Social links
+* Branches
+* Google Maps
+* Theme color
+
+System settings:
+
+* Email SMTP
+* Notification
+* Booking settings
+
+==================================================
+15. NOTIFICATION SYSTEM
+=======================
+
+Real-time notification.
+
+Thông báo:
+
+* Có lịch hẹn mới
+* Có tin nhắn mới
+* Có đánh giá mới
+* Khách hủy lịch
+* Reminder bác sĩ
+
+==================================================
+16. MOBILE ADMIN
+================
+
+Responsive admin dashboard.
+
+Mobile features:
+
+* Quick booking
+* Calendar
+* Notification
+* Chat
+* Customer lookup
+
+==================================================
+17. SECURITY
+============
+
+Security features:
+
+* 2FA
+* Login history
+* Activity logs
+* Session timeout
+* IP protection
+
+==================================================
+18. UI/UX FEELING
+=================
+
+Admin dashboard phải tạo cảm giác:
+
+* Chuyên nghiệp
+* Dễ quản lý
+* Cao cấp
+* Thông minh
+* Hiện đại
+* Chuẩn doanh nghiệp
+
+Không được:
+
+* Rối mắt
+* Quá nhiều màu
+* Kiểu cũ
+* Thiếu khoảng trắng
+
+==================================================
+19. FINAL GOAL
+==============
+
+Admin system phải giống:
+
+* Premium healthcare CRM
+* Modern SaaS dashboard
+* High-end dental management platform
+
+Mục tiêu:
+“Quản lý toàn bộ hệ thống nha khoa chuyên nghiệp chỉ trong một dashboard.”

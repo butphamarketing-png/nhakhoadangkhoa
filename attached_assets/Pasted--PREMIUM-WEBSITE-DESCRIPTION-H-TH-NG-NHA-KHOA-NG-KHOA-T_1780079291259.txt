@@ -1,0 +1,496 @@
+# PREMIUM WEBSITE DESCRIPTION — HỆ THỐNG NHA KHOA ĐĂNG KHOA
+
+## TỔNG QUAN WEBSITE
+
+Thiết kế một website nha khoa cao cấp chuẩn thương hiệu hiện đại, lấy cảm hứng từ các hệ thống nha khoa Hàn Quốc và các bệnh viện nha khoa quốc tế cao cấp.
+
+Website phải mang cảm giác:
+
+* Sang trọng
+* Chuyên nghiệp
+* Sạch sẽ
+* Hiện đại
+* Đáng tin cậy
+* Chuẩn y khoa
+* Tối ưu chuyển đổi khách hàng
+
+Website không được giống kiểu phòng khám nhỏ thông thường. Thay vào đó phải tạo cảm giác như:
+“Một hệ thống nha khoa lớn – cao cấp – chuẩn quốc tế”.
+
+Phong cách tổng thể:
+
+* Luxury Dental Clinic
+* Korean Dental Aesthetic
+* Minimal Medical Design
+* Premium Corporate Branding
+
+==================================================
+THÔNG TIN THƯƠNG HIỆU
+=====================
+
+Tên thương hiệu:
+HỆ THỐNG NHA KHOA ĐĂNG KHOA
+
+Slogan:
+Uy tín – Chất lượng – Tận tâm
+
+Hotline:
+08.86.86.87.86
+
+Website:
+hethongnhakhoadangkhoa.vn
+
+Địa chỉ:
+345 - 347 Điện Biên Phủ,
+Khu Phố Ninh Phúc,
+Phường Ninh Thạnh,
+Tỉnh Tây Ninh
+
+==================================================
+PHONG CÁCH THIẾT KẾ
+===================
+
+Màu sắc chủ đạo:
+
+* Gold luxury: #C89B3C
+* White clean: #FFFFFF
+* Navy luxury: #0D1B2A
+* Soft cream background
+* Gold gradient effects
+
+Phong cách UI:
+
+* Glassmorphism nhẹ
+* Soft shadows
+* Large border radius
+* Premium spacing
+* Elegant typography
+* Luxury medical visual
+
+Hiệu ứng:
+
+* Fade in animation
+* Floating effects
+* Hover lift card
+* Smooth transitions
+* Gold glow effects
+* Blur background layers
+
+Website phải tạo cảm giác:
+“Đắt tiền – hiện đại – cao cấp”.
+
+==================================================
+HEADER
+======
+
+Header sticky khi scroll.
+
+Bên trái:
+
+* Logo nha khoa
+* Tên thương hiệu
+* Slogan nhỏ
+
+Ở giữa:
+Menu navigation:
+
+* Trang chủ
+* Giới thiệu
+* Dịch vụ
+* Bảng giá
+* Kiến thức
+* Khách hàng
+* Liên hệ
+
+Bên phải:
+
+* Nút hotline màu gold
+* Nút “Đặt lịch ngay”
+
+Hiệu ứng:
+
+* Khi hover menu đổi màu gold
+* Khi scroll header đổi background trắng
+* Có blur effect nhẹ
+
+Mobile:
+
+* Hamburger menu fullscreen
+* Floating booking button
+
+==================================================
+HERO SECTION
+============
+
+Đây là section quan trọng nhất website.
+
+Layout chia 2 cột.
+
+BÊN TRÁI:
+
+* Text lớn
+* Typography premium
+* Slogan nhỏ phía trên
+
+Tiêu đề chính:
+“TỰ TIN TỎA SÁNG”
+
+Subheading:
+“Cùng Hệ Thống Nha Khoa Đăng Khoa”
+
+3 icon highlights:
+
+* Uy tín
+* Chất lượng
+* Tận tâm
+
+2 nút CTA:
+
+* Đặt lịch khám
+* Tư vấn miễn phí
+
+BÊN PHẢI:
+
+* Hình phòng khám hiện đại
+* Ghế nha khoa cao cấp
+* Tooth 3D lớn ở giữa
+* Hiệu ứng vòng sáng gold
+* Floating cards
+* Ánh sáng luxury
+
+Background:
+
+* Gradient trắng kem
+* Glow vàng nhẹ
+* Layer blur
+* Shape hiện đại
+
+==================================================
+FLOATING BUTTONS
+================
+
+Bên phải màn hình:
+
+* Gọi ngay
+* Zalo
+* Messenger
+* Đặt lịch
+
+Floating animation nhẹ.
+
+==================================================
+TRUST SECTION
+=============
+
+Hiển thị dạng floating cards.
+
+Nội dung:
+
+* 10+ năm kinh nghiệm
+* 15.000+ khách hàng
+* Bác sĩ chuyên môn cao
+* Thiết bị hiện đại
+* Chuẩn y khoa
+
+Style:
+
+* White luxury cards
+* Gold icons
+* Hover shadow effect
+
+==================================================
+DỊCH VỤ NỔI BẬT
+===============
+
+Section dạng grid hiện đại.
+
+Service cards:
+
+* Implant nha khoa
+* Niềng răng chỉnh nha
+* Răng sứ thẩm mỹ
+* Tẩy trắng răng
+* Điều trị nội nha
+* Nhổ răng khôn
+
+Mỗi card gồm:
+
+* Image
+* Icon
+* Title
+* Short description
+* CTA button
+
+Hover effect:
+
+* Nâng card
+* Glow nhẹ
+* Zoom image
+
+Click vào:
+→ Trang chi tiết dịch vụ riêng.
+
+==================================================
+TRANG CHI TIẾT DỊCH VỤ
+======================
+
+Mỗi dịch vụ có 1 landing page riêng.
+
+Ví dụ:
+Implant Page gồm:
+
+* Hero banner
+* Quy trình implant
+* Công nghệ implant
+* Bác sĩ implant
+* Before/After
+* FAQ
+* CTA booking
+
+Niềng răng page:
+
+* Invisalign
+* Niềng mắc cài
+* Timeline điều trị
+* Smile transformation
+
+Răng sứ:
+
+* Veneer
+* Zirconia
+* Smile design
+
+==================================================
+GIỚI THIỆU
+==========
+
+Section giới thiệu hệ thống nha khoa.
+
+Layout 2 cột.
+
+Bên trái:
+
+* Gallery ảnh phòng khám
+* Video play button
+* Interior luxury clinic
+
+Bên phải:
+
+* Nội dung giới thiệu
+* Giá trị thương hiệu
+* Điểm mạnh
+
+Feature grid:
+
+* Bác sĩ chuyên môn cao
+* Máy móc hiện đại
+* Quy trình chuẩn y khoa
+* Bảo hành rõ ràng
+* Không gian sang trọng
+* Chăm sóc tận tâm
+
+==================================================
+WHY CHOOSE US
+=============
+
+Background navy luxury.
+
+Có hình gia đình cười đẹp.
+
+Lý do chọn:
+
+* Công nghệ hiện đại
+* Bác sĩ nhiều kinh nghiệm
+* Chi phí minh bạch
+* Hỗ trợ trả góp
+* Chăm sóc sau điều trị
+* Vật liệu chính hãng
+
+Icons gold luxury.
+
+==================================================
+ĐỘI NGŨ BÁC SĨ
+==============
+
+Doctor cards hiện đại.
+
+Mỗi card:
+
+* Ảnh bác sĩ
+* Tên
+* Chuyên môn
+* Kinh nghiệm
+* CTA xem hồ sơ
+
+Click vào:
+→ Trang profile bác sĩ.
+
+Trang profile:
+
+* Học vấn
+* Chứng chỉ
+* Kinh nghiệm
+* Hình ảnh điều trị
+* Đặt lịch với bác sĩ
+
+==================================================
+TECHNOLOGY SECTION
+==================
+
+Slider công nghệ hiện đại.
+
+Bao gồm:
+
+* Máy CT Cone Beam
+* Máy Scan Itero
+* CAD/CAM
+* Laser Whitening
+
+Style:
+
+* Luxury medical showcase
+* Floating cards
+* Soft shadow
+
+==================================================
+KHÁCH HÀNG ĐÁNH GIÁ
+===================
+
+Testimonial slider.
+
+Hiển thị:
+
+* Avatar khách hàng
+* Tên
+* 5 sao
+* Nội dung đánh giá
+
+Có:
+
+* Video reviews
+* Before/After
+* Smile transformation
+
+==================================================
+PROMOTION SECTION
+=================
+
+Banner ưu đãi lớn.
+
+Gold gradient premium.
+
+Hiển thị:
+
+* Giảm giá niềng răng
+* Ưu đãi implant
+* Răng sứ giảm giá
+* Whitening promotion
+
+==================================================
+BLOG / KIẾN THỨC
+================
+
+Grid bài viết SEO.
+
+Categories:
+
+* Implant
+* Niềng răng
+* Chăm sóc răng miệng
+* Tẩy trắng
+* Răng sứ
+
+Mỗi card:
+
+* Thumbnail
+* Category
+* Title
+* Date
+* CTA
+
+==================================================
+BOOKING CTA SECTION
+===================
+
+Section lớn gần footer.
+
+Bao gồm:
+
+* Hotline
+* Booking button
+* Tư vấn miễn phí
+* Doctor image
+
+Background:
+
+* Gold luxury gradient
+* Soft lighting
+
+==================================================
+FOOTER
+======
+
+Footer màu navy + gold.
+
+Chia 4 cột:
+
+* Giới thiệu
+* Liên hệ
+* Dịch vụ
+* Hỗ trợ khách hàng
+
+Có:
+
+* Google Maps
+* Social icons
+* Copyright
+* Chính sách
+
+==================================================
+MOBILE EXPERIENCE
+=================
+
+Mobile phải cực kỳ mượt.
+
+Có:
+
+* Sticky bottom CTA
+* Floating hotline
+* Swipe sections
+* Fullscreen menu
+* Large touch buttons
+
+==================================================
+UX/UI YÊU CẦU
+=============
+
+Website phải:
+
+* Scroll mượt
+* Animation premium
+* Responsive chuẩn
+* SEO friendly
+* Loading nhanh
+* Tối ưu chuyển đổi
+
+==================================================
+CẢM GIÁC CUỐI CÙNG
+==================
+
+Người dùng khi vào website phải cảm thấy:
+
+* Đây là nha khoa lớn
+* Chuyên nghiệp
+* Đáng tin
+* Cao cấp
+* Chuẩn quốc tế
+* Muốn đặt lịch ngay
+
+Website phải giống:
+
+* Korean premium dental clinic
+* Luxury medical website
+* High-end healthcare branding
+
+Mục tiêu:
+“Biến Nha Khoa Đăng Khoa thành thương hiệu nha khoa premium hàng đầu Tây Ninh.”

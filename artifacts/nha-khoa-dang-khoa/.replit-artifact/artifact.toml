@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Nha Khoa Đăng Khoa"
+version = "1.0.0"
+id = "artifacts/nha-khoa-dang-khoa"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24483
+
+[services.development]
+run = "pnpm --filter @workspace/nha-khoa-dang-khoa run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nha-khoa-dang-khoa", "run", "build" ]
+publicDir = "artifacts/nha-khoa-dang-khoa/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24483"
+BASE_PATH = "/"

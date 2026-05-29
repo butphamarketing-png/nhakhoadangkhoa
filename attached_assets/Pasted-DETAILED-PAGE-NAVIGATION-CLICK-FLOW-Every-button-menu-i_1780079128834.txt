@@ -1,0 +1,309 @@
+DETAILED PAGE NAVIGATION & CLICK FLOW
+
+Every button, menu item, service card, image card, CTA button, and homepage section MUST link to a dedicated modern page with full UI design — not placeholder pages.
+
+When users click each section, open these pages:
+
+==================================================
+1. HEADER MENU NAVIGATION
+==================================================
+
+TRANG CHỦ
+→ Homepage full landing page
+
+GIỚI THIỆU
+→ About Us page including:
+- Clinic story
+- Mission & vision
+- Brand values
+- Timeline
+- Clinic environment gallery
+- Certifications
+- Video introduction
+- Team overview
+
+DỊCH VỤ
+→ Services overview page
+Display all dental services in luxury card layout.
+
+Each service card opens its own detailed page.
+
+BẢNG GIÁ
+→ Pricing page with:
+- Service pricing table
+- Before/after images
+- Promotion section
+- Installment support
+- FAQ
+- Booking CTA
+
+KIẾN THỨC
+→ Dental blog page
+Include:
+- Search bar
+- Category filters
+- Featured articles
+- SEO article cards
+
+KHÁCH HÀNG
+→ Customer experience page
+Include:
+- Testimonials
+- Video reviews
+- Before/after gallery
+- Google reviews
+- Smile transformation showcase
+
+LIÊN HỆ
+→ Contact page including:
+- Google Maps
+- Contact form
+- Hotline
+- Zalo button
+- Messenger button
+- Working hours
+- Branch information
+
+==================================================
+2. SERVICE DETAIL PAGES
+==================================================
+
+When clicking each service card, open dedicated detail page:
+
+IMPLANT NHA KHOA
+→ implant-page
+Include:
+- Hero banner
+- Implant benefits
+- Implant process
+- Implant technology
+- Before/after
+- FAQs
+- Pricing
+- Booking CTA
+
+NIỀNG RĂNG CHỈNH NHA
+→ nieng-rang-page
+Include:
+- Traditional braces
+- Invisalign
+- Treatment stages
+- Smile transformation gallery
+- Doctor consultation
+
+RĂNG SỨ THẨM MỸ
+→ rang-su-page
+Include:
+- Veneer
+- Zirconia
+- Porcelain crown comparison
+- Before/after
+- Smile design process
+
+TẨY TRẮNG RĂNG
+→ tay-trang-page
+Include:
+- Laser whitening
+- Whitening process
+- Safety info
+- Whitening result gallery
+- Pricing
+
+ĐIỀU TRỊ NỘI NHA
+→ noi-nha-page
+Include:
+- Root canal treatment
+- Pain treatment
+- Dental infection treatment
+- Treatment technology
+
+NHỔ RĂNG KHÔN
+→ nho-rang-khon-page
+Include:
+- Wisdom tooth extraction
+- Surgical technology
+- Recovery process
+- Aftercare guide
+
+==================================================
+3. HOMEPAGE SECTION CLICK BEHAVIOR
+==================================================
+
+CLICK HERO BUTTON:
+“Đặt lịch khám”
+→ Open booking modal popup
+
+Popup includes:
+- Name
+- Phone
+- Service selection
+- Preferred schedule
+- Submit button
+
+CLICK “TƯ VẤN MIỄN PHÍ”
+→ Open floating consultation form
+
+CLICK TRUST INDICATOR CARDS
+→ Smooth scroll to About section
+
+CLICK SERVICE CARDS
+→ Open detailed service pages
+
+CLICK “XEM CHI TIẾT”
+→ Navigate to service detail page
+
+CLICK ABOUT SECTION
+→ Open About Us page
+
+CLICK DOCTOR CARD
+→ Open doctor profile page
+
+Doctor profile page includes:
+- Education
+- Certifications
+- Experience
+- Specialty
+- Cases gallery
+- Consultation booking
+
+CLICK TECHNOLOGY CARD
+→ Open technology detail popup/page
+
+Example:
+“Máy CT Cone Beam”
+→ Open technology explanation page
+
+CLICK TESTIMONIAL CARD
+→ Open full customer review popup
+
+CLICK PROMOTION BANNER
+→ Open promotion detail page
+
+CLICK BLOG ARTICLE
+→ Open full SEO article page
+
+==================================================
+4. FLOATING BUTTONS
+==================================================
+
+Floating right-side buttons:
+
+CALL BUTTON
+→ Click-to-call action
+
+ZALO BUTTON
+→ Open Zalo chat
+
+MESSENGER BUTTON
+→ Open Messenger chat
+
+BOOKING BUTTON
+→ Open booking popup
+
+==================================================
+5. FOOTER LINKS
+==================================================
+
+Footer services:
+→ Open corresponding service pages
+
+Footer support:
+- Chính sách bảo hành
+- Chính sách thanh toán
+- Câu hỏi thường gặp
+- Điều khoản dịch vụ
+- Chính sách bảo mật
+
+Each opens dedicated clean page.
+
+==================================================
+6. EXTRA PAGES REQUIRED
+==================================================
+
+Create additional pages:
+
+- FAQ page
+- Before & After gallery
+- Recruitment page
+- Career detail page
+- Online consultation page
+- Membership / loyalty page
+- Promotion detail page
+- Error 404 luxury page
+
+==================================================
+7. MOBILE UX
+==================================================
+
+On mobile:
+- Sticky bottom booking bar
+- Floating hotline button
+- Fullscreen mobile menu
+- Swipeable sections
+- Floating Zalo/Messenger
+
+==================================================
+8. UX DETAILS
+==================================================
+
+All pages must include:
+- Smooth page transitions
+- Breadcrumb navigation
+- Sticky CTA buttons
+- Floating contact support
+- Modern loading animation
+- Scroll reveal animations
+
+==================================================
+9. BOOKING FLOW
+==================================================
+
+User flow:
+Homepage
+→ Service page
+→ Doctor selection
+→ Booking form
+→ Confirmation popup
+
+Booking confirmation:
+“Cảm ơn bạn đã đặt lịch tại Nha Khoa Đăng Khoa”
+
+==================================================
+10. SEO STRUCTURE
+==================================================
+
+Each service page needs:
+- SEO title
+- Meta description
+- FAQ schema
+- Blog suggestions
+- CTA section
+- Google Maps embed
+- Internal linking
+
+==================================================
+11. ADMIN-LIKE FEATURES (UI ONLY)
+==================================================
+
+Create UI placeholders for:
+- Online appointment management
+- Customer reviews
+- Promotions
+- Blog updates
+- Live chat
+
+==================================================
+12. FINAL DESIGN GOAL
+==================================================
+
+The final website should feel like:
+- Premium Korean dental hospital
+- Modern luxury medical brand
+- Highly trustworthy
+- Conversion-focused
+- Smooth and elegant
+- High-end corporate dental ecosystem
+
+Make every section clickable and meaningful.
+Avoid dead buttons or empty pages.
+Every interaction should feel premium and professional.

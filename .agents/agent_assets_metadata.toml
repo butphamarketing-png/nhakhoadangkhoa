@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "l5een9ENvR0xgmgKEHddb"
+uri = "file://artifacts/nha-khoa-dang-khoa/src/assets/implant-hero.png"
+type = "image"
+title = "implant banner"
+
+[[generated]]
+id = "SM3kgYgpeFhCtRKA3fqo8"
+uri = "file://artifacts/nha-khoa-dang-khoa/src/assets/doctor-1.png"
+type = "image"
+title = "doctor headshot"
+
+[[generated]]
+id = "JklBZHafuExxCRyi0C64n"
+uri = "file://artifacts/nha-khoa-dang-khoa/src/assets/doctor-2.png"
+type = "image"
+title = "doctor headshot"
+
+[[generated]]
+id = "Eo4gdJcY9AoMK6lSv7CCG"
+uri = "file://artifacts/nha-khoa-dang-khoa/src/assets/clinic-interior-1.png"
+type = "image"
+title = "clinic interior"
+
+[[generated]]
+id = "eaCJfq0fBP0lTJ-9NRKKe"
+uri = "file://artifacts/nha-khoa-dang-khoa/src/assets/equipment-1.png"
+type = "image"
+title = "clinic equipment"
