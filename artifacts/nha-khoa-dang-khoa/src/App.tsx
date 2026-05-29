@@ -1,38 +1,92 @@
+import { useState } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/not-found";
+import Layout from "@/components/Layout";
+import LoadingScreen from "@/components/LoadingScreen";
+import CustomCursor from "@/components/CustomCursor";
+
+import HomePage from "@/pages/HomePage";
+import AboutPage from "@/pages/AboutPage";
+import ServicesPage from "@/pages/ServicesPage";
+import BangGiaPage from "@/pages/BangGiaPage";
+import KienThucPage from "@/pages/KienThucPage";
+import KhachHangPage from "@/pages/KhachHangPage";
+import LienHePage from "@/pages/LienHePage";
+import FaqPage from "@/pages/FaqPage";
+import UuDaiPage from "@/pages/UuDaiPage";
+import TruocSauPage from "@/pages/TruocSauPage";
+import TuyenDungPage from "@/pages/TuyenDungPage";
+import BacSiPage from "@/pages/BacSiPage";
+import DatLichPage from "@/pages/DatLichPage";
+import ImplantPage from "@/pages/services/ImplantPage";
+import NiengRangPage from "@/pages/services/NiengRangPage";
+import RangSuPage from "@/pages/services/RangSuPage";
+import TayTrangPage from "@/pages/services/TayTrangPage";
+import NoiNhaPage from "@/pages/services/NoiNhaPage";
+import NhoRangKhonPage from "@/pages/services/NhoRangKhonPage";
+import ChinhSachPage from "@/pages/ChinhSachPage";
+import NotFoundPage from "@/pages/NotFoundPage";
 
 const queryClient = new QueryClient();
 
-function Home() {
-  return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Replit Agent is building...</h1>
-        <p className="mt-2 text-sm text-gray-600">Your app will appear here once it's ready.</p>
-      </div>
-    </div>
-  );
-}
-
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route component={NotFound} />
-    </Switch>
+    <Layout>
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/gioi-thieu" component={AboutPage} />
+        <Route path="/dich-vu" component={ServicesPage} />
+        <Route path="/dich-vu/implant" component={ImplantPage} />
+        <Route path="/dich-vu/nieng-rang" component={NiengRangPage} />
+        <Route path="/dich-vu/rang-su" component={RangSuPage} />
+        <Route path="/dich-vu/tay-trang" component={TayTrangPage} />
+        <Route path="/dich-vu/noi-nha" component={NoiNhaPage} />
+        <Route path="/dich-vu/nho-rang-khon" component={NhoRangKhonPage} />
+        <Route path="/bang-gia" component={BangGiaPage} />
+        <Route path="/kien-thuc" component={KienThucPage} />
+        <Route path="/khach-hang" component={KhachHangPage} />
+        <Route path="/lien-he" component={LienHePage} />
+        <Route path="/faq" component={FaqPage} />
+        <Route path="/uu-dai" component={UuDaiPage} />
+        <Route path="/truoc-sau" component={TruocSauPage} />
+        <Route path="/tuyen-dung" component={TuyenDungPage} />
+        <Route path="/dat-lich" component={DatLichPage} />
+        <Route path="/bac-si/:id" component={BacSiPage} />
+        <Route path="/chinh-sach-bao-hanh">
+          {() => <ChinhSachPage title="Chính sách bảo hành" />}
+        </Route>
+        <Route path="/chinh-sach-thanh-toan">
+          {() => <ChinhSachPage title="Chính sách thanh toán" />}
+        </Route>
+        <Route path="/dieu-khoan">
+          {() => <ChinhSachPage title="Điều khoản dịch vụ" />}
+        </Route>
+        <Route path="/bao-mat">
+          {() => <ChinhSachPage title="Chính sách bảo mật" />}
+        </Route>
+        <Route component={NotFoundPage} />
+      </Switch>
+    </Layout>
   );
 }
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
+        {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
+        {loaded && (
+          <>
+            <CustomCursor />
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+          </>
+        )}
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

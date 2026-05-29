@@ -1,0 +1,459 @@
+# ADVANCED WEBSITE DESIGN DESCRIPTION — HỆ THỐNG NHA KHOA ĐĂNG KHOA
+
+## THIẾT KẾ TỔNG THỂ WEBSITE
+
+Website phải mang cảm giác như:
+
+* Một bệnh viện nha khoa quốc tế
+* Một thương hiệu y tế cao cấp
+* Một hệ thống nha khoa hiện đại chuẩn Hàn Quốc
+
+KHÔNG làm kiểu:
+
+* Website nha khoa cũ
+* Layout quá phổ thông
+* Quá nhiều text
+* Màu mè rối mắt
+* Kiểu phòng khám nhỏ
+
+Mục tiêu:
+Người dùng vừa mở website lên phải cảm thấy:
+“Wow — đây là nha khoa cực kỳ chuyên nghiệp và cao cấp”.
+
+==================================================
+PHONG CÁCH THỊ GIÁC
+===================
+
+Visual Style:
+
+* Luxury Minimalism
+* Premium Medical UI
+* Korean Dental Aesthetic
+* Corporate Healthcare Branding
+
+Mood:
+
+* Sang trọng
+* Hiện đại
+* Tinh tế
+* Sạch sẽ
+* Cao cấp
+* Đáng tin cậy
+* Chuyên nghiệp
+
+==================================================
+COLOR SYSTEM
+============
+
+Primary Gold:
+#C89B3C
+
+Luxury Navy:
+#0D1B2A
+
+Soft White:
+#FFFFFF
+
+Cream Background:
+#F8F6F1
+
+Light Gray:
+#F3F4F6
+
+Gradient:
+
+* Gold gradient glow
+* White cream gradient
+* Navy overlay gradient
+
+Website phải dùng:
+
+* Gold accent hợp lý
+* Không quá chói
+* Không quá vàng
+* Phải giữ vẻ sang trọng
+
+==================================================
+TYPOGRAPHY
+==========
+
+Font Style:
+
+* Modern sans-serif
+* Elegant typography
+* Luxury spacing
+
+Heading:
+
+* Bold
+* Large
+* Premium
+* Strong hierarchy
+
+Body text:
+
+* Clean
+* Easy to read
+* Comfortable spacing
+
+Typography feeling:
+
+* Luxury healthcare
+* Corporate premium
+* International brand
+
+==================================================
+SPACING & LAYOUT
+================
+
+Layout:
+
+* Wide layout
+* Large whitespace
+* Clean spacing
+* Symmetrical sections
+
+Section spacing:
+
+* Rộng
+* Thoáng
+* Không dày đặc
+
+Cards:
+
+* Floating layout
+* Soft shadow
+* Large radius
+* Premium depth
+
+==================================================
+BACKGROUND DESIGN
+=================
+
+Background style:
+
+* Soft gradients
+* Abstract blur shapes
+* Gold glow lighting
+* Glassmorphism layers
+* Premium lighting effect
+
+Không dùng:
+
+* Texture rối
+* Background quá nhiều chi tiết
+* Pattern cũ kỹ
+
+==================================================
+HEADER DESIGN
+=============
+
+Header cực kỳ premium.
+
+Style:
+
+* Transparent khi ở top
+* White glass background khi scroll
+* Blur effect
+* Thin luxury border
+
+Menu:
+
+* Clean spacing
+* Hover gold animation
+* Smooth underline effect
+
+CTA buttons:
+
+* Gold gradient button
+* Rounded full
+* Glow hover effect
+
+==================================================
+HERO SECTION DESIGN
+===================
+
+Hero section phải giống:
+“Luxury Dental Brand Campaign”
+
+LEFT SIDE:
+
+* Huge typography
+* Strong headline
+* Elegant content hierarchy
+* CTA nổi bật
+
+RIGHT SIDE:
+
+* High-end clinic image
+* Floating tooth 3D
+* Gold lighting
+* Floating UI cards
+* Blur glow
+
+Background:
+
+* Soft cream gradient
+* Gold light beam
+* Abstract shape layers
+
+Animation:
+
+* Floating elements
+* Slow glow pulse
+* Smooth fade in
+
+==================================================
+SERVICE CARD DESIGN
+===================
+
+Cards phải cực kỳ premium.
+
+Card style:
+
+* White floating card
+* Luxury shadow
+* Rounded 30px
+* Hover lift animation
+
+Card hover:
+
+* Image zoom
+* Gold border glow
+* Floating movement
+
+Card layout:
+
+* Large image
+* Minimal text
+* Strong CTA
+* Elegant icon
+
+==================================================
+SECTION TRANSITIONS
+===================
+
+Transitions giữa sections:
+
+* Smooth
+* Layered
+* Premium scroll feel
+
+Effects:
+
+* Fade in
+* Slide up
+* Blur reveal
+* Elegant motion
+
+==================================================
+BUTTON DESIGN
+=============
+
+Buttons:
+
+* Rounded full
+* Premium shadows
+* Gold gradient
+* Hover glow
+* Smooth interaction
+
+Primary button:
+
+* Gold luxury
+* White text
+
+Secondary button:
+
+* White glass
+* Navy text
+
+Hover:
+
+* Scale nhẹ
+* Glow
+* Shadow expand
+
+==================================================
+DOCTOR SECTION DESIGN
+=====================
+
+Doctor cards:
+
+* Premium portrait
+* Luxury background
+* Floating card
+* Elegant info layout
+
+Hover effect:
+
+* Doctor image zoom
+* Gold lighting
+* Social icons appear
+
+Doctor profile page:
+
+* Large hero banner
+* Medical achievements
+* Certificates
+* Timeline
+
+==================================================
+TESTIMONIAL DESIGN
+==================
+
+Testimonials:
+
+* Luxury review cards
+* Google review style
+* Video testimonial popup
+* Before/After slider
+
+Style:
+
+* Clean white card
+* Gold stars
+* Elegant quote layout
+
+==================================================
+BOOKING UI DESIGN
+=================
+
+Booking popup:
+
+* Modern modal
+* Glassmorphism
+* Floating form
+* Luxury inputs
+
+Input fields:
+
+* Rounded
+* Soft shadow
+* Premium spacing
+
+Success animation:
+
+* Checkmark animation
+* Gold success glow
+
+==================================================
+BLOG DESIGN
+===========
+
+Blog layout:
+
+* Magazine style
+* Premium thumbnails
+* Large whitespace
+* SEO friendly
+
+Article page:
+
+* Sticky sidebar
+* Share buttons
+* Reading progress bar
+* CTA sections
+
+==================================================
+FOOTER DESIGN
+=============
+
+Footer:
+
+* Dark navy luxury
+* Gold accents
+* Soft lighting
+* Corporate layout
+
+Include:
+
+* Maps
+* Hotline
+* Social icons
+* Services links
+* Policies
+
+==================================================
+MOBILE DESIGN
+=============
+
+Mobile phải:
+
+* Rất premium
+* Smooth
+* Clean
+* Không rối
+
+Mobile UI:
+
+* Sticky booking bar
+* Floating hotline
+* Swipe cards
+* Fullscreen mobile menu
+
+Touch feeling:
+
+* Smooth
+* Luxury
+* Responsive
+
+==================================================
+MICRO INTERACTIONS
+==================
+
+Website cần nhiều micro interactions:
+
+* Hover glow
+* Card movement
+* Button ripple
+* Floating animation
+* Smooth loading
+* Animated counters
+* Scroll reveal
+* Smooth parallax
+
+==================================================
+IMAGE STYLE
+===========
+
+Images phải:
+
+* Bright
+* Premium
+* Korean dental style
+* Luxury lighting
+* High-end medical environment
+
+Không dùng:
+
+* Stock ảnh quá giả
+* Hình chất lượng thấp
+* Hình tối
+* Hình cũ
+
+==================================================
+OVERALL USER EXPERIENCE
+=======================
+
+Người dùng khi vào website phải cảm thấy:
+
+* Tin tưởng ngay lập tức
+* Đây là nha khoa cao cấp
+* Chuyên nghiệp hơn đối thủ
+* Công nghệ hiện đại
+* Muốn đặt lịch ngay
+
+==================================================
+FINAL VISUAL GOAL
+=================
+
+Website phải giống:
+
+* Luxury Korean Dental Clinic
+* International Medical Brand
+* Premium Healthcare Website
+* Million-dollar Dental Brand
+
+Overall feeling:
+“Sang trọng — hiện đại — đẳng cấp — chuẩn quốc tế”.
