@@ -220,10 +220,26 @@ export const SERVICE_IMAGES: Record<string, string> = {
 };
 
 export const TECHNOLOGY_ITEMS = [
-  { title: "Máy CT Cone Beam 3D", image: IMAGES.coverClinic },
-  { title: "Máy Scan iTero 5D Plus", image: IMAGES.services.itero },
-  { title: "Piezotome nhổ răng khôn", image: IMAGES.services.nhoRangKhon },
-  { title: "Cấy ghép Implant", image: IMAGES.services.implant },
+  {
+    title: "Máy CT Cone Beam 3D",
+    image: IMAGES.coverClinic,
+    desc: "Chụp 3D toàn hàm — lập kế hoạch implant & chỉnh nha chính xác.",
+  },
+  {
+    title: "Máy Scan iTero 5D Plus",
+    image: IMAGES.services.itero,
+    desc: "Lấy dấu răng số hóa — không đau, không khí mẫu truyền thống.",
+  },
+  {
+    title: "Piezotome nhổ răng khôn",
+    image: IMAGES.services.nhoRangKhon,
+    desc: "Nhổ răng khôn siêu âm — giảm đau, lành nhanh.",
+  },
+  {
+    title: "Cấy ghép Implant",
+    image: IMAGES.services.implant,
+    desc: "Trồng răng chuẩn quốc tế — phục hình ổn định lâu dài.",
+  },
 ];
 
 export const BOOKING_BENEFITS: { icon: LucideIcon; label: string }[] = [

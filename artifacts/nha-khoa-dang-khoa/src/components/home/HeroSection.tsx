@@ -44,45 +44,47 @@ export default function HeroSection() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="relative w-full">
-        <div className="relative flex justify-center items-start min-h-[180px] sm:min-h-[220px]">
-          <img
-            key={slide.id}
-            src={slide.src}
-            alt={slide.alt}
-            width={1920}
-            height={720}
-            className={`w-full h-auto max-h-[min(78vh,820px)] object-contain object-center block transition-opacity duration-300 ease-out ${
-              visible ? "opacity-100" : "opacity-0"
-            }`}
-            loading="eager"
-            decoding="async"
-            draggable={false}
-          />
-
-          {count > 1 && (
-            <>
-              <button
-                type="button"
-                onClick={() => goDelta(-1)}
-                className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white/95 text-[#0D1B2A] shadow-lg flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 transition-all hover:scale-105 border border-[#C89B3C]/20"
-                aria-label="Banner trước"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => goDelta(1)}
-                className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white/95 text-[#0D1B2A] shadow-lg flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 transition-all hover:scale-105 border border-[#C89B3C]/20"
-                aria-label="Banner sau"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </>
-          )}
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#F8F6F1] to-transparent pointer-events-none z-[1]" />
+        <div className="container-custom relative z-[2] py-1">
+          <div className="relative flex justify-center items-start min-h-[180px] sm:min-h-[220px] rounded-[20px] overflow-hidden hero-banner-frame bg-[#F8F6F1]">
+            <img
+              key={slide.id}
+              src={slide.src}
+              alt={slide.alt}
+              width={1920}
+              height={720}
+              className={`w-full h-auto max-h-[min(72vh,760px)] object-contain object-center block transition-opacity duration-300 ease-out ${
+                visible ? "opacity-100" : "opacity-0"
+              }`}
+              loading="eager"
+              decoding="async"
+              draggable={false}
+            />
+            {count > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => goDelta(-1)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/95 text-[#0D1B2A] shadow-lg flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 transition-all hover:scale-105 border border-[#C89B3C]/20"
+                  aria-label="Banner trước"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => goDelta(1)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/95 text-[#0D1B2A] shadow-lg flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 transition-all hover:scale-105 border border-[#C89B3C]/20"
+                  aria-label="Banner sau"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </>
+            )}
+          </div>
         </div>
 
         {count > 1 && (
-          <div className="flex items-center justify-center gap-3 py-3 border-t border-[#C89B3C]/10 bg-[#F8F6F1]">
+          <div className="flex items-center justify-center gap-3 py-3 border-t border-[#C89B3C]/10">
             <div className="flex gap-1.5">
               {HERO_SLIDES.map((s, i) => (
                 <button
@@ -103,6 +105,7 @@ export default function HeroSection() {
           </div>
         )}
       </div>
+      <p className="sr-only">{slide.alt}</p>
     </section>
   );
 }

@@ -15,10 +15,10 @@ export default function HeroSupportBar() {
   };
 
   return (
-    <section className="relative z-10 bg-[#0D1B2A] border-y border-[#C89B3C]/25">
+    <section className="relative z-10 bg-[#0D1B2A] border-y border-[#C89B3C]/30 shadow-[0_12px_40px_rgba(13,27,42,0.15)]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_50%,rgba(200,155,60,0.1),transparent_55%)]" />
       <div className="container-custom py-5 md:py-6 relative">
-        <div className="rounded-[20px] border border-[#C89B3C]/15 bg-white/[0.03] backdrop-blur-sm p-4 md:p-5">
+        <div className="rounded-[24px] border border-[#C89B3C]/25 bg-white/[0.04] backdrop-blur-md p-5 md:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
           <div className="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-10">
             <div className="flex items-center gap-3 text-white shrink-0">
               <div className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center shadow-lg animate-pulse-gold">

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ABOUT_PROMO_IMAGE, WHY_CHOOSE } from "@/lib/home-content";
+import { WHY_CHOOSE } from "@/lib/home-content";
+import { IMAGES } from "@/lib/images";
 import { fadeUp } from "@/lib/motion";
 
 export default function WhyChooseSection() {
@@ -45,9 +46,9 @@ export default function WhyChooseSection() {
             <div className="gradient-border rounded-[28px] p-[2px]">
               <div className="rounded-[26px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.35)] bg-[#F8F6F1]">
                 <img
-                  src={ABOUT_PROMO_IMAGE}
-                  alt="10.000+ ca răng sứ thành công — BS Nguyễn Đăng Khoa"
-                  className="w-full h-auto object-contain object-center"
+                  src={IMAGES.coverClinic}
+                  alt="Không gian phòng khám Nha Khoa Đăng Khoa"
+                  className="w-full aspect-[4/3] object-cover object-center"
                 />
               </div>
             </div>

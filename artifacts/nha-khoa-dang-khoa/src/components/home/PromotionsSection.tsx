@@ -7,7 +7,7 @@ import { fadeUp } from "@/lib/motion";
 
 export default function PromotionsSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding section-cream section-texture">
       <div className="container-custom container-narrow">
         <SectionTitle label="Ưu đãi" subtitle="Chương trình ưu đãi dành riêng cho khách hàng Đăng Khoa">
           ƯU ĐÃI NỔI BẬT
@@ -30,11 +30,11 @@ export default function PromotionsSection() {
                       {promo.badge}
                     </span>
                   )}
-                  <div className="overflow-hidden relative">
+                  <div className="overflow-hidden relative aspect-[4/3] bg-[#F8F6F1]">
                     <img
                       src={promo.image}
                       alt={promo.title}
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B2A]/70 via-[#0D1B2A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

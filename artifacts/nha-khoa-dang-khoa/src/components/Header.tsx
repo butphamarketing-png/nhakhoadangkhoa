@@ -43,8 +43,8 @@ export default function Header({ onBookingClick }: HeaderProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/92 backdrop-blur-xl shadow-[0_4px_30px_rgba(13,27,42,0.08)] border-b border-[#C89B3C]/15"
-            : "bg-white/80 backdrop-blur-md border-b border-transparent"
+            ? "bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(13,27,42,0.1)] border-b border-[#C89B3C]/20"
+            : "bg-white/85 backdrop-blur-md border-b border-[#C89B3C]/10"
         }`}
       >
         <div className="container-custom">

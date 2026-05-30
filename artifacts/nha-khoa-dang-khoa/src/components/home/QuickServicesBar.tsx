@@ -13,7 +13,7 @@ export default function QuickServicesBar() {
   return (
     <section className="relative z-10 -mt-4 md:-mt-6 mb-8 md:mb-12">
       <div className="container-custom">
-        <div className="services-float-bar px-4 py-6 md:px-8 md:py-8 border border-[#C89B3C]/10">
+        <div className="services-float-bar px-5 py-7 md:px-10 md:py-9">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
             {SERVICES.map((service, i) => {
               const Icon = iconMap[service.icon] ?? Star;

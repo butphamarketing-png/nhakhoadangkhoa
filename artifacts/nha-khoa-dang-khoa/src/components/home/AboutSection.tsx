@@ -8,7 +8,7 @@ export default function AboutSection() {
   return (
     <section className="section-padding section-cream section-texture">
       <div className="container-custom container-narrow">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -28,7 +28,7 @@ export default function AboutSection() {
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {["ISO vô trùng", "Vật liệu chính hãng", "Bảo hành dài hạn"].map((tag) => (
-                <span key={tag} className="text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-[#C89B3C]/40 text-[#C89B3C] bg-white/60">
+                <span key={tag} className="pill-tag">
                   {tag}
                 </span>
               ))}

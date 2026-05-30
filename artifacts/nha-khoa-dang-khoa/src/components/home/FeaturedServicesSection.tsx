@@ -46,7 +46,8 @@ function ServiceCard({
 
 export default function FeaturedServicesSection() {
   return (
-    <section id="services" className="section-padding bg-white">
+    <section id="services" className="section-padding section-white relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C89B3C]/25 to-transparent" />
       <div className="container-custom container-narrow">
         <SectionTitle label="Dịch vụ" subtitle="Giải pháp nha khoa toàn diện — chuẩn y khoa quốc tế">
           DỊCH VỤ NỔI BẬT
