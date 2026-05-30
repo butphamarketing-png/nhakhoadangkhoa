@@ -1,89 +1,128 @@
 import { Link } from "wouter";
-import { Phone, Mail, MapPin, Clock, Facebook, Youtube } from "lucide-react";
+import { Phone, MapPin, Globe, Mail, Clock, Facebook, Youtube, MessageCircle, Calendar } from "lucide-react";
 import { BRAND, SERVICES } from "@/lib/constants";
+import BrandLogo from "@/components/BrandLogo";
+
+const SUPPORT_LINKS = [
+  { label: "Hướng dẫn đặt lịch", href: "/dat-lich" },
+  { label: "Chính sách bảo hành", href: "/chinh-sach-bao-hanh" },
+  { label: "Chính sách thanh toán", href: "/chinh-sach-thanh-toan" },
+  { label: "Câu hỏi thường gặp", href: "/faq" },
+  { label: "Điều khoản dịch vụ", href: "/dieu-khoan" },
+];
+
+const SOCIAL = [
+  { href: BRAND.facebook, label: "Facebook", icon: Facebook, testId: "link-footer-facebook" },
+  { href: BRAND.zalo, label: "Zalo", zalo: true, testId: "link-footer-zalo" },
+  { href: BRAND.messenger, label: "Messenger", icon: MessageCircle, testId: "link-footer-messenger" },
+  { href: BRAND.youtube, label: "YouTube", icon: Youtube, testId: "link-footer-youtube" },
+  { href: BRAND.tiktok, label: "TikTok", tiktok: true, testId: "link-footer-tiktok" },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0D1B2A] text-white">
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1: Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center flex-shrink-0">
-                <svg viewBox="0 0 24 24" fill="white" className="w-6 h-6">
-                  <path d="M12 2C9.5 2 7.5 3.5 6.5 5.5C5.5 3.5 3.5 2 1 2C1 7 4 12 6.5 14.5C7.5 15.5 8.5 16 9.5 16C9.5 18 10 20 12 22C14 20 14.5 18 14.5 16C15.5 16 16.5 15.5 17.5 14.5C20 12 23 7 23 2C20.5 2 18.5 3.5 17.5 5.5C16.5 3.5 14.5 2 12 2Z"/>
-                </svg>
-              </div>
-              <div>
-                <div className="font-extrabold text-sm leading-tight">NHA KHOA ĐĂNG KHOA</div>
-                <div className="text-[#C89B3C] text-xs font-medium">{BRAND.slogan}</div>
-              </div>
+    <footer className="bg-[#0D1B2A] text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_0%,rgba(200,155,60,0.08),transparent_50%)]" />
+
+      {/* Hotline CTA strip */}
+      <div className="relative border-b border-[#C89B3C]/20">
+        <div className="container-custom py-6 md:py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+              <p className="text-[#E8C46A] text-xs font-bold uppercase tracking-[0.3em] mb-1">Hỗ trợ 24/7</p>
+              <p className="font-display text-xl md:text-2xl font-bold">Đặt lịch khám — Tư vấn miễn phí</p>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed mb-5">
-              Hệ thống nha khoa cao cấp tại Tây Ninh với đội ngũ bác sĩ chuyên môn,
-              công nghệ hiện đại và dịch vụ tận tâm.
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href={`tel:${BRAND.hotlineRaw}`} className="btn-gold inline-flex items-center !h-12 !px-6 !text-sm" data-testid="link-footer-cta-phone">
+                <Phone className="w-4 h-4 mr-2" />
+                {BRAND.hotline}
+              </a>
+              <Link href="/dat-lich">
+                <span className="btn-outline-gold !bg-transparent !text-white !border-white/40 inline-flex items-center !h-12 !px-6 !text-sm cursor-pointer hover:!bg-white hover:!text-[#0D1B2A]">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Đặt lịch online
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-custom py-16 md:py-20 lg:py-24 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="mb-5">
+              <BrandLogo size="md" variant="light" />
+            </div>
+            <p className="text-white/60 text-sm leading-relaxed mb-6">
+              Hệ thống nha khoa cao cấp tại Tây Ninh — uy tín, chất lượng, tận tâm phục vụ nụ cười Việt.
             </p>
-            <div className="flex gap-3">
-              <a href={BRAND.facebook} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#C89B3C] flex items-center justify-center transition-colors"
-                data-testid="link-footer-facebook">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href={BRAND.youtube} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#C89B3C] flex items-center justify-center transition-colors"
-                data-testid="link-footer-youtube">
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a href={BRAND.zalo} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#C89B3C] flex items-center justify-center text-sm font-bold transition-colors"
-                data-testid="link-footer-zalo">
-                Za
-              </a>
+            <div className="flex flex-wrap gap-2">
+              {SOCIAL.map((s) => (
+                <a
+                  key={s.testId}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#C89B3C] hover:shadow-[0_0_20px_rgba(200,155,60,0.35)] flex items-center justify-center transition-all duration-300"
+                  data-testid={s.testId}
+                  aria-label={s.label}
+                >
+                  {s.zalo ? (
+                    <span className="text-[10px] font-extrabold">Zalo</span>
+                  ) : s.tiktok ? (
+                    <span className="text-[10px] font-extrabold">TikTok</span>
+                  ) : (
+                    s.icon && <s.icon className="w-4 h-4" />
+                  )}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column 2: Contact */}
           <div>
-            <h4 className="font-bold text-white mb-5 text-base">Liên hệ</h4>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#C89B3C] flex-shrink-0 mt-0.5" />
-                <span className="text-white/70 text-sm">{BRAND.address}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#C89B3C] flex-shrink-0" />
-                <a href={`tel:${BRAND.hotlineRaw}`} className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors"
-                  data-testid="link-footer-phone">
+            <h4 className="font-bold text-[#C89B3C] mb-5 text-sm uppercase tracking-widest pb-2 border-b border-[#C89B3C]/20 inline-block">
+              Liên hệ
+            </h4>
+            <ul className="space-y-4 text-sm mt-4">
+              <li className="flex items-start gap-3 text-white/75">
+                <Phone className="w-4 h-4 text-[#C89B3C] flex-shrink-0 mt-0.5" />
+                <a href={`tel:${BRAND.hotlineRaw}`} className="hover:text-[#C89B3C] transition-colors font-semibold" data-testid="link-footer-phone">
                   {BRAND.hotline}
                 </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#C89B3C] flex-shrink-0" />
-                <a href={`mailto:${BRAND.email}`} className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors"
-                  data-testid="link-footer-email">
+              </li>
+              <li className="flex items-start gap-3 text-white/75">
+                <Mail className="w-4 h-4 text-[#C89B3C] flex-shrink-0 mt-0.5" />
+                <a href={`mailto:${BRAND.email}`} className="hover:text-[#C89B3C] transition-colors break-all">
                   {BRAND.email}
                 </a>
-              </div>
-              <div className="flex items-start gap-3">
+              </li>
+              <li className="flex items-start gap-3 text-white/75">
+                <Globe className="w-4 h-4 text-[#C89B3C] flex-shrink-0 mt-0.5" />
+                <span>{BRAND.website}</span>
+              </li>
+              <li className="flex items-start gap-3 text-white/75">
+                <MapPin className="w-4 h-4 text-[#C89B3C] flex-shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{BRAND.address}</span>
+              </li>
+              <li className="flex items-start gap-3 text-white/75">
                 <Clock className="w-4 h-4 text-[#C89B3C] flex-shrink-0 mt-0.5" />
-                <span className="text-white/70 text-sm">{BRAND.hours}</span>
-              </div>
-            </div>
+                <span className="leading-relaxed">{BRAND.hours}</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Column 3: Services */}
           <div>
-            <h4 className="font-bold text-white mb-5 text-base">Dịch vụ</h4>
-            <ul className="space-y-2">
+            <h4 className="font-bold text-[#C89B3C] mb-5 text-sm uppercase tracking-widest pb-2 border-b border-[#C89B3C]/20 inline-block">
+              Dịch vụ
+            </h4>
+            <ul className="space-y-2.5 mt-4">
               {SERVICES.map((s) => (
                 <li key={s.id}>
                   <Link href={s.href}>
-                    <span className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors cursor-pointer flex items-center gap-2"
-                      data-testid={`link-footer-service-${s.id}`}>
-                      <span className="w-1 h-1 rounded-full bg-[#C89B3C] flex-shrink-0" />
+                    <span className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors cursor-pointer" data-testid={`link-footer-service-${s.id}`}>
                       {s.name}
                     </span>
                   </Link>
@@ -92,35 +131,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Support */}
           <div>
-            <h4 className="font-bold text-white mb-5 text-base">Hỗ trợ khách hàng</h4>
-            <ul className="space-y-2 mb-6">
-              {[
-                { label: "Câu hỏi thường gặp", href: "/faq" },
-                { label: "Trước & Sau điều trị", href: "/truoc-sau" },
-                { label: "Ưu đãi hiện tại", href: "/uu-dai" },
-                { label: "Tuyển dụng", href: "/tuyen-dung" },
-                { label: "Chính sách bảo hành", href: "/chinh-sach-bao-hanh" },
-                { label: "Chính sách thanh toán", href: "/chinh-sach-thanh-toan" },
-                { label: "Điều khoản dịch vụ", href: "/dieu-khoan" },
-                { label: "Chính sách bảo mật", href: "/bao-mat" },
-              ].map((item) => (
+            <h4 className="font-bold text-[#C89B3C] mb-5 text-sm uppercase tracking-widest pb-2 border-b border-[#C89B3C]/20 inline-block">
+              Hỗ trợ
+            </h4>
+            <ul className="space-y-2.5 mt-4">
+              {SUPPORT_LINKS.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href}>
-                    <span className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors cursor-pointer flex items-center gap-2"
-                      data-testid={`link-footer-${item.href.replace("/", "")}`}>
-                      <span className="w-1 h-1 rounded-full bg-[#C89B3C] flex-shrink-0" />
+                    <span className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors cursor-pointer">
                       {item.label}
                     </span>
                   </Link>
                 </li>
               ))}
             </ul>
-            {/* Map iframe */}
-            <div className="rounded-xl overflow-hidden h-32 bg-white/10">
+          </div>
+
+          <div>
+            <h4 className="font-bold text-[#C89B3C] mb-5 text-sm uppercase tracking-widest pb-2 border-b border-[#C89B3C]/20 inline-block">
+              Bản đồ
+            </h4>
+            <div className="rounded-[20px] overflow-hidden h-44 lg:h-48 bg-white/10 border border-white/10 ring-1 ring-[#C89B3C]/20 mt-4">
               <iframe
-                src="https://maps.google.com/maps?q=345+Dien+Bien+Phu,+Tay+Ninh,+Vietnam&output=embed&z=15"
+                src={BRAND.mapEmbed}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -133,29 +167,23 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="container-custom py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-white/50 text-sm">
-            © {currentYear} {BRAND.name}. All rights reserved.
+      <div className="border-t border-white/10 bg-[#0a1520]">
+        <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/45 text-sm text-center sm:text-left">
+            © {currentYear} {BRAND.shortName}. Bảo lưu mọi quyền.
           </p>
-          <p className="text-white/40 text-xs">
-            Website: {BRAND.website}
-          </p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="w-10 h-10 rounded-full gold-gradient text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+            data-testid="button-back-to-top"
+            aria-label="Về đầu trang"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+              <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
-
-      {/* Back to top */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-8 left-4 md:left-8 z-40 w-10 h-10 rounded-full gold-gradient text-white shadow-lg flex items-center justify-center hover:scale-110 transition-transform"
-        data-testid="button-back-to-top"
-        aria-label="Về đầu trang"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
-          <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </button>
     </footer>
   );
 }

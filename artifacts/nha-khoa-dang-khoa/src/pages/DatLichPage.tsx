@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import PageHero from "@/components/PageHero";
 import { BRAND, SERVICES } from "@/lib/constants";
 
 const schema = z.object({
@@ -27,28 +28,52 @@ const TIME_SLOTS = ["8:00 – 9:00", "9:00 – 10:00", "10:00 – 11:00", "13:00
 
 export default function DatLichPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { name: "", phone: "", service: "", date: "", time: "", note: "" },
   });
 
+  const onSubmit = async (values: FormValues) => {
+    setSubmitError(null);
+    setSubmitting(true);
+    try {
+      const apiBase = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
+      if (apiBase) {
+        const res = await fetch(`${apiBase}/api/appointments`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+        if (!res.ok) {
+          throw new Error("Không gửi được đặt lịch. Vui lòng gọi hotline.");
+        }
+      }
+      setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Không kết nối được máy chủ. Vui lòng thử lại hoặc gọi " + BRAND.hotline,
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div>
-      <div className="navy-gradient py-20">
-        <div className="container-custom">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href="/"><span className="hover:text-white cursor-pointer">Trang chủ</span></Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white">Đặt lịch khám</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+      <PageHero
+        label="Đặt lịch"
+        breadcrumb="Đặt lịch khám"
+        title={
+          <>
             Đặt Lịch <span className="text-[#C89B3C]">Khám Ngay</span>
-          </h1>
-          <p className="text-white/70 text-lg">Tư vấn miễn phí – Không chờ đợi – Xác nhận ngay qua điện thoại</p>
-        </div>
-      </div>
+          </>
+        }
+        subtitle="Tư vấn miễn phí — Không chờ đợi — Xác nhận ngay qua điện thoại"
+      />
 
-      <section className="section-padding bg-gradient-to-br from-amber-50/40 to-white">
+      <section className="section-padding section-cream section-texture">
         <div className="container-custom">
           <div className="grid lg:grid-cols-3 gap-10">
             {/* Info */}
@@ -120,8 +145,14 @@ export default function DatLichPage() {
                   <h2 className="text-2xl font-extrabold text-[#0D1B2A] mb-2">Thông tin đặt lịch</h2>
                   <p className="text-gray-400 text-sm mb-7">Điền thông tin và chúng tôi sẽ liên hệ xác nhận trong 30 phút.</p>
 
+                  {submitError && (
+                    <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3 mb-4">
+                      {submitError}
+                    </p>
+                  )}
+
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(() => setSubmitted(true))} className="space-y-5">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                       <div className="grid sm:grid-cols-2 gap-4">
                         <FormField control={form.control} name="name" render={({ field }) => (
                           <FormItem>
@@ -202,9 +233,13 @@ export default function DatLichPage() {
                         </FormItem>
                       )} />
 
-                      <Button type="submit" className="w-full gold-gradient text-white border-0 rounded-xl h-12 font-bold text-base"
-                        data-testid="button-datlich-submit">
-                        Xác nhận đặt lịch
+                      <Button
+                        type="submit"
+                        disabled={submitting}
+                        className="w-full gold-gradient text-white border-0 rounded-xl h-12 font-bold text-base"
+                        data-testid="button-datlich-submit"
+                      >
+                        {submitting ? "Đang gửi..." : "Xác nhận đặt lịch"}
                       </Button>
                     </form>
                   </Form>

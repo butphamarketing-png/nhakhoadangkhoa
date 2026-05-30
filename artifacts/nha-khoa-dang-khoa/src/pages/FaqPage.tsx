@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ChevronRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import PageHero from "@/components/PageHero";
 import { BRAND } from "@/lib/constants";
+import { fadeUp } from "@/lib/motion";
 
 const FAQS_BY_CAT = [
   {
@@ -49,44 +49,45 @@ const FAQS_BY_CAT = [
 export default function FaqPage() {
   return (
     <div>
-      <div className="navy-gradient py-20">
-        <div className="container-custom">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href="/"><span className="hover:text-white cursor-pointer">Trang chủ</span></Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white">Câu hỏi thường gặp</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+      <PageHero
+        label="Hỗ trợ"
+        breadcrumb="Câu hỏi thường gặp"
+        title={
+          <>
             Câu Hỏi <span className="text-[#C89B3C]">Thường Gặp</span>
-          </h1>
-          <p className="text-white/70 text-lg">Giải đáp những thắc mắc phổ biến của khách hàng</p>
-        </div>
-      </div>
+          </>
+        }
+        subtitle="Giải đáp những thắc mắc phổ biến của khách hàng"
+      />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding section-cream section-texture">
         <div className="container-custom max-w-4xl">
           <div className="space-y-10">
             {FAQS_BY_CAT.map((cat, ci) => (
               <motion.div
                 key={cat.cat}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: ci * 0.1 }}
+                variants={fadeUp}
+                custom={ci}
               >
-                <h2 className="text-xl font-extrabold text-[#0D1B2A] mb-4 flex items-center gap-3">
-                  <span className="w-1.5 h-6 rounded-full" style={{ background: cat.color }} />
+                <h2 className="font-display text-xl font-bold text-[#0D1B2A] mb-4 flex items-center gap-3">
+                  <span className="w-1 h-7 rounded-full bg-[#C89B3C]" />
                   {cat.cat}
                 </h2>
                 <Accordion type="single" collapsible className="space-y-2">
                   {cat.items.map((faq, i) => (
-                    <AccordionItem key={i} value={`${ci}-${i}`}
-                      className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5"
-                      data-testid={`faq-${ci}-${i}`}>
-                      <AccordionTrigger className="font-semibold text-[#0D1B2A] hover:text-[#C89B3C] text-left text-sm">
+                    <AccordionItem
+                      key={i}
+                      value={`${ci}-${i}`}
+                      className="card-luxury !p-0 px-5 !translate-y-0 border-0"
+                      data-testid={`faq-${ci}-${i}`}
+                    >
+                      <AccordionTrigger className="font-semibold text-[#0D1B2A] hover:text-[#C89B3C] text-left text-sm py-4">
                         {faq.q}
                       </AccordionTrigger>
-                      <AccordionContent className="text-gray-600 text-sm pb-4">{faq.a}</AccordionContent>
+                      <AccordionContent className="text-[#0D1B2A]/65 text-sm pb-4 leading-relaxed">{faq.a}</AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
@@ -94,19 +95,17 @@ export default function FaqPage() {
             ))}
           </div>
 
-          <div className="mt-12 bg-amber-50 border border-amber-200 rounded-3xl p-8 text-center">
-            <h3 className="text-xl font-bold text-[#0D1B2A] mb-3">Không tìm thấy câu trả lời?</h3>
-            <p className="text-gray-600 mb-5">Liên hệ trực tiếp để được tư vấn miễn phí từ đội ngũ chuyên gia.</p>
+          <div className="mt-12 card-luxury p-8 text-center !translate-y-0">
+            <h3 className="font-display text-xl font-bold text-[#0D1B2A] mb-3">Không tìm thấy câu trả lời?</h3>
+            <p className="text-[#0D1B2A]/60 mb-6">Liên hệ trực tiếp để được tư vấn miễn phí từ đội ngũ chuyên gia.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href={`tel:${BRAND.hotlineRaw}`}>
-                <Button className="gold-gradient text-white border-0 rounded-xl px-6 h-11 font-bold" data-testid="button-faq-phone">
-                  Gọi {BRAND.hotline}
-                </Button>
+              <a href={`tel:${BRAND.hotlineRaw}`} className="btn-gold inline-flex items-center !h-11 !px-6" data-testid="button-faq-phone">
+                Gọi {BRAND.hotline}
               </a>
               <Link href="/lien-he">
-                <Button variant="outline" className="rounded-xl px-6 h-11 font-bold border-2 border-[#0D1B2A] text-[#0D1B2A]" data-testid="button-faq-contact">
+                <span className="btn-outline-gold inline-flex items-center !h-11 !px-6 cursor-pointer" data-testid="button-faq-contact">
                   Gửi câu hỏi
-                </Button>
+                </span>
               </Link>
             </div>
           </div>

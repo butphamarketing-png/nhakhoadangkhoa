@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { IMAGES } from "@/lib/images";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -97,22 +98,19 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               />
               {/* Logo box */}
               <div
-                className="relative w-20 h-20 rounded-2xl flex items-center justify-center"
+                className="relative w-24 h-24 rounded-full flex items-center justify-center overflow-hidden ring-2 ring-[#C89B3C]/50"
                 style={{ background: "linear-gradient(135deg, #C89B3C 0%, #E8C46A 50%, #C89B3C 100%)" }}
               >
-                {/* Shimmer sweep */}
                 <motion.div
-                  className="absolute inset-0 rounded-2xl overflow-hidden"
+                  className="absolute inset-0 rounded-full overflow-hidden"
                   initial={{ x: "-100%" }}
                   animate={{ x: "200%" }}
                   transition={{ duration: 1.2, delay: 0.6, ease: "easeInOut" }}
                   style={{
-                    background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
+                    background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%)",
                   }}
                 />
-                <svg viewBox="0 0 24 24" fill="white" className="w-10 h-10">
-                  <path d="M12 2C9.5 2 7.5 3.5 6.5 5.5C5.5 3.5 3.5 2 1 2C1 7 4 12 6.5 14.5C7.5 15.5 8.5 16 9.5 16C9.5 18 10 20 12 22C14 20 14.5 18 14.5 16C15.5 16 16.5 15.5 17.5 14.5C20 12 23 7 23 2C20.5 2 18.5 3.5 17.5 5.5C16.5 3.5 14.5 2 12 2Z" />
-                </svg>
+                <img src={IMAGES.logo} alt="" className="relative w-20 h-20 rounded-full object-cover ring-2 ring-white/30" />
               </div>
             </motion.div>
 

@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ChevronRight, Award, Users, Clock, CheckCircle, Star, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import PageHero from "@/components/PageHero";
 import { BRAND, DOCTORS } from "@/lib/constants";
-import clinicImg from "@assets/image_1780078863194.png";
+import { IMAGES } from "@/lib/images";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -33,26 +34,18 @@ const doctorInitials = ["NVA", "TTM", "LMD"];
 export default function AboutPage() {
   return (
     <div>
-      {/* Hero */}
-      <div className="navy-gradient py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-64 h-64 rounded-full border-2 border-[#C89B3C]" />
-        </div>
-        <div className="container-custom relative">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href="/"><span className="hover:text-white cursor-pointer" data-testid="breadcrumb-home">Trang chủ</span></Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white">Giới thiệu</span>
-          </div>
-          <div className="max-w-2xl">
-            <div className="text-[#C89B3C] font-semibold text-sm uppercase tracking-widest mb-3">Về chúng tôi</div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-              Hệ Thống Nha Khoa<br /><span className="text-[#C89B3C]">Đăng Khoa</span>
-            </h1>
-            <p className="text-white/70 text-lg">{BRAND.slogan}</p>
-          </div>
-        </div>
-      </div>
+      <PageHero
+        label="Về chúng tôi"
+        breadcrumb="Giới thiệu"
+        title={
+          <>
+            Hệ Thống Nha Khoa
+            <br />
+            <span className="text-[#C89B3C]">Đăng Khoa</span>
+          </>
+        }
+        subtitle={BRAND.slogan}
+      />
 
       {/* Story */}
       <section className="section-padding bg-white">
@@ -76,8 +69,8 @@ export default function AboutPage() {
                   { value: "15K+", label: "Khách hàng" },
                   { value: "12+", label: "Bác sĩ" },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center p-4 bg-amber-50 rounded-2xl">
-                    <div className="text-2xl font-extrabold text-[#C89B3C]">{stat.value}</div>
+                  <div key={stat.label} className="text-center p-4 card-luxury !translate-y-0 !p-4">
+                    <div className="text-2xl font-display font-bold text-[#C89B3C]">{stat.value}</div>
                     <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
                   </div>
                 ))}
@@ -89,7 +82,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <img src={clinicImg} alt="Phòng khám Nha Khoa Đăng Khoa" className="w-full rounded-3xl shadow-2xl" />
+              <img src={IMAGES.coverClinic} alt="Nha Khoa Đăng Khoa - BS. Nguyễn Đăng Khoa" className="w-full rounded-3xl shadow-2xl" />
             </motion.div>
           </div>
         </div>

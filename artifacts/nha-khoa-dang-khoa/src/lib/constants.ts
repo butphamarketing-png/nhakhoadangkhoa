@@ -8,10 +8,11 @@ export const BRAND = {
   website: "hethongnhakhoadangkhoa.vn",
   address: "345 - 347 Điện Biên Phủ, Khu Phố Ninh Phúc, Phường Ninh Thạnh, Tỉnh Tây Ninh",
   hours: "Thứ 2 – Thứ 7: 8:00 – 20:00 | Chủ nhật: 8:00 – 17:00",
-  facebook: "https://facebook.com/nhakhoadangkhoa",
+  facebook: "https://www.facebook.com/nhakhoaphuongdong.bsdangkhoa/",
   zalo: "https://zalo.me/0886868786",
-  messenger: "https://m.me/nhakhoadangkhoa",
+  messenger: "https://m.me/nhakhoaphuongdong.bsdangkhoa",
   youtube: "https://youtube.com/@nhakhoadangkhoa",
+  tiktok: "https://www.tiktok.com/@nhakhoadangkhoa",
   mapEmbed:
     "https://maps.google.com/maps?q=345+Dien+Bien+Phu+Tay+Ninh+Vietnam&output=embed",
 };
@@ -188,32 +189,32 @@ export const PROMOTIONS = [
 export const BLOG_POSTS = [
   {
     id: 1,
+    href: "/kien-thuc/implant-co-dau-khong",
     title: "Implant nha khoa có đau không? Những điều bạn cần biết",
     category: "Implant",
     excerpt:
       "Nhiều người lo ngại cấy ghép implant sẽ đau đớn. Bài viết này giải đáp toàn bộ thắc mắc của bạn về quá trình và cảm giác khi cấy implant.",
     date: "15/05/2024",
     readTime: "5 phút",
-    color: "from-amber-400 to-orange-400",
   },
   {
     id: 2,
+    href: "/kien-thuc/invisalign-vs-mac-cai",
     title: "Niềng răng Invisalign vs Niềng mắc cài: Nên chọn loại nào?",
     category: "Niềng Răng",
     excerpt:
       "So sánh chi tiết hai phương pháp niềng răng phổ biến nhất hiện nay để giúp bạn đưa ra lựa chọn phù hợp với nhu cầu và ngân sách.",
     date: "10/05/2024",
     readTime: "7 phút",
-    color: "from-blue-400 to-indigo-400",
   },
   {
     id: 3,
+    href: "/kien-thuc/cham-soc-rang-mieng",
     title: "Cách chăm sóc răng miệng đúng chuẩn từ chuyên gia",
     category: "Chăm sóc răng",
     excerpt:
       "Hướng dẫn chi tiết từ các nha sĩ hàng đầu về cách đánh răng, dùng chỉ nha khoa và thói quen hàng ngày để bảo vệ hàm răng khỏe mạnh.",
     date: "05/05/2024",
     readTime: "4 phút",
-    color: "from-emerald-400 to-teal-400",
   },
 ];

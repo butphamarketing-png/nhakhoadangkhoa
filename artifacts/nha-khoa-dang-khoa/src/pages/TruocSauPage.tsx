@@ -3,15 +3,8 @@ import { Link } from "wouter";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/constants";
-
-const CASES = [
-  { service: "Implant", from: "from-gray-300 to-gray-400", to: "from-amber-200 to-amber-300", desc: "Phục hồi răng mất bằng implant Straumann" },
-  { service: "Niềng Răng", from: "from-gray-200 to-gray-300", to: "from-blue-200 to-blue-300", desc: "Chỉnh nha Invisalign 18 tháng" },
-  { service: "Răng Sứ", from: "from-gray-300 to-gray-400", to: "from-purple-200 to-purple-300", desc: "Bọc sứ Zirconia 6 răng cửa" },
-  { service: "Tẩy Trắng", from: "from-yellow-700 to-yellow-800", to: "from-yellow-50 to-white", desc: "Tẩy trắng laser 1 buổi" },
-  { service: "Implant All-on-4", from: "from-gray-400 to-gray-500", to: "from-amber-100 to-amber-200", desc: "Phục hình toàn hàm All-on-4" },
-  { service: "Veneer", from: "from-gray-200 to-gray-300", to: "from-pink-100 to-pink-200", desc: "Veneer sứ 8 răng cửa" },
-];
+import { GALLERY_TESTIMONIALS } from "@/lib/home-content";
+import { IMAGES } from "@/lib/images";
 
 export default function TruocSauPage() {
   return (
@@ -32,27 +25,32 @@ export default function TruocSauPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CASES.map((c, i) => (
-              <motion.div key={i}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto mb-12 rounded-2xl overflow-hidden shadow-xl border border-amber-100"
+          >
+            <img
+              src={IMAGES.testimonials.truocSau}
+              alt="Kết quả trước và sau điều trị"
+              className="w-full h-auto"
+            />
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {GALLERY_TESTIMONIALS.filter((g) => g.id !== "truoc-sau").map((c, i) => (
+              <motion.div
+                key={c.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all"
-                data-testid={`case-${i}`}
+                data-testid={`case-${c.id}`}
               >
-                <div className="grid grid-cols-2 h-48">
-                  <div className={`bg-gradient-to-br ${c.from} relative flex items-end p-3`}>
-                    <span className="bg-black/40 text-white text-xs font-bold px-2 py-0.5 rounded">TRƯỚC</span>
-                  </div>
-                  <div className={`bg-gradient-to-br ${c.to} relative flex items-end p-3`}>
-                    <span className="bg-black/20 text-white text-xs font-bold px-2 py-0.5 rounded">SAU</span>
-                  </div>
-                </div>
+                <img src={c.image} alt={c.name} className="w-full h-auto object-cover" />
                 <div className="p-4">
-                  <div className="font-bold text-[#C89B3C] text-sm mb-1">{c.service}</div>
-                  <p className="text-gray-600 text-sm">{c.desc}</p>
+                  <div className="font-bold text-[#C89B3C] text-sm">{c.name}</div>
                 </div>
               </motion.div>
             ))}

@@ -1,35 +1,26 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ChevronRight, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Star } from "lucide-react";
+import PageHero from "@/components/PageHero";
 import { TESTIMONIALS, BRAND } from "@/lib/constants";
-
-const BEFORE_AFTER = [
-  { service: "Implant", before: "from-gray-300 to-gray-400", after: "from-amber-200 to-amber-300" },
-  { service: "Niềng Răng", before: "from-gray-300 to-gray-400", after: "from-blue-200 to-blue-300" },
-  { service: "Răng Sứ", before: "from-gray-300 to-gray-400", after: "from-purple-200 to-purple-300" },
-  { service: "Tẩy Trắng", before: "from-gray-400 to-gray-500", after: "from-yellow-100 to-yellow-200" },
-];
+import { GALLERY_TESTIMONIALS } from "@/lib/home-content";
 
 export default function KhachHangPage() {
   return (
     <div>
-      <div className="navy-gradient py-20">
-        <div className="container-custom">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href="/"><span className="hover:text-white cursor-pointer">Trang chủ</span></Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white">Khách hàng</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+      <PageHero
+        label="Khách hàng"
+        breadcrumb="Khách hàng"
+        title={
+          <>
             Khách Hàng <span className="text-[#C89B3C]">Nói Gì</span>
-          </h1>
-          <p className="text-white/70 text-lg">15.000+ khách hàng đã tin tưởng và hài lòng</p>
-        </div>
-      </div>
+          </>
+        }
+        subtitle="15.000+ khách hàng đã tin tưởng và hài lòng"
+      />
 
       {/* Rating Summary */}
-      <section className="py-10 bg-amber-50">
+      <section className="py-10 section-cream border-b border-[#C89B3C]/10">
         <div className="container-custom">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
             <div className="text-center">
@@ -73,7 +64,7 @@ export default function KhachHangPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="bg-white border border-amber-100 rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all"
+                className="card-luxury p-5 !translate-y-0 hover:!translate-y-[-6px]"
                 data-testid={`testimonial-${i}`}
               >
                 <div className="flex gap-1 mb-3">
@@ -106,27 +97,19 @@ export default function KhachHangPage() {
             <h2 className="text-3xl font-extrabold text-[#0D1B2A] mb-3">Trước & Sau Điều Trị</h2>
             <p className="text-gray-500 max-w-xl mx-auto">Những kết quả thực tế từ bệnh nhân của chúng tôi</p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {BEFORE_AFTER.map((item, i) => (
-              <motion.div key={i}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {GALLERY_TESTIMONIALS.map((item, i) => (
+              <motion.div
+                key={item.id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100"
-                data-testid={`before-after-${i}`}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow"
+                data-testid={`gallery-${item.id}`}
               >
-                <div className="grid grid-cols-2 h-36">
-                  <div className={`bg-gradient-to-br ${item.before} flex items-center justify-center`}>
-                    <span className="text-white/70 font-bold text-xs">TRƯỚC</span>
-                  </div>
-                  <div className={`bg-gradient-to-br ${item.after} flex items-center justify-center`}>
-                    <span className="text-amber-800/70 font-bold text-xs">SAU</span>
-                  </div>
-                </div>
-                <div className="p-3 text-center">
-                  <span className="font-semibold text-[#0D1B2A] text-sm">{item.service}</span>
-                </div>
+                <img src={item.image} alt={item.name} className="w-full h-auto object-cover" />
+                <p className="text-center text-xs font-bold text-[#0D1B2A] py-2 bg-amber-50">{item.name}</p>
               </motion.div>
             ))}
           </div>
@@ -134,20 +117,20 @@ export default function KhachHangPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 gold-gradient">
+      <section className="py-16 cta-gold-gradient">
         <div className="container-custom text-center">
-          <h2 className="text-3xl font-extrabold text-white mb-4">Bạn muốn có kết quả tương tự?</h2>
-          <p className="text-white/80 mb-8">Đặt lịch khám và nhận tư vấn miễn phí từ đội ngũ chuyên gia.</p>
+          <h2 className="font-display text-3xl font-bold text-[#0D1B2A] mb-4">Bạn muốn có kết quả tương tự?</h2>
+          <p className="text-[#0D1B2A]/70 mb-8">Đặt lịch khám và nhận tư vấn miễn phí từ đội ngũ chuyên gia.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/dat-lich">
-              <Button className="bg-white text-[#C89B3C] rounded-xl h-12 px-8 font-bold" data-testid="button-khachhang-cta">
+              <span className="btn-gold inline-flex items-center !h-12 !px-8 cursor-pointer" data-testid="button-khachhang-cta">
                 Đặt lịch ngay
-              </Button>
+              </span>
             </Link>
             <a href={`tel:${BRAND.hotlineRaw}`}>
-              <Button variant="outline" className="rounded-xl h-12 px-8 font-bold border-2 border-white text-white hover:bg-white/10">
+              <span className="btn-outline-gold inline-flex items-center !h-12 !px-8 cursor-pointer">
                 Gọi {BRAND.hotline}
-              </Button>
+              </span>
             </a>
           </div>
         </div>

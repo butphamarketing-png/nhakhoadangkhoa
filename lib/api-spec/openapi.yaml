@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: appointments
+    description: Appointment booking
 paths:
   /healthz:
     get:
@@ -24,6 +26,37 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /appointments:
+    post:
+      operationId: createAppointment
+      tags: [appointments]
+      summary: Create appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAppointmentRequest"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateAppointmentResponse"
+    get:
+      operationId: listAppointments
+      tags: [appointments]
+      summary: List appointments
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
 components:
   schemas:
     HealthStatus:
@@ -33,4 +66,34 @@ components:
           type: string
       required:
         - status
-
+    CreateAppointmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        service:
+          type: string
+        date:
+          type: string
+        time:
+          type: string
+        note:
+          type: string
+      required:
+        - name
+        - phone
+        - service
+        - date
+        - time
+    CreateAppointmentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+      required:
+        - id
+        - status

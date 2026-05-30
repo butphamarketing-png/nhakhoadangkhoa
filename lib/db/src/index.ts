@@ -10,7 +10,14 @@ if (!process.env.DATABASE_URL) {
   );
 }
 
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const connectionString = process.env.DATABASE_URL;
+const isSupabase = connectionString?.includes("supabase");
+
+export const pool = new Pool({
+  connectionString,
+  max: process.env.VERCEL ? 1 : 10,
+  ...(isSupabase ? { ssl: { rejectUnauthorized: false } } : {}),
+});
 export const db = drizzle(pool, { schema });
 
 export * from "./schema";
