@@ -1,7 +1,7 @@
-# Push code len GitHub - tai khoan butphammarketing-png
+# Push code len GitHub - tai khoan butphamarketing-png
 # Cach dung: mo PowerShell, chay file nay, dan TOKEN khi duoc hoi
 
-$remotePublic = "https://github.com/butphammarketing-png/nhakhoadangkhoa.git"
+$remotePublic = "https://github.com/butphamarketing-png/nhakhoadangkhoa.git"
 
 $root = $PSScriptRoot
 while ($root -and -not (Test-Path (Join-Path $root ".git"))) {
@@ -20,7 +20,7 @@ $token = $env:GITHUB_TOKEN
 if (-not $token) {
   Write-Host ""
   Write-Host "Tao token: https://github.com/settings/tokens (classic, quyen repo)" -ForegroundColor Yellow
-  Write-Host "Dang nhap GitHub bang tai khoan: butphammarketing-png" -ForegroundColor Yellow
+  Write-Host "Dang nhap GitHub bang tai khoan: butphamarketing-png" -ForegroundColor Yellow
   Write-Host ""
   $token = Read-Host "Dan GitHub token (ghp_...)"
 }
@@ -30,7 +30,7 @@ if (-not $token) {
   exit 1
 }
 
-$remoteAuth = "https://${token}@github.com/butphammarketing-png/nhakhoadangkhoa.git"
+$remoteAuth = "https://${token}@github.com/butphamarketing-png/nhakhoadangkhoa.git"
 git remote set-url origin $remoteAuth
 
 Write-Host "Dang day code..." -ForegroundColor Cyan
@@ -56,9 +56,9 @@ git remote set-url origin $remotePublic
 if ($LASTEXITCODE -eq 0) {
   Write-Host ""
   Write-Host "THANH CONG!" -ForegroundColor Green
-  Write-Host "https://github.com/butphammarketing-png/nhakhoadangkhoa" -ForegroundColor Green
+  Write-Host "https://github.com/butphamarketing-png/nhakhoadangkhoa" -ForegroundColor Green
   Write-Host "Vercel: Redeploy project nhakhoadangkhoa" -ForegroundColor Cyan
 } else {
-  Write-Host "That bai. Kiem tra token va tai khoan butphammarketing-png." -ForegroundColor Red
+  Write-Host "That bai. Kiem tra token va tai khoan butphamarketing-png." -ForegroundColor Red
   exit 1
 }
