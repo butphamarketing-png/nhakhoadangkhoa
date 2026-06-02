@@ -2,7 +2,8 @@
 
 Dự án cần **3 project Vercel** + file `.env` local. Mỗi project chỉ nhận **đúng bộ biến** của nó.
 
-**Website chính:** `https://hethongnhakhoadangkhoa.com`  
+**Website Vercel (đang chạy):** [https://nhakhoadangkhoa.vercel.app](https://nhakhoadangkhoa.vercel.app/)  
+**Domain tùy chọn sau:** `https://hethongnhakhoadangkhoa.com` (thêm vào `CORS_ORIGIN` khi trỏ domain)  
 **Supabase project:** `hethongnhakhoadangkhoa` (ref: `epsvwnsuirfnwtxloctd`)
 
 > Không ghi mật khẩu vào GitHub. Chỉ nhập trên Vercel và file `.env` trên máy.
@@ -122,7 +123,7 @@ VITE_API_URL=https://nha-khoa-api.vercel.app
 | Biến | Giá trị mẫu |
 |------|-------------|
 | `VITE_API_URL` | Cùng URL API như website |
-| `VITE_WEBSITE_URL` | `https://hethongnhakhoadangkhoa.com` |
+| `VITE_WEBSITE_URL` | `https://nhakhoadangkhoa.vercel.app` |
 
 Đăng nhập admin: mật khẩu = `ADMIN_PASSWORD` (trên project API).
 
