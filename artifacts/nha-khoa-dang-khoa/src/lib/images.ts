@@ -47,4 +47,11 @@ export const IMAGES = {
   info: {
     anhHuongSucKhoe: img("info-anh-huong-suc-khoe.png"),
   },
+
+  /** Ảnh bài viết kiến thức — /public/images/blog/ */
+  blog: {
+    implantQuyTrinh: img("blog/blog-implant-quy-trinh.jpg"),
+    trongImplant: img("blog/blog-trong-implant.jpg"),
+    tramRang: img("blog/blog-tram-rang.jpg"),
+  },
 } as const;

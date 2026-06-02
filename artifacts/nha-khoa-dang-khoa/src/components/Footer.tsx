@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Phone, MapPin, Globe, Mail, Clock, Facebook, Youtube, MessageCircle, Calendar } from "lucide-react";
-import { BRAND, SERVICES } from "@/lib/constants";
+import { BRAND } from "@/lib/constants";
+import { SERVICE_MENU_GROUPS } from "@/lib/services-menu";
 import BrandLogo from "@/components/BrandLogo";
 
 const SUPPORT_LINKS = [
@@ -20,8 +21,6 @@ const SOCIAL = [
 ];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-[#0D1B2A] text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_0%,rgba(200,155,60,0.08),transparent_50%)]" />
@@ -119,11 +118,11 @@ export default function Footer() {
               Dịch vụ
             </h4>
             <ul className="space-y-2.5 mt-4">
-              {SERVICES.map((s) => (
+              {SERVICE_MENU_GROUPS.map((s) => (
                 <li key={s.id}>
                   <Link href={s.href}>
                     <span className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors cursor-pointer" data-testid={`link-footer-service-${s.id}`}>
-                      {s.name}
+                      {s.title}
                     </span>
                   </Link>
                 </li>
@@ -170,7 +169,15 @@ export default function Footer() {
       <div className="border-t border-white/10 bg-[#0a1520]">
         <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/45 text-sm text-center sm:text-left">
-            © {currentYear} {BRAND.shortName}. Bảo lưu mọi quyền.
+            ©2026 Nha Khoa Đăng Khoa | Đơn Vị Thiết Kế Website:{" "}
+            <a
+              href="https://butphamarketing.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#C89B3C] transition-colors"
+            >
+              butphamarketing.com
+            </a>
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

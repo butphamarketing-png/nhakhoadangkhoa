@@ -39,7 +39,7 @@ function TechCard({
 
 export default function TechnologySection() {
   return (
-    <section className="section-padding section-cream section-texture overflow-hidden">
+    <section id="cong-nghe" className="section-padding section-cream section-texture overflow-hidden scroll-mt-32">
       <div className="container-custom container-narrow">
         <div className="grid lg:grid-cols-[minmax(0,340px)_1fr] gap-8 lg:gap-10 items-start">
           <motion.div

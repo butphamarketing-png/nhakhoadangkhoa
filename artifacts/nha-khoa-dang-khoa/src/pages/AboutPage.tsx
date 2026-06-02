@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import { BRAND, DOCTORS } from "@/lib/constants";
 import { IMAGES } from "@/lib/images";
+import { ABOUT_SECTIONS } from "@/lib/about-content";
+import MediaFrame from "@/components/ui/MediaFrame";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -46,6 +48,34 @@ export default function AboutPage() {
         }
         subtitle={BRAND.slogan}
       />
+
+      <section className="section-padding section-cream border-b border-[#C89B3C]/10">
+        <div className="container-custom">
+          <motion.div {...fadeUp} className="text-center mb-10">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-[#0D1B2A] mb-2">Khám phá Nha Khoa Đăng Khoa</h2>
+            <p className="text-[#0D1B2A]/60 max-w-2xl mx-auto">Đội ngũ, cơ sở vật chất và quy trình chuẩn quốc tế</p>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {ABOUT_SECTIONS.map((s, i) => (
+              <motion.div key={s.slug} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
+                <Link href={s.href}>
+                  <div className="card-luxury overflow-hidden !p-0 !translate-y-0 hover:!translate-y-[-6px] group cursor-pointer h-full flex flex-col">
+                    {s.image && <MediaFrame src={s.image} alt={s.label} aspect="video" />}
+                    <div className="p-5 flex flex-col flex-1">
+                      <p className="text-[10px] font-bold text-[#C89B3C] uppercase tracking-wider mb-1">{s.eyebrow}</p>
+                      <h3 className="font-display font-bold text-lg text-[#0D1B2A] mb-2 group-hover:text-[#C89B3C] transition-colors">{s.label}</h3>
+                      <p className="text-sm text-[#0D1B2A]/55 line-clamp-2 flex-1">{s.paragraphs[0]}</p>
+                      <span className="inline-flex items-center gap-1 mt-4 text-xs font-bold text-[#C89B3C] uppercase">
+                        Xem thêm <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Story */}
       <section className="section-padding bg-white">

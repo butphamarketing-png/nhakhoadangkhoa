@@ -22,7 +22,7 @@ export default function Layout({ children }: LayoutProps) {
     <BookingContext.Provider value={{ openBooking }}>
       <ScrollProgress />
       <Header onBookingClick={openBooking} />
-      <main className="pt-[72px] lg:pt-[100px] pb-20 lg:pb-0 xl:pr-[4.5rem]">{children}</main>
+      <main className="pt-[120px] md:pt-[138px] lg:pt-[148px] pb-20 lg:pb-0 xl:pr-[4.5rem]">{children}</main>
       <Footer />
       <FloatingButtons onBookingClick={openBooking} />
       <MobileBottomBar onBookingClick={openBooking} />

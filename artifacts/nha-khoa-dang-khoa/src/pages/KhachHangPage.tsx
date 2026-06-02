@@ -74,9 +74,11 @@ export default function KhachHangPage() {
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4 italic">"{t.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full gold-gradient flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-xs">{t.name.split(" ").pop()?.charAt(0)}</span>
-                  </div>
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="w-11 h-11 rounded-full object-cover border-2 border-[#C89B3C]/30 flex-shrink-0"
+                  />
                   <div>
                     <div className="font-bold text-[#0D1B2A] text-sm">{t.name}</div>
                     <div className="text-[#C89B3C] text-xs">{t.service}</div>

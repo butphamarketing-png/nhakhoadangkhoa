@@ -363,6 +363,20 @@
 }
 .animate-pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
 
+/* Nút gọi hotline — rung nhẹ thu hút */
+@keyframes phone-ring {
+  0%, 100% { transform: rotate(0deg); }
+  5% { transform: rotate(-6deg); }
+  10% { transform: rotate(6deg); }
+  15% { transform: rotate(-5deg); }
+  20% { transform: rotate(5deg); }
+  25%, 100% { transform: rotate(0deg); }
+}
+.animate-phone-ring {
+  animation: phone-ring 2.5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
 /* Gradient border */
 .gradient-border {
   position: relative;

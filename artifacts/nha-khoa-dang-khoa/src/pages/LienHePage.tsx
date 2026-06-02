@@ -8,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import PageHero from "@/components/PageHero";
-import { BRAND, SERVICES } from "@/lib/constants";
+import { BRAND } from "@/lib/constants";
 import { fadeUp } from "@/lib/motion";
 
 const schema = z.object({
@@ -105,17 +105,6 @@ export default function LienHePage() {
                 </div>
               </div>
 
-              <div className="card-luxury p-6 !translate-y-0">
-                <h3 className="font-bold text-[#0D1B2A] mb-4">Dịch vụ tư vấn</h3>
-                <div className="space-y-2">
-                  {SERVICES.map((s) => (
-                    <div key={s.id} className="flex items-center gap-2 text-sm text-[#0D1B2A]/70">
-                      <CheckCircle2 className="w-4 h-4 text-[#C89B3C] shrink-0" />
-                      {s.name}
-                    </div>
-                  ))}
-                </div>
-              </div>
             </motion.div>
 
             <motion.div

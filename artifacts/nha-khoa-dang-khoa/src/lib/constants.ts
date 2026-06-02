@@ -1,3 +1,5 @@
+import { IMAGES } from "./images";
+
 export const BRAND = {
   name: "HỆ THỐNG NHA KHOA ĐĂNG KHOA",
   shortName: "Nha Khoa Đăng Khoa",
@@ -110,6 +112,7 @@ export const TESTIMONIALS = [
     name: "Nguyễn Thị Hoa",
     service: "Niềng răng Invisalign",
     rating: 5,
+    avatar: IMAGES.testimonials.nguyenThiKimHanh,
     text: "Tôi rất hài lòng với kết quả niềng răng tại đây. Các bác sĩ rất tận tâm, phòng khám hiện đại và sạch sẽ. Sau 18 tháng niềng, nụ cười của tôi đã thay đổi hoàn toàn!",
     date: "Tháng 3, 2024",
   },
@@ -118,6 +121,7 @@ export const TESTIMONIALS = [
     name: "Trần Văn Minh",
     service: "Implant nha khoa",
     rating: 5,
+    avatar: IMAGES.testimonials.nguyenDinhPhuong,
     text: "Cấy implant tại Nha Khoa Đăng Khoa – quy trình chuyên nghiệp, không đau như tôi lo ngại. Sau 3 tháng đã có răng mới chắc chắn như răng thật. Rất đáng tin tưởng!",
     date: "Tháng 1, 2024",
   },
@@ -126,6 +130,7 @@ export const TESTIMONIALS = [
     name: "Lê Thị Lan",
     service: "Răng sứ thẩm mỹ",
     rating: 5,
+    avatar: IMAGES.testimonials.truocSau,
     text: "Bọc sứ zirconia cho 4 răng cửa – kết quả đẹp hơn mong đợi. Màu sắc tự nhiên, không ai biết là răng sứ. Bác sĩ tư vấn rất kỹ, chi phí rõ ràng.",
     date: "Tháng 2, 2024",
   },
@@ -134,6 +139,7 @@ export const TESTIMONIALS = [
     name: "Phạm Thanh Tùng",
     service: "Tẩy trắng laser",
     rating: 5,
+    avatar: IMAGES.testimonials.leThiThuy,
     text: "Tẩy trắng laser chỉ 1 buổi mà hiệu quả rõ rệt, răng trắng sáng hẳn. Kỹ thuật viên rất nhiệt tình, không ê buốt gì cả. Sẽ giới thiệu cho bạn bè!",
     date: "Tháng 4, 2024",
   },
@@ -142,6 +148,7 @@ export const TESTIMONIALS = [
     name: "Võ Thị Thu",
     service: "Nhổ răng khôn",
     rating: 5,
+    avatar: IMAGES.testimonials.damThiLat,
     text: "Nhổ 2 răng khôn hàm dưới – bác sĩ thực hiện rất nhanh và nhẹ nhàng. Không đau trong khi nhổ, sau 2 ngày là ổn. Phòng khám rất sang trọng và chuyên nghiệp.",
     date: "Tháng 5, 2024",
   },
@@ -186,35 +193,5 @@ export const PROMOTIONS = [
   },
 ];
 
-export const BLOG_POSTS = [
-  {
-    id: 1,
-    href: "/kien-thuc/implant-co-dau-khong",
-    title: "Implant nha khoa có đau không? Những điều bạn cần biết",
-    category: "Implant",
-    excerpt:
-      "Nhiều người lo ngại cấy ghép implant sẽ đau đớn. Bài viết này giải đáp toàn bộ thắc mắc của bạn về quá trình và cảm giác khi cấy implant.",
-    date: "15/05/2024",
-    readTime: "5 phút",
-  },
-  {
-    id: 2,
-    href: "/kien-thuc/invisalign-vs-mac-cai",
-    title: "Niềng răng Invisalign vs Niềng mắc cài: Nên chọn loại nào?",
-    category: "Niềng Răng",
-    excerpt:
-      "So sánh chi tiết hai phương pháp niềng răng phổ biến nhất hiện nay để giúp bạn đưa ra lựa chọn phù hợp với nhu cầu và ngân sách.",
-    date: "10/05/2024",
-    readTime: "7 phút",
-  },
-  {
-    id: 3,
-    href: "/kien-thuc/cham-soc-rang-mieng",
-    title: "Cách chăm sóc răng miệng đúng chuẩn từ chuyên gia",
-    category: "Chăm sóc răng",
-    excerpt:
-      "Hướng dẫn chi tiết từ các nha sĩ hàng đầu về cách đánh răng, dùng chỉ nha khoa và thói quen hàng ngày để bảo vệ hàm răng khỏe mạnh.",
-    date: "05/05/2024",
-    readTime: "4 phút",
-  },
-];
+export { BLOG_POSTS, BLOG_CATEGORIES } from "./blog-posts";
+export type { BlogPost } from "./blog-posts";

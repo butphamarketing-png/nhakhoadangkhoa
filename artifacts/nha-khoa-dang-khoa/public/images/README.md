@@ -17,3 +17,4 @@ Cấu hình: `src/lib/home-content.ts` (`HERO_SLIDES`), đường dẫn: `src/li
 | `service-*.png` | Dịch vụ |
 | `promo-*.png` | Ưu đãi |
 | `testimonial-*.png` | Khách hàng |
+| `blog/*.jpg` | Ảnh bài viết kiến thức (từ hethongnhakhoadangkhoa.vn) |
