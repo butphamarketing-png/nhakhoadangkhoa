@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const WEBSITE_URL =
   import.meta.env.VITE_WEBSITE_URL?.replace(/\/+$/, "") ||
-  "https://nhakhoadangkhoa.vercel.app";
+  "https://hethongnhakhoadangkhoa.com";
 
 type PageToolbarProps = {
   onSave?: () => void;

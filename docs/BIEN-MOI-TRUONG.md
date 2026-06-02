@@ -2,6 +2,11 @@
 
 Dự án cần **3 project Vercel** + file `.env` local. Mỗi project chỉ nhận **đúng bộ biến** của nó.
 
+**Website chính:** `https://hethongnhakhoadangkhoa.com`  
+**Supabase project:** `hethongnhakhoadangkhoa` (ref: `epsvwnsuirfnwtxloctd`)
+
+> Không ghi mật khẩu vào GitHub. Chỉ nhập trên Vercel và file `.env` trên máy.
+
 ---
 
 ## Bước 1 — Tạo file `.env` trên máy (local)
@@ -73,7 +78,7 @@ Cho **mỗi** project:
 | Biến | Giá trị mẫu |
 |------|-------------|
 | `DATABASE_URL` | Chuỗi Supabase pooler 6543 (bước 2) |
-| `CORS_ORIGIN` | `https://nhakhoadangkhoa.vercel.app,https://URL-ADMIN.vercel.app` |
+| `CORS_ORIGIN` | `https://hethongnhakhoadangkhoa.com,https://www.hethongnhakhoadangkhoa.com,https://nhakhoadangkhoa.vercel.app,https://URL-ADMIN.vercel.app` |
 | `ADMIN_PASSWORD` | Mật khẩu admin (bạn chọn) |
 | `ADMIN_API_KEY` | Chuỗi bí mật dài (ví dụ `dk-admin-xxxxxxxx`) |
 
@@ -117,7 +122,7 @@ VITE_API_URL=https://nha-khoa-api.vercel.app
 | Biến | Giá trị mẫu |
 |------|-------------|
 | `VITE_API_URL` | Cùng URL API như website |
-| `VITE_WEBSITE_URL` | `https://nhakhoadangkhoa.vercel.app` |
+| `VITE_WEBSITE_URL` | `https://hethongnhakhoadangkhoa.com` |
 
 Đăng nhập admin: mật khẩu = `ADMIN_PASSWORD` (trên project API).
 

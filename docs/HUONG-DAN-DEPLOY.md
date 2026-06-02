@@ -2,7 +2,7 @@ image.png# Hướng dẫn: GitHub → Vercel → Supabase
 
 Repo: **https://github.com/butphamarketing-png/nhakhoadangkhoa**
 
-Website live: **https://nhakhoadangkhoa.vercel.app**
+Website: **https://hethongnhakhoadangkhoa.com** (Vercel: https://nhakhoadangkhoa.vercel.app)
 
 Luồng dữ liệu:
 
@@ -152,7 +152,7 @@ Nếu đổi domain website, cập nhật lại `CORS_ORIGIN` trên project API 
 Thêm URL admin vào `CORS_ORIGIN` trên API:
 
 ```text
-https://nhakhoadangkhoa.vercel.app,https://ten-admin.vercel.app
+https://hethongnhakhoadangkhoa.com,https://www.hethongnhakhoadangkhoa.com,https://ten-admin.vercel.app
 ```
 
 Sau `pnpm run db:push`, chạy lại deploy API.
