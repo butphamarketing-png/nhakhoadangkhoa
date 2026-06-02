@@ -160,7 +160,10 @@ Sau `pnpm run db:push`, chạy lại deploy API.
 | **Bác sĩ** | Trang giới thiệu đội ngũ |
 | **Khách hàng** | Đánh giá / testimonial |
 | **Ưu đãi** | Trang khuyến mãi |
+| **Thư viện ảnh** | Banner trang chủ, gallery khách hàng & ưu đãi |
 | **Cài đặt** | Hotline, địa chỉ, MXH |
+
+Dashboard hiển thị **trạng thái đồng bộ** từng mục (xanh = đã có trên Supabase) và **badge lịch hẹn chờ duyệt**.
 
 **Lần đầu:** Admin → **Đồng bộ website** → sau đó chỉnh từng mục và **Lưu**.
 

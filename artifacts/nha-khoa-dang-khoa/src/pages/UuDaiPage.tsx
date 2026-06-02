@@ -5,6 +5,7 @@ import { Clock, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { useBrand } from "@/lib/brand-context";
 import { usePromotions } from "@/lib/cms-provider";
+import { useMediaCms } from "@/lib/cms-provider";
 import { GALLERY_PROMOTIONS } from "@/lib/home-content";
 import { fadeUp } from "@/lib/motion";
 
@@ -49,6 +50,8 @@ function Countdown({ endDate }: { endDate: string }) {
 export default function UuDaiPage() {
   const BRAND = useBrand();
   const PROMOTIONS = usePromotions();
+  const { galleryPromotions: GALLERY_PROMOTIONS_CMS } = useMediaCms();
+  const galleryPromos = GALLERY_PROMOTIONS_CMS?.length ? GALLERY_PROMOTIONS_CMS : GALLERY_PROMOTIONS;
 
   return (
     <div>
@@ -68,7 +71,7 @@ export default function UuDaiPage() {
           <p className="text-center text-[#C89B3C] text-xs font-bold uppercase tracking-[0.3em] mb-2">Gallery</p>
           <h2 className="font-display text-2xl font-bold text-[#0D1B2A] text-center mb-8">Chương trình từ Nha Khoa Đăng Khoa</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-4">
-            {GALLERY_PROMOTIONS.map((p, i) => (
+            {galleryPromos.map((p, i) => (
               <motion.div
                 key={p.id}
                 initial="hidden"

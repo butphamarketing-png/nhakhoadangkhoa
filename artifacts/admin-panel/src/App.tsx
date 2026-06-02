@@ -17,6 +17,7 @@ import DongBoPage from "@/pages/DongBoPage";
 import GioiThieuPage from "@/pages/GioiThieuPage";
 import UuDaiPage from "@/pages/UuDaiPage";
 import TrangChuPage from "@/pages/TrangChuPage";
+import ThuVienPage from "@/pages/ThuVienPage";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/gioi-thieu" component={GioiThieuPage} />
       <Route path="/uu-dai" component={UuDaiPage} />
       <Route path="/trang-chu" component={TrangChuPage} />
+      <Route path="/thu-vien" component={ThuVienPage} />
       <Route>
         <Redirect to="/" />
       </Route>

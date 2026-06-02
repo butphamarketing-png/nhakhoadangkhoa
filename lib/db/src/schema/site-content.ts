@@ -12,6 +12,7 @@ export const SITE_CONTENT_KEYS = [
   "about",
   "promotions",
   "home",
+  "media",
 ] as const;
 
 export type SiteContentKey = (typeof SITE_CONTENT_KEYS)[number];

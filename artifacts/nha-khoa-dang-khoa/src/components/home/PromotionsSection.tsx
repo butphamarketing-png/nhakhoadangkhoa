@@ -2,11 +2,15 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SectionTitle from "./SectionTitle";
+import { useMediaCms } from "@/lib/cms-provider";
 import { HOME_PROMOTIONS } from "@/lib/home-content";
 import { fadeUp } from "@/lib/motion";
 import MediaFrame from "@/components/ui/MediaFrame";
 
 export default function PromotionsSection() {
+  const { homePromotions } = useMediaCms();
+  const promos = homePromotions?.length ? homePromotions : HOME_PROMOTIONS;
+
   return (
     <section className="section-padding section-cream section-texture">
       <div className="container-custom container-narrow">
@@ -14,7 +18,7 @@ export default function PromotionsSection() {
           ƯU ĐÃI NỔI BẬT
         </SectionTitle>
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {HOME_PROMOTIONS.map((promo, i) => (
+          {promos.map((promo, i) => (
             <motion.div
               key={promo.id}
               initial="hidden"

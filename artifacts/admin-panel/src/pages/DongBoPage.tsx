@@ -54,7 +54,7 @@ export default function DongBoPage() {
           </Button>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-3 max-w-2xl">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-3xl">
           {SITE_CONTENT_KEYS.filter((k) => k !== "pricing").map((key) => (
             <div
               key={key}

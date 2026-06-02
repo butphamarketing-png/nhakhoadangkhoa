@@ -10,8 +10,11 @@ import { ABOUT_SECTIONS, type AboutSection } from "./about-content";
 import { SERVICE_MENU_GROUPS, type ServiceMenuGroup } from "./services-menu";
 import {
   CLINIC_STATS,
+  GALLERY_PROMOTIONS,
+  GALLERY_TESTIMONIALS,
   HERO_SLIDES,
   HOME_DOCTORS,
+  HOME_PROMOTIONS,
   type HeroSlide,
 } from "./home-content";
 import { BLOG_POSTS, type BlogPost } from "./blog-posts";
@@ -26,6 +29,12 @@ export type HomeCms = {
   homeDoctors: typeof HOME_DOCTORS;
 };
 
+export type MediaCms = {
+  homePromotions: typeof HOME_PROMOTIONS;
+  galleryPromotions: typeof GALLERY_PROMOTIONS;
+  galleryTestimonials: typeof GALLERY_TESTIMONIALS;
+};
+
 type CmsCache = Partial<{
   site: Partial<BrandInfo>;
   pricing: Record<string, string>;
@@ -37,6 +46,7 @@ type CmsCache = Partial<{
   about: AboutSection[];
   promotions: typeof PROMOTIONS;
   home: HomeCms;
+  media: MediaCms;
 }>;
 
 const CmsContext = createContext<{ cache: CmsCache; ready: boolean }>({
@@ -55,6 +65,7 @@ const CMS_KEYS = [
   "about",
   "promotions",
   "home",
+  "media",
 ] as const;
 
 export function CmsProvider({ children }: { children: ReactNode }) {
@@ -130,6 +141,14 @@ export function useHomeCms(): HomeCms {
 
 export function useSiteOverrides(): Partial<BrandInfo> {
   return useCms().cache.site ?? {};
+}
+
+export function useMediaCms(): MediaCms {
+  return useCmsData("media", {
+    homePromotions: HOME_PROMOTIONS,
+    galleryPromotions: GALLERY_PROMOTIONS,
+    galleryTestimonials: GALLERY_TESTIMONIALS,
+  });
 }
 
 export { BRAND };

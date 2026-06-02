@@ -4,11 +4,14 @@ import { Star } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { useBrand } from "@/lib/brand-context";
 import { useTestimonials } from "@/lib/cms-provider";
+import { useMediaCms } from "@/lib/cms-provider";
 import { GALLERY_TESTIMONIALS } from "@/lib/home-content";
 
 export default function KhachHangPage() {
   const BRAND = useBrand();
   const TESTIMONIALS = useTestimonials();
+  const { galleryTestimonials: GALLERY_TESTIMONIALS_CMS } = useMediaCms();
+  const galleryItems = GALLERY_TESTIMONIALS_CMS?.length ? GALLERY_TESTIMONIALS_CMS : GALLERY_TESTIMONIALS;
 
   return (
     <div>
@@ -104,7 +107,7 @@ export default function KhachHangPage() {
             <p className="text-gray-500 max-w-xl mx-auto">Những kết quả thực tế từ bệnh nhân của chúng tôi</p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {GALLERY_TESTIMONIALS.map((item, i) => (
+            {galleryItems.map((item, i) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.95 }}

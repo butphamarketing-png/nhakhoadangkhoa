@@ -1,6 +1,6 @@
 import { Router, type IRouter } from "express";
 import { z } from "zod";
-import { db, appointmentsTable } from "@workspace/db";
+import { db, appointmentsTable, siteContentTable, SITE_CONTENT_KEYS } from "@workspace/db";
 import { sql, desc, gte } from "drizzle-orm";
 import { requireAdmin } from "../middleware/require-admin";
 
@@ -71,6 +71,16 @@ router.get("/admin/stats", requireAdmin, async (_req, res) => {
       createdAt: row.createdAt,
     })),
   });
+});
+
+router.get("/admin/content-status", requireAdmin, async (_req, res) => {
+  const rows = await db.select({ key: siteContentTable.key }).from(siteContentTable);
+  const existing = new Set(rows.map((r) => r.key));
+  const status: Record<string, boolean> = {};
+  for (const key of SITE_CONTENT_KEYS) {
+    status[key] = existing.has(key);
+  }
+  res.json(status);
 });
 
 router.get("/admin/me", requireAdmin, (_req, res) => {

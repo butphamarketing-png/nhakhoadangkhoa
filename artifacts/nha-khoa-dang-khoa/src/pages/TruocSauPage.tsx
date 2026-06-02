@@ -3,10 +3,14 @@ import { Link } from "wouter";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/constants";
+import { useMediaCms } from "@/lib/cms-provider";
 import { GALLERY_TESTIMONIALS } from "@/lib/home-content";
 import { IMAGES } from "@/lib/images";
 
 export default function TruocSauPage() {
+  const { galleryTestimonials } = useMediaCms();
+  const gallery = galleryTestimonials?.length ? galleryTestimonials : GALLERY_TESTIMONIALS;
+
   return (
     <div>
       <div className="navy-gradient py-20">
@@ -38,7 +42,7 @@ export default function TruocSauPage() {
             />
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {GALLERY_TESTIMONIALS.filter((g) => g.id !== "truoc-sau").map((c, i) => (
+            {gallery.filter((g) => g.id !== "truoc-sau").map((c, i) => (
               <motion.div
                 key={c.id}
                 initial={{ opacity: 0, y: 20 }}
