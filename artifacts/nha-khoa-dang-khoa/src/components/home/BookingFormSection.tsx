@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Phone, Shield, Clock, CheckCircle2 } from "lucide-react";
 import { BRAND, SERVICES } from "@/lib/constants";
-import { IMAGES } from "@/lib/images";
 import { fadeUp } from "@/lib/motion";
 
 const schema = z.object({
@@ -97,20 +96,11 @@ export default function BookingFormSection() {
                   </ul>
                   <a
                     href={`tel:${BRAND.hotlineRaw}`}
-                    className="inline-flex items-center gap-2 text-[#E8C46A] font-bold hover:text-white transition-colors mb-8"
+                    className="inline-flex items-center gap-2 text-[#E8C46A] font-bold text-lg hover:text-white transition-colors"
                   >
-                    <Phone className="w-4 h-4" />
+                    <Phone className="w-5 h-5" />
                     {BRAND.hotline}
                   </a>
-                  <div className="hidden lg:block relative max-w-xs">
-                    <div className="gradient-border rounded-[20px] p-[2px]">
-                      <img
-                        src={IMAGES.testimonials.nguyenThiKimHanh}
-                        alt=""
-                        className="w-full rounded-[18px] object-cover aspect-[3/4]"
-                      />
-                    </div>
-                  </div>
                 </div>
               </div>
 

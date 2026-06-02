@@ -79,10 +79,10 @@ export const HOME_DOCTORS = [
 ];
 
 export const SMILE_MODELS = [
-  { id: "m1", tag: "Mẫu 1", title: "Răng thỏ đáng yêu", image: IMAGES.services.niengRang },
-  { id: "m2", tag: "Mẫu 2", title: "Răng nanh phá cách", image: IMAGES.services.implant },
-  { id: "m3", tag: "Mẫu 3", title: "Oval tự nhiên", image: IMAGES.services.itero },
-  { id: "m4", tag: "Mẫu 4", title: "Vuông vắn bản lĩnh", image: IMAGES.services.nhoRangKhon },
+  { id: "m1", tag: "Mẫu 1", title: "Răng thỏ đáng yêu", image: IMAGES.testimonials.damThiLat },
+  { id: "m2", tag: "Mẫu 2", title: "Răng nanh phá cách", image: IMAGES.testimonials.nguyenDinhPhuong },
+  { id: "m3", tag: "Mẫu 3", title: "Oval tự nhiên", image: IMAGES.testimonials.truocSau },
+  { id: "m4", tag: "Mẫu 4", title: "Vuông vắn bản lĩnh", image: IMAGES.testimonials.leThiThuy },
 ];
 
 export const TESTIMONIAL_TABS = [
@@ -223,6 +223,7 @@ export const TECHNOLOGY_ITEMS = [
   {
     title: "Máy CT Cone Beam 3D",
     image: IMAGES.coverClinic,
+    wide: true,
     desc: "Chụp 3D toàn hàm — lập kế hoạch implant & chỉnh nha chính xác.",
   },
   {

@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { ABOUT_FEATURES, ABOUT_PROMO_IMAGE } from "@/lib/home-content";
+import MediaFrame from "@/components/ui/MediaFrame";
 import { fadeUp } from "@/lib/motion";
 
 export default function AboutSection() {
@@ -49,14 +50,13 @@ export default function AboutSection() {
             custom={1}
             className="lg:col-span-5"
           >
-            <div className="gradient-border rounded-[28px] p-[2px]">
-              <div className="rounded-[26px] overflow-hidden hero-image-glow bg-[#F8F6F1]">
-                <img
-                  src={ABOUT_PROMO_IMAGE}
-                  alt="10.000+ ca răng sứ thành công — BS Nguyễn Đăng Khoa, Nha Khoa Đăng Khoa"
-                  className="w-full h-auto object-contain object-center"
-                />
-              </div>
+            <div className="gradient-border rounded-[24px] p-[2px] overflow-hidden hero-image-glow">
+              <MediaFrame
+                src={ABOUT_PROMO_IMAGE}
+                alt="10.000+ ca răng sứ thành công — BS Nguyễn Đăng Khoa"
+                aspect="wide"
+                className="rounded-[22px]"
+              />
             </div>
           </motion.div>
 

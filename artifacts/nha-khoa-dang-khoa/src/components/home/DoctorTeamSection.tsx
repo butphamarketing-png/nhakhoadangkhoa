@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ChevronRight as Arrow } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import { HOME_DOCTORS } from "@/lib/home-content";
+import MediaFrame from "@/components/ui/MediaFrame";
 
 const AUTO_MS = 7000;
 
@@ -72,13 +73,13 @@ export default function DoctorTeamSection() {
                     </Link>
                   </div>
                 </div>
-                <div className="relative flex items-end justify-center bg-gradient-to-br from-[#F8F6F1] via-white to-[#F8F6F1] p-8 md:p-10 min-h-[320px] overflow-hidden">
-                  <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#C89B3C]/10 blur-3xl" />
-                  <div className="gradient-border rounded-[24px] p-[3px] relative z-10 w-full max-w-sm">
-                    <img
+                <div className="relative bg-[#F8F6F1] p-6 md:p-8 flex items-center justify-center min-h-[280px]">
+                  <div className="gradient-border rounded-[20px] p-[2px] w-full max-w-[280px]">
+                    <MediaFrame
                       src={doctor.image}
                       alt={doctor.name}
-                      className="w-full aspect-[4/5] object-cover object-top rounded-[21px] shadow-2xl"
+                      aspect="portrait"
+                      className="rounded-[18px]"
                     />
                   </div>
                 </div>

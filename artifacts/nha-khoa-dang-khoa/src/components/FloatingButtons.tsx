@@ -37,7 +37,7 @@ export default function FloatingButtons({ onBookingClick }: FloatingButtonsProps
       external: true,
     },
     {
-      label: "Gọi ngay",
+      label: "Gọi",
       href: `tel:${BRAND.hotlineRaw}`,
       icon: Phone,
       testId: "button-float-phone",
@@ -46,38 +46,42 @@ export default function FloatingButtons({ onBookingClick }: FloatingButtonsProps
 
   return (
     <div
-      className="fixed right-3 md:right-5 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-0.5 p-2 rounded-[28px] bg-[#0D1B2A]/95 backdrop-blur-xl border border-[#C89B3C]/25"
-      style={{ boxShadow: "0 16px 48px rgba(13,27,42,0.35), 0 0 0 1px rgba(200,155,60,0.08)" }}
+      className="fixed right-2 2xl:right-4 bottom-24 2xl:bottom-auto 2xl:top-1/2 2xl:-translate-y-1/2 z-40 hidden xl:flex flex-col gap-0.5 p-1.5 rounded-2xl bg-[#0D1B2A]/95 backdrop-blur-md border border-[#C89B3C]/20 shadow-xl"
       aria-label="Liên hệ nhanh"
     >
       {items.map((item) => {
         const inner = (
           <>
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
                 item.primary
-                  ? "gold-gradient text-white animate-pulse-gold"
-                  : "bg-white/10 text-[#E8C46A] group-hover:bg-[#C89B3C]/20 group-hover:text-[#F5E6B8]"
+                  ? "gold-gradient text-white"
+                  : "bg-white/10 text-[#E8C46A] hover:bg-[#C89B3C]/25"
               }`}
             >
               {item.zalo ? (
-                <span className="text-[10px] font-extrabold tracking-tight">Zalo</span>
+                <span className="text-[9px] font-extrabold">Zalo</span>
               ) : (
-                item.icon && <item.icon className="w-5 h-5" strokeWidth={2} />
+                item.icon && <item.icon className="w-4 h-4" strokeWidth={2} />
               )}
             </div>
-            <span className="text-[9px] font-semibold text-white/75 mt-1 group-hover:text-[#E8C46A] transition-colors">
-              {item.label}
-            </span>
+            <span className="text-[8px] font-semibold text-white/70 mt-0.5">{item.label}</span>
           </>
         );
 
         const className =
-          "group flex flex-col items-center justify-center px-2 py-2 rounded-2xl hover:bg-white/5 transition-all duration-300";
+          "group flex flex-col items-center px-1.5 py-1.5 rounded-xl hover:bg-white/5 transition-colors";
 
         if (item.isButton) {
           return (
-            <button key={item.label} type="button" onClick={item.onClick} className={className} data-testid={item.testId} aria-label={item.label}>
+            <button
+              key={item.label}
+              type="button"
+              onClick={item.onClick}
+              className={className}
+              data-testid={item.testId}
+              aria-label={item.label}
+            >
               {inner}
             </button>
           );

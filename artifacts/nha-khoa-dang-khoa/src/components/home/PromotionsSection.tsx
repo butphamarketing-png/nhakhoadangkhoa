@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import { HOME_PROMOTIONS } from "@/lib/home-content";
 import { fadeUp } from "@/lib/motion";
+import MediaFrame from "@/components/ui/MediaFrame";
 
 export default function PromotionsSection() {
   return (
@@ -30,16 +31,8 @@ export default function PromotionsSection() {
                       {promo.badge}
                     </span>
                   )}
-                  <div className="overflow-hidden relative aspect-[4/3] bg-[#F8F6F1]">
-                    <img
-                      src={promo.image}
-                      alt={promo.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B2A]/70 via-[#0D1B2A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                      <p className="text-white font-bold text-sm drop-shadow-md">{promo.title}</p>
-                    </div>
+                  <div className="relative">
+                    <MediaFrame src={promo.image} alt={promo.title} aspect="video" />
                   </div>
                   <div className="p-4 flex items-center justify-between border-t border-black/[0.04] bg-[#FAFAF8]">
                     <span className="font-bold text-[#0D1B2A] text-sm">{promo.title}</span>

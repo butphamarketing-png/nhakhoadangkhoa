@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { WHY_CHOOSE } from "@/lib/home-content";
 import { IMAGES } from "@/lib/images";
+import MediaFrame from "@/components/ui/MediaFrame";
 import { fadeUp } from "@/lib/motion";
 
 export default function WhyChooseSection() {
@@ -43,14 +44,13 @@ export default function WhyChooseSection() {
             transition={{ duration: 0.7 }}
             className="relative lg:pl-8 before:hidden lg:before:block lg:before:absolute lg:before:left-0 lg:before:top-8 lg:before:bottom-8 lg:before:w-px lg:before:bg-[#C89B3C]/30"
           >
-            <div className="gradient-border rounded-[28px] p-[2px]">
-              <div className="rounded-[26px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.35)] bg-[#F8F6F1]">
-                <img
-                  src={IMAGES.coverClinic}
-                  alt="Không gian phòng khám Nha Khoa Đăng Khoa"
-                  className="w-full aspect-[4/3] object-cover object-center"
-                />
-              </div>
+            <div className="gradient-border rounded-[24px] p-[2px] overflow-hidden shadow-xl">
+              <MediaFrame
+                src={IMAGES.coverClinic}
+                alt="Không gian phòng khám Nha Khoa Đăng Khoa"
+                aspect="video"
+                className="rounded-[22px]"
+              />
             </div>
           </motion.div>
         </div>
