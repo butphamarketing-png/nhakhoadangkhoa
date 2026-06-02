@@ -1,148 +1,172 @@
-# Hướng dẫn: GitHub + Vercel + Supabase
+# Hướng dẫn: GitHub → Vercel → Supabase
 
-Dự án gồm 3 phần deploy riêng trên Vercel:
+Repo: **https://github.com/butphamarketing-png/nhakhoadangkhoa**
 
-| Thành phần | Thư mục gốc (Root Directory) | Mô tả |
-|------------|------------------------------|--------|
-| Website công khai | `artifacts/nha-khoa-dang-khoa` | Trang nha khoa |
-| Admin | `artifacts/admin-panel` | Quản trị |
-| API | `artifacts/api-server` | Express + Drizzle → Supabase Postgres |
+Website live: **https://nhakhoadangkhoa.vercel.app**
+
+Luồng dữ liệu:
+
+```
+Form đặt lịch (Website)  →  API (Vercel)  →  Supabase (PostgreSQL)
+```
 
 ---
 
-## 1. Supabase (database)
+## Phần A — Supabase (database)
 
-1. Tạo project tại [supabase.com](https://supabase.com).
-2. Vào **Project Settings → Database → Connection string**.
-3. Chọn **URI** và **Transaction pooler** (port **6543**) — bắt buộc cho Vercel serverless.
-4. Copy chuỗi kết nối, thay `[YOUR-PASSWORD]` bằng mật khẩu database.
+### A1. Tạo project
 
-Tạo bảng trên máy local (một lần):
+1. Vào [supabase.com](https://supabase.com) → đăng nhập → **New project**
+2. Chọn region gần VN (ví dụ **Southeast Asia**)
+3. Đặt **Database password** và lưu lại
 
-```bash
+### A2. Lấy connection string
+
+1. **Project Settings** → **Database** → **Connection string**
+2. Tab **URI**, chọn **Transaction pooler**
+3. Port phải là **6543** (không dùng Direct 5432 trên Vercel)
+4. Copy chuỗi, thay `[YOUR-PASSWORD]` bằng mật khẩu vừa tạo
+
+Ví dụ:
+
+```text
+postgresql://postgres.abcdefgh:MatKhauCuaBan@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
+```
+
+### A3. Tạo bảng `appointments` (một lần, trên máy)
+
+```powershell
 cd Dental-Website-Design
-cp .env.example .env
-# Sửa DATABASE_URL trong .env
+copy .env.example .env
+# Sửa DATABASE_URL trong file .env
 
 pnpm install
 pnpm run db:push
 ```
 
-Kiểm tra bảng `appointments` trong Supabase **Table Editor**.
+Kiểm tra: Supabase → **Table Editor** → có bảng **appointments**.
 
 ---
 
-## 2. GitHub
+## Phần B — GitHub (đã có sẵn)
 
-1. Tạo repository mới trên GitHub (ví dụ `nha-khoa-dang-khoa`).
-2. Trong thư mục project (có file `pnpm-workspace.yaml`):
+Code đã nằm tại: `https://github.com/butphamarketing-png/nhakhoadangkhoa`
 
-```bash
-git remote remove gitsafe-backup   # nếu chỉ dùng GitHub
-git remote add origin https://github.com/TEN-BAN/nha-khoa-dang-khoa.git
-git push -u origin main
+Push thêm thay đổi:
+
+```powershell
+cd Dental-Website-Design
+git add -A
+git commit -m "Mo ta thay doi"
+git push origin main
 ```
 
-> **Lưu ý:** Repo thật nằm trong `Dental-Website-Design/Dental-Website-Design` (thư mục có `.git`).
+Hoặc chạy `scripts/push-github.ps1` (cần token GitHub tài khoản **butphamarketing-png**).
 
 ---
 
-## 3. Vercel — API (deploy trước)
+## Phần C — Vercel kết nối GitHub
 
-1. [vercel.com](https://vercel.com) → **Add New Project** → Import repo GitHub.
-2. **Root Directory:** `artifacts/api-server`
-3. **Framework Preset:** Other (Vercel tự nhận Express trong `src/app.ts`)
-4. **Environment Variables:**
+Làm **một lần** cho mỗi tài khoản Vercel:
 
-| Biến | Giá trị |
-|------|---------|
-| `DATABASE_URL` | Connection string Supabase (pooler 6543) |
-| `CORS_ORIGIN` | `https://ten-site.vercel.app,https://ten-admin.vercel.app` (cập nhật sau khi có URL) |
+1. Vào [vercel.com](https://vercel.com) → đăng nhập
+2. **Settings** → **Git** → kết nối tài khoản **GitHub**
+3. Cho phép Vercel truy cập organization/user chứa repo `nhakhoadangkhoa`
 
-5. Deploy → copy URL, ví dụ `https://nha-khoa-api.vercel.app`
-6. Thử: `https://nha-khoa-api.vercel.app/api/healthz` → `{"status":"ok"}`
+Sau đó mỗi lần `git push` lên `main`, Vercel tự build lại (nếu bật Auto Deploy).
 
 ---
 
-## 4. Vercel — Website công khai
+## Phần D — Deploy API lên Vercel (kết nối Supabase)
 
-1. **Add New Project** (cùng repo, project mới).
-2. **Root Directory:** `artifacts/nha-khoa-dang-khoa`
-3. **Environment Variables:**
+**Deploy API trước** để có URL cho website.
+
+| Cài đặt | Giá trị |
+|---------|---------|
+| Import repo | `butphamarketing-png/nhakhoadangkhoa` |
+| **Root Directory** | `artifacts/api-server` |
+| Framework | Other (tự nhận) |
+
+**Environment Variables** (Production):
 
 | Biến | Giá trị |
 |------|---------|
-| `VITE_API_URL` | URL API ở bước 3 (không có `/` cuối) |
+| `DATABASE_URL` | Chuỗi Supabase pooler port **6543** |
+| `CORS_ORIGIN` | `https://nhakhoadangkhoa.vercel.app` |
+
+→ **Deploy** → copy URL, ví dụ: `https://nha-khoa-api.vercel.app`
+
+**Kiểm tra:**
+
+- Mở `https://nha-khoa-api.vercel.app/api/healthz` → `{"status":"ok"}`
+- Gửi form đặt lịch trên website → Supabase **appointments** có dòng mới
+
+---
+
+## Phần E — Deploy Website lên Vercel
+
+| Cài đặt | Giá trị |
+|---------|---------|
+| Import repo | Cùng repo GitHub |
+| **Root Directory** | `artifacts/nha-khoa-dang-khoa` |
+| Framework | Vite |
+
+**Environment Variables:**
+
+| Biến | Giá trị |
+|------|---------|
+| `VITE_API_URL` | URL API bước D (không `/` cuối), ví dụ `https://nha-khoa-api.vercel.app` |
 | `BASE_PATH` | `/` |
-| `PORT` | `3000` |
 
-4. Deploy → SPA routing đã cấu hình trong `vercel.json`.
+→ **Deploy** → https://nhakhoadangkhoa.vercel.app
 
-Form **Đặt lịch** (`/dat-lich`) gửi dữ liệu vào Supabase qua `POST /api/appointments`.
-
----
-
-## 5. Vercel — Admin (tùy chọn)
-
-1. Project mới, **Root Directory:** `artifacts/admin-panel`
-2. Biến `VITE_API_URL` giống website (khi admin gọi API).
-3. Thêm URL admin vào `CORS_ORIGIN` trên project API → **Redeploy** API.
+Nếu đổi domain website, cập nhật lại `CORS_ORIGIN` trên project API và **Redeploy API**.
 
 ---
 
-## 6. Cập nhật CORS sau khi có domain
+## Phần F — Admin (tùy chọn)
 
-Trên project **api-server** trong Vercel, sửa `CORS_ORIGIN`:
+| Root Directory | `artifacts/admin-panel` |
+| `VITE_API_URL` | Giống website |
 
-```
-https://your-site.vercel.app,https://your-admin.vercel.app
-```
+Thêm URL admin vào `CORS_ORIGIN` trên API, ví dụ:
 
-Redeploy API.
-
----
-
-## Biến môi trường tóm tắt
-
-```env
-# Supabase (API)
-DATABASE_URL=postgresql://postgres.xxx:password@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
-
-# API
-CORS_ORIGIN=https://site.vercel.app,https://admin.vercel.app
-
-# Website + Admin (build time)
-VITE_API_URL=https://api.vercel.app
-BASE_PATH=/
-PORT=3000
+```text
+https://nhakhoadangkhoa.vercel.app,https://ten-admin.vercel.app
 ```
 
 ---
 
-## Xem lịch hẹn trong Supabase
+## Bảng biến môi trường
 
-**Table Editor → appointments** hoặc gọi:
+| Biến | Đặt ở đâu | Mô tả |
+|------|-----------|--------|
+| `DATABASE_URL` | Vercel **API** + file `.env` local | Supabase pooler 6543 |
+| `CORS_ORIGIN` | Vercel **API** | Domain website (phân tách bằng dấu phẩy) |
+| `VITE_API_URL` | Vercel **Website** | URL project API |
+| `PORT` | Chỉ local | `5000` khi chạy API trên máy |
 
-`GET https://your-api.vercel.app/api/appointments`
+**Không** đặt `DATABASE_URL` trên project website — chỉ trên API.
 
 ---
 
-## Sự cố thường gặp
+## Sự cố
 
 | Vấn đề | Cách xử lý |
 |--------|------------|
-| API 500 / DB lỗi | Dùng **pooler** port 6543, không dùng direct 5432 trên Vercel |
-| Form không gửi được | Kiểm tra `VITE_API_URL` và `CORS_ORIGIN`, redeploy cả site + API |
-| Trang 404 khi refresh | Đã có `rewrites` trong `vercel.json` |
-| `pnpm install` lỗi trên Windows | Deploy trên Vercel (Linux); local nên dùng WSL hoặc Replit |
+| API 500 | Kiểm tra `DATABASE_URL`, dùng pooler **6543**, redeploy API |
+| Form không gửi được | Kiểm tra `VITE_API_URL` + `CORS_ORIGIN`, redeploy cả 2 project |
+| `db:push` lỗi | Sai password hoặc chưa có file `.env` |
+| Trang 404 khi F5 | Đã có `rewrites` trong `vercel.json` website |
 
 ---
 
-## Lệnh hữu ích
+## Lệnh local
 
-```bash
-pnpm --filter @workspace/nha-khoa-dang-khoa run dev   # website local
-pnpm --filter @workspace/api-server run dev           # API local (cần .env)
-pnpm run db:push                                      # đồng bộ schema → Supabase
-pnpm run typecheck
+```powershell
+pnpm --filter @workspace/api-server run dev
+pnpm --filter @workspace/nha-khoa-dang-khoa run dev
+pnpm run db:push
 ```
+
+File mẫu biến môi trường: `.env.example` ở thư mục gốc monorepo.

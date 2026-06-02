@@ -37,14 +37,15 @@ export default function BookingFormSection() {
     setSubmitting(true);
     try {
       const apiBase = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
-      if (apiBase) {
-        const res = await fetch(`${apiBase}/api/appointments`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...values, date: "", time: "" }),
-        });
-        if (!res.ok) throw new Error("fail");
+      if (!apiBase) {
+        throw new Error("Chưa cấu hình VITE_API_URL");
       }
+      const res = await fetch(`${apiBase}/api/appointments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, date: "", time: "" }),
+      });
+      if (!res.ok) throw new Error("fail");
       setSubmitted(true);
     } catch {
       setError(`Không gửi được. Vui lòng gọi ${BRAND.hotline}`);

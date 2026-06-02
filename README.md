@@ -1,23 +1,26 @@
 # Nha Khoa Đăng Khoa — Website
 
-Monorepo: website công khai, admin, API (Express + Drizzle + PostgreSQL/Supabase).
+Monorepo: website công khai, admin, API (Express → Supabase PostgreSQL).
 
-## Deploy (GitHub + Vercel + Supabase)
+- **GitHub:** https://github.com/butphamarketing-png/nhakhoadangkhoa  
+- **Website:** https://nhakhoadangkhoa.vercel.app  
 
-Xem hướng dẫn chi tiết: **[docs/HUONG-DAN-DEPLOY.md](docs/HUONG-DAN-DEPLOY.md)**
+## Triển khai (GitHub + Vercel + Supabase)
 
-Tóm tắt:
+Hướng dẫn từng bước: **[docs/HUONG-DAN-DEPLOY.md](docs/HUONG-DAN-DEPLOY.md)**
 
-1. Tạo database Supabase → `pnpm run db:push`
+1. Tạo Supabase → `pnpm run db:push` (bảng `appointments`)
 2. Push code lên GitHub
-3. Vercel: 3 project (`artifacts/api-server`, `nha-khoa-dang-khoa`, `admin-panel`)
-4. Gắn `DATABASE_URL`, `VITE_API_URL`, `CORS_ORIGIN`
+3. Vercel: project **API** (`artifacts/api-server`) + biến `DATABASE_URL`
+4. Vercel: project **Website** (`artifacts/nha-khoa-dang-khoa`) + biến `VITE_API_URL`
 
 ## Dev local
 
 ```bash
 pnpm install
 cp .env.example .env
+# Sửa DATABASE_URL trong .env
+
 pnpm run db:push
 pnpm --filter @workspace/api-server run dev
 pnpm --filter @workspace/nha-khoa-dang-khoa run dev

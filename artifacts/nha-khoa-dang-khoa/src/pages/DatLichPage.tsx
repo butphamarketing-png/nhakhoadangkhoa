@@ -40,15 +40,16 @@ export default function DatLichPage() {
     setSubmitting(true);
     try {
       const apiBase = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
-      if (apiBase) {
-        const res = await fetch(`${apiBase}/api/appointments`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        });
-        if (!res.ok) {
-          throw new Error("Không gửi được đặt lịch. Vui lòng gọi hotline.");
-        }
+      if (!apiBase) {
+        throw new Error("Chưa cấu hình VITE_API_URL trên Vercel. Vui lòng gọi hotline.");
+      }
+      const res = await fetch(`${apiBase}/api/appointments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        throw new Error("Không gửi được đặt lịch. Vui lòng gọi hotline.");
       }
       setSubmitted(true);
     } catch {
