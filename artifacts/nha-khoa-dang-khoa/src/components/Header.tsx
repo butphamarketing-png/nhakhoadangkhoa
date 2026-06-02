@@ -4,8 +4,10 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
 import { MAIN_NAV } from "@/lib/navigation";
 import { useAboutSections, useServiceMenu } from "@/lib/cms-provider";
+import { getServiceSubgroups } from "@/lib/services-menu";
 import BrandLogo from "@/components/BrandLogo";
 import SiteSearchBar from "@/components/SiteSearchBar";
+import ServiceMegaMenu from "@/components/ServiceMegaMenu";
 
 interface HeaderProps {
   onBookingClick: () => void;
@@ -19,6 +21,7 @@ export default function Header({ onBookingClick }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
+  const [navHovered, setNavHovered] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -36,6 +39,8 @@ export default function Header({ onBookingClick }: HeaderProps) {
   const isActive = (href: string) =>
     href === "/" ? location === "/" : location.startsWith(href);
 
+  const showSearch = navHovered || mobileOpen;
+
   return (
     <>
       <header
@@ -44,9 +49,11 @@ export default function Header({ onBookingClick }: HeaderProps) {
             ? "bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(13,27,42,0.1)] border-b border-[#C89B3C]/20"
             : "bg-white/90 backdrop-blur-md border-b border-[#C89B3C]/10"
         }`}
+        onMouseEnter={() => setNavHovered(true)}
+        onMouseLeave={() => setNavHovered(false)}
       >
         <div className="container-custom">
-          <div className="flex items-center justify-between h-[68px] lg:h-[88px] gap-4">
+          <div className="flex items-center justify-between h-[68px] lg:h-[80px] gap-4">
             <Link href="/" data-testid="link-logo">
               <BrandLogo size="md" />
             </Link>
@@ -111,32 +118,11 @@ export default function Header({ onBookingClick }: HeaderProps) {
                         </span>
                       </Link>
                       <div
-                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[min(92vw,720px)] transition-all duration-300 ${
-                          serviceOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
+                        className={`transition-all duration-300 ${
+                          serviceOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none"
                         }`}
                       >
-                        <div className="bg-white rounded-[20px] shadow-xl border border-[#C89B3C]/10 p-4 grid grid-cols-2 lg:grid-cols-4 gap-3">
-                          {SERVICE_MENU_GROUPS.map((g) => (
-                            <div key={g.id}>
-                              <Link href={g.href}>
-                                <div className="font-bold text-[#C89B3C] text-xs uppercase tracking-wide mb-2 px-2 cursor-pointer hover:underline">
-                                  {g.title}
-                                </div>
-                              </Link>
-                              <ul className="space-y-0.5">
-                                {g.items.slice(0, 5).map((item) => (
-                                  <li key={item.label}>
-                                    <Link href={item.href}>
-                                      <span className="block px-2 py-1.5 text-xs text-[#0D1B2A]/75 hover:text-[#C89B3C] hover:bg-[#F8F6F1] rounded-lg cursor-pointer line-clamp-1">
-                                        {item.label}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
+                        <ServiceMegaMenu groups={SERVICE_MENU_GROUPS} open={serviceOpen} />
                       </div>
                     </div>
                   );
@@ -184,7 +170,11 @@ export default function Header({ onBookingClick }: HeaderProps) {
             </button>
           </div>
 
-          <div className="hidden md:block pb-3">
+          <div
+            className={`hidden md:block overflow-hidden transition-all duration-300 ${
+              showSearch ? "max-h-14 opacity-100 pb-3" : "max-h-0 opacity-0 pb-0"
+            }`}
+          >
             <SiteSearchBar />
           </div>
         </div>
@@ -219,10 +209,25 @@ export default function Header({ onBookingClick }: HeaderProps) {
               </Link>
             ))}
             <p className="px-4 pt-3 pb-1 text-[10px] font-bold text-[#C89B3C] uppercase tracking-widest">Dịch vụ</p>
+            <Link href="/dich-vu">
+              <div className="px-4 py-2.5 rounded-lg font-bold text-[#C89B3C]">Tất cả dịch vụ</div>
+            </Link>
             {SERVICE_MENU_GROUPS.map((g) => (
-              <Link href={g.href} key={g.id}>
-                <div className="px-4 py-2.5 rounded-lg font-semibold text-[#0D1B2A]">{g.title}</div>
-              </Link>
+              <div key={g.id} className="pl-2">
+                <Link href={g.href}>
+                  <div className="px-4 py-2 rounded-lg font-semibold text-[#0D1B2A]">{g.title}</div>
+                </Link>
+                {getServiceSubgroups(g).map((sg) => (
+                  <div key={sg.id} className="pl-3">
+                    <p className="px-4 py-1 text-[10px] text-[#0D1B2A]/45 uppercase">{sg.title}</p>
+                    {sg.items.slice(0, 4).map((item) => (
+                      <Link href={item.href} key={item.label}>
+                        <div className="px-4 py-1.5 text-xs text-[#0D1B2A]/65">{item.label}</div>
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
             ))}
             {MAIN_NAV.filter((l) => !["TRANG CHỦ", "GIỚI THIỆU", "DỊCH VỤ"].includes(l.label)).map((link) => (
               <Link href={link.href} key={link.href}>

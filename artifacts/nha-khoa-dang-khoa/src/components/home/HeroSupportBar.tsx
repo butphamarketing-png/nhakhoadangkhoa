@@ -33,21 +33,21 @@ export default function HeroSupportBar() {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex-1 flex flex-col sm:flex-row gap-3">
+            <form onSubmit={handleSubmit} className="flex-1 flex flex-col sm:flex-row sm:items-stretch gap-3">
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Họ và tên"
-                className="flex-1 h-12 px-4 rounded-xl bg-[#0D1B2A] border border-white/15 text-white placeholder:text-white/40 focus:border-[#C89B3C] focus:ring-2 focus:ring-[#C89B3C]/25 outline-none text-sm"
+                className="flex-1 min-h-[48px] h-12 px-4 rounded-xl bg-[#0D1B2A] border border-white/15 text-white placeholder:text-white/40 focus:border-[#C89B3C] focus:ring-2 focus:ring-[#C89B3C]/25 outline-none text-sm"
               />
               <input
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 type="tel"
                 placeholder="Số điện thoại"
-                className="flex-1 h-12 px-4 rounded-xl bg-[#0D1B2A] border border-white/15 text-white placeholder:text-white/40 focus:border-[#C89B3C] focus:ring-2 focus:ring-[#C89B3C]/25 outline-none text-sm"
+                className="flex-1 min-h-[48px] h-12 px-4 rounded-xl bg-[#0D1B2A] border border-white/15 text-white placeholder:text-white/40 focus:border-[#C89B3C] focus:ring-2 focus:ring-[#C89B3C]/25 outline-none text-sm"
               />
-              <button type="submit" className="btn-gold !h-12 !px-8 shrink-0 inline-flex items-center justify-center gap-2 !text-sm">
+              <button type="submit" className="btn-gold min-h-[48px] h-12 !px-8 shrink-0 inline-flex items-center justify-center gap-2 !text-sm self-stretch sm:self-auto">
                 <Phone className="w-4 h-4" />
                 Nhận tư vấn
               </button>

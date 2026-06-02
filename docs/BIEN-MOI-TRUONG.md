@@ -44,11 +44,24 @@ pnpm run db:push
 
 ## Bước 2 — Supabase: `DATABASE_URL`
 
+> **Lưu ý:** `sb_publishable_…`, `anon` JWT, `service_role` JWT **không** thay cho `DATABASE_URL`.  
+> Website/API dùng **PostgreSQL** qua `DATABASE_URL`. Mật khẩu domain/admin **không** phải mật khẩu database.
+
 1. Vào [supabase.com](https://supabase.com) → project **hethongnhakhoadangkhoa**
 2. **Project Settings** (bánh răng) → **Database**
-3. **Connection string** → tab **URI**
-4. Chọn **Transaction pooler** (không dùng Direct 5432 trên Vercel)
-5. Copy chuỗi, thay `[YOUR-PASSWORD]` bằng mật khẩu database
+3. **Reset database password** → đặt mật khẩu mới (ghi nhớ)
+4. **Connection string** → tab **URI**
+5. Chọn **Transaction pooler** (port **6543**, không dùng Direct trên Vercel)
+6. Copy chuỗi, thay `[YOUR-PASSWORD]` bằng mật khẩu vừa reset
+
+Kiểm tra trên máy:
+
+```powershell
+node scripts/test-supabase-api.mjs   # API project (200 OK)
+node scripts/test-supabase.mjs       # PostgreSQL (phải thấy "Ket noi OK")
+```
+
+Nếu `db:push` lỗi trên Windows: chạy SQL trong `docs/supabase-init.sql` tại **SQL Editor** Supabase.
 
 Ví dụ (project ref `epsvwnsuirfnwtxloctd`):
 

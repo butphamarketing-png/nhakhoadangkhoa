@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import SectionTitle from "./SectionTitle";
+import PaginationBar from "@/components/ui/PaginationBar";
 import { FEATURED_SERVICES } from "@/lib/home-content";
 import { fadeUp } from "@/lib/motion";
 import MediaFrame from "@/components/ui/MediaFrame";
+
+const PER_PAGE = 4;
 
 function ServiceCard({
   service,
@@ -39,6 +43,11 @@ function ServiceCard({
 }
 
 export default function FeaturedServicesSection() {
+  const [page, setPage] = useState(1);
+  const totalPages = Math.max(1, Math.ceil(FEATURED_SERVICES.length / PER_PAGE));
+  const safePage = Math.min(page, totalPages);
+  const slice = FEATURED_SERVICES.slice((safePage - 1) * PER_PAGE, safePage * PER_PAGE);
+
   return (
     <section id="services" className="section-padding section-white relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C89B3C]/25 to-transparent" />
@@ -47,8 +56,8 @@ export default function FeaturedServicesSection() {
           DỊCH VỤ NỔI BẬT
         </SectionTitle>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
-          {FEATURED_SERVICES.map((service, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-stretch">
+          {slice.map((service, i) => (
             <motion.div
               key={service.id}
               initial="hidden"
@@ -58,10 +67,12 @@ export default function FeaturedServicesSection() {
               custom={i}
               className="h-full"
             >
-              <ServiceCard service={service} featured={i === 0} />
+              <ServiceCard service={service} featured={(safePage - 1) * PER_PAGE + i === 0} />
             </motion.div>
           ))}
         </div>
+
+        <PaginationBar page={safePage} totalPages={totalPages} onPage={setPage} />
       </div>
     </section>
   );

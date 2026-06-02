@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { BookingContext } from "@/components/Layout";
 import HeroSection from "@/components/home/HeroSection";
 import HeroSupportBar from "@/components/home/HeroSupportBar";
-import QuickServicesBar from "@/components/home/QuickServicesBar";
 import AboutSection from "@/components/home/AboutSection";
 import CommitmentsSection from "@/components/home/CommitmentsSection";
 import StatsSection from "@/components/home/StatsSection";
@@ -24,7 +23,6 @@ export default function HomePage() {
     <div className="overflow-hidden">
       <HeroSection />
       <HeroSupportBar />
-      <QuickServicesBar />
       <AboutSection />
       <CommitmentsSection />
       <StatsSection />

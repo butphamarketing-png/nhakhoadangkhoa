@@ -19,6 +19,7 @@ type Promotion = {
   expiry: string;
   badge: string;
   color: string;
+  href?: string;
 };
 
 export default function UuDaiPage() {
@@ -55,6 +56,7 @@ export default function UuDaiPage() {
                 expiry: "",
                 badge: "MỚI",
                 color: "from-amber-500 to-yellow-400",
+                href: "/uu-dai",
               })
             }
           >
@@ -99,6 +101,7 @@ export default function UuDaiPage() {
                 [
                   ["title", "Tiêu đề"],
                   ["discount", "Giảm giá / Giá"],
+                  ["href", "Link bài viết (vd: /uu-dai)"],
                   ["expiry", "Hết hạn"],
                   ["badge", "Nhãn"],
                 ] as const

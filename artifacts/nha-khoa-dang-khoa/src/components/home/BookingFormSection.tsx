@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Phone, Shield, Clock, CheckCircle2 } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
 import { useServices } from "@/lib/cms-provider";
+import BookingContactChannels from "@/components/BookingContactChannels";
 import { fadeUp } from "@/lib/motion";
 
 const schema = z.object({
@@ -100,11 +101,12 @@ export default function BookingFormSection() {
                   </ul>
                   <a
                     href={`tel:${BRAND.hotlineRaw}`}
-                    className="inline-flex items-center gap-2 text-[#E8C46A] font-bold text-lg hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 text-[#E8C46A] font-bold text-lg hover:text-white transition-colors mb-2"
                   >
                     <Phone className="w-5 h-5" />
                     {BRAND.hotline}
                   </a>
+                  <BookingContactChannels />
                 </div>
               </div>
 

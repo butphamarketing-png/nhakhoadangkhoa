@@ -4,6 +4,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { BRAND } from "@/lib/constants";
 import { useServiceMenu } from "@/lib/cms-provider";
+import { getServiceSubgroups } from "@/lib/services-menu";
 import { fadeUp } from "@/lib/motion";
 
 export default function ServicesPage() {
@@ -46,17 +47,26 @@ export default function ServicesPage() {
                   </span>
                 </Link>
               </div>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {group.items.map((item) => (
-                  <Link key={item.label} href={item.href}>
-                    <div className="flex items-start gap-3 p-4 rounded-2xl border border-[#C89B3C]/10 bg-[#F8F6F1]/50 hover:bg-white hover:shadow-md hover:border-[#C89B3C]/25 transition-all cursor-pointer group">
-                      <ChevronRight className="w-4 h-4 text-[#C89B3C] mt-0.5 shrink-0 group-hover:translate-x-0.5 transition-transform" />
-                      <div>
-                        <h3 className="font-semibold text-[#0D1B2A] text-sm group-hover:text-[#C89B3C] transition-colors">{item.label}</h3>
-                        {item.excerpt && <p className="text-xs text-[#0D1B2A]/50 mt-1 line-clamp-2">{item.excerpt}</p>}
-                      </div>
+              <div className="space-y-8">
+                {getServiceSubgroups(group).map((sg) => (
+                  <div key={sg.id}>
+                    <h3 className="text-sm font-bold text-[#C89B3C] uppercase tracking-wide mb-3 border-l-4 border-[#C89B3C] pl-3">
+                      {sg.title}
+                    </h3>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {sg.items.map((item) => (
+                        <Link key={item.label} href={item.href}>
+                          <div className="flex items-start gap-3 p-4 rounded-2xl border border-[#C89B3C]/10 bg-[#F8F6F1]/50 hover:bg-white hover:shadow-md hover:border-[#C89B3C]/25 transition-all cursor-pointer group h-full">
+                            <ChevronRight className="w-4 h-4 text-[#C89B3C] mt-0.5 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                            <div>
+                              <h4 className="font-semibold text-[#0D1B2A] text-sm group-hover:text-[#C89B3C] transition-colors">{item.label}</h4>
+                              {item.excerpt && <p className="text-xs text-[#0D1B2A]/50 mt-1 line-clamp-2">{item.excerpt}</p>}
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </motion.div>

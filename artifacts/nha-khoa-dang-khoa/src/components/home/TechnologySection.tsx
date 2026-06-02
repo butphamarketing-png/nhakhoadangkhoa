@@ -8,29 +8,25 @@ function TechCard({
   title,
   desc,
   image,
-  wide,
   index,
 }: {
   title: string;
   desc: string;
   image: string;
-  wide?: boolean;
   index: number;
 }) {
   return (
     <article className="h-full">
-      <div className="gradient-border rounded-[20px] p-[2px] h-full">
-        <div className="card-luxury overflow-hidden h-full !rounded-[18px] !p-0 !translate-y-0 hover:!translate-y-[-6px] group bg-white">
-          <div className="relative">
-            <span className="absolute top-2.5 left-2.5 z-10 text-[10px] font-bold text-white bg-[#0D1B2A]/70 px-2 py-0.5 rounded-md">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <MediaFrame src={image} alt={title} aspect={wide ? "wide" : "square"} />
-          </div>
-          <div className="px-3.5 py-3.5 border-t border-black/[0.04]">
-            <h3 className="font-display font-bold text-[#0D1B2A] text-sm leading-snug mb-1">{title}</h3>
-            <p className="text-[11px] text-[#0D1B2A]/60 leading-relaxed line-clamp-2">{desc}</p>
-          </div>
+      <div className="card-luxury overflow-hidden h-full !rounded-2xl !p-0 !translate-y-0 hover:!translate-y-[-4px] group bg-white flex flex-col">
+        <div className="relative shrink-0">
+          <span className="absolute top-2 left-2 z-10 text-[9px] font-bold text-white bg-[#0D1B2A]/70 px-2 py-0.5 rounded-md">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <MediaFrame src={image} alt={title} aspect="square" className="!aspect-square max-h-[140px]" />
+        </div>
+        <div className="px-3 py-3 border-t border-black/[0.04] flex-1 flex flex-col">
+          <h3 className="font-display font-bold text-[#0D1B2A] text-xs leading-snug mb-1 line-clamp-2">{title}</h3>
+          <p className="text-[10px] text-[#0D1B2A]/55 leading-relaxed line-clamp-2 flex-1">{desc}</p>
         </div>
       </div>
     </article>
@@ -41,7 +37,7 @@ export default function TechnologySection() {
   return (
     <section id="cong-nghe" className="section-padding section-cream section-texture overflow-hidden scroll-mt-32">
       <div className="container-custom container-narrow">
-        <div className="grid lg:grid-cols-[minmax(0,340px)_1fr] gap-8 lg:gap-10 items-start">
+        <div className="grid lg:grid-cols-[minmax(0,300px)_1fr] gap-8 lg:gap-10 items-start">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -73,7 +69,7 @@ export default function TechnologySection() {
                     </span>
                   ))}
                 </div>
-                <Link href="/gioi-thieu">
+                <Link href="/gioi-thieu/co-so-vat-chat">
                   <button type="button" className="btn-gold !h-11 !text-sm" data-testid="button-tech-more">
                     XEM THÊM
                   </button>
@@ -92,7 +88,7 @@ export default function TechnologySection() {
           >
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               {TECHNOLOGY_ITEMS.map((tech, i) => (
-                <TechCard key={tech.title} {...tech} index={i} />
+                <TechCard key={tech.title} title={tech.title} desc={tech.desc} image={tech.image} index={i} />
               ))}
             </div>
           </motion.div>

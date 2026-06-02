@@ -163,6 +163,7 @@ export const PROMOTIONS = [
     expiry: "31/07/2024",
     badge: "HOT",
     color: "from-amber-500 to-yellow-400",
+    href: "/uu-dai",
   },
   {
     id: 2,
@@ -172,6 +173,7 @@ export const PROMOTIONS = [
     expiry: "31/08/2024",
     badge: "MỚI",
     color: "from-purple-500 to-indigo-500",
+    href: "/dich-vu/rang-su",
   },
   {
     id: 3,
@@ -181,6 +183,7 @@ export const PROMOTIONS = [
     expiry: "30/06/2024",
     badge: "VIP",
     color: "from-emerald-500 to-teal-500",
+    href: "/dich-vu/implant",
   },
   {
     id: 4,
@@ -190,6 +193,7 @@ export const PROMOTIONS = [
     expiry: "30/09/2024",
     badge: "SALE",
     color: "from-blue-500 to-cyan-500",
+    href: "/dich-vu/tay-trang",
   },
 ];
 

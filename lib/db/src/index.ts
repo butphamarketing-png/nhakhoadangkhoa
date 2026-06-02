@@ -18,9 +18,13 @@ function getPool(): pg.Pool {
     );
   }
 
-  const isSupabase = connectionString.includes("supabase");
+  const isSupabase = connectionString.includes("supabase.com");
   pool = new Pool({
-    connectionString,
+    connectionString: isSupabase
+      ? connectionString.includes("uselibpqcompat=")
+        ? connectionString
+        : `${connectionString}${connectionString.includes("?") ? "&" : "?"}uselibpqcompat=true&sslmode=require`
+      : connectionString,
     max: process.env.VERCEL ? 1 : 10,
     ...(isSupabase ? { ssl: { rejectUnauthorized: false } } : {}),
   });

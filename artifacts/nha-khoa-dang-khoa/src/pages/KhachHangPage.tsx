@@ -106,7 +106,7 @@ export default function KhachHangPage() {
             <h2 className="text-3xl font-extrabold text-[#0D1B2A] mb-3">Trước & Sau Điều Trị</h2>
             <p className="text-gray-500 max-w-xl mx-auto">Những kết quả thực tế từ bệnh nhân của chúng tôi</p>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {galleryItems.map((item, i) => (
               <motion.div
                 key={item.id}
