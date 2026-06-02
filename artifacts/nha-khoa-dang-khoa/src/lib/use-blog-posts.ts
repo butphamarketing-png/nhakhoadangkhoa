@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { BLOG_POSTS, type BlogPost } from "./blog-posts";
-import { fetchPublicContent } from "./cms";
+import { useCms, useCmsData } from "./cms-provider";
 
 export function useBlogPosts() {
-  const [posts, setPosts] = useState<BlogPost[]>(BLOG_POSTS);
-  const [loading, setLoading] = useState(!!import.meta.env.VITE_API_URL);
+  const { ready } = useCms();
+  const cmsBlog = useCmsData<(BlogPost & { status?: string })[] | null>("blog", null);
 
-  useEffect(() => {
-    fetchPublicContent<(BlogPost & { status?: string })[]>("blog").then((data) => {
-      if (Array.isArray(data) && data.length > 0) {
-        const published = data.filter((p) => p.status !== "draft");
-        setPosts(published.length ? published : data);
-      }
-      setLoading(false);
-    });
-  }, []);
+  const posts = useMemo(() => {
+    if (!cmsBlog || !Array.isArray(cmsBlog) || cmsBlog.length === 0) {
+      return BLOG_POSTS;
+    }
+    const published = cmsBlog.filter((p) => p.status !== "draft");
+    return published.length > 0 ? published : cmsBlog;
+  }, [cmsBlog]);
 
-  return { posts, loading };
+  return { posts, loading: !!import.meta.env.VITE_API_URL && !ready };
 }

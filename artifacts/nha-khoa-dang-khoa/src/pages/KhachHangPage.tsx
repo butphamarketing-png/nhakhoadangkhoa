@@ -2,10 +2,14 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Star } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { TESTIMONIALS, BRAND } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
+import { useTestimonials } from "@/lib/cms-provider";
 import { GALLERY_TESTIMONIALS } from "@/lib/home-content";
 
 export default function KhachHangPage() {
+  const BRAND = useBrand();
+  const TESTIMONIALS = useTestimonials();
+
   return (
     <div>
       <PageHero

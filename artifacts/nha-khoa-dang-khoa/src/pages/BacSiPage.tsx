@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Link, useParams } from "wouter";
 import { ChevronRight, Award, Clock, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DOCTORS, BRAND } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
+import { useDoctors } from "@/lib/cms-provider";
 
 const doctorColors: Record<string, string> = {
   "nguyen-van-an": "from-amber-400 to-amber-600",
@@ -16,6 +17,8 @@ const doctorInitialsMap: Record<string, string> = {
 };
 
 export default function BacSiPage() {
+  const BRAND = useBrand();
+  const DOCTORS = useDoctors();
   const params = useParams<{ id: string }>();
   const doctor = DOCTORS.find((d) => d.id === params.id);
 

@@ -1,38 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AdminLayout from "@/components/AdminLayout";
 import { motion } from "framer-motion";
 import { Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { apiFetch } from "@/lib/api";
 import { PRICING_CATALOG } from "@/lib/defaults";
+import { useContent } from "@/lib/use-content";
 import { useToast } from "@/hooks/use-toast";
 
 export default function BangGiaPage() {
-  const [prices, setPrices] = useState<Record<string, string>>({});
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
+  const { data: prices, setData: setPrices, loading, saving, save } = useContent<Record<string, string>>(
+    "pricing",
+    {},
+  );
   const { toast } = useToast();
 
-  useEffect(() => {
-    apiFetch<Record<string, string>>("/api/content/pricing", { auth: false })
-      .then(setPrices)
-      .catch(() => setPrices({}))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const save = async () => {
-    setSaving(true);
+  const persist = async () => {
     try {
-      await apiFetch("/api/content/pricing", {
-        method: "PUT",
-        body: JSON.stringify(prices),
-      });
+      await save(prices);
       toast({ title: "Đã lưu bảng giá", description: "Website sẽ hiển thị giá mới sau khi tải lại." });
     } catch (e) {
       toast({ title: "Lỗi", description: (e as Error).message, variant: "destructive" });
-    } finally {
-      setSaving(false);
     }
   };
 
@@ -44,7 +32,7 @@ export default function BangGiaPage() {
             Cập nhật giá hiển thị trên trang Bảng giá website. Để trống = hiển thị &quot;Liên hệ&quot;.
           </p>
           <Button
-            onClick={save}
+            onClick={persist}
             disabled={saving || loading}
             className="gold-gradient text-white border-0 rounded-xl h-10 gap-2"
           >

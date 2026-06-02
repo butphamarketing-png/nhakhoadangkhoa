@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
 import AdminLayout from "@/components/AdminLayout";
 import { motion } from "framer-motion";
 import { Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { apiFetch } from "@/lib/api";
 import { DEFAULT_SITE } from "@/lib/defaults";
 import type { SiteSettings } from "@/lib/types";
+import { useContent } from "@/lib/use-content";
 import { useToast } from "@/hooks/use-toast";
 
 const FIELDS: { key: keyof SiteSettings; label: string }[] = [
@@ -27,30 +26,18 @@ const FIELDS: { key: keyof SiteSettings; label: string }[] = [
 ];
 
 export default function CaiDatPage() {
-  const [site, setSite] = useState<SiteSettings>(DEFAULT_SITE);
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
+  const { data: site, setData: setSite, loading, saving, save } = useContent<SiteSettings>(
+    "site",
+    DEFAULT_SITE,
+  );
   const { toast } = useToast();
 
-  useEffect(() => {
-    apiFetch<SiteSettings>("/api/content/site", { auth: false })
-      .then((data) => setSite({ ...DEFAULT_SITE, ...data }))
-      .catch(() => setSite(DEFAULT_SITE))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const save = async () => {
-    setSaving(true);
+  const persist = async () => {
     try {
-      await apiFetch("/api/content/site", {
-        method: "PUT",
-        body: JSON.stringify(site),
-      });
+      await save(site);
       toast({ title: "Đã lưu cài đặt website" });
     } catch (e) {
       toast({ title: "Lỗi", description: (e as Error).message, variant: "destructive" });
-    } finally {
-      setSaving(false);
     }
   };
 
@@ -59,7 +46,7 @@ export default function CaiDatPage() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
         <div className="flex justify-end">
           <Button
-            onClick={save}
+            onClick={persist}
             disabled={saving || loading}
             className="gold-gradient text-white border-0 rounded-xl h-10 gap-2"
           >

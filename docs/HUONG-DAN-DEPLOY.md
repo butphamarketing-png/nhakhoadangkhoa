@@ -146,12 +146,23 @@ https://nhakhoadangkhoa.vercel.app,https://ten-admin.vercel.app
 
 Sau `pnpm run db:push`, chạy lại deploy API.
 
-**Chức năng admin:**
+**Chức năng admin (quản lý đồng bộ toàn website):**
 
-- **Lịch hẹn** — xem, đổi trạng thái, xóa (từ form website)
-- **Bảng giá** — cập nhật giá hiển thị trên website
-- **Bài viết** — import / sửa / xóa blog
-- **Cài đặt** — hotline, địa chỉ, mạng xã hội (Header/Footer)
+| Mục | Nội dung trên website |
+|-----|------------------------|
+| **Đồng bộ website** | Import một lần toàn bộ từ code → Supabase |
+| **Lịch hẹn** | Form đặt lịch từ khách |
+| **Trang chủ** | Banner, thống kê, đội ngũ |
+| **Giới thiệu** | Các mục `/gioi-thieu/*` |
+| **Dịch vụ** | Menu Header + form chọn dịch vụ |
+| **Bảng giá** | Giá từng dòng dịch vụ |
+| **Bài viết** | Kiến thức nha khoa |
+| **Bác sĩ** | Trang giới thiệu đội ngũ |
+| **Khách hàng** | Đánh giá / testimonial |
+| **Ưu đãi** | Trang khuyến mãi |
+| **Cài đặt** | Hotline, địa chỉ, MXH |
+
+**Lần đầu:** Admin → **Đồng bộ website** → sau đó chỉnh từng mục và **Lưu**.
 
 Chạy local: `pnpm --filter @workspace/admin-panel run dev` (port 5174)
 

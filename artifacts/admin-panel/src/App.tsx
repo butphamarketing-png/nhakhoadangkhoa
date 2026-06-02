@@ -13,6 +13,10 @@ import BacSiPage from "@/pages/BacSiPage";
 import BaiVietPage from "@/pages/BaiVietPage";
 import BangGiaPage from "@/pages/BangGiaPage";
 import CaiDatPage from "@/pages/CaiDatPage";
+import DongBoPage from "@/pages/DongBoPage";
+import GioiThieuPage from "@/pages/GioiThieuPage";
+import UuDaiPage from "@/pages/UuDaiPage";
+import TrangChuPage from "@/pages/TrangChuPage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +32,10 @@ function Router() {
       <Route path="/bai-viet" component={BaiVietPage} />
       <Route path="/bang-gia" component={BangGiaPage} />
       <Route path="/cai-dat" component={CaiDatPage} />
+      <Route path="/dong-bo" component={DongBoPage} />
+      <Route path="/gioi-thieu" component={GioiThieuPage} />
+      <Route path="/uu-dai" component={UuDaiPage} />
+      <Route path="/trang-chu" component={TrangChuPage} />
       <Route>
         <Redirect to="/" />
       </Route>

@@ -1,11 +1,12 @@
 import { Link, useRoute } from "wouter";
 import { ChevronRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { SERVICE_MENU_GROUPS } from "@/lib/services-menu";
+import { useServiceMenu } from "@/lib/cms-provider";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function ServiceGroupPage() {
   const [, params] = useRoute("/dich-vu/:groupId");
+  const SERVICE_MENU_GROUPS = useServiceMenu();
   const group = SERVICE_MENU_GROUPS.find((g) => g.id === params?.groupId);
 
   if (!group) return <NotFoundPage />;

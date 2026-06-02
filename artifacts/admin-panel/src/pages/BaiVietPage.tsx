@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AdminLayout from "@/components/AdminLayout";
 import { motion } from "framer-motion";
 import { Plus, Search, Edit2, Trash2, Download } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { apiFetch } from "@/lib/api";
 import type { BlogPostAdmin } from "@/lib/types";
+import { useContent } from "@/lib/use-content";
+import { WEBSITE_DEFAULTS } from "@/lib/website-imports";
 import { useToast } from "@/hooks/use-toast";
 import { BLOG_POSTS } from "@website/lib/blog-posts";
 import {
@@ -18,38 +19,18 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function BaiVietPage() {
-  const [posts, setPosts] = useState<BlogPostAdmin[]>([]);
+  const fallback = WEBSITE_DEFAULTS.blog as BlogPostAdmin[];
+  const { data: posts, setData: setPosts, loading, saving, save } = useContent<BlogPostAdmin[]>("blog", fallback);
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(true);
   const [edit, setEdit] = useState<BlogPostAdmin | null>(null);
-  const [saving, setSaving] = useState(false);
   const { toast } = useToast();
 
-  const load = () => {
-    setLoading(true);
-    apiFetch<BlogPostAdmin[]>("/api/content/blog", { auth: false })
-      .then((data) => setPosts(Array.isArray(data) ? data : []))
-      .catch(() => setPosts([]))
-      .finally(() => setLoading(false));
-  };
-
-  useEffect(() => {
-    load();
-  }, []);
-
   const saveAll = async (next: BlogPostAdmin[]) => {
-    setSaving(true);
     try {
-      await apiFetch("/api/content/blog", {
-        method: "PUT",
-        body: JSON.stringify(next),
-      });
-      setPosts(next);
+      await save(next);
       toast({ title: "Đã lưu bài viết" });
     } catch (e) {
       toast({ title: "Lỗi", description: (e as Error).message, variant: "destructive" });
-    } finally {
-      setSaving(false);
     }
   };
 

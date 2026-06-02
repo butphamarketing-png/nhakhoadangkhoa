@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import {
   LayoutDashboard, Calendar, Users, Scissors,
   UserCheck, FileText, LogOut, Menu, X, ChevronRight,
-  DollarSign, Settings,
+  DollarSign, Settings, RefreshCw, Home, BookOpen, Gift,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -10,12 +10,16 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const NAV = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/" },
+  { label: "Đồng bộ website", icon: RefreshCw, href: "/dong-bo" },
   { label: "Lịch hẹn", icon: Calendar, href: "/lich-hen" },
+  { label: "Trang chủ", icon: Home, href: "/trang-chu" },
+  { label: "Giới thiệu", icon: BookOpen, href: "/gioi-thieu" },
+  { label: "Dịch vụ", icon: Scissors, href: "/dich-vu" },
   { label: "Bảng giá", icon: DollarSign, href: "/bang-gia" },
   { label: "Bài viết", icon: FileText, href: "/bai-viet" },
   { label: "Bác sĩ", icon: UserCheck, href: "/bac-si" },
   { label: "Khách hàng", icon: Users, href: "/khach-hang" },
-  { label: "Dịch vụ", icon: Scissors, href: "/dich-vu" },
+  { label: "Ưu đãi", icon: Gift, href: "/uu-dai" },
   { label: "Cài đặt", icon: Settings, href: "/cai-dat" },
 ];
 

@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Phone, MapPin, Globe, Mail, Clock, Facebook, Youtube, MessageCircle, Calendar } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
-import { SERVICE_MENU_GROUPS } from "@/lib/services-menu";
+import { useServiceMenu } from "@/lib/cms-provider";
 import BrandLogo from "@/components/BrandLogo";
 
 const SUPPORT_LINKS = [
@@ -14,6 +14,7 @@ const SUPPORT_LINKS = [
 
 export default function Footer() {
   const BRAND = useBrand();
+  const SERVICE_MENU_GROUPS = useServiceMenu();
   const SOCIAL = [
     { href: BRAND.facebook, label: "Facebook", icon: Facebook, testId: "link-footer-facebook" },
     { href: BRAND.zalo, label: "Zalo", zalo: true, testId: "link-footer-zalo" },

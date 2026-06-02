@@ -4,7 +4,8 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Phone, Shield, Clock, CheckCircle2 } from "lucide-react";
-import { BRAND, SERVICES } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
+import { useServices } from "@/lib/cms-provider";
 import { fadeUp } from "@/lib/motion";
 
 const schema = z.object({
@@ -23,6 +24,8 @@ const TRUST_ITEMS = [
 ];
 
 export default function BookingFormSection() {
+  const BRAND = useBrand();
+  const SERVICES = useServices();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);

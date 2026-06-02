@@ -2,12 +2,13 @@ import { Link, useRoute } from "wouter";
 import { ChevronLeft, CheckCircle } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import MediaFrame from "@/components/ui/MediaFrame";
-import { getAboutSection } from "@/lib/about-content";
+import { useAboutSections } from "@/lib/cms-provider";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function AboutSectionPage() {
   const [, params] = useRoute("/gioi-thieu/:slug");
-  const section = getAboutSection(params?.slug ?? "");
+  const sections = useAboutSections();
+  const section = sections.find((s) => s.slug === params?.slug);
 
   if (!section) return <NotFoundPage />;
 

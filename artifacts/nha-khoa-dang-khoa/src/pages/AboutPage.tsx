@@ -3,9 +3,9 @@ import { Link } from "wouter";
 import { ChevronRight, Award, Users, Clock, CheckCircle, Star, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
-import { BRAND, DOCTORS } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
+import { useAboutSections, useDoctors } from "@/lib/cms-provider";
 import { IMAGES } from "@/lib/images";
-import { ABOUT_SECTIONS } from "@/lib/about-content";
 import MediaFrame from "@/components/ui/MediaFrame";
 
 const fadeUp = {
@@ -34,6 +34,10 @@ const doctorColors = ["from-amber-400 to-amber-600", "from-blue-400 to-blue-600"
 const doctorInitials = ["NVA", "TTM", "LMD"];
 
 export default function AboutPage() {
+  const BRAND = useBrand();
+  const ABOUT_SECTIONS = useAboutSections();
+  const DOCTORS = useDoctors();
+
   return (
     <div>
       <PageHero

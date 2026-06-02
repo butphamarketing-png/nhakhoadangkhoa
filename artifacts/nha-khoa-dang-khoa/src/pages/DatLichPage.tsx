@@ -11,7 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
-import { BRAND, SERVICES } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
+import { useServices } from "@/lib/cms-provider";
 
 const schema = z.object({
   name: z.string().min(2, "Vui lòng nhập họ tên"),
@@ -27,6 +28,8 @@ type FormValues = z.infer<typeof schema>;
 const TIME_SLOTS = ["8:00 – 9:00", "9:00 – 10:00", "10:00 – 11:00", "13:00 – 14:00", "14:00 – 15:00", "15:00 – 16:00", "16:00 – 17:00", "17:00 – 18:00", "18:00 – 19:00"];
 
 export default function DatLichPage() {
+  const BRAND = useBrand();
+  const SERVICES = useServices();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);

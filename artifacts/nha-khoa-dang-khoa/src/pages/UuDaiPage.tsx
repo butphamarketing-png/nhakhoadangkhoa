@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Clock, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { PROMOTIONS, BRAND } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
+import { usePromotions } from "@/lib/cms-provider";
 import { GALLERY_PROMOTIONS } from "@/lib/home-content";
 import { fadeUp } from "@/lib/motion";
 
@@ -46,6 +47,9 @@ function Countdown({ endDate }: { endDate: string }) {
 }
 
 export default function UuDaiPage() {
+  const BRAND = useBrand();
+  const PROMOTIONS = usePromotions();
+
   return (
     <div>
       <PageHero

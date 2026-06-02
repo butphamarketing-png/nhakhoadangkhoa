@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/motion";
-import { CLINIC_STATS } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
 import StatCounter from "./StatCounter";
 
 export default function StatsSection() {
+  const { clinicStats: CLINIC_STATS } = useHomeCms();
+
   return (
     <section className="py-14 md:py-16 navy-gradient relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(200,155,60,0.18),transparent_60%)]" />

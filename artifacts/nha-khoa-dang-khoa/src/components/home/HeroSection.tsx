@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { HERO_SLIDES } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
 
 const AUTO_MS = 6000;
 const FADE_MS = 350;
 
 export default function HeroSection() {
+  const { heroSlides: HERO_SLIDES } = useHomeCms();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(true);

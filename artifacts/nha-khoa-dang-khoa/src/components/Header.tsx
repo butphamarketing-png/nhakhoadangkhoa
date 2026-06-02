@@ -3,8 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
 import { MAIN_NAV } from "@/lib/navigation";
-import { ABOUT_SECTIONS } from "@/lib/about-content";
-import { SERVICE_MENU_GROUPS } from "@/lib/services-menu";
+import { useAboutSections, useServiceMenu } from "@/lib/cms-provider";
 import BrandLogo from "@/components/BrandLogo";
 import SiteSearchBar from "@/components/SiteSearchBar";
 
@@ -14,6 +13,8 @@ interface HeaderProps {
 
 export default function Header({ onBookingClick }: HeaderProps) {
   const BRAND = useBrand();
+  const ABOUT_SECTIONS = useAboutSections();
+  const SERVICE_MENU_GROUPS = useServiceMenu();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);

@@ -3,12 +3,13 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ChevronRight as Arrow } from "lucide-react";
 import SectionTitle from "./SectionTitle";
-import { HOME_DOCTORS } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
 import MediaFrame from "@/components/ui/MediaFrame";
 
 const AUTO_MS = 7000;
 
 export default function DoctorTeamSection() {
+  const { homeDoctors: HOME_DOCTORS } = useHomeCms();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const doctor = HOME_DOCTORS[index];

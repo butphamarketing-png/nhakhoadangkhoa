@@ -3,10 +3,12 @@ import { Link } from "wouter";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { BRAND } from "@/lib/constants";
-import { SERVICE_MENU_GROUPS } from "@/lib/services-menu";
+import { useServiceMenu } from "@/lib/cms-provider";
 import { fadeUp } from "@/lib/motion";
 
 export default function ServicesPage() {
+  const SERVICE_MENU_GROUPS = useServiceMenu();
+
   return (
     <div>
       <PageHero
