@@ -12,6 +12,17 @@ Form đặt lịch (Website)  →  API (Vercel)  →  Supabase (PostgreSQL)
 
 ---
 
+Hướng dẫn chi tiết từng biến: **[BIEN-MOI-TRUONG.md](BIEN-MOI-TRUONG.md)**
+
+Tạo file local nhanh:
+
+```powershell
+copy .env.example .env
+# hoac: .\scripts\create-env.ps1
+```
+
+---
+
 ## Phần A — Supabase (database)
 
 ### A1. Tạo project
