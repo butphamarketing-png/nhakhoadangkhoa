@@ -13,6 +13,12 @@ Hướng dẫn từng bước: **[docs/HUONG-DAN-DEPLOY.md](docs/HUONG-DAN-DEPLO
 2. Push code lên GitHub
 3. Vercel: project **API** (`artifacts/api-server`) + biến `DATABASE_URL`
 4. Vercel: project **Website** (`artifacts/nha-khoa-dang-khoa`) + biến `VITE_API_URL`
+5. Vercel: project **Admin** (`artifacts/admin-panel`) + `VITE_API_URL` + `ADMIN_PASSWORD` / `ADMIN_API_KEY` trên API
+
+## Admin panel
+
+- Lịch hẹn, bảng giá, bài viết, cài đặt hotline/địa chỉ
+- Local: `pnpm --filter @workspace/admin-panel run dev`
 
 ## Dev local
 

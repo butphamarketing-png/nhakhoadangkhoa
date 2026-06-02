@@ -1,7 +1,8 @@
 import { Link, useLocation } from "wouter";
 import {
   LayoutDashboard, Calendar, Users, Scissors,
-  UserCheck, FileText, LogOut, Menu, X, ChevronRight
+  UserCheck, FileText, LogOut, Menu, X, ChevronRight,
+  DollarSign, Settings,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -10,10 +11,12 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 const NAV = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/" },
   { label: "Lịch hẹn", icon: Calendar, href: "/lich-hen" },
+  { label: "Bảng giá", icon: DollarSign, href: "/bang-gia" },
+  { label: "Bài viết", icon: FileText, href: "/bai-viet" },
+  { label: "Bác sĩ", icon: UserCheck, href: "/bac-si" },
   { label: "Khách hàng", icon: Users, href: "/khach-hang" },
   { label: "Dịch vụ", icon: Scissors, href: "/dich-vu" },
-  { label: "Bác sĩ", icon: UserCheck, href: "/bac-si" },
-  { label: "Bài viết", icon: FileText, href: "/bai-viet" },
+  { label: "Cài đặt", icon: Settings, href: "/cai-dat" },
 ];
 
 export default function Sidebar() {
@@ -74,9 +77,14 @@ export default function Sidebar() {
             <div className="text-white/40 text-xs truncate">admin@nhakhoadangkhoa.vn</div>
           </div>
         </div>
-        <Link href="/login"
+        <Link
+          href="/login"
+          onClick={() => {
+            localStorage.removeItem("dk-admin-token");
+          }}
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/50 hover:text-red-400 hover:bg-red-500/10 transition-all text-sm font-medium w-full"
-          data-testid="nav-logout">
+          data-testid="nav-logout"
+        >
           <LogOut className="w-4 h-4" />
           Đăng xuất
         </Link>

@@ -1,4 +1,4 @@
-# Hướng dẫn: GitHub → Vercel → Supabase
+image.png# Hướng dẫn: GitHub → Vercel → Supabase
 
 Repo: **https://github.com/butphamarketing-png/nhakhoadangkhoa**
 
@@ -124,16 +124,36 @@ Nếu đổi domain website, cập nhật lại `CORS_ORIGIN` trên project API 
 
 ---
 
-## Phần F — Admin (tùy chọn)
+## Phần F — Admin panel (quản trị website)
 
+| Cài đặt | Giá trị |
+|---------|---------|
 | Root Directory | `artifacts/admin-panel` |
-| `VITE_API_URL` | Giống website |
+| `VITE_API_URL` | URL API (giống website) |
 
-Thêm URL admin vào `CORS_ORIGIN` trên API, ví dụ:
+**Trên project API**, thêm biến:
+
+| Biến | Mô tả |
+|------|--------|
+| `ADMIN_PASSWORD` | Mật khẩu đăng nhập admin |
+| `ADMIN_API_KEY` | Chuỗi bí mật dài (token sau khi login) |
+
+Thêm URL admin vào `CORS_ORIGIN` trên API:
 
 ```text
 https://nhakhoadangkhoa.vercel.app,https://ten-admin.vercel.app
 ```
+
+Sau `pnpm run db:push`, chạy lại deploy API.
+
+**Chức năng admin:**
+
+- **Lịch hẹn** — xem, đổi trạng thái, xóa (từ form website)
+- **Bảng giá** — cập nhật giá hiển thị trên website
+- **Bài viết** — import / sửa / xóa blog
+- **Cài đặt** — hotline, địa chỉ, mạng xã hội (Header/Footer)
+
+Chạy local: `pnpm --filter @workspace/admin-panel run dev` (port 5174)
 
 ---
 
@@ -143,7 +163,9 @@ https://nhakhoadangkhoa.vercel.app,https://ten-admin.vercel.app
 |------|-----------|--------|
 | `DATABASE_URL` | Vercel **API** + file `.env` local | Supabase pooler 6543 |
 | `CORS_ORIGIN` | Vercel **API** | Domain website (phân tách bằng dấu phẩy) |
-| `VITE_API_URL` | Vercel **Website** | URL project API |
+| `VITE_API_URL` | Vercel **Website** + **Admin** | URL project API |
+| `ADMIN_PASSWORD` | Vercel **API** | Mật khẩu login admin |
+| `ADMIN_API_KEY` | Vercel **API** | Token Bearer sau login |
 | `PORT` | Chỉ local | `5000` khi chạy API trên máy |
 
 **Không** đặt `DATABASE_URL` trên project website — chỉ trên API.

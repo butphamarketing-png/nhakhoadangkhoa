@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import PageHero from "@/components/PageHero";
 import { BRAND } from "@/lib/constants";
 import { fadeUp } from "@/lib/motion";
-import { PRICE_GROUPS, getPriceDisplay, getStoredPrices } from "@/lib/pricing-data";
+import { PRICE_GROUPS, getPriceDisplay, syncPricingFromApi } from "@/lib/pricing-data";
 
 const FAQS = [
   { q: "Giá trên website có phải giá cuối cùng?", a: "Giá hiển thị mang tính tham khảo. Bác sĩ sẽ báo giá chính xác sau khi thăm khám và chụp phim." },
@@ -19,7 +19,7 @@ export default function BangGiaPage() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setReady(true);
+    syncPricingFromApi().finally(() => setReady(true));
   }, []);
 
   return (

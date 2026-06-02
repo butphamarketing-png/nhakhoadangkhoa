@@ -1,23 +1,30 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Eye, EyeOff, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { login } from "@/lib/api";
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setError("");
+    try {
+      await login(password);
       setLocation("/");
-    }, 1200);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -58,23 +65,12 @@ export default function LoginPage() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="relative">
-              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
-              <Input
-                type="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="pl-10 h-11 rounded-xl text-white placeholder:text-white/30 border-white/10 bg-white/5 focus:border-[#C89B3C] focus:ring-[#C89B3C]/20"
-                data-testid="input-login-email"
-              />
-            </div>
-            <div className="relative">
               <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
               <Input
                 type={show ? "text" : "password"}
-                placeholder="Mật khẩu"
-                value={form.password}
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                placeholder="Mật khẩu admin"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="pl-10 pr-10 h-11 rounded-xl text-white placeholder:text-white/30 border-white/10 bg-white/5 focus:border-[#C89B3C] focus:ring-[#C89B3C]/20"
                 data-testid="input-login-password"
               />
@@ -104,8 +100,11 @@ export default function LoginPage() {
             </Button>
           </form>
 
+          {error && (
+            <p className="text-center text-red-400 text-xs mt-4">{error}</p>
+          )}
           <p className="text-center text-white/25 text-xs mt-6">
-            Demo: admin@nhakhoadangkhoa.vn / bất kỳ mật khẩu
+            Mật khẩu = biến ADMIN_PASSWORD trên Vercel (project API)
           </p>
         </div>
       </motion.div>

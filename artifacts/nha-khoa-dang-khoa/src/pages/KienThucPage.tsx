@@ -5,11 +5,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import BlogCard from "@/components/blog/BlogCard";
-import { BLOG_POSTS, BLOG_CATEGORIES } from "@/lib/blog-posts";
+import { BLOG_CATEGORIES } from "@/lib/blog-posts";
+import { useBlogPosts } from "@/lib/use-blog-posts";
 
 const PER_PAGE = 9;
 
 export default function KienThucPage() {
+  const { posts: BLOG_POSTS } = useBlogPosts();
   const [search, setSearch] = useState("");
   const [activeCat, setActiveCat] = useState<string>("Tất cả");
   const [page, setPage] = useState(1);
@@ -25,7 +27,7 @@ export default function KienThucPage() {
         p.category.toLowerCase().includes(q);
       return matchCat && matchSearch;
     });
-  }, [search, activeCat]);
+  }, [search, activeCat, BLOG_POSTS]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
   const currentPage = Math.min(page, totalPages);

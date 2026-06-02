@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import { BRAND } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
 import { MAIN_NAV } from "@/lib/navigation";
 import { ABOUT_SECTIONS } from "@/lib/about-content";
 import { SERVICE_MENU_GROUPS } from "@/lib/services-menu";
@@ -13,6 +13,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onBookingClick }: HeaderProps) {
+  const BRAND = useBrand();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);

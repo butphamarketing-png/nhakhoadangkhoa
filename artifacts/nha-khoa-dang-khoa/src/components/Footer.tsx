@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Phone, MapPin, Globe, Mail, Clock, Facebook, Youtube, MessageCircle, Calendar } from "lucide-react";
-import { BRAND } from "@/lib/constants";
+import { useBrand } from "@/lib/brand-context";
 import { SERVICE_MENU_GROUPS } from "@/lib/services-menu";
 import BrandLogo from "@/components/BrandLogo";
 
@@ -12,15 +12,16 @@ const SUPPORT_LINKS = [
   { label: "Điều khoản dịch vụ", href: "/dieu-khoan" },
 ];
 
-const SOCIAL = [
-  { href: BRAND.facebook, label: "Facebook", icon: Facebook, testId: "link-footer-facebook" },
-  { href: BRAND.zalo, label: "Zalo", zalo: true, testId: "link-footer-zalo" },
-  { href: BRAND.messenger, label: "Messenger", icon: MessageCircle, testId: "link-footer-messenger" },
-  { href: BRAND.youtube, label: "YouTube", icon: Youtube, testId: "link-footer-youtube" },
-  { href: BRAND.tiktok, label: "TikTok", tiktok: true, testId: "link-footer-tiktok" },
-];
-
 export default function Footer() {
+  const BRAND = useBrand();
+  const SOCIAL = [
+    { href: BRAND.facebook, label: "Facebook", icon: Facebook, testId: "link-footer-facebook" },
+    { href: BRAND.zalo, label: "Zalo", zalo: true, testId: "link-footer-zalo" },
+    { href: BRAND.messenger, label: "Messenger", icon: MessageCircle, testId: "link-footer-messenger" },
+    { href: BRAND.youtube, label: "YouTube", icon: Youtube, testId: "link-footer-youtube" },
+    { href: BRAND.tiktok, label: "TikTok", tiktok: true, testId: "link-footer-tiktok" },
+  ];
+
   return (
     <footer className="bg-[#0D1B2A] text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_0%,rgba(200,155,60,0.08),transparent_50%)]" />

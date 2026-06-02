@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrandProvider } from "@/lib/brand-context";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
@@ -85,7 +86,9 @@ function App() {
           <>
             <CustomCursor />
             <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-              <Router />
+              <BrandProvider>
+                <Router />
+              </BrandProvider>
             </WouterRouter>
           </>
         )}

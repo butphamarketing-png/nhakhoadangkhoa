@@ -42,7 +42,22 @@ export function getPriceDisplay(itemId: string): string {
   return "Liên hệ";
 }
 
-/** Ghi giá từ admin (gọi khi có panel quản trị) */
+/** Ghi giá từ admin (API hoặc panel) */
 export function setStoredPrices(prices: Record<string, string>) {
+  if (typeof window === "undefined") return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prices));
+}
+
+/** Tải giá từ API admin (Supabase) */
+export async function syncPricingFromApi(): Promise<void> {
+  const base = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
+  if (!base || typeof window === "undefined") return;
+  try {
+    const res = await fetch(`${base}/api/content/pricing`);
+    if (!res.ok) return;
+    const data = (await res.json()) as Record<string, string>;
+    if (data && typeof data === "object") setStoredPrices(data);
+  } catch {
+    /* giữ giá local */
+  }
 }

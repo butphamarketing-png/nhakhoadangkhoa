@@ -2,16 +2,23 @@ import { Link, useRoute } from "wouter";
 import { Calendar, Clock, ChevronLeft, ExternalLink, Phone } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import MediaFrame from "@/components/ui/MediaFrame";
-import { getBlogPostBySlug } from "@/lib/blog-posts";
-import { BRAND } from "@/lib/constants";
+import { useBlogPosts } from "@/lib/use-blog-posts";
+import { useBrand } from "@/lib/brand-context";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function BlogPostPage() {
   const [, params] = useRoute("/kien-thuc/:slug");
   const slug = params?.slug ?? "";
-  const post = getBlogPostBySlug(slug);
+  const { posts, loading } = useBlogPosts();
+  const BRAND = useBrand();
+  const post = posts.find((p) => p.slug === slug);
 
-  if (!post) return <NotFoundPage />;
+  if (!loading && !post) return <NotFoundPage />;
+  if (!post) {
+    return (
+      <div className="section-padding text-center text-gray-500">Đang tải bài viết...</div>
+    );
+  }
 
   return (
     <div>
