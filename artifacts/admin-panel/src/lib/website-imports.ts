@@ -3,12 +3,13 @@ import { DOCTORS, PROMOTIONS, SERVICES, TESTIMONIALS } from "@website/lib/consta
 import { ABOUT_SECTIONS } from "@website/lib/about-content";
 import { SERVICE_MENU_GROUPS } from "@website/lib/services-menu";
 import { BLOG_POSTS } from "@website/lib/blog-posts";
+import { DEFAULT_HOME_CMS } from "@website/lib/home-cms-defaults";
+import { DEFAULT_FAQ } from "@website/lib/faq-content";
+import { DEFAULT_CAREERS } from "@website/lib/careers-content";
+import { DEFAULT_POLICIES } from "@website/lib/policies-content";
 import {
-  CLINIC_STATS,
   GALLERY_PROMOTIONS,
   GALLERY_TESTIMONIALS,
-  HERO_SLIDES,
-  HOME_DOCTORS,
   HOME_PROMOTIONS,
 } from "@website/lib/home-content";
 import { DEFAULT_SITE } from "./defaults";
@@ -24,15 +25,14 @@ export const WEBSITE_DEFAULTS: Record<SiteContentKey, unknown> = {
   service_menu: SERVICE_MENU_GROUPS,
   about: ABOUT_SECTIONS,
   promotions: PROMOTIONS,
-  home: {
-    heroSlides: HERO_SLIDES,
-    clinicStats: CLINIC_STATS,
-    homeDoctors: HOME_DOCTORS,
-  },
+  home: DEFAULT_HOME_CMS,
   media: {
     homePromotions: HOME_PROMOTIONS,
     galleryPromotions: GALLERY_PROMOTIONS,
     galleryTestimonials: GALLERY_TESTIMONIALS,
   },
+  faq: DEFAULT_FAQ,
+  careers: DEFAULT_CAREERS,
+  policies: DEFAULT_POLICIES,
   media_library: { items: [] },
 };

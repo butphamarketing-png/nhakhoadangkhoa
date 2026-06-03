@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import MediaPicker from "@/components/MediaPicker";
 import { useContent } from "@/lib/use-content";
 import { WEBSITE_DEFAULTS } from "@/lib/website-imports";
 import { useToast } from "@/hooks/use-toast";
@@ -98,10 +99,7 @@ export default function GioiThieuPage() {
                   }
                 />
               </div>
-              <div>
-                <Label>Ảnh (URL)</Label>
-                <Input value={edit.image ?? ""} onChange={(e) => setEdit({ ...edit, image: e.target.value })} />
-              </div>
+              <MediaPicker label="Ảnh minh họa" value={edit.image ?? ""} onChange={(image) => setEdit({ ...edit, image })} />
               <Button
                 className="w-full gold-gradient text-white border-0"
                 onClick={() => {

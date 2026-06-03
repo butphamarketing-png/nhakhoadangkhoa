@@ -1,39 +1,43 @@
 import { motion } from "framer-motion";
-import { WHY_CHOOSE } from "@/lib/home-content";
-import { IMAGES } from "@/lib/images";
+import { useHomeCms } from "@/lib/cms-provider";
+import { resolveWhyChooseIcon } from "@/lib/why-choose-icons";
 import MediaFrame from "@/components/ui/MediaFrame";
 import { fadeUp } from "@/lib/motion";
 
 export default function WhyChooseSection() {
+  const { whyChooseImage, whyChooseSection } = useHomeCms();
   return (
     <section className="section-padding navy-gradient overflow-hidden relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(200,155,60,0.12),transparent_60%)]" />
       <div className="container-custom container-narrow relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <p className="text-[#E8C46A] text-xs font-bold uppercase tracking-[0.35em] mb-3">Lý do chọn chúng tôi</p>
+            <p className="text-[#E8C46A] text-xs font-bold uppercase tracking-[0.35em] mb-3">{whyChooseSection.eyebrow}</p>
             <h2 className="font-display text-[clamp(1.75rem,3vw,2.75rem)] font-bold text-[#C89B3C] mb-1 leading-tight">
-              TẠI SAO CHỌN
+              {whyChooseSection.titleLine1}
             </h2>
             <p className="font-display text-[clamp(1.5rem,2.5vw,2.25rem)] font-bold text-white mb-10 leading-tight">
-              NHA KHOA ĐĂNG KHOA?
+              {whyChooseSection.titleLine2}
             </p>
             <div className="grid grid-cols-3 gap-x-4 gap-y-8 max-w-md">
-              {WHY_CHOOSE.map(({ icon: Icon, label }, i) => (
-                <motion.div
-                  key={label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.06 }}
-                  className="group flex flex-col items-center text-center gap-3"
-                >
-                  <div className="w-14 h-14 rounded-full border border-[#C89B3C]/60 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:gold-gradient group-hover:border-transparent transition-all duration-300">
-                    <Icon className="w-6 h-6 text-[#E8C46A] group-hover:text-white transition-colors" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-white/90 text-[11px] font-medium leading-snug">{label}</span>
-                </motion.div>
-              ))}
+              {whyChooseSection.items.map(({ icon, label }, i) => {
+                const Icon = resolveWhyChooseIcon(icon);
+                return (
+                  <motion.div
+                    key={`${label}-${i}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06 }}
+                    className="group flex flex-col items-center text-center gap-3"
+                  >
+                    <div className="w-14 h-14 rounded-full border border-[#C89B3C]/60 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:gold-gradient group-hover:border-transparent transition-all duration-300">
+                      <Icon className="w-6 h-6 text-[#E8C46A] group-hover:text-white transition-colors" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-white/90 text-[11px] font-medium leading-snug">{label}</span>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -46,7 +50,7 @@ export default function WhyChooseSection() {
           >
             <div className="gradient-border rounded-[24px] p-[2px] overflow-hidden shadow-xl">
               <MediaFrame
-                src={IMAGES.coverClinic}
+                src={whyChooseImage}
                 alt="Không gian phòng khám Nha Khoa Đăng Khoa"
                 aspect="video"
                 className="rounded-[22px]"

@@ -34,7 +34,7 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
   {
     title: "Nội dung website",
     items: [
-      { label: "Slideshow trang chủ", icon: Home, href: "/trang-chu" },
+      { label: "Trang chủ", icon: Home, href: "/trang-chu" },
       { label: "Thư viện ảnh", icon: Image, href: "/thu-vien" },
       { label: "Upload ảnh", icon: Image, href: "/media-library" },
       { label: "Giới thiệu", icon: BookOpen, href: "/gioi-thieu" },
@@ -45,6 +45,9 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { label: "Bác sĩ", icon: UserCheck, href: "/bac-si" },
       { label: "Khách hàng", icon: Users, href: "/khach-hang" },
       { label: "Ưu đãi", icon: Gift, href: "/uu-dai" },
+      { label: "FAQ", icon: FileText, href: "/faq-admin" },
+      { label: "Tuyển dụng", icon: FileText, href: "/tuyen-dung-admin" },
+      { label: "Chính sách", icon: FileText, href: "/chinh-sach" },
     ],
   },
   {

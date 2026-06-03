@@ -10,6 +10,9 @@ export const SITE_CONTENT_KEYS = [
   "promotions",
   "home",
   "media",
+  "faq",
+  "careers",
+  "policies",
   "media_library",
 ] as const;
 
@@ -25,8 +28,11 @@ export const CMS_LABELS: Record<SiteContentKey, string> = {
   service_menu: "Menu dịch vụ",
   about: "Giới thiệu",
   promotions: "Ưu đãi",
-  home: "Trang chủ",
+  home: "Trang chủ (slideshow + ảnh)",
   media: "Thư viện ảnh / Banner",
+  faq: "FAQ",
+  careers: "Tuyển dụng",
+  policies: "Chính sách & điều khoản",
   media_library: "Media Library (SEO)",
 };
 
@@ -42,5 +48,8 @@ export const CMS_ROUTES: Record<SiteContentKey, string> = {
   promotions: "/uu-dai",
   home: "/trang-chu",
   media: "/thu-vien",
+  faq: "/faq-admin",
+  careers: "/tuyen-dung-admin",
+  policies: "/chinh-sach",
   media_library: "/media-library",
 };

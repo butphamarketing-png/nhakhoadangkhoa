@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import SectionTitle from "./SectionTitle";
-import { SMILE_MODELS } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
+import { cmsImageSrc } from "@/lib/media-url";
 import { fadeUp } from "@/lib/motion";
 
 function ToothIcon({ active }: { active: boolean }) {
@@ -20,6 +21,7 @@ function ToothIcon({ active }: { active: boolean }) {
 }
 
 export default function SmileDesignSection() {
+  const { smileModels: SMILE_MODELS } = useHomeCms();
   const [activeId, setActiveId] = useState(SMILE_MODELS[0]?.id ?? "m1");
   const active = SMILE_MODELS.find((m) => m.id === activeId) ?? SMILE_MODELS[0];
 
@@ -69,7 +71,7 @@ export default function SmileDesignSection() {
             <div className="relative mx-auto w-full max-w-[280px] aspect-[3/4] rounded-2xl overflow-hidden border-2 border-[#C89B3C]/40 shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
               <img
                 key={active?.id}
-                src={active?.image}
+                src={cmsImageSrc(active?.image ?? "")}
                 alt={active?.title ?? "Thiết kế nụ cười"}
                 className="w-full h-full object-cover object-top transition-opacity duration-500"
               />

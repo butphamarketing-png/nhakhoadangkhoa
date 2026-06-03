@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import MediaPicker from "@/components/MediaPicker";
 
 export default function BaiVietPage() {
   const fallback = WEBSITE_DEFAULTS.blog as BlogPostAdmin[];
@@ -167,10 +168,7 @@ export default function BaiVietPage() {
                 <Label>Mô tả ngắn</Label>
                 <Textarea value={edit.excerpt} onChange={(e) => setEdit({ ...edit, excerpt: e.target.value })} rows={3} />
               </div>
-              <div>
-                <Label>Ảnh (đường dẫn)</Label>
-                <Input value={edit.image} onChange={(e) => setEdit({ ...edit, image: e.target.value })} />
-              </div>
+              <MediaPicker label="Ảnh bài viết" value={edit.image} onChange={(image) => setEdit({ ...edit, image })} />
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <Label>Ngày</Label>

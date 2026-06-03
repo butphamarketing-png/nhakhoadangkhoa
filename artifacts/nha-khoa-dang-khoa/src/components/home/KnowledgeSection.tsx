@@ -1,13 +1,14 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
-import { BLOG_POSTS } from "@/lib/blog-posts";
+import { useBlogPosts } from "@/lib/use-blog-posts";
 import SectionTitle from "./SectionTitle";
 import { fadeUp } from "@/lib/motion";
 import BlogCard from "@/components/blog/BlogCard";
 
 export default function KnowledgeSection() {
-  const posts = BLOG_POSTS.slice(0, 3);
+  const { posts } = useBlogPosts();
+  const slice = posts.slice(0, 3);
 
   return (
     <section className="section-padding section-cream section-texture">
@@ -16,7 +17,7 @@ export default function KnowledgeSection() {
           KIẾN THỨC NHA KHOA
         </SectionTitle>
         <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-          {posts.map((post, i) => (
+          {slice.map((post, i) => (
             <motion.div
               key={post.id}
               initial="hidden"

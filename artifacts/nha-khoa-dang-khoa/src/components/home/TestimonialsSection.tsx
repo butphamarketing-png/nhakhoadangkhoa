@@ -3,11 +3,13 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import SectionTitle from "./SectionTitle";
-import { TESTIMONIAL_TABS } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
+import { cmsImageSrc } from "@/lib/media-url";
 import { fadeUp } from "@/lib/motion";
 
 export default function TestimonialsSection() {
-  const [tab, setTab] = useState(TESTIMONIAL_TABS[0].id);
+  const { testimonialTabs: TESTIMONIAL_TABS } = useHomeCms();
+  const [tab, setTab] = useState(TESTIMONIAL_TABS[0]?.id ?? "rang-su");
   const [page, setPage] = useState(0);
   const active = TESTIMONIAL_TABS.find((t) => t.id === tab)!;
   const items = active.items;
@@ -86,7 +88,7 @@ export default function TestimonialsSection() {
                     <div className="card-luxury overflow-hidden !p-0 !translate-y-0 hover:!translate-y-[-6px] !rounded-[26px] h-full flex flex-col">
                       <div className="aspect-[4/3] overflow-hidden bg-[#F8F6F1] relative">
                         <img
-                          src={item.image}
+                          src={cmsImageSrc(item.image)}
                           alt={item.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />

@@ -10,25 +10,21 @@ import { ABOUT_SECTIONS, type AboutSection } from "./about-content";
 import { buildMainServiceCards, type MainServiceCard } from "./main-services";
 import { SERVICE_MENU_GROUPS, type ServiceMenuGroup } from "./services-menu";
 import {
-  CLINIC_STATS,
   GALLERY_PROMOTIONS,
   GALLERY_TESTIMONIALS,
-  HERO_SLIDES,
-  HOME_DOCTORS,
   HOME_PROMOTIONS,
-  type HeroSlide,
 } from "./home-content";
+import { DEFAULT_HOME_CMS, mergeHomeCms, type HomeCmsData } from "./home-cms-defaults";
+import { DEFAULT_FAQ, type FaqCategory } from "./faq-content";
+import { DEFAULT_CAREERS, type CareersCms } from "./careers-content";
+import { DEFAULT_POLICIES, type PolicyPage } from "./policies-content";
 import { BLOG_POSTS, type BlogPost } from "./blog-posts";
 import { fetchPublicContent } from "./cms";
 import { setStoredPrices } from "./pricing-data";
 import type { BrandInfo } from "./brand-context";
 import { BRAND } from "./constants";
 
-export type HomeCms = {
-  heroSlides: HeroSlide[];
-  clinicStats: { value: string; label: string }[];
-  homeDoctors: typeof HOME_DOCTORS;
-};
+export type HomeCms = HomeCmsData;
 
 export type MediaCms = {
   homePromotions: typeof HOME_PROMOTIONS;
@@ -46,8 +42,11 @@ type CmsCache = Partial<{
   service_menu: ServiceMenuGroup[];
   about: AboutSection[];
   promotions: typeof PROMOTIONS;
-  home: HomeCms;
+  home: Partial<HomeCmsData>;
   media: MediaCms;
+  faq: FaqCategory[];
+  careers: CareersCms;
+  policies: PolicyPage[];
 }>;
 
 const CmsContext = createContext<{ cache: CmsCache; ready: boolean }>({
@@ -67,6 +66,9 @@ const CMS_KEYS = [
   "promotions",
   "home",
   "media",
+  "faq",
+  "careers",
+  "policies",
 ] as const;
 
 export function CmsProvider({ children }: { children: ReactNode }) {
@@ -144,12 +146,21 @@ export function usePromotions() {
   return useCmsData("promotions", PROMOTIONS);
 }
 
-export function useHomeCms(): HomeCms {
-  return useCmsData("home", {
-    heroSlides: HERO_SLIDES,
-    clinicStats: CLINIC_STATS,
-    homeDoctors: HOME_DOCTORS,
-  });
+export function useHomeCms(): HomeCmsData {
+  const partial = useCms().cache.home;
+  return mergeHomeCms(partial);
+}
+
+export function useFaqCms() {
+  return useCmsData("faq", DEFAULT_FAQ);
+}
+
+export function useCareersCms() {
+  return useCmsData("careers", DEFAULT_CAREERS);
+}
+
+export function usePoliciesCms() {
+  return useCmsData("policies", DEFAULT_POLICIES);
 }
 
 export function useSiteOverrides(): Partial<BrandInfo> {

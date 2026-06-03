@@ -1,11 +1,12 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { ABOUT_PROMO_IMAGE } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
 import MediaFrame from "@/components/ui/MediaFrame";
 import { fadeUp } from "@/lib/motion";
 
 export default function AboutSection() {
+  const { aboutImage, aboutSection } = useHomeCms();
   return (
     <section className="section-padding section-cream section-texture">
       <div className="container-custom container-narrow">
@@ -17,26 +18,23 @@ export default function AboutSection() {
             variants={fadeUp}
             className="flex flex-col justify-center"
           >
-            <p className="heading-gold text-xs uppercase tracking-[0.35em] mb-4">Giới thiệu</p>
+            <p className="heading-gold text-xs uppercase tracking-[0.35em] mb-4">{aboutSection.eyebrow}</p>
             <h2 className="h2-section mb-5">
-              VỀ NHA KHOA
+              {aboutSection.titleLine1}
               <br />
-              <span className="gold-shimmer">ĐĂNG KHOA</span>
+              <span className="gold-shimmer">{aboutSection.titleHighlight}</span>
             </h2>
-            <p className="text-body mb-6">
-              Hệ thống nha khoa uy tín tại Tây Ninh — đội ngũ bác sĩ giàu kinh nghiệm,
-              trang thiết bị hiện đại và quy trình chuẩn y khoa quốc tế.
-            </p>
+            <p className="text-body mb-6">{aboutSection.body}</p>
             <div className="flex flex-wrap gap-3 mb-8">
-              {["ISO vô trùng", "Vật liệu chính hãng", "Bảo hành dài hạn"].map((tag) => (
+              {aboutSection.tags.map((tag) => (
                 <span key={tag} className="pill-tag">
                   {tag}
                 </span>
               ))}
             </div>
-            <Link href="/gioi-thieu">
+            <Link href={aboutSection.ctaHref}>
               <button type="button" className="btn-gold inline-flex items-center !h-12 text-sm" data-testid="button-about-more">
-                TÌM HIỂU THÊM
+                {aboutSection.ctaLabel}
                 <ChevronRight className="w-4 h-4 ml-1" />
               </button>
             </Link>
@@ -51,7 +49,7 @@ export default function AboutSection() {
           >
             <div className="gradient-border rounded-[24px] p-[2px] overflow-hidden hero-image-glow">
               <MediaFrame
-                src={ABOUT_PROMO_IMAGE}
+                src={aboutImage}
                 alt="10.000+ ca răng sứ thành công — BS Nguyễn Đăng Khoa"
                 aspect="wide"
                 className="rounded-[22px]"

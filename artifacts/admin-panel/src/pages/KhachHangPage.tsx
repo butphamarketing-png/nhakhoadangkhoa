@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import MediaPicker from "@/components/MediaPicker";
 import { useContent } from "@/lib/use-content";
 import { WEBSITE_DEFAULTS } from "@/lib/website-imports";
 import { useToast } from "@/hooks/use-toast";
@@ -108,10 +109,7 @@ export default function KhachHangPage() {
                 <Label>Dịch vụ</Label>
                 <Input value={edit.service} onChange={(e) => setEdit({ ...edit, service: e.target.value })} />
               </div>
-              <div>
-                <Label>Ảnh (URL)</Label>
-                <Input value={edit.avatar} onChange={(e) => setEdit({ ...edit, avatar: e.target.value })} />
-              </div>
+              <MediaPicker label="Ảnh đại diện" value={edit.avatar} onChange={(avatar) => setEdit({ ...edit, avatar })} />
               <div>
                 <Label>Nội dung</Label>
                 <Textarea value={edit.text} onChange={(e) => setEdit({ ...edit, text: e.target.value })} rows={4} />

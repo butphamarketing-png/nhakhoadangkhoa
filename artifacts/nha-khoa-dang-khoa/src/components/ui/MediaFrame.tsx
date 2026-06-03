@@ -1,4 +1,6 @@
 /** Khung ảnh chuẩn — object-cover, không kéo méo ảnh nhỏ */
+import { cmsImageSrc } from "@/lib/media-url";
+
 type MediaFrameProps = {
   src: string;
   alt: string;
@@ -19,7 +21,7 @@ export default function MediaFrame({ src, alt, className = "", aspect = "video" 
       className={`relative overflow-hidden bg-[#F0EDE6] ${aspectClass[aspect]} ${className}`}
     >
       <img
-        src={src}
+        src={cmsImageSrc(src)}
         alt={alt}
         className="absolute inset-0 w-full h-full object-cover object-center"
         loading="lazy"

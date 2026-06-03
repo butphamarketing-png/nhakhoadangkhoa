@@ -60,16 +60,16 @@ function Router() {
         <Route path="/dat-lich" component={DatLichPage} />
         <Route path="/bac-si/:id" component={BacSiPage} />
         <Route path="/chinh-sach-bao-hanh">
-          {() => <ChinhSachPage title="Chính sách bảo hành" />}
+          {() => <ChinhSachPage slug="chinh-sach-bao-hanh" />}
         </Route>
         <Route path="/chinh-sach-thanh-toan">
-          {() => <ChinhSachPage title="Chính sách thanh toán" />}
+          {() => <ChinhSachPage slug="chinh-sach-thanh-toan" />}
         </Route>
         <Route path="/dieu-khoan">
-          {() => <ChinhSachPage title="Điều khoản dịch vụ" />}
+          {() => <ChinhSachPage slug="dieu-khoan" />}
         </Route>
         <Route path="/bao-mat">
-          {() => <ChinhSachPage title="Chính sách bảo mật" />}
+          {() => <ChinhSachPage slug="bao-mat" />}
         </Route>
         <Route component={NotFoundPage} />
       </Switch>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import PaginationBar from "@/components/ui/PaginationBar";
-import { FEATURED_SERVICES } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
 import { fadeUp } from "@/lib/motion";
 import MediaFrame from "@/components/ui/MediaFrame";
 
@@ -43,6 +43,7 @@ function ServiceCard({
 }
 
 export default function FeaturedServicesSection() {
+  const { featuredServices: FEATURED_SERVICES } = useHomeCms();
   const [page, setPage] = useState(1);
   const totalPages = Math.max(1, Math.ceil(FEATURED_SERVICES.length / PER_PAGE));
   const safePage = Math.min(page, totalPages);

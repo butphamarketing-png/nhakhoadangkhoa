@@ -19,6 +19,9 @@ import UuDaiPage from "@/pages/UuDaiPage";
 import TrangChuPage from "@/pages/TrangChuPage";
 import ThuVienPage from "@/pages/ThuVienPage";
 import MediaLibraryPage from "@/pages/MediaLibraryPage";
+import FaqAdminPage from "@/pages/FaqAdminPage";
+import TuyenDungAdminPage from "@/pages/TuyenDungAdminPage";
+import ChinhSachAdminPage from "@/pages/ChinhSachAdminPage";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +43,9 @@ function Router() {
       <Route path="/trang-chu" component={TrangChuPage} />
       <Route path="/thu-vien" component={ThuVienPage} />
       <Route path="/media-library" component={MediaLibraryPage} />
+      <Route path="/faq-admin" component={FaqAdminPage} />
+      <Route path="/tuyen-dung-admin" component={TuyenDungAdminPage} />
+      <Route path="/chinh-sach" component={ChinhSachAdminPage} />
       <Route>
         <Redirect to="/" />
       </Route>

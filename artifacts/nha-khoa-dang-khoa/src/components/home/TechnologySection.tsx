@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { TECHNOLOGY_ITEMS } from "@/lib/home-content";
+import { useHomeCms } from "@/lib/cms-provider";
 import { fadeUp } from "@/lib/motion";
 import MediaFrame from "@/components/ui/MediaFrame";
 
@@ -34,6 +34,7 @@ function TechCard({
 }
 
 export default function TechnologySection() {
+  const { technologyItems: TECHNOLOGY_ITEMS } = useHomeCms();
   return (
     <section id="cong-nghe" className="section-padding section-cream section-texture overflow-hidden scroll-mt-32">
       <div className="container-custom container-narrow">
