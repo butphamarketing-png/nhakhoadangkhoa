@@ -20,6 +20,15 @@ router.get("/healthz", (_req, res) => {
 
 /** Kiểm tra bảng DB — mở /api/healthz/db để debug lỗi 500 / upload */
 router.get("/healthz/db", async (_req, res) => {
+  const dbHost = (() => {
+    try {
+      const u = new URL(process.env.DATABASE_URL?.replace(/^postgresql:/, "https:") ?? "");
+      return u.hostname || undefined;
+    } catch {
+      return undefined;
+    }
+  })();
+
   const missing: string[] = [];
   for (const table of REQUIRED_TABLES) {
     try {
@@ -31,9 +40,10 @@ router.get("/healthz/db", async (_req, res) => {
   res.json({
     ok: missing.length === 0,
     missing,
+    dbHost,
     hint:
       missing.length > 0
-        ? "Chạy docs/supabase-init.sql trong Supabase → SQL Editor (một lần, không qua Vercel)."
+        ? "Chạy TOÀN BỘ docs/supabase-init.sql trong Supabase → SQL Editor. dbHost phải trùng project Supabase (Settings → Database → Host)."
         : undefined,
   });
 });
