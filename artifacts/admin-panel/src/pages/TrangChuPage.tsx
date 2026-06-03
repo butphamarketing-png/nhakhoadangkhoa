@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/AdminLayout";
+import MediaPicker from "@/components/MediaPicker";
 import { motion } from "framer-motion";
 import { Download, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -45,29 +46,23 @@ export default function TrangChuPage() {
         <section className="bg-white rounded-2xl border p-5 space-y-3">
           <h2 className="font-extrabold text-[#0D1B2A]">Banner Hero</h2>
           {data.heroSlides.map((slide, i) => (
-            <div key={slide.id} className="grid md:grid-cols-2 gap-3">
-              <div>
-                <Label>Ảnh URL</Label>
-                <Input
-                  value={slide.src}
-                  onChange={(e) => {
-                    const slides = [...data.heroSlides];
-                    slides[i] = { ...slide, src: e.target.value };
-                    setData({ ...data, heroSlides: slides });
-                  }}
-                />
-              </div>
-              <div>
-                <Label>Alt text</Label>
-                <Input
-                  value={slide.alt}
-                  onChange={(e) => {
-                    const slides = [...data.heroSlides];
-                    slides[i] = { ...slide, alt: e.target.value };
-                    setData({ ...data, heroSlides: slides });
-                  }}
-                />
-              </div>
+            <div key={slide.id} className="grid md:grid-cols-2 gap-3 pb-4 border-b last:border-0">
+              <MediaPicker
+                label={`Banner ${i + 1}`}
+                compact
+                value={slide.src}
+                altValue={slide.alt}
+                onChange={(src) => {
+                  const slides = [...data.heroSlides];
+                  slides[i] = { ...slide, src };
+                  setData({ ...data, heroSlides: slides });
+                }}
+                onAltChange={(alt) => {
+                  const slides = [...data.heroSlides];
+                  slides[i] = { ...slide, alt };
+                  setData({ ...data, heroSlides: slides });
+                }}
+              />
             </div>
           ))}
         </section>
@@ -118,17 +113,16 @@ export default function TrangChuPage() {
                   }}
                 />
               </div>
-              <div>
-                <Label>Ảnh URL</Label>
-                <Input
-                  value={d.image}
-                  onChange={(e) => {
-                    const homeDoctors = [...data.homeDoctors];
-                    homeDoctors[i] = { ...d, image: e.target.value };
-                    setData({ ...data, homeDoctors });
-                  }}
-                />
-              </div>
+              <MediaPicker
+                label="Ảnh bác sĩ"
+                compact
+                value={d.image}
+                onChange={(image) => {
+                  const homeDoctors = [...data.homeDoctors];
+                  homeDoctors[i] = { ...d, image };
+                  setData({ ...data, homeDoctors });
+                }}
+              />
             </div>
           ))}
         </section>

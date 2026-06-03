@@ -1,10 +1,12 @@
 import { useState } from "react";
 import AdminLayout from "@/components/AdminLayout";
+import MediaPicker from "@/components/MediaPicker";
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import PageToolbar from "@/components/PageToolbar";
+import { cmsImageSrc } from "@/lib/media-api";
 import { useContent } from "@/lib/use-content";
 import { WEBSITE_DEFAULTS } from "@/lib/website-imports";
 import { useToast } from "@/hooks/use-toast";
@@ -33,6 +35,9 @@ export default function ThuVienPage() {
   return (
     <AdminLayout title="Thư viện ảnh & Banner">
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
+        <p className="text-sm text-gray-500 mb-4">
+          Kéo thả hoặc tải ảnh từ máy cho banner và gallery. Nhớ bấm <strong>Lưu thư viện</strong> sau khi đổi ảnh.
+        </p>
         <PageToolbar
           onSave={persist}
           onImport={() => save(fallback)}
@@ -61,13 +66,14 @@ export default function ThuVienPage() {
                     }}
                   />
                 </div>
-                <div>
-                  <Label>Ảnh URL</Label>
-                  <Input
+                <div className="md:col-span-2">
+                  <MediaPicker
+                    label="Ảnh banner"
+                    compact
                     value={item.image}
-                    onChange={(e) => {
+                    onChange={(image) => {
                       const homePromotions = [...data.homePromotions];
-                      homePromotions[i] = { ...item, image: e.target.value };
+                      homePromotions[i] = { ...item, image };
                       setData({ ...data, homePromotions });
                     }}
                   />
@@ -101,7 +107,9 @@ export default function ThuVienPage() {
           <TabsContent value="gallery-promo" className="grid sm:grid-cols-2 gap-4">
             {data.galleryPromotions.map((item, i) => (
               <div key={item.id} className="bg-white rounded-2xl border p-4 space-y-2">
-                <img src={item.image} alt="" className="w-full h-28 object-cover rounded-xl bg-gray-100" />
+                {item.image && (
+                  <img src={cmsImageSrc(item.image)} alt="" className="w-full h-28 object-cover rounded-xl bg-gray-100" />
+                )}
                 <Input
                   placeholder="Tiêu đề"
                   value={item.title}
@@ -111,12 +119,13 @@ export default function ThuVienPage() {
                     setData({ ...data, galleryPromotions });
                   }}
                 />
-                <Input
-                  placeholder="URL ảnh"
+                <MediaPicker
+                  label="Ảnh"
+                  compact
                   value={item.image}
-                  onChange={(e) => {
+                  onChange={(image) => {
                     const galleryPromotions = [...data.galleryPromotions];
-                    galleryPromotions[i] = { ...item, image: e.target.value };
+                    galleryPromotions[i] = { ...item, image };
                     setData({ ...data, galleryPromotions });
                   }}
                 />
@@ -127,7 +136,9 @@ export default function ThuVienPage() {
           <TabsContent value="gallery-kh" className="grid sm:grid-cols-2 gap-4">
             {data.galleryTestimonials.map((item, i) => (
               <div key={item.id} className="bg-white rounded-2xl border p-4 space-y-2">
-                <img src={item.image} alt="" className="w-full h-28 object-cover rounded-xl bg-gray-100" />
+                {item.image && (
+                  <img src={cmsImageSrc(item.image)} alt="" className="w-full h-28 object-cover rounded-xl bg-gray-100" />
+                )}
                 <Input
                   placeholder="Tên / mô tả"
                   value={item.name}
@@ -137,12 +148,13 @@ export default function ThuVienPage() {
                     setData({ ...data, galleryTestimonials });
                   }}
                 />
-                <Input
-                  placeholder="URL ảnh"
+                <MediaPicker
+                  label="Ảnh"
+                  compact
                   value={item.image}
-                  onChange={(e) => {
+                  onChange={(image) => {
                     const galleryTestimonials = [...data.galleryTestimonials];
-                    galleryTestimonials[i] = { ...item, image: e.target.value };
+                    galleryTestimonials[i] = { ...item, image };
                     setData({ ...data, galleryTestimonials });
                   }}
                 />

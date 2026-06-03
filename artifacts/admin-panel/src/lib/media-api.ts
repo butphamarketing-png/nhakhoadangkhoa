@@ -13,7 +13,15 @@ export type MediaAsset = {
 
 export function resolveMediaUrl(publicUrl: string): string {
   if (publicUrl.startsWith("http") || publicUrl.startsWith("data:")) return publicUrl;
-  return `${getApiBase()}${publicUrl}`;
+  return `${getApiBase()}${publicUrl.startsWith("/") ? publicUrl : `/${publicUrl}`}`;
+}
+
+/** URL hiển thị preview (hỗ trợ /images/ local và /api/media/) */
+export function cmsImageSrc(url: string): string {
+  if (!url) return "";
+  if (url.startsWith("http") || url.startsWith("data:")) return url;
+  if (url.startsWith("/api/media/")) return resolveMediaUrl(url);
+  return url;
 }
 
 export const mediaApi = {

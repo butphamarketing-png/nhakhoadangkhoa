@@ -36,7 +36,7 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
     items: [
       { label: "Trang chủ", icon: Home, href: "/trang-chu" },
       { label: "Thư viện ảnh", icon: Image, href: "/thu-vien" },
-      { label: "Media Library", icon: Image, href: "/media-library" },
+      { label: "Upload ảnh", icon: Image, href: "/media-library" },
       { label: "Giới thiệu", icon: BookOpen, href: "/gioi-thieu" },
       { label: "Menu dịch vụ", icon: Scissors, href: "/dich-vu" },
       { label: "Catalog dịch vụ", icon: Scissors, href: "/catalog-dich-vu" },

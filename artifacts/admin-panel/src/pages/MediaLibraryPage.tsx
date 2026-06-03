@@ -1,84 +1,109 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import AdminLayout from "@/components/AdminLayout";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import PageToolbar from "@/components/PageToolbar";
-import { useContent } from "@/lib/use-content";
-import { createMediaItem, EMPTY_MEDIA_LIBRARY, type MediaLibrary } from "@/lib/media-library";
+import { Search, Trash2, Upload } from "lucide-react";
+import { mediaApi, resolveMediaUrl } from "@/lib/media-api";
 import { useToast } from "@/hooks/use-toast";
-import { Search, Trash2 } from "lucide-react";
 
 export default function MediaLibraryPage() {
-  const { data, setData, saving, save } = useContent<MediaLibrary>("media_library", EMPTY_MEDIA_LIBRARY);
   const [search, setSearch] = useState("");
-  const [newUrl, setNewUrl] = useState("");
-  const [newAlt, setNewAlt] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const qc = useQueryClient();
   const { toast } = useToast();
 
-  const filtered = data.items.filter(
-    (item) =>
-      !search ||
-      item.name.toLowerCase().includes(search.toLowerCase()) ||
-      item.alt.toLowerCase().includes(search.toLowerCase()) ||
-      item.url.toLowerCase().includes(search.toLowerCase()),
-  );
+  const { data: items = [], isLoading, refetch } = useQuery({
+    queryKey: ["media-library", search],
+    queryFn: () => mediaApi.list(search || undefined),
+  });
 
-  const persist = async (next: MediaLibrary) => {
+  const onFiles = async (files: FileList | null) => {
+    if (!files?.length) return;
+    setUploading(true);
     try {
-      await save(next);
-      toast({ title: "Đã lưu thư viện media" });
+      for (const file of Array.from(files)) {
+        await mediaApi.upload(file, file.name);
+      }
+      await qc.invalidateQueries({ queryKey: ["media-library"] });
+      toast({ title: `Đã tải ${files.length} ảnh lên` });
+    } catch (e) {
+      toast({ title: "Lỗi upload", description: (e as Error).message, variant: "destructive" });
+    } finally {
+      setUploading(false);
+      setDragOver(false);
+    }
+  };
+
+  const removeItem = async (id: string) => {
+    if (!confirm("Xóa ảnh này khỏi thư viện?")) return;
+    try {
+      await mediaApi.remove(id);
+      await refetch();
+      toast({ title: "Đã xóa ảnh" });
     } catch (e) {
       toast({ title: "Lỗi", description: (e as Error).message, variant: "destructive" });
     }
   };
 
-  const addItem = () => {
-    if (!newUrl.trim()) return;
-    const next = { items: [createMediaItem(newUrl.trim(), newAlt.trim()), ...data.items] };
-    setData(next);
-    persist(next);
-    setNewUrl("");
-    setNewAlt("");
-  };
-
-  const updateAlt = (id: string, alt: string) => {
-    const items = data.items.map((item) => (item.id === id ? { ...item, alt } : item));
-    const next = { items };
-    setData(next);
-  };
-
-  const removeItem = (id: string) => {
-    const next = { items: data.items.filter((item) => item.id !== id) };
-    setData(next);
-    persist(next);
+  const updateAlt = async (id: string, alt: string) => {
+    try {
+      await mediaApi.update(id, { alt });
+      await refetch();
+    } catch (e) {
+      toast({ title: "Lỗi", description: (e as Error).message, variant: "destructive" });
+    }
   };
 
   return (
     <AdminLayout title="Media Library">
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
         <p className="text-sm text-gray-500">
-          Quản lý ảnh dùng chung cho bài dịch vụ, banner và nội dung SEO. Upload qua URL — không cần tải lại nhiều lần.
+          Tải ảnh từ máy (kéo thả hoặc chọn file) — dùng cho banner, dịch vụ, bài viết và SEO. Ảnh lưu trên database, website hiển thị tự động.
         </p>
 
-        <PageToolbar onSave={() => persist(data)} saving={saving} saveLabel="Lưu thay đổi" />
-
-        <div className="bg-white rounded-2xl border p-5 space-y-3">
-          <p className="font-bold text-sm">Thêm ảnh mới</p>
-          <div className="grid md:grid-cols-2 gap-3">
-            <div>
-              <Label>URL ảnh</Label>
-              <Input value={newUrl} onChange={(e) => setNewUrl(e.target.value)} placeholder="https://... hoặc /images/..." className="mt-1 rounded-xl" />
-            </div>
-            <div>
-              <Label>Alt text (SEO)</Label>
-              <Input value={newAlt} onChange={(e) => setNewAlt(e.target.value)} placeholder="Mô tả ảnh" className="mt-1 rounded-xl" />
-            </div>
+        <div className="bg-white rounded-2xl border p-5 space-y-4">
+          <p className="font-bold text-sm">Tải ảnh mới</p>
+          <div
+            className={`border-2 border-dashed rounded-2xl p-10 text-center transition-colors ${
+              dragOver ? "border-[#C89B3C] bg-[#C89B3C]/5" : "border-gray-200 bg-gray-50"
+            }`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragOver(true);
+            }}
+            onDragLeave={() => setDragOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              void onFiles(e.dataTransfer.files);
+            }}
+          >
+            <Upload className="w-10 h-10 mx-auto text-[#C89B3C] mb-3" />
+            <p className="text-gray-700 font-medium mb-1">Kéo thả ảnh vào đây</p>
+            <p className="text-sm text-gray-400 mb-4">hoặc chọn file từ máy tính</p>
+            <Button
+              type="button"
+              className="gold-gradient text-white border-0 rounded-xl gap-2"
+              disabled={uploading}
+              onClick={() => fileRef.current?.click()}
+            >
+              <Upload className="w-4 h-4" />
+              {uploading ? "Đang tải..." : "Chọn ảnh từ máy"}
+            </Button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*"
+              multiple
+              className="hidden"
+              onChange={(e) => void onFiles(e.target.files)}
+            />
+            <p className="text-xs text-gray-400 mt-3">JPG, PNG, WebP, GIF — tối đa 5MB / ảnh</p>
           </div>
-          <Button type="button" className="gold-gradient text-white border-0 rounded-xl" onClick={addItem}>
-            Thêm vào thư viện
-          </Button>
         </div>
 
         <div className="relative">
@@ -86,39 +111,50 @@ export default function MediaLibraryPage() {
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Tìm kiếm theo tên, alt, URL..."
+            placeholder="Tìm kiếm theo tên, alt..."
             className="pl-10 rounded-xl"
           />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filtered.map((item) => (
-            <div key={item.id} className="bg-white rounded-xl border overflow-hidden group">
-              <div className="aspect-square relative">
-                <img src={item.url} alt={item.alt} className="w-full h-full object-cover" />
-                <button
-                  type="button"
-                  className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                  onClick={() => removeItem(item.id)}
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                </button>
+        {isLoading ? (
+          <p className="text-center text-gray-400 py-12">Đang tải thư viện...</p>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {items.map((item) => (
+              <div key={item.id} className="bg-white rounded-xl border overflow-hidden group">
+                <div className="aspect-square relative">
+                  <img
+                    src={resolveMediaUrl(item.publicUrl)}
+                    alt={item.alt}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => removeItem(item.id)}
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <div className="p-3 space-y-2">
+                  <Label className="text-[10px] text-gray-400">Alt text (SEO)</Label>
+                  <Input
+                    defaultValue={item.alt}
+                    onBlur={(e) => {
+                      if (e.target.value !== item.alt) updateAlt(item.id, e.target.value);
+                    }}
+                    placeholder="Mô tả ảnh"
+                    className="text-xs rounded-lg"
+                  />
+                  <p className="text-[10px] text-gray-400 truncate">{item.filename}</p>
+                </div>
               </div>
-              <div className="p-3 space-y-2">
-                <Input
-                  value={item.alt}
-                  onChange={(e) => updateAlt(item.id, e.target.value)}
-                  placeholder="Alt text"
-                  className="text-xs rounded-lg"
-                />
-                <p className="text-[10px] text-gray-400 truncate font-mono">{item.url}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
-        {filtered.length === 0 && (
-          <p className="text-center text-gray-400 py-12">Chưa có ảnh trong thư viện.</p>
+        {!isLoading && items.length === 0 && (
+          <p className="text-center text-gray-400 py-12">Chưa có ảnh — kéo thả hoặc bấm &quot;Chọn ảnh từ máy&quot; ở trên.</p>
         )}
       </motion.div>
     </AdminLayout>

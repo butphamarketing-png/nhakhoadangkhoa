@@ -413,7 +413,7 @@ export default function DichVuCatalogPage() {
   const [catDialog, setCatDialog] = useState<"new" | ServiceCategoryRow | null>(null);
   const [svcDialog, setSvcDialog] = useState<"new" | ServiceRow | null>(null);
 
-  const { data: categories = [], isLoading } = useQuery({
+  const { data: categories = [], isLoading, isError, error, refetch } = useQuery({
     queryKey: ["admin-service-categories"],
     queryFn: serviceCatalogApi.listCategories,
   });
@@ -498,6 +498,14 @@ export default function DichVuCatalogPage() {
             <h3 className="font-bold text-sm mb-3">Danh mục dịch vụ</h3>
             {isLoading ? (
               <p className="text-sm text-gray-400">Đang tải...</p>
+            ) : isError ? (
+              <div className="text-sm space-y-2">
+                <p className="text-red-600">Không tải được danh mục: {(error as Error).message}</p>
+                <Button variant="outline" size="sm" className="rounded-xl" onClick={() => refetch()}>
+                  Thử lại
+                </Button>
+                <p className="text-gray-500 text-xs">Hoặc bấm Import mẫu nếu database chưa có dữ liệu.</p>
+              </div>
             ) : categories.length === 0 ? (
               <p className="text-sm text-gray-500">Chưa có danh mục. Bấm Import mẫu hoặc thêm mới.</p>
             ) : (
