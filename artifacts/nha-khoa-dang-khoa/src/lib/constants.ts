@@ -41,7 +41,7 @@ export const SERVICES = [
   {
     id: "rang-su",
     name: "Răng Sứ Thẩm Mỹ",
-    href: "/dich-vu/rang-su",
+    href: "/dich-vu/tham-my-nha-khoa",
     short: "Veneer, Zirconia cao cấp",
     desc: "Phục hình răng sứ zirconia, veneer sứ – nụ cười hoàn hảo, tự nhiên như răng thật.",
     icon: "Star",
@@ -50,7 +50,7 @@ export const SERVICES = [
   {
     id: "tay-trang",
     name: "Tẩy Trắng Răng",
-    href: "/dich-vu/tay-trang",
+    href: "/dich-vu/tham-my-nha-khoa/tay-trang-rang",
     short: "Laser whitening chuyên nghiệp",
     desc: "Tẩy trắng răng bằng công nghệ laser tiên tiến, an toàn, hiệu quả vượt trội.",
     icon: "Sun",
@@ -68,7 +68,7 @@ export const SERVICES = [
   {
     id: "nho-rang-khon",
     name: "Nhổ Răng Khôn",
-    href: "/dich-vu/nho-rang-khon",
+    href: "/dich-vu/nho-rang/nho-rang-khon",
     short: "Nhổ không đau, phục hồi nhanh",
     desc: "Nhổ răng khôn bằng kỹ thuật tiên tiến, hạn chế tối đa đau đớn và thời gian hồi phục.",
     icon: "Activity",
@@ -173,7 +173,7 @@ export const PROMOTIONS = [
     expiry: "31/08/2024",
     badge: "MỚI",
     color: "from-purple-500 to-indigo-500",
-    href: "/dich-vu/rang-su",
+    href: "/dich-vu/tham-my-nha-khoa",
   },
   {
     id: 3,
@@ -193,7 +193,7 @@ export const PROMOTIONS = [
     expiry: "30/09/2024",
     badge: "SALE",
     color: "from-blue-500 to-cyan-500",
-    href: "/dich-vu/tay-trang",
+    href: "/dich-vu/tham-my-nha-khoa/tay-trang-rang",
   },
 ];
 

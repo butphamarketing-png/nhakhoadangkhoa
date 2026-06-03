@@ -9,6 +9,7 @@ import DashboardPage from "@/pages/DashboardPage";
 import LichHenPage from "@/pages/LichHenPage";
 import KhachHangPage from "@/pages/KhachHangPage";
 import DichVuPage from "@/pages/DichVuPage";
+import DichVuCatalogPage from "@/pages/DichVuCatalogPage";
 import BacSiPage from "@/pages/BacSiPage";
 import BaiVietPage from "@/pages/BaiVietPage";
 import BangGiaPage from "@/pages/BangGiaPage";
@@ -18,6 +19,7 @@ import GioiThieuPage from "@/pages/GioiThieuPage";
 import UuDaiPage from "@/pages/UuDaiPage";
 import TrangChuPage from "@/pages/TrangChuPage";
 import ThuVienPage from "@/pages/ThuVienPage";
+import MediaLibraryPage from "@/pages/MediaLibraryPage";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,7 @@ function Router() {
       <Route path="/lich-hen" component={LichHenPage} />
       <Route path="/khach-hang" component={KhachHangPage} />
       <Route path="/dich-vu" component={DichVuPage} />
+      <Route path="/catalog-dich-vu" component={DichVuCatalogPage} />
       <Route path="/bac-si" component={BacSiPage} />
       <Route path="/bai-viet" component={BaiVietPage} />
       <Route path="/bang-gia" component={BangGiaPage} />
@@ -38,6 +41,7 @@ function Router() {
       <Route path="/uu-dai" component={UuDaiPage} />
       <Route path="/trang-chu" component={TrangChuPage} />
       <Route path="/thu-vien" component={ThuVienPage} />
+      <Route path="/media-library" component={MediaLibraryPage} />
       <Route>
         <Redirect to="/" />
       </Route>

@@ -43,3 +43,6 @@ export const db = new Proxy({} as NodePgDatabase<DbSchema>, {
 });
 
 export * from "./schema";
+export { slugify } from "./slugify";
+export { buildCatalog, autoSeoFields, mapRowToServiceItem } from "./service-catalog-mapper";
+export type { ApiServiceCatalog, ApiServiceCategory, ApiServiceItem } from "./service-catalog-mapper";

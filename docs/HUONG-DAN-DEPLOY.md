@@ -55,7 +55,18 @@ pnpm install
 pnpm run db:push
 ```
 
-Kiểm tra: Supabase → **Table Editor** → có bảng **appointments**.
+Kiểm tra: Supabase → **Table Editor** → có bảng **appointments**, **service_categories**, **services**, **site_content**.
+
+Nếu `db:push` lỗi trên Windows, chạy SQL trong `docs/supabase-init.sql` (Supabase → SQL Editor).
+
+### A4. Catalog dịch vụ (CMS)
+
+1. Deploy **API** + **Admin** (xem Phần D)
+2. Admin → **Catalog dịch vụ** → **Import mẫu** (9 danh mục + ~50 dịch vụ)
+3. Website có `VITE_API_URL` trỏ API → menu / trang `/dich-vu` tự cập nhật
+4. Sitemap: `https://<API_DOMAIN>/api/sitemap.xml` — cập nhật `robots.txt` trên website
+
+Biến API (tùy chọn): `SITE_URL=https://hethongnhakhoadangkhoa.com` để URL sitemap đúng domain.
 
 ---
 

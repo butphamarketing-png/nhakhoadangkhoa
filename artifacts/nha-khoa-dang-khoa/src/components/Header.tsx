@@ -3,11 +3,12 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
 import { MAIN_NAV } from "@/lib/navigation";
-import { useAboutSections, useServiceMenu } from "@/lib/cms-provider";
-import { getServiceSubgroups } from "@/lib/services-menu";
+import { useAboutSections } from "@/lib/cms-provider";
+import { useServiceCatalog } from "@/lib/services/use-service-catalog";
 import BrandLogo from "@/components/BrandLogo";
 import SiteSearchBar from "@/components/SiteSearchBar";
-import ServiceMegaMenu from "@/components/ServiceMegaMenu";
+import ServiceMegaMenu from "@/components/services/ServiceMegaMenu";
+import ServiceMobileAccordion from "@/components/services/ServiceMobileAccordion";
 
 interface HeaderProps {
   onBookingClick: () => void;
@@ -16,7 +17,7 @@ interface HeaderProps {
 export default function Header({ onBookingClick }: HeaderProps) {
   const BRAND = useBrand();
   const ABOUT_SECTIONS = useAboutSections();
-  const SERVICE_MENU_GROUPS = useServiceMenu();
+  const serviceCatalog = useServiceCatalog();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -108,9 +109,9 @@ export default function Header({ onBookingClick }: HeaderProps) {
                       onMouseEnter={() => setServiceOpen(true)}
                       onMouseLeave={() => setServiceOpen(false)}
                     >
-                      <Link href={link.href}>
+                      <Link href="/dich-vu">
                         <span
-                          className={`nav-link-luxury flex items-center gap-1 cursor-pointer ${isActive(link.href) ? "is-active" : ""}`}
+                          className={`nav-link-luxury flex items-center gap-1 cursor-pointer ${isActive("/dich-vu") ? "is-active" : ""}`}
                           data-testid="nav-dich-vu"
                         >
                           {link.label}
@@ -122,7 +123,7 @@ export default function Header({ onBookingClick }: HeaderProps) {
                           serviceOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none"
                         }`}
                       >
-                        <ServiceMegaMenu groups={SERVICE_MENU_GROUPS} open={serviceOpen} />
+                        <ServiceMegaMenu catalog={serviceCatalog} open={serviceOpen} />
                       </div>
                     </div>
                   );
@@ -209,26 +210,7 @@ export default function Header({ onBookingClick }: HeaderProps) {
               </Link>
             ))}
             <p className="px-4 pt-3 pb-1 text-[10px] font-bold text-[#C89B3C] uppercase tracking-widest">Dịch vụ</p>
-            <Link href="/dich-vu">
-              <div className="px-4 py-2.5 rounded-lg font-bold text-[#C89B3C]">Tất cả dịch vụ</div>
-            </Link>
-            {SERVICE_MENU_GROUPS.map((g) => (
-              <div key={g.id} className="pl-2">
-                <Link href={g.href}>
-                  <div className="px-4 py-2 rounded-lg font-semibold text-[#0D1B2A]">{g.title}</div>
-                </Link>
-                {getServiceSubgroups(g).map((sg) => (
-                  <div key={sg.id} className="pl-3">
-                    <p className="px-4 py-1 text-[10px] text-[#0D1B2A]/45 uppercase">{sg.title}</p>
-                    {sg.items.slice(0, 4).map((item) => (
-                      <Link href={item.href} key={item.label}>
-                        <div className="px-4 py-1.5 text-xs text-[#0D1B2A]/65">{item.label}</div>
-                      </Link>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            ))}
+            <ServiceMobileAccordion catalog={serviceCatalog} />
             {MAIN_NAV.filter((l) => !["TRANG CHỦ", "GIỚI THIỆU", "DỊCH VỤ"].includes(l.label)).map((link) => (
               <Link href={link.href} key={link.href}>
                 <div className={`px-4 py-3 rounded-xl font-bold ${isActive(link.href) ? "bg-[#F8F6F1] text-[#C89B3C]" : "text-[#0D1B2A]"}`}>

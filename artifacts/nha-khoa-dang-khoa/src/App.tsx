@@ -13,7 +13,8 @@ import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import AboutSectionPage from "@/pages/AboutSectionPage";
 import ServicesPage from "@/pages/ServicesPage";
-import ServiceGroupPage from "@/pages/ServiceGroupPage";
+import ServiceCategoryPage from "@/pages/services/ServiceCategoryPage";
+import ServiceDetailPage from "@/pages/services/ServiceDetailPage";
 import BangGiaPage from "@/pages/BangGiaPage";
 import KienThucPage from "@/pages/KienThucPage";
 import BlogPostPage from "@/pages/BlogPostPage";
@@ -26,9 +27,12 @@ import TuyenDungPage from "@/pages/TuyenDungPage";
 import BacSiPage from "@/pages/BacSiPage";
 import DatLichPage from "@/pages/DatLichPage";
 import ImplantPage from "@/pages/services/ImplantPage";
+import RangSuPage from "@/pages/services/RangSuPage";
+import NiengRangPage from "@/pages/services/NiengRangPage";
 import TayTrangPage from "@/pages/services/TayTrangPage";
 import NoiNhaPage from "@/pages/services/NoiNhaPage";
 import NhoRangKhonPage from "@/pages/services/NhoRangKhonPage";
+import NhaKhoaTongQuatPage from "@/pages/services/NhaKhoaTongQuatPage";
 import ChinhSachPage from "@/pages/ChinhSachPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
@@ -42,11 +46,8 @@ function Router() {
         <Route path="/gioi-thieu/:slug" component={AboutSectionPage} />
         <Route path="/gioi-thieu" component={AboutPage} />
         <Route path="/dich-vu" component={ServicesPage} />
-        <Route path="/dich-vu/implant" component={ImplantPage} />
-        <Route path="/dich-vu/tay-trang" component={TayTrangPage} />
-        <Route path="/dich-vu/noi-nha" component={NoiNhaPage} />
-        <Route path="/dich-vu/nho-rang-khon" component={NhoRangKhonPage} />
-        <Route path="/dich-vu/:groupId" component={ServiceGroupPage} />
+        <Route path="/dich-vu/:category/:serviceSlug" component={ServiceDetailPage} />
+        <Route path="/dich-vu/:category" component={ServiceCategoryPage} />
         <Route path="/bang-gia" component={BangGiaPage} />
         <Route path="/kien-thuc/:slug" component={BlogPostPage} />
         <Route path="/kien-thuc" component={KienThucPage} />

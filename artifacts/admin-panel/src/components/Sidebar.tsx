@@ -38,8 +38,10 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
     items: [
       { label: "Trang chủ", icon: Home, href: "/trang-chu" },
       { label: "Thư viện ảnh", icon: Image, href: "/thu-vien" },
+      { label: "Media Library", icon: Image, href: "/media-library" },
       { label: "Giới thiệu", icon: BookOpen, href: "/gioi-thieu" },
-      { label: "Dịch vụ", icon: Scissors, href: "/dich-vu" },
+      { label: "Menu dịch vụ", icon: Scissors, href: "/dich-vu" },
+      { label: "Catalog dịch vụ", icon: Scissors, href: "/catalog-dich-vu" },
       { label: "Bảng giá", icon: DollarSign, href: "/bang-gia" },
       { label: "Bài viết", icon: FileText, href: "/bai-viet" },
       { label: "Bác sĩ", icon: UserCheck, href: "/bac-si" },

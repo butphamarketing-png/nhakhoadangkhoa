@@ -7,6 +7,7 @@ import {
 } from "react";
 import { DOCTORS, PROMOTIONS, SERVICES, TESTIMONIALS } from "./constants";
 import { ABOUT_SECTIONS, type AboutSection } from "./about-content";
+import { buildMainServiceCards, type MainServiceCard } from "./main-services";
 import { SERVICE_MENU_GROUPS, type ServiceMenuGroup } from "./services-menu";
 import {
   CLINIC_STATS,
@@ -119,8 +120,20 @@ export function useServices() {
   return useCmsData("services", SERVICES);
 }
 
+/** Menu dịch vụ — luôn bỏ cấp Giá & quy trình, chỉ giữ danh sách dịch vụ */
 export function useServiceMenu() {
-  return useCmsData("service_menu", SERVICE_MENU_GROUPS);
+  const fromApi = useCmsData("service_menu", SERVICE_MENU_GROUPS);
+  return fromApi.map((g) => {
+    const fallback = SERVICE_MENU_GROUPS.find((x) => x.id === g.id);
+    const items = g.items?.length ? g.items : (fallback?.items ?? []);
+    return { ...g, items, subgroups: undefined };
+  });
+}
+
+/** 4 dịch vụ chính — menu & trang /dich-vu */
+export function useMainServices(): MainServiceCard[] {
+  const menu = useServiceMenu();
+  return buildMainServiceCards(menu);
 }
 
 export function useAboutSections() {

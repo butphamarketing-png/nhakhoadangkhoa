@@ -10,6 +10,7 @@ export const SITE_CONTENT_KEYS = [
   "promotions",
   "home",
   "media",
+  "media_library",
 ] as const;
 
 export type SiteContentKey = (typeof SITE_CONTENT_KEYS)[number];
@@ -26,6 +27,7 @@ export const CMS_LABELS: Record<SiteContentKey, string> = {
   promotions: "Ưu đãi",
   home: "Trang chủ",
   media: "Thư viện ảnh / Banner",
+  media_library: "Media Library (SEO)",
 };
 
 export const CMS_ROUTES: Record<SiteContentKey, string> = {
@@ -40,4 +42,5 @@ export const CMS_ROUTES: Record<SiteContentKey, string> = {
   promotions: "/uu-dai",
   home: "/trang-chu",
   media: "/thu-vien",
+  media_library: "/media-library",
 };

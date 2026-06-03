@@ -1,6 +1,8 @@
 import { BLOG_POSTS } from "./blog-posts";
 import { ABOUT_SECTIONS } from "./about-content";
-import { SERVICE_MENU_GROUPS } from "./services-menu";
+import { DEFAULT_SERVICE_CATALOG } from "./services/catalog-data";
+import { categoryPath, servicePath } from "./services/slug";
+import type { ServiceCatalog } from "./services/types";
 import { BRAND } from "./constants";
 
 export type SearchResult = {
@@ -31,7 +33,7 @@ function normalize(s: string) {
     .replace(/\p{M}/gu, "");
 }
 
-export function buildSearchIndex(): SearchResult[] {
+export function buildSearchIndex(catalog: ServiceCatalog = DEFAULT_SERVICE_CATALOG): SearchResult[] {
   const about: SearchResult[] = ABOUT_SECTIONS.map((a) => ({
     id: `about-${a.slug}`,
     title: a.title,
@@ -40,19 +42,19 @@ export function buildSearchIndex(): SearchResult[] {
     type: "Giới thiệu" as const,
   }));
 
-  const services: SearchResult[] = SERVICE_MENU_GROUPS.flatMap((g) => [
+  const services: SearchResult[] = catalog.categories.flatMap((cat) => [
     {
-      id: `svc-${g.id}`,
-      title: g.title,
-      subtitle: "Dịch vụ chính",
-      href: g.href,
+      id: `cat-${cat.slug}`,
+      title: cat.title,
+      subtitle: "Danh mục dịch vụ",
+      href: categoryPath(cat.slug),
       type: "Dịch vụ" as const,
     },
-    ...g.items.map((item, i) => ({
-      id: `svc-${g.id}-${i}`,
-      title: item.label,
-      subtitle: g.title,
-      href: item.href,
+    ...cat.services.map((s) => ({
+      id: `svc-${cat.slug}-${s.slug}`,
+      title: s.title,
+      subtitle: cat.title,
+      href: servicePath(cat.slug, s.slug),
       type: "Dịch vụ" as const,
     })),
   ]);
@@ -68,11 +70,11 @@ export function buildSearchIndex(): SearchResult[] {
   return [...STATIC_PAGES, ...about, ...services, ...posts];
 }
 
-export function searchSite(query: string, limit = 8): SearchResult[] {
+export function searchSite(query: string, limit = 8, catalog?: ServiceCatalog): SearchResult[] {
   const q = normalize(query.trim());
   if (!q) return [];
 
-  const index = buildSearchIndex();
+  const index = buildSearchIndex(catalog);
   const scored = index
     .map((item) => {
       const hay = normalize(`${item.title} ${item.subtitle ?? ""}`);

@@ -5,6 +5,7 @@ import FloatingButtons from "./FloatingButtons";
 import MobileBottomBar from "./MobileBottomBar";
 import BookingModal from "./BookingModal";
 import ScrollProgress from "./ScrollProgress";
+import ScrollToTop from "./ScrollToTop";
 
 export const BookingContext = createContext<{ openBooking: () => void }>({
   openBooking: () => {},
@@ -21,6 +22,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <BookingContext.Provider value={{ openBooking }}>
       <ScrollProgress />
+      <ScrollToTop />
       <Header onBookingClick={openBooking} />
       <main className="pt-[72px] md:pt-[80px] lg:pt-[88px] pb-20 lg:pb-0 xl:pr-[4.5rem]">{children}</main>
       <Footer />

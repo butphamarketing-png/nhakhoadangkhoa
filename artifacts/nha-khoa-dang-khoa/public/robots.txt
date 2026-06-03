@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+
+# Sitemap động (dịch vụ + bài viết từ database)
+# Cấu hình: trỏ tới domain API Vercel, ví dụ nhakhoadangkhoa-api.vercel.app
+Sitemap: https://nhakhoadangkhoa-api.vercel.app/api/sitemap.xml

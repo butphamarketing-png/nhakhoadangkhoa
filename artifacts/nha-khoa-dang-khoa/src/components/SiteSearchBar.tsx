@@ -2,8 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Search, ChevronRight } from "lucide-react";
 import { searchSite, type SearchResult } from "@/lib/search-index";
+import { useServiceCatalog } from "@/lib/services/use-service-catalog";
 
 export default function SiteSearchBar() {
+  const catalog = useServiceCatalog();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -15,9 +17,9 @@ export default function SiteSearchBar() {
       setResults([]);
       return;
     }
-    setResults(searchSite(query, 8));
+    setResults(searchSite(query, 8, catalog));
     setOpen(true);
-  }, [query]);
+  }, [query, catalog]);
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
@@ -33,6 +35,9 @@ export default function SiteSearchBar() {
     setOpen(false);
     setQuery("");
     navigate(href);
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" in window ? "instant" : "auto" });
+    });
   };
 
   return (

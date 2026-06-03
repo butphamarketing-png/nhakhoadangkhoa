@@ -34,4 +34,5 @@ export const WEBSITE_DEFAULTS: Record<SiteContentKey, unknown> = {
     galleryPromotions: GALLERY_PROMOTIONS,
     galleryTestimonials: GALLERY_TESTIMONIALS,
   },
+  media_library: { items: [] },
 };
