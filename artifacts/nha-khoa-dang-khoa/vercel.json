@@ -3,11 +3,16 @@
   "installCommand": "cd ../.. && corepack enable && pnpm install",
   "buildCommand": "cd ../.. && pnpm run build:deploy",
   "outputDirectory": "dist/public",
-  "framework": "vite",
+  "functions": {
+    "api/index.ts": {
+      "maxDuration": 30
+    }
+  },
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
     { "source": "/adminbp", "destination": "/adminbp/index.html" },
     { "source": "/adminbp/", "destination": "/adminbp/index.html" },
     { "source": "/adminbp/:path*", "destination": "/adminbp/index.html" },
-    { "source": "/((?!assets/|adminbp/).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|adminbp/|api/).*)", "destination": "/index.html" }
   ]
 }

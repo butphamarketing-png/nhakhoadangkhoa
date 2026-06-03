@@ -2,8 +2,9 @@ const TOKEN_KEY = "dk-admin-token";
 
 export function getApiBase(): string {
   const base = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
-  if (!base) throw new Error("Chưa cấu hình VITE_API_URL");
-  return base;
+  if (base) return base;
+  if (typeof window !== "undefined") return window.location.origin;
+  throw new Error("Chưa cấu hình VITE_API_URL");
 }
 
 export function getToken(): string | null {

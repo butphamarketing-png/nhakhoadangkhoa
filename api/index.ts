@@ -1,0 +1,6 @@
+/**
+ * Vercel serverless entry — cùng project website, route /api/*
+ */
+import app from "../artifacts/api-server/dist/app.mjs";
+
+export default app;
