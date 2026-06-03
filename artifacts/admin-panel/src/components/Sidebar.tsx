@@ -34,7 +34,7 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
   {
     title: "Nội dung website",
     items: [
-      { label: "Trang chủ", icon: Home, href: "/trang-chu" },
+      { label: "Slideshow trang chủ", icon: Home, href: "/trang-chu" },
       { label: "Thư viện ảnh", icon: Image, href: "/thu-vien" },
       { label: "Upload ảnh", icon: Image, href: "/media-library" },
       { label: "Giới thiệu", icon: BookOpen, href: "/gioi-thieu" },

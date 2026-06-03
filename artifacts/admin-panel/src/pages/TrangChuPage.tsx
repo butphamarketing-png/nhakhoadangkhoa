@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/AdminLayout";
+import HeroSlideshowEditor from "@/components/HeroSlideshowEditor";
 import MediaPicker from "@/components/MediaPicker";
 import { motion } from "framer-motion";
 import { Download, Save } from "lucide-react";
@@ -21,16 +22,25 @@ export default function TrangChuPage() {
   const { toast } = useToast();
 
   const persist = async () => {
+    const empty = data.heroSlides.some((s) => !s.src.trim());
+    if (empty) {
+      toast({
+        title: "Thiếu ảnh slide",
+        description: "Mỗi slide cần có ảnh trước khi lưu.",
+        variant: "destructive",
+      });
+      return;
+    }
     try {
       await save(data);
-      toast({ title: "Đã lưu nội dung trang chủ" });
+      toast({ title: "Đã lưu slideshow & trang chủ" });
     } catch (e) {
       toast({ title: "Lỗi", description: (e as Error).message, variant: "destructive" });
     }
   };
 
   return (
-    <AdminLayout title="Trang chủ">
+    <AdminLayout title="Trang chủ — Slideshow & nội dung">
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
         <div className="flex gap-2 justify-end">
           <Button variant="outline" className="rounded-xl" onClick={() => save(fallback)} disabled={saving}>
@@ -39,36 +49,17 @@ export default function TrangChuPage() {
           </Button>
           <Button className="gold-gradient text-white border-0 rounded-xl" onClick={persist} disabled={saving}>
             <Save className="w-4 h-4 mr-2" />
-            Lưu trang chủ
+            {saving ? "Đang lưu..." : "Lưu trang chủ"}
           </Button>
         </div>
 
-        <section className="bg-white rounded-2xl border p-5 space-y-3">
-          <h2 className="font-extrabold text-[#0D1B2A]">Banner Hero</h2>
-          {data.heroSlides.map((slide, i) => (
-            <div key={slide.id} className="grid md:grid-cols-2 gap-3 pb-4 border-b last:border-0">
-              <MediaPicker
-                label={`Banner ${i + 1}`}
-                compact
-                value={slide.src}
-                altValue={slide.alt}
-                onChange={(src) => {
-                  const slides = [...data.heroSlides];
-                  slides[i] = { ...slide, src };
-                  setData({ ...data, heroSlides: slides });
-                }}
-                onAltChange={(alt) => {
-                  const slides = [...data.heroSlides];
-                  slides[i] = { ...slide, alt };
-                  setData({ ...data, heroSlides: slides });
-                }}
-              />
-            </div>
-          ))}
-        </section>
+        <HeroSlideshowEditor
+          slides={data.heroSlides}
+          onChange={(heroSlides) => setData({ ...data, heroSlides })}
+        />
 
         <section className="bg-white rounded-2xl border p-5 space-y-3">
-          <h2 className="font-extrabold text-[#0D1B2A]">Thống kê</h2>
+          <h2 className="font-bold text-[#0D1B2A]">Thống kê</h2>
           {data.clinicStats.map((stat, i) => (
             <div key={i} className="grid grid-cols-2 gap-3">
               <div>
@@ -98,7 +89,7 @@ export default function TrangChuPage() {
         </section>
 
         <section className="bg-white rounded-2xl border p-5">
-          <h2 className="font-extrabold text-[#0D1B2A] mb-2">Đội ngũ trên trang chủ</h2>
+          <h2 className="font-bold text-[#0D1B2A] mb-2">Đội ngũ trên trang chủ</h2>
           <p className="text-sm text-gray-500">{data.homeDoctors.length} bác sĩ — chỉnh chi tiết tại mục Bác sĩ hoặc sửa tên/ảnh tại đây.</p>
           {data.homeDoctors.map((d, i) => (
             <div key={d.id} className="grid md:grid-cols-2 gap-3 mt-3 pt-3 border-t">

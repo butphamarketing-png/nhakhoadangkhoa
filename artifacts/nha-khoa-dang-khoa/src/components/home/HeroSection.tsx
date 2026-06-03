@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useHomeCms } from "@/lib/cms-provider";
+import { cmsImageSrc } from "@/lib/media-url";
 
 const AUTO_MS = 6000;
 const FADE_MS = 350;
@@ -50,7 +51,7 @@ export default function HeroSection() {
           <div className="relative flex justify-center items-start min-h-[180px] sm:min-h-[220px] rounded-[20px] overflow-hidden hero-banner-frame bg-[#F8F6F1]">
             <img
               key={slide.id}
-              src={slide.src}
+              src={cmsImageSrc(slide.src)}
               alt={slide.alt}
               width={1920}
               height={720}
