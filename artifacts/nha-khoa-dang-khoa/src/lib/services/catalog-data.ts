@@ -121,7 +121,7 @@ export const DEFAULT_SERVICE_CATALOG: ServiceCatalog = {
     ),
     cat(
       "nieng-rang",
-      "Niềng răng",
+      "Niềng răng – Chỉnh nha",
       "😁",
       "Chỉnh nha thẩm mỹ — mắc cài, khay trong suốt và chỉnh khớp cắn.",
       [

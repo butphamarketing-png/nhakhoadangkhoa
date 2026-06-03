@@ -10,7 +10,7 @@ import { fadeUp } from "@/lib/motion";
 
 export default function ServicesIndexPage() {
   const catalog = useServiceCatalog();
-  const { loading, isEmpty, hasApi } = useServiceCatalogStatus();
+  const { loading, isEmpty, dbEmpty } = useServiceCatalogStatus();
   const breadcrumbs = buildServiceBreadcrumbs();
 
   return (
@@ -51,12 +51,17 @@ export default function ServicesIndexPage() {
               <p className="text-center text-[#0D1B2A]/50">Đang tải danh mục dịch vụ...</p>
             ) : isEmpty ? (
               <p className="text-center text-[#0D1B2A]/60 bg-[#FAFAF8] rounded-2xl p-8 border border-[#C89B3C]/15">
-                {hasApi
-                  ? "Chưa có dịch vụ trên hệ thống. Vui lòng đăng nhập Admin → Catalog dịch vụ → Import dữ liệu mẫu."
-                  : "Đang hiển thị dữ liệu mẫu. Cấu hình VITE_API_URL và import database để đồng bộ từ Admin."}
+                Chưa có danh mục dịch vụ. Kiểm tra kết nối API (VITE_API_URL) hoặc import dữ liệu trong Admin.
               </p>
             ) : (
-              <ServiceCategoryGrid categories={catalog.categories} />
+              <>
+                {dbEmpty && (
+                  <p className="text-center text-sm text-amber-800/90 bg-amber-50 rounded-xl px-4 py-3 mb-8 border border-amber-200/80">
+                    Đang hiển thị danh mục mẫu. Để có đầy đủ 48 bài SEO (~800 từ): Admin → Catalog dịch vụ → Import mẫu.
+                  </p>
+                )}
+                <ServiceCategoryGrid categories={catalog.categories} />
+              </>
             )}
           </motion.div>
         </div>

@@ -5,9 +5,10 @@ import type { ServiceCatalog } from "./types";
 
 export const EMPTY_SERVICE_CATALOG: ServiceCatalog = { version: 2, categories: [] };
 
-function resolveCatalog(data: ServiceCatalog | undefined, hasApi: boolean): ServiceCatalog {
+/** API có dữ liệu → dùng DB; không có / lỗi / DB trống → fallback catalog mẫu (menu + /dich-vu vẫn hoạt động). */
+function resolveCatalog(data: ServiceCatalog | undefined): ServiceCatalog {
   if (data?.categories?.length) return data;
-  if (!hasApi) return DEFAULT_SERVICE_CATALOG;
+  if (DEFAULT_SERVICE_CATALOG.categories.length) return DEFAULT_SERVICE_CATALOG;
   return EMPTY_SERVICE_CATALOG;
 }
 
@@ -23,7 +24,7 @@ export function useServiceCatalog(): ServiceCatalog {
     enabled: hasApi,
   });
 
-  return resolveCatalog(hasApi ? data : undefined, hasApi);
+  return resolveCatalog(hasApi ? data : undefined);
 }
 
 export function useServiceCatalogStatus() {
@@ -36,14 +37,16 @@ export function useServiceCatalogStatus() {
     enabled: hasApi,
   });
 
-  const catalog = resolveCatalog(hasApi ? data : undefined, hasApi);
-  const usingFallback = hasApi && !data?.categories?.length && DEFAULT_SERVICE_CATALOG.categories.length > 0;
+  const catalog = resolveCatalog(hasApi ? data : undefined);
+  const dbEmpty = hasApi && !isLoading && !isError && !data?.categories?.length;
+  const usingFallback = catalog.categories.length > 0 && (!hasApi || dbEmpty);
 
   return {
     loading: hasApi && isLoading,
     isError,
     isEmpty: !catalog.categories.length,
     hasApi,
-    usingFallback: usingFallback || !hasApi,
+    dbEmpty,
+    usingFallback,
   };
 }
