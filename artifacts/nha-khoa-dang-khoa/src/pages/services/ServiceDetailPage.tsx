@@ -52,8 +52,8 @@ export default function ServiceDetailPage() {
                 <Link href="/dat-lich">
                   <span className="btn-gold inline-flex items-center !h-12 cursor-pointer">Đặt lịch khám</span>
                 </Link>
-                <a href={`tel:${BRAND.hotlineRaw}`} className="btn-outline-gold !text-white !border-white/40 inline-flex items-center !h-12">
-                  <Phone className="w-4 h-4 mr-2" />
+                <a href={`tel:${BRAND.hotlineRaw}`} className="btn-outline-on-dark !h-12 shrink-0">
+                  <Phone className="w-4 h-4" />
                   {BRAND.hotline}
                 </a>
               </div>
@@ -145,9 +145,13 @@ export default function ServiceDetailPage() {
           <div className="container-custom max-w-3xl text-center">
             <h2 className="font-display text-2xl font-bold text-[#0D1B2A] mb-4">Bảng giá tham khảo</h2>
             <p className="text-[#0D1B2A]/70 mb-6">{service.priceNote}</p>
-            <Link href="/bang-gia">
-              <span className="btn-outline-gold inline-flex cursor-pointer">Xem bảng giá đầy đủ</span>
-            </Link>
+            <div className="flex justify-center">
+              <Link href="/bang-gia" className="inline-flex">
+                <span className="btn-outline-gold inline-flex items-center justify-center min-w-[240px] cursor-pointer">
+                  Xem bảng giá đầy đủ
+                </span>
+              </Link>
+            </div>
           </div>
         </section>
       )}

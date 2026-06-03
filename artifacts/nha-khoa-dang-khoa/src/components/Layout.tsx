@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps) {
       <ScrollProgress />
       <ScrollToTop />
       <Header onBookingClick={openBooking} />
-      <main className="pt-[72px] md:pt-[80px] lg:pt-[88px] pb-20 lg:pb-0 xl:pr-[4.5rem]">{children}</main>
+      <main className="pt-[72px] md:pt-[80px] lg:pt-[88px] pb-20 lg:pb-0">{children}</main>
       <Footer />
       <FloatingButtons onBookingClick={openBooking} />
       <MobileBottomBar onBookingClick={openBooking} />
