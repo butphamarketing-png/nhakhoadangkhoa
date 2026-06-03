@@ -1,10 +1,6 @@
 import AdminLayout from "@/components/AdminLayout";
 import { motion } from "framer-motion";
 import {
-  Calendar,
-  Clock,
-  CheckCircle2,
-  RefreshCw,
   AlertCircle,
   ArrowRight,
 } from "lucide-react";
@@ -70,7 +66,7 @@ export default function DashboardPage() {
                 stat.highlight ? "border-amber-300 ring-1 ring-amber-200" : "border-gray-100"
               }`}
             >
-              <div className="text-2xl font-extrabold text-[#0D1B2A] mb-1">
+              <div className="text-2xl font-bold text-[#0D1B2A] mb-1">
                 {isLoading ? "…" : (stat.value ?? "—")}
               </div>
               <div className="text-sm text-gray-500">{stat.label}</div>
@@ -86,11 +82,7 @@ export default function DashboardPage() {
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-extrabold text-[#0D1B2A]">Trạng thái nội dung</h2>
-              <Link href="/dong-bo" className="text-xs text-[#C89B3C] font-semibold hover:underline inline-flex items-center gap-1">
-                <RefreshCw className="w-3 h-3" />
-                Đồng bộ
-              </Link>
+              <h2 className="font-bold text-[#0D1B2A]">Trạng thái nội dung</h2>
             </div>
             <div className="grid grid-cols-2 gap-2">
               {contentKeys.map((key) => {
@@ -110,13 +102,13 @@ export default function DashboardPage() {
               })}
             </div>
             <p className="text-xs text-gray-400 mt-3">
-              Chấm xanh = đã có trên Supabase. Chưa có → vào <strong>Đồng bộ website</strong>.
+              Chấm xanh = đã có trên Supabase. Chưa có → chọn mục tương ứng bên trên để chỉnh và lưu.
             </p>
           </div>
 
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div className="flex items-center justify-between px-5 py-4 border-b">
-              <h2 className="font-extrabold text-[#0D1B2A] text-sm">Lịch hẹn mới</h2>
+              <h2 className="font-bold text-[#0D1B2A] text-sm">Lịch hẹn mới</h2>
               <Link href="/lich-hen" className="text-xs text-[#C89B3C] font-semibold hover:underline">
                 Tất cả →
               </Link>

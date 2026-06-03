@@ -34,7 +34,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
         <main className="flex-1 overflow-y-auto">
           {title && (
             <div className="px-6 py-4 border-b border-gray-100 bg-white">
-              <h1 className="text-xl font-extrabold text-[#0D1B2A]">{title}</h1>
+              <h1 className="text-xl font-bold text-[#0D1B2A] tracking-tight">{title}</h1>
             </div>
           )}
           <div className="p-6">{children}</div>

@@ -12,7 +12,6 @@ import {
   ChevronRight,
   DollarSign,
   Settings,
-  RefreshCw,
   Home,
   BookOpen,
   Gift,
@@ -29,7 +28,6 @@ const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
     title: "Vận hành",
     items: [
       { label: "Dashboard", icon: LayoutDashboard, href: "/" },
-      { label: "Đồng bộ website", icon: RefreshCw, href: "/dong-bo" },
       { label: "Lịch hẹn", icon: Calendar, href: "/lich-hen" },
     ],
   },
@@ -81,7 +79,7 @@ export default function Sidebar() {
             </svg>
           </div>
           <div>
-            <div className="font-extrabold text-white text-sm leading-tight">Đăng Khoa</div>
+            <div className="font-bold text-white text-sm leading-tight">Đăng Khoa</div>
             <div className="text-white/40 text-xs">Quản trị website</div>
           </div>
         </div>

@@ -65,7 +65,7 @@ export default function LoginPage() {
                 <path d="M12 2C9.5 2 7.5 3.5 6.5 5.5C5.5 3.5 3.5 2 1 2C1 7 4 12 6.5 14.5C7.5 15.5 8.5 16 9.5 16C9.5 18 10 20 12 22C14 20 14.5 18 14.5 16C15.5 16 16.5 15.5 17.5 14.5C20 12 23 7 23 2C20.5 2 18.5 3.5 17.5 5.5C16.5 3.5 14.5 2 12 2Z" />
               </svg>
             </div>
-            <h1 className="text-xl font-extrabold text-white mb-1">Nha Khoa Đăng Khoa</h1>
+            <h1 className="text-xl font-bold text-white mb-1">Nha Khoa Đăng Khoa</h1>
             <p className="text-white/40 text-sm">Quản trị website — /adminbp</p>
           </div>
 
