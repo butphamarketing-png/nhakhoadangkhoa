@@ -1,7 +1,7 @@
 import { Router, type IRouter } from "express";
 import { sql } from "drizzle-orm";
 import { HealthCheckResponse } from "@workspace/api-zod";
-import { db } from "@workspace/db";
+import { db, resolveDatabaseUrl } from "@workspace/db";
 
 const router: IRouter = Router();
 
@@ -22,25 +22,32 @@ router.get("/healthz", (_req, res) => {
 
 /** Kiểm tra bảng DB — mở /api/healthz/db để debug lỗi 500 / upload */
 router.get("/healthz/db", async (_req, res) => {
-  const rawUrl = process.env.DATABASE_URL ?? "";
-  const dbHost = (() => {
-    try {
-      const u = new URL(rawUrl.replace(/^postgresql:/, "https:"));
-      return u.hostname || undefined;
-    } catch {
-      return undefined;
-    }
-  })();
+  const envRef = process.env.SUPABASE_PROJECT_REF?.trim();
+  const hasSplitEnv = Boolean(envRef && process.env.SUPABASE_DB_PASSWORD?.trim());
 
-  const dbProjectRef = rawUrl.match(/postgres\.([a-z0-9]+):/i)?.[1];
-  const projectMatch =
-    dbProjectRef === EXPECTED_REF || (dbHost?.includes(EXPECTED_REF) ?? false);
-
-  let connectionError: string | undefined;
+  let dbHost: string | undefined;
+  let resolveError: string | undefined;
   try {
-    await db.execute(sql.raw("SELECT 1 AS ok"));
+    const resolved = resolveDatabaseUrl();
+    dbHost = new URL(resolved.replace(/^postgresql:/, "https:")).hostname;
   } catch (e) {
-    connectionError = e instanceof Error ? e.message : String(e);
+    resolveError = e instanceof Error ? e.message : String(e);
+  }
+
+  const dbProjectRef =
+    envRef ||
+    process.env.DATABASE_URL?.match(/postgres\.([a-z0-9]+):/i)?.[1] ||
+    (dbHost?.includes(EXPECTED_REF) ? EXPECTED_REF : undefined);
+
+  const projectMatch = dbProjectRef === EXPECTED_REF || (dbHost?.includes(EXPECTED_REF) ?? false);
+
+  let connectionError = resolveError;
+  if (!connectionError) {
+    try {
+      await db.execute(sql.raw("SELECT 1 AS ok"));
+    } catch (e) {
+      connectionError = e instanceof Error ? e.message : String(e);
+    }
   }
 
   const missing: string[] = [];
@@ -62,14 +69,17 @@ router.get("/healthz/db", async (_req, res) => {
     ok: missing.length === 0 && !connectionError,
     missing,
     dbHost,
-    dbProjectRef: dbProjectRef ?? (projectMatch ? EXPECTED_REF : undefined),
+    usingSplitEnv: hasSplitEnv,
+    dbProjectRef,
     expectedProjectRef: EXPECTED_REF,
     projectMatch,
-    connectionError: connectionError?.slice(0, 200),
+    connectionError: connectionError?.slice(0, 240),
     hint: connectionError
       ? isDirectHost
-        ? "Direct (db.xxx.supabase.co) không tương thích IPv4 trên Vercel. Dùng Session pooler port 5432 hoặc Transaction pooler port 6543."
-        : "Không kết nối DB — kiểm tra mật khẩu DATABASE_URL trên Vercel."
+        ? "Direct không chạy trên Vercel IPv4. Dùng pooler hoặc SUPABASE_PROJECT_REF + SUPABASE_DB_PASSWORD."
+        : hasSplitEnv
+          ? "Kiểm tra SUPABASE_DB_PASSWORD (mật khẩu Database trong Supabase Settings)."
+          : "Thêm trên Vercel: SUPABASE_PROJECT_REF=epsvwnsuirfnwtxloctd và SUPABASE_DB_PASSWORD=hethongnhakhoadangkhoa.com"
       : missing.length > 0
         ? "Chạy docs/supabase-init.sql trong Supabase SQL Editor."
         : undefined,
