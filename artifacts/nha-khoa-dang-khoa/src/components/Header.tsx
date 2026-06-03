@@ -53,7 +53,13 @@ export default function Header({ onBookingClick }: HeaderProps) {
         onMouseEnter={() => setNavHovered(true)}
         onMouseLeave={() => setNavHovered(false)}
       >
-        <div className="container-custom">
+        <div
+          className="container-custom relative"
+          onMouseLeave={() => {
+            setServiceOpen(false);
+            setAboutOpen(false);
+          }}
+        >
           <div className="flex items-center justify-between h-[68px] lg:h-[80px] gap-4">
             <Link href="/" data-testid="link-logo">
               <BrandLogo size="md" />
@@ -106,8 +112,10 @@ export default function Header({ onBookingClick }: HeaderProps) {
                     <div
                       key={link.href}
                       className="relative"
-                      onMouseEnter={() => setServiceOpen(true)}
-                      onMouseLeave={() => setServiceOpen(false)}
+                      onMouseEnter={() => {
+                        setServiceOpen(true);
+                        setNavHovered(true);
+                      }}
                     >
                       <Link href="/dich-vu">
                         <span
@@ -118,13 +126,6 @@ export default function Header({ onBookingClick }: HeaderProps) {
                           <ChevronDown className="w-3.5 h-3.5" />
                         </span>
                       </Link>
-                      <div
-                        className={`transition-all duration-300 ${
-                          serviceOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none"
-                        }`}
-                      >
-                        <ServiceMegaMenu catalog={serviceCatalog} open={serviceOpen} />
-                      </div>
                     </div>
                   );
                 }
@@ -177,6 +178,20 @@ export default function Header({ onBookingClick }: HeaderProps) {
             }`}
           >
             <SiteSearchBar />
+          </div>
+
+          {/* Mega menu dưới cả header (tránh thanh search chặn hover) */}
+          <div
+            className={`hidden xl:block absolute left-0 right-0 top-full z-[60] transition-all duration-200 ${
+              serviceOpen && serviceCatalog.categories.length
+                ? "opacity-100 visible translate-y-0 pointer-events-auto"
+                : "opacity-0 invisible -translate-y-1 pointer-events-none"
+            }`}
+            onMouseEnter={() => setServiceOpen(true)}
+          >
+            <div className="pt-1 flex justify-center px-4 pb-2">
+              <ServiceMegaMenu catalog={serviceCatalog} />
+            </div>
           </div>
         </div>
       </header>
