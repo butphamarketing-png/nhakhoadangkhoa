@@ -12,7 +12,6 @@ import {
 } from "@workspace/db";
 import { requireAdmin } from "../middleware/require-admin";
 import { formatDbError } from "../lib/db-errors";
-import { ensureDbSchema } from "../lib/ensure-schema";
 import { SERVICE_CATALOG_SEED } from "../lib/service-catalog-seed";
 import { buildSeedServiceFields } from "../lib/service-content-template";
 
@@ -156,7 +155,6 @@ ${urls
 
 router.get("/admin/service-categories", requireAdmin, async (_req, res) => {
   try {
-    await ensureDbSchema();
     const rows = await db
       .select()
       .from(serviceCategoriesTable)

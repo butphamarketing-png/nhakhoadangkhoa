@@ -4,7 +4,6 @@ import multer from "multer";
 import { db, mediaAssetsTable } from "@workspace/db";
 import { requireAdmin } from "../middleware/require-admin";
 import { formatDbError } from "../lib/db-errors";
-import { ensureDbSchema } from "../lib/ensure-schema";
 
 const router: IRouter = Router();
 const upload = multer({
@@ -53,7 +52,6 @@ router.get("/media/:id", async (req, res): Promise<void> => {
 
 router.get("/admin/media", requireAdmin, async (req, res) => {
   try {
-    await ensureDbSchema();
     const q = (req.query.q as string | undefined)?.trim();
     const rows = q
       ? await db
@@ -77,7 +75,6 @@ router.get("/admin/media", requireAdmin, async (req, res) => {
 
 router.post("/admin/media/upload", requireAdmin, upload.single("file"), async (req, res): Promise<void> => {
   try {
-    await ensureDbSchema();
     const file = req.file;
     if (!file) {
       res.status(400).json({ error: "Thiếu file" });
