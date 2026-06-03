@@ -7,16 +7,18 @@ import { requireAdmin } from "../middleware/require-admin";
 const router: IRouter = Router();
 
 const loginSchema = z.object({
+  email: z.string().email(),
   password: z.string().min(1),
 });
 
 router.post("/admin/login", (req, res) => {
   const parsed = loginSchema.safeParse(req.body);
   if (!parsed.success) {
-    res.status(400).json({ error: "Invalid request" });
+    res.status(400).json({ error: "Email hoặc mật khẩu không hợp lệ" });
     return;
   }
 
+  const adminEmail = process.env.ADMIN_EMAIL ?? "admin@hethongnhakhoadangkhoa.com";
   const adminPassword = process.env.ADMIN_PASSWORD;
   const adminKey = process.env.ADMIN_API_KEY;
 
@@ -25,8 +27,9 @@ router.post("/admin/login", (req, res) => {
     return;
   }
 
-  if (parsed.data.password !== adminPassword) {
-    res.status(401).json({ error: "Sai mật khẩu" });
+  const emailOk = parsed.data.email.trim().toLowerCase() === adminEmail.trim().toLowerCase();
+  if (!emailOk || parsed.data.password !== adminPassword) {
+    res.status(401).json({ error: "Sai email hoặc mật khẩu" });
     return;
   }
 

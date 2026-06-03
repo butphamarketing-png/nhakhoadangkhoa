@@ -1,8 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "cd ../.. && corepack enable && pnpm install",
-  "buildCommand": "cd ../.. && pnpm --filter @workspace/nha-khoa-dang-khoa run build",
+  "buildCommand": "cd ../.. && pnpm run build:deploy",
   "outputDirectory": "dist/public",
   "framework": "vite",
-  "rewrites": [{ "source": "/((?!assets/).*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/adminbp", "destination": "/adminbp/index.html" },
+    { "source": "/adminbp/", "destination": "/adminbp/index.html" },
+    { "source": "/adminbp/:path*", "destination": "/adminbp/index.html" },
+    { "source": "/((?!assets/|adminbp/).*)", "destination": "/index.html" }
+  ]
 }

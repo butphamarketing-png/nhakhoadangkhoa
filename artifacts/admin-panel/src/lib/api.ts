@@ -48,10 +48,10 @@ export async function apiFetch<T>(
   return res.json() as Promise<T>;
 }
 
-export async function login(password: string) {
+export async function login(email: string, password: string) {
   const data = await apiFetch<{ token: string }>("/api/admin/login", {
     method: "POST",
-    body: JSON.stringify({ password }),
+    body: JSON.stringify({ email, password }),
     auth: false,
   });
   setToken(data.token);
