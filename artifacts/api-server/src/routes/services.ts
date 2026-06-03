@@ -361,12 +361,7 @@ router.put("/admin/services/reorder", requireAdmin, async (req, res) => {
   res.json({ ok: true });
 });
 
-router.post("/admin/services/seed", requireAdmin, async (_req, res) => {
-  const existing = await db.select({ id: serviceCategoriesTable.id }).from(serviceCategoriesTable).limit(1);
-  if (existing.length) {
-    return res.status(409).json({ error: "Database đã có danh mục. Xóa dữ liệu cũ trước khi seed." });
-  }
-
+async function runCatalogSeed() {
   let catOrder = 0;
   for (const seed of SERVICE_CATALOG_SEED) {
     const [cat] = await db
@@ -384,8 +379,7 @@ router.post("/admin/services/seed", requireAdmin, async (_req, res) => {
 
     let svcOrder = 0;
     for (const svc of seed.services) {
-      const fields = buildSeedServiceFields(svc.name, seed.name, seed.image);
-      const seo = autoSeoFields(svc.name, fields.excerpt, seed.name);
+      const fields = buildSeedServiceFields(svc.name, seed.name, seed.slug, seed.image);
       await db.insert(servicesTable).values({
         categoryId: cat.id,
         name: svc.name,
@@ -395,24 +389,50 @@ router.post("/admin/services/seed", requireAdmin, async (_req, res) => {
         banner: fields.banner,
         content: fields.content,
         faq: fields.faq,
-        seoTitle: seo.seoTitle,
-        seoDescription: seo.seoDescription,
-        ogTitle: seo.ogTitle,
-        ogDescription: seo.ogDescription,
+        seoTitle: fields.seoTitle,
+        seoDescription: fields.seoDescription,
+        ogTitle: fields.ogTitle,
+        ogDescription: fields.ogDescription,
         ogImage: seed.image,
         canonicalUrl: "",
         focusKeyword: fields.focusKeyword,
+        secondaryKeywords: fields.secondaryKeywords,
+        robots: fields.robots,
         benefits: fields.benefits,
         audience: fields.audience,
         process: fields.process,
         priceNote: fields.priceNote,
+        ctaText: fields.ctaText,
+        ctaLink: fields.ctaLink,
         sortOrder: svcOrder++,
         status: "active",
       });
     }
   }
 
-  res.json({ ok: true, categories: SERVICE_CATALOG_SEED.length });
+  return { categories: SERVICE_CATALOG_SEED.length };
+}
+
+router.post("/admin/services/seed", requireAdmin, async (req, res) => {
+  const force = req.query.force === "true" || req.body?.force === true;
+  const existing = await db.select({ id: serviceCategoriesTable.id }).from(serviceCategoriesTable).limit(1);
+  if (existing.length && !force) {
+    return res.status(409).json({
+      error: "Database đã có danh mục. Gửi ?force=true để xóa toàn bộ catalog và import lại mẫu.",
+    });
+  }
+
+  if (existing.length && force) {
+    await db.delete(servicesTable);
+    await db.delete(serviceCategoriesTable);
+  }
+
+  try {
+    const result = await runCatalogSeed();
+    res.json({ ok: true, ...result, forced: force });
+  } catch (e) {
+    res.status(500).json({ error: (e as Error).message });
+  }
 });
 
 export default router;

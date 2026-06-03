@@ -24,6 +24,7 @@ export type ServiceItem = {
   ogImage?: string;
   canonicalUrl?: string;
   focusKeyword?: string;
+  robots?: string;
   ctaText?: string;
   ctaLink?: string;
   status?: string;

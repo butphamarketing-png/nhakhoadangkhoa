@@ -95,5 +95,9 @@ export const serviceCatalogApi = {
       method: "PUT",
       body: JSON.stringify({ ids }),
     }),
-  seed: () => apiFetch<{ ok: boolean; categories: number }>("/api/admin/services/seed", { method: "POST" }),
+  seed: (force = false) =>
+    apiFetch<{ ok: boolean; categories: number; forced?: boolean }>(
+      `/api/admin/services/seed${force ? "?force=true" : ""}`,
+      { method: "POST", body: force ? JSON.stringify({ force: true }) : undefined },
+    ),
 };

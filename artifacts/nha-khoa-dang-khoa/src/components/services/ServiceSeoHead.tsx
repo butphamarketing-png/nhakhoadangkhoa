@@ -58,6 +58,7 @@ export default function ServiceSeoHead({
     };
 
     setMeta("description", description);
+    if (service?.robots) setMeta("robots", service.robots);
     setMeta("og:title", ogTitle, "property");
     setMeta("og:description", ogDescription, "property");
     setMeta("og:type", service ? "article" : "website", "property");

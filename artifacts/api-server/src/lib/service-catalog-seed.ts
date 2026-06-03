@@ -1,4 +1,4 @@
-/** Dữ liệu mẫu import vào DB — không phụ thuộc ảnh website */
+/** Dữ liệu mẫu import vào DB — 9 danh mục, 48 dịch vụ */
 export type SeedCategory = {
   slug: string;
   name: string;
@@ -15,7 +15,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     icon: "🦷",
     description:
       "Khám, phòng ngừa và điều trị răng miệng cơ bản — nền tảng cho sức khỏe nụ cười bền vững.",
-    image: "/images/cover-clinic.jpg",
+    image: "/images/cover-clinic.png",
     services: [
       { name: "Khám răng định kỳ" },
       { name: "Tư vấn sức khỏe răng miệng" },
@@ -32,7 +32,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     name: "Điều trị nội nha",
     icon: "🦷",
     description: "Bảo tồn răng thật — điều trị tủy và nhiễm trùng trong ống tủy an toàn, hiệu quả.",
-    image: "/images/services/nho-rang-khon.jpg",
+    image: "/images/service-nho-rang-khon.png",
     services: [
       { name: "Điều trị tủy răng" },
       { name: "Chữa tủy răng sữa" },
@@ -45,7 +45,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     name: "Nhổ răng",
     icon: "🦷",
     description: "Nhổ răng và tiểu phẫu nhẹ nhàng — giải quyết sâu răng, răng khôn mọc lệch.",
-    image: "/images/services/nho-rang-khon.jpg",
+    image: "/images/service-nho-rang-khon.png",
     services: [
       { name: "Nhổ răng sữa" },
       { name: "Nhổ răng sâu" },
@@ -59,7 +59,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     name: "Thẩm mỹ nha khoa",
     icon: "😁",
     description: "Cải thiện thẩm mỹ nụ cười — tẩy trắng, veneer, bọc sứ và thiết kế nụ cười.",
-    image: "/images/about/rang-su-10000.jpg",
+    image: "/images/about-rang-su-10000.png",
     services: [
       { name: "Tẩy trắng răng" },
       { name: "Dán sứ Veneer" },
@@ -73,7 +73,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     name: "Phục hình răng",
     icon: "🦷",
     description: "Phục hồi chức năng ăn nhai và thẩm mỹ — cầu răng, hàm tháo lắp và phục hình toàn hàm.",
-    image: "/images/about/rang-su-10000.jpg",
+    image: "/images/about-rang-su-10000.png",
     services: [
       { name: "Làm cầu răng sứ" },
       { name: "Hàm tháo lắp" },
@@ -87,7 +87,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     name: "Implant",
     icon: "🦷",
     description: "Trồng răng Implant chuẩn quốc tế — phục hình ổn định, thẩm mỹ và chức năng lâu dài.",
-    image: "/images/services/implant.jpg",
+    image: "/images/service-implant.png",
     services: [
       { name: "Trồng răng Implant đơn lẻ" },
       { name: "Trồng răng Implant toàn hàm" },
@@ -98,10 +98,10 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
   },
   {
     slug: "nieng-rang",
-    name: "Niềng răng",
+    name: "Niềng răng – Chỉnh nha",
     icon: "😁",
     description: "Chỉnh nha thẩm mỹ — mắc cài, khay trong suốt và chỉnh khớp cắn.",
-    image: "/images/services/nieng-rang.jpg",
+    image: "/images/service-nieng-rang.png",
     services: [
       { name: "Niềng răng mắc cài kim loại" },
       { name: "Niềng răng mắc cài sứ" },
@@ -115,7 +115,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     name: "Nha khoa trẻ em",
     icon: "👶",
     description: "Chăm sóc răng miệng cho trẻ — thân thiện, nhẹ nhàng, phòng ngừa sâu răng.",
-    image: "/images/cover-clinic.jpg",
+    image: "/images/cover-clinic.png",
     services: [
       { name: "Khám răng trẻ em" },
       { name: "Trám răng sữa" },
@@ -130,7 +130,7 @@ export const SERVICE_CATALOG_SEED: SeedCategory[] = [
     name: "Dịch vụ chuyên sâu",
     icon: "🔬",
     description: "Điều trị chuyên sâu — cười hở lợi, khớp thái dương hàm, nha chu và tiêu xương.",
-    image: "/images/services/itero.jpg",
+    image: "/images/service-cong-nghe-itero.png",
     services: [
       { name: "Điều trị cười hở lợi" },
       { name: "Điều trị khớp thái dương hàm" },

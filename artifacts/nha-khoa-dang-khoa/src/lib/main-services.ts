@@ -14,7 +14,7 @@ export type MainServiceCard = {
 
 const CARD_LINKS: { groupId: string; href: string; image: string }[] = [
   { groupId: "trong-rang-implant", href: "/dich-vu/implant", image: IMAGES.services.implant },
-  { groupId: "rang-su", href: "/dich-vu/rang-su", image: IMAGES.aboutRangSu10000 },
+  { groupId: "rang-su", href: "/dich-vu/tham-my-nha-khoa", image: IMAGES.aboutRangSu10000 },
   { groupId: "nieng-rang", href: "/dich-vu/nieng-rang", image: IMAGES.services.niengRang },
   { groupId: "nha-khoa-tong-quat", href: "/dich-vu/nha-khoa-tong-quat", image: IMAGES.services.nhoRangKhon },
 ];

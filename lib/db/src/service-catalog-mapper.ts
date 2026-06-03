@@ -22,6 +22,7 @@ export type ApiServiceItem = {
   ogImage?: string;
   canonicalUrl?: string;
   focusKeyword?: string;
+  robots?: string;
   ctaText?: string;
   ctaLink?: string;
   status?: string;
@@ -70,6 +71,7 @@ type DbService = {
   ogImage: string;
   canonicalUrl: string;
   focusKeyword: string;
+  robots: string;
   benefits: string[];
   audience: string[];
   process: ServiceProcessRow[];
@@ -103,6 +105,7 @@ export function mapRowToServiceItem(row: DbService, categoryImage: string): ApiS
     ogImage: row.ogImage || undefined,
     canonicalUrl: row.canonicalUrl || undefined,
     focusKeyword: row.focusKeyword || undefined,
+    robots: row.robots || undefined,
     ctaText: row.ctaText,
     ctaLink: row.ctaLink,
     status: row.status,
@@ -140,12 +143,22 @@ export function buildCatalog(
   };
 }
 
+function trimMeta(text: string, max = 160): string {
+  const t = text.replace(/\s+/g, " ").trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 80 ? cut.slice(0, lastSpace) : cut).trim() + "…";
+}
+
 export function autoSeoFields(name: string, excerpt: string, categoryName: string) {
   const site = "Nha Khoa Đăng Khoa";
-  const seoTitle = `${name} | ${categoryName} — ${site}`;
-  const seoDescription =
+  const seoTitle = trimMeta(`${name} | ${categoryName} — ${site}`, 60);
+  const seoDescription = trimMeta(
     excerpt ||
-    `Dịch vụ ${name} tại ${site}, Tây Ninh. Tư vấn miễn phí, quy trình chuẩn y khoa.`;
+      `${name} tại ${site}, Tây Ninh — ${categoryName}. Tư vấn miễn phí, quy trình chuẩn y khoa, báo giá minh bạch. Đặt lịch ngay.`,
+    160,
+  );
   return {
     seoTitle,
     seoDescription,

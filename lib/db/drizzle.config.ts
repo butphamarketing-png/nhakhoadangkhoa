@@ -9,6 +9,8 @@ export default defineConfig({
   schema: [
     path.join(__dirname, "src/schema/appointments.ts"),
     path.join(__dirname, "src/schema/site-content.ts"),
+    path.join(__dirname, "src/schema/service-catalog.ts"),
+    path.join(__dirname, "src/schema/media.ts"),
   ],
   dialect: "postgresql",
   dbCredentials: {

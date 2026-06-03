@@ -3,6 +3,7 @@ type Props = {
   seoTitle: string;
   seoDescription: string;
   slug: string;
+  categorySlug?: string;
   ogTitle: string;
   ogDescription: string;
   ogImage?: string;
@@ -16,13 +17,20 @@ export default function SeoPreview({
   seoTitle,
   seoDescription,
   slug,
+  categorySlug,
   ogTitle,
   ogDescription,
   ogImage,
   focusKeyword,
 }: Props) {
   const base = siteUrl.replace(/\/$/, "");
-  const url = `${base}/dich-vu/.../${slug || "..."}`;
+  const path =
+    categorySlug && slug
+      ? `/dich-vu/${categorySlug}/${slug}`
+      : categorySlug
+        ? `/dich-vu/${categorySlug}`
+        : `/dich-vu/.../${slug || "..."}`;
+  const url = `${base}${path}`;
   const displayTitle = seoTitle || "Tiêu đề SEO";
   const displayDesc =
     seoDescription ||

@@ -59,7 +59,7 @@ export const SERVICES = [
   {
     id: "noi-nha",
     name: "Điều Trị Nội Nha",
-    href: "/dich-vu/noi-nha",
+    href: "/dich-vu/dieu-tri-noi-nha",
     short: "Điều trị tủy chuyên sâu",
     desc: "Chữa tủy răng, điều trị nhiễm trùng chuyên sâu với máy móc hiện đại, không đau.",
     icon: "Shield",

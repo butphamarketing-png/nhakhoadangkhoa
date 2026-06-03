@@ -139,6 +139,9 @@ function ServiceEditor({
   const [faq, setFaq] = useState<ServiceFaq[]>(initial?.faq ?? []);
   const [benefits, setBenefits] = useState((initial?.benefits ?? []).join("\n"));
   const [audience, setAudience] = useState((initial?.audience ?? []).join("\n"));
+  const [process, setProcess] = useState(
+    (initial?.process ?? []).map((p) => `${p.step}|${p.title}|${p.desc}`).join("\n"),
+  );
 
   const activeCategory = categories.find((c) => c.id === selectedCategoryId);
   const activeCategoryName = activeCategory?.name ?? categoryName;
@@ -267,6 +270,7 @@ function ServiceEditor({
               seoTitle={seoTitle}
               seoDescription={seoDescription}
               slug={slug}
+              categorySlug={activeCategory?.slug}
               ogTitle={ogTitle}
               ogDescription={ogDescription}
               ogImage={ogImage || banner || thumbnail}
@@ -319,6 +323,16 @@ function ServiceEditor({
 
       <TabsContent value="extra" className="space-y-4">
         <div>
+          <Label>Quy trình (mỗi dòng: bước|tiêu đề|mô tả)</Label>
+          <Textarea
+            value={process}
+            onChange={(e) => setProcess(e.target.value)}
+            className="mt-1 rounded-xl font-mono text-xs"
+            rows={5}
+            placeholder="01|Thăm khám|Tư vấn và chẩn đoán"
+          />
+        </div>
+        <div>
           <Label>Lợi ích (mỗi dòng một mục)</Label>
           <Textarea value={benefits} onChange={(e) => setBenefits(e.target.value)} className="mt-1 rounded-xl" rows={4} />
         </div>
@@ -364,6 +378,8 @@ function ServiceEditor({
               ogImage,
               canonicalUrl,
               focusKeyword,
+              secondaryKeywords,
+              robots,
               priceNote,
               ctaText,
               ctaLink,
@@ -371,6 +387,15 @@ function ServiceEditor({
               faq,
               benefits: benefits.split("\n").map((s) => s.trim()).filter(Boolean),
               audience: audience.split("\n").map((s) => s.trim()).filter(Boolean),
+              process: process
+                .split("\n")
+                .map((line) => line.trim())
+                .filter(Boolean)
+                .map((line) => {
+                  const [step, title, ...rest] = line.split("|");
+                  return { step: step?.trim() ?? "", title: title?.trim() ?? "", desc: rest.join("|").trim() };
+                })
+                .filter((p) => p.step && p.title),
             })
           }
         >
@@ -428,14 +453,24 @@ export default function DichVuCatalogPage() {
     refetchServices();
   };
 
-  const runSeed = async () => {
-    if (!confirm("Import 9 danh mục + toàn bộ dịch vụ mẫu? Chỉ chạy khi database trống.")) return;
+  const runSeed = async (force = false) => {
+    const msg = force
+      ? "GHI ĐÈ: Xóa toàn bộ catalog hiện tại và import lại 9 danh mục + 48 dịch vụ mẫu (nội dung ~800 từ/bài)?"
+      : "Import 9 danh mục + 48 dịch vụ mẫu? (Chỉ khi database trống — hoặc giữ Shift để ghi đè)";
+    if (!confirm(msg)) return;
     try {
-      const res = await serviceCatalogApi.seed();
-      toast({ title: `Đã import ${res.categories} danh mục` });
+      const res = await serviceCatalogApi.seed(force);
+      toast({
+        title: res.forced ? "Đã import lại (ghi đè)" : "Đã import mẫu",
+        description: `${res.categories} danh mục, 48 bài viết SEO đầy đủ (~800+ từ/bài)`,
+      });
       invalidate();
     } catch (e) {
-      toast({ title: "Lỗi", description: (e as Error).message, variant: "destructive" });
+      const err = e as Error;
+      if (!force && err.message.includes("đã có")) {
+        if (confirm(`${err.message}\n\nImport lại và ghi đè dữ liệu cũ?`)) return runSeed(true);
+      }
+      toast({ title: "Lỗi", description: err.message, variant: "destructive" });
     }
   };
 
