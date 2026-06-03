@@ -4,7 +4,7 @@
   "buildCommand": "cd ../.. && pnpm run build:deploy",
   "outputDirectory": "dist/public",
   "functions": {
-    "api/index.ts": {
+    "api/index.mjs": {
       "maxDuration": 30
     }
   },

@@ -4,7 +4,7 @@
   "buildCommand": "corepack enable && pnpm install && pnpm run build:deploy",
   "outputDirectory": "artifacts/nha-khoa-dang-khoa/dist/public",
   "functions": {
-    "api/index.ts": {
+    "api/index.mjs": {
       "maxDuration": 30
     }
   },
