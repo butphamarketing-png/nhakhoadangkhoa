@@ -13,6 +13,6 @@
     { "source": "/adminbp", "destination": "/adminbp/index.html" },
     { "source": "/adminbp/", "destination": "/adminbp/index.html" },
     { "source": "/adminbp/:path*", "destination": "/adminbp/index.html" },
-    { "source": "/((?!assets/|adminbp/|api/).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|adminbp/|api/|images/|favicon\\.svg|robots\\.txt).*)", "destination": "/index.html" }
   ]
 }

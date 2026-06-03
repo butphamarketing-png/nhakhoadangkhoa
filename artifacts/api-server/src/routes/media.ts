@@ -3,6 +3,7 @@ import { desc, eq, ilike, or } from "drizzle-orm";
 import multer from "multer";
 import { db, mediaAssetsTable } from "@workspace/db";
 import { requireAdmin } from "../middleware/require-admin";
+import { formatDbError } from "../lib/db-errors";
 
 const router: IRouter = Router();
 const upload = multer({
@@ -50,22 +51,26 @@ router.get("/media/:id", async (req, res): Promise<void> => {
 });
 
 router.get("/admin/media", requireAdmin, async (req, res) => {
-  const q = (req.query.q as string | undefined)?.trim();
-  const rows = q
-    ? await db
-        .select()
-        .from(mediaAssetsTable)
-        .where(or(ilike(mediaAssetsTable.filename, `%${q}%`), ilike(mediaAssetsTable.searchText, `%${q}%`)))
-        .orderBy(desc(mediaAssetsTable.createdAt))
-        .limit(80)
-    : await db.select().from(mediaAssetsTable).orderBy(desc(mediaAssetsTable.createdAt)).limit(80);
+  try {
+    const q = (req.query.q as string | undefined)?.trim();
+    const rows = q
+      ? await db
+          .select()
+          .from(mediaAssetsTable)
+          .where(or(ilike(mediaAssetsTable.filename, `%${q}%`), ilike(mediaAssetsTable.searchText, `%${q}%`)))
+          .orderBy(desc(mediaAssetsTable.createdAt))
+          .limit(80)
+      : await db.select().from(mediaAssetsTable).orderBy(desc(mediaAssetsTable.createdAt)).limit(80);
 
-  res.json(
-    rows.map((r) => ({
-      ...r,
-      publicUrl: `/api/media/${r.id}`,
-    })),
-  );
+    res.json(
+      rows.map((r) => ({
+        ...r,
+        publicUrl: `/api/media/${r.id}`,
+      })),
+    );
+  } catch (e) {
+    res.status(500).json({ error: formatDbError(e, "media_assets") });
+  }
 });
 
 router.post("/admin/media/upload", requireAdmin, upload.single("file"), async (req, res): Promise<void> => {
@@ -97,7 +102,7 @@ router.post("/admin/media/upload", requireAdmin, upload.single("file"), async (r
       publicUrl: publicMediaUrl(req, row.id),
     });
   } catch (e) {
-    res.status(400).json({ error: (e as Error).message });
+    res.status(400).json({ error: formatDbError(e, "media_assets") });
   }
 });
 

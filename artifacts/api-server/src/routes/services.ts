@@ -11,6 +11,7 @@ import {
   slugify,
 } from "@workspace/db";
 import { requireAdmin } from "../middleware/require-admin";
+import { formatDbError } from "../lib/db-errors";
 import { SERVICE_CATALOG_SEED } from "../lib/service-catalog-seed";
 import { buildSeedServiceFields } from "../lib/service-content-template";
 
@@ -153,11 +154,15 @@ ${urls
 // ——— Admin categories ———
 
 router.get("/admin/service-categories", requireAdmin, async (_req, res) => {
-  const rows = await db
-    .select()
-    .from(serviceCategoriesTable)
-    .orderBy(asc(serviceCategoriesTable.sortOrder));
-  res.json(rows);
+  try {
+    const rows = await db
+      .select()
+      .from(serviceCategoriesTable)
+      .orderBy(asc(serviceCategoriesTable.sortOrder));
+    res.json(rows);
+  } catch (e) {
+    res.status(500).json({ error: formatDbError(e, "service_categories") });
+  }
 });
 
 router.post("/admin/service-categories", requireAdmin, async (req, res) => {
