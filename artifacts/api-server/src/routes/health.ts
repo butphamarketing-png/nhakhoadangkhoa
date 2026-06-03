@@ -29,6 +29,12 @@ router.get("/healthz/db", async (_req, res) => {
     }
   })();
 
+  const dbProjectRef = (() => {
+    const url = process.env.DATABASE_URL ?? "";
+    const m = url.match(/postgres\.([a-z0-9]+):/i);
+    return m?.[1];
+  })();
+
   const missing: string[] = [];
   for (const table of REQUIRED_TABLES) {
     try {
@@ -41,9 +47,14 @@ router.get("/healthz/db", async (_req, res) => {
     ok: missing.length === 0,
     missing,
     dbHost,
+    dbProjectRef,
+    expectedProjectRef: "epsvwnsuirfnwtxloctd",
+    projectMatch: dbProjectRef === "epsvwnsuirfnwtxloctd",
     hint:
       missing.length > 0
-        ? "Chạy TOÀN BỘ docs/supabase-init.sql trong Supabase → SQL Editor. dbHost phải trùng project Supabase (Settings → Database → Host)."
+        ? dbProjectRef !== "epsvwnsuirfnwtxloctd"
+          ? "DATABASE_URL trên Vercel sai project. Dùng postgres.epsvwnsuirfnwtxloctd trong connection string."
+          : "Bảng chưa thấy qua pooler — thử Direct connection (port 5432) hoặc chạy lại docs/supabase-init.sql."
         : undefined,
   });
 });
