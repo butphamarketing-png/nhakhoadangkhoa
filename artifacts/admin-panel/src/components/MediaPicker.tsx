@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { mediaApi, resolveMediaUrl, cmsImageSrc } from "@/lib/media-api";
+import { compressImageForUpload } from "@/lib/compress-image";
 import { useToast } from "@/hooks/use-toast";
 
 type Props = {
@@ -44,8 +45,9 @@ export default function MediaPicker({ value, onChange, label = "Ảnh", altValue
     setUploading(true);
     try {
       let lastUrl = value;
-      for (const file of Array.from(files)) {
-        const asset = await mediaApi.upload(file, file.name);
+      for (const raw of Array.from(files)) {
+        const file = await compressImageForUpload(raw);
+        const asset = await mediaApi.upload(file, raw.name);
         lastUrl = resolveMediaUrl(asset.publicUrl);
         onChange(lastUrl);
         if (onAltChange) onAltChange(asset.alt || file.name);
@@ -86,7 +88,7 @@ export default function MediaPicker({ value, onChange, label = "Ảnh", altValue
       <p className={`text-gray-600 ${compact ? "text-xs" : "text-sm"}`}>
         Kéo thả ảnh vào đây hoặc bấm <strong>Tải từ máy</strong>
       </p>
-      <p className="text-[10px] text-gray-400 mt-1">JPG, PNG, WebP — tối đa 5MB</p>
+      <p className="text-[10px] text-gray-400 mt-1">JPG, PNG, WebP — tối đa 4MB (tự nén nếu lớn)</p>
     </div>
   );
 

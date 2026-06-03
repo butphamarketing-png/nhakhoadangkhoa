@@ -15,6 +15,9 @@ export function formatDbError(e: unknown, table?: string): string {
   if (/Failed query: insert into "media_assets"/i.test(msg)) {
     return "Không lưu được ảnh (media_assets). Chạy docs/fix-media-upload.sql trên Supabase → SQL Editor.";
   }
+  if (/permission denied|must be owner|42501/i.test(msg)) {
+    return "Database không có quyền tạo bảng. Chạy docs/fix-media-upload.sql trong Supabase → SQL Editor (user postgres, không dùng pooler).";
+  }
   if (/connect|ECONNREFUSED|timeout|password authentication/i.test(msg)) {
     return "Không kết nối được database. Kiểm tra DATABASE_URL trên Vercel.";
   }
