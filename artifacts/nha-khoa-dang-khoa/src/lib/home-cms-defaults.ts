@@ -116,7 +116,7 @@ export const DEFAULT_HOME_CMS: HomeCmsData = {
   homeDoctors: HOME_DOCTORS,
   aboutImage: ABOUT_PROMO_IMAGE,
   aboutSection: DEFAULT_ABOUT_SECTION,
-  whyChooseImage: IMAGES.coverClinic,
+  whyChooseImage: IMAGES.veChungToi,
   whyChooseSection: DEFAULT_WHY_CHOOSE_SECTION,
   commitments: DEFAULT_COMMITMENTS,
   smileModels: SMILE_MODELS,

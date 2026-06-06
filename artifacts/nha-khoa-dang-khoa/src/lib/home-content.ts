@@ -21,14 +21,14 @@ export type HeroSlide = {
 /** Banner hero slideshow — mỗi ảnh ngang ~1920×720, hiển thị full width */
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    id: "brand",
-    src: IMAGES.heroSlides.brand,
+    id: "cover-page",
+    src: IMAGES.heroSlides.coverPage,
     alt: "Nha Khoa Đăng Khoa — Địa chỉ nha khoa uy tín hàng đầu Tây Ninh",
   },
 ];
 
 export const CLINIC_RECEPTION = IMAGES.coverClinic;
-export const ABOUT_PROMO_IMAGE = IMAGES.aboutRangSu10000;
+export const ABOUT_PROMO_IMAGE = IMAGES.veChungToi;
 export const FAMILY_IMG = IMAGES.testimonials.nguyenThiKimHanh;
 export const DENTIST_IMG = IMAGES.info.anhHuongSucKhoe;
 

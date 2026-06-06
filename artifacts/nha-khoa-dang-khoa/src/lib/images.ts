@@ -8,6 +8,8 @@ export const IMAGES = {
   /** Banner 10.000+ ca răng sứ — section Giới thiệu */
   aboutRangSu10000: img("about-rang-su-10000.png"),
   designReference: img("design-reference.png"),
+  coverPage: img("COVER PAGE.jpg"),
+  veChungToi: img("Ve-chung-toi.jpg"),
 
   /**
    * Banner hero slideshow — mỗi file là 1 ảnh ngang (~1920×720).
@@ -16,6 +18,7 @@ export const IMAGES = {
   heroSlides: {
     /** Banner thương hiệu vàng — slide 1 */
     brand: img("hero-banner-brand.png"),
+    coverPage: img("COVER PAGE.jpg"),
     banner01: img("hero-banner-brand.png"),
     banner02: img("cover-clinic.png"),
     banner03: img("promo-mua-vang-chinh-nha.png"),
