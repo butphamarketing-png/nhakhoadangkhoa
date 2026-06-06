@@ -3,101 +3,41 @@ import { motion } from "framer-motion";
 import { useHomeCms } from "@/lib/cms-provider";
 import { fadeUp } from "@/lib/motion";
 import { Scan, Monitor, Scissors, Sparkles } from "lucide-react";
+import SectionTitle from "./SectionTitle";
 
-function TechCard({
-  title,
-  desc,
-  index,
-}: {
-  title: string;
-  desc: string;
-  index: number;
-}) {
-  const getIcon = (idx: number) => {
-    switch (idx) {
-      case 0: return <Scan className="w-8 h-8 text-[#C89B3C]" />;
-      case 1: return <Monitor className="w-8 h-8 text-[#C89B3C]" />;
-      case 2: return <Scissors className="w-8 h-8 text-[#C89B3C]" />;
-      case 3: return <Sparkles className="w-8 h-8 text-[#C89B3C]" />;
-      default: return <Sparkles className="w-8 h-8 text-[#C89B3C]" />;
-    }
-  };
-
-  return (
-    <article className="h-full">
-      <div className="card-luxury overflow-hidden h-full !rounded-2xl !p-4 !translate-y-0 hover:!translate-y-[-4px] group bg-white flex flex-col items-center text-center gap-3">
-        <div className="w-16 h-16 rounded-full bg-[#F8F6F1] flex items-center justify-center border border-[#C89B3C]/20">
-          {getIcon(index)}
-        </div>
-        <div className="flex-1 flex flex-col gap-1">
-          <h3 className="font-display font-bold text-[#0D1B2A] text-sm leading-snug mb-1">{title}</h3>
-          <p className="text-[11px] text-[#0D1B2A]/60 leading-relaxed flex-1">{desc}</p>
-        </div>
-      </div>
-    </article>
-  );
-}
+const TECH_ICONS = [Scan, Monitor, Scissors, Sparkles];
 
 export default function TechnologySection() {
   const { technologyItems: TECHNOLOGY_ITEMS } = useHomeCms();
   return (
-    <section id="cong-nghe" className="section-padding section-cream section-texture overflow-hidden scroll-mt-32">
-      <div className="container-custom container-narrow">
-        <div className="grid lg:grid-cols-[minmax(0,300px)_1fr] gap-8 lg:gap-10 items-start">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="lg:sticky lg:top-28"
-          >
-            <div className="rounded-[24px] navy-gradient p-7 md:p-8 relative overflow-hidden border border-[#C89B3C]/20">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(200,155,60,0.2),transparent_50%)]" />
-              <div className="relative">
-                <p className="text-[#E8C46A] text-[11px] font-bold uppercase tracking-[0.3em] mb-3">
-                  Trang thiết bị
-                </p>
-                <h2 className="font-display font-bold text-white text-2xl md:text-3xl leading-tight mb-4">
-                  CÔNG NGHỆ
-                  <br />
-                  <span className="gold-shimmer">HIỆN ĐẠI</span>
-                </h2>
-                <p className="text-white/75 text-sm leading-relaxed mb-5">
-                  Đầu tư hệ thống máy móc tiên tiến để chẩn đoán chính xác và điều trị an toàn.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {["CT Cone Beam 3D", "iTero 5D", "Piezotome"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#C89B3C]/40 text-[#E8C46A]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+    <section id="cong-nghe" className="section-padding section-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C89B3C]/0 via-[#C89B3C]/50 to-[#C89B3C]/0" />
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C89B3C' fill-opacity='1'%3E%3Cpath d='M36 34v-2h2v2h-2zm0-4v-2h2v2h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+      <div className="container-custom container-narrow relative">
+        <SectionTitle label="Trang thiết bị" subtitle="Đầu tư hệ thống máy móc tiên tiến để chẩn đoán chính xác và điều trị an toàn">
+          CÔNG NGHỆ HIỆN ĐẠI
+        </SectionTitle>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          {TECHNOLOGY_ITEMS.map(({ title, desc }, i) => {
+            const Icon = TECH_ICONS[i % TECH_ICONS.length];
+            return (
+              <motion.div
+                key={`${title}-${i}`}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={i}
+                className="card-luxury p-5 md:p-6 text-center !translate-y-0 hover:!translate-y-[-8px] group"
+              >
+                <div className="icon-ring-gold mx-auto mb-4 group-hover:gold-gradient group-hover:border-transparent transition-all duration-300">
+                  <Icon className="w-5 h-5 text-[#C89B3C] group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <Link href="/gioi-thieu/co-so-vat-chat">
-                  <button type="button" className="btn-gold !h-11 !text-sm" data-testid="button-tech-more">
-                    XEM THÊM
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            custom={1}
-            className="min-w-0"
-          >
-            <div className="grid grid-cols-2 gap-3 md:gap-4">
-              {TECHNOLOGY_ITEMS.map((tech, i) => (
-                <TechCard key={tech.title} title={tech.title} desc={tech.desc} index={i} />
-              ))}
-            </div>
-          </motion.div>
+                <h3 className="font-bold text-[#0D1B2A] text-sm mb-2">{title}</h3>
+                <p className="text-[#0D1B2A]/55 text-xs leading-relaxed">{desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
