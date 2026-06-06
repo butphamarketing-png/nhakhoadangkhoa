@@ -2,31 +2,36 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useHomeCms } from "@/lib/cms-provider";
 import { fadeUp } from "@/lib/motion";
-import MediaFrame from "@/components/ui/MediaFrame";
+import { Scan, Monitor, Scissors, Tooth } from "lucide-react";
 
 function TechCard({
   title,
   desc,
-  image,
   index,
 }: {
   title: string;
   desc: string;
-  image: string;
   index: number;
 }) {
+  const getIcon = (idx: number) => {
+    switch (idx) {
+      case 0: return <Scan className="w-8 h-8 text-[#C89B3C]" />;
+      case 1: return <Monitor className="w-8 h-8 text-[#C89B3C]" />;
+      case 2: return <Scissors className="w-8 h-8 text-[#C89B3C]" />;
+      case 3: return <Tooth className="w-8 h-8 text-[#C89B3C]" />;
+      default: return <Tooth className="w-8 h-8 text-[#C89B3C]" />;
+    }
+  };
+
   return (
     <article className="h-full">
-      <div className="card-luxury overflow-hidden h-full !rounded-2xl !p-0 !translate-y-0 hover:!translate-y-[-4px] group bg-white flex flex-col">
-        <div className="relative shrink-0">
-          <span className="absolute top-2 left-2 z-10 text-[9px] font-bold text-white bg-[#0D1B2A]/70 px-2 py-0.5 rounded-md">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <MediaFrame src={image} alt={title} aspect="square" className="!aspect-square max-h-[140px]" />
+      <div className="card-luxury overflow-hidden h-full !rounded-2xl !p-4 !translate-y-0 hover:!translate-y-[-4px] group bg-white flex flex-col items-center text-center gap-3">
+        <div className="w-16 h-16 rounded-full bg-[#F8F6F1] flex items-center justify-center border border-[#C89B3C]/20">
+          {getIcon(index)}
         </div>
-        <div className="px-3 py-3 border-t border-black/[0.04] flex-1 flex flex-col">
-          <h3 className="font-display font-bold text-[#0D1B2A] text-xs leading-snug mb-1 line-clamp-2">{title}</h3>
-          <p className="text-[10px] text-[#0D1B2A]/55 leading-relaxed line-clamp-2 flex-1">{desc}</p>
+        <div className="flex-1 flex flex-col gap-1">
+          <h3 className="font-display font-bold text-[#0D1B2A] text-sm leading-snug mb-1">{title}</h3>
+          <p className="text-[11px] text-[#0D1B2A]/60 leading-relaxed flex-1">{desc}</p>
         </div>
       </div>
     </article>
@@ -89,7 +94,7 @@ export default function TechnologySection() {
           >
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               {TECHNOLOGY_ITEMS.map((tech, i) => (
-                <TechCard key={tech.title} title={tech.title} desc={tech.desc} image={tech.image} index={i} />
+                <TechCard key={tech.title} title={tech.title} desc={tech.desc} index={i} />
               ))}
             </div>
           </motion.div>

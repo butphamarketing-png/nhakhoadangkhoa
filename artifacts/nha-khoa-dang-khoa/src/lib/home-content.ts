@@ -174,23 +174,18 @@ export const SERVICE_IMAGES: Record<string, string> = {
 export const TECHNOLOGY_ITEMS = [
   {
     title: "Máy CT Cone Beam 3D",
-    image: IMAGES.coverClinic,
-    wide: true,
     desc: "Chụp 3D toàn hàm — lập kế hoạch implant & chỉnh nha chính xác.",
   },
   {
     title: "Máy Scan iTero 5D Plus",
-    image: IMAGES.services.itero,
     desc: "Lấy dấu răng số hóa — không đau, không khí mẫu truyền thống.",
   },
   {
     title: "Piezotome nhổ răng khôn",
-    image: IMAGES.services.nhoRangKhon,
     desc: "Nhổ răng khôn siêu âm — giảm đau, lành nhanh.",
   },
   {
     title: "Cấy ghép Implant",
-    image: IMAGES.services.implant,
     desc: "Trồng răng chuẩn quốc tế — phục hình ổn định lâu dài.",
   },
 ];

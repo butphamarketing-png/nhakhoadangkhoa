@@ -13,7 +13,7 @@ import { IMAGES } from "./images";
 
 export type HomeDoctorCms = (typeof HOME_DOCTORS)[number];
 export type SmileModelCms = { id: string; tag: string; title: string; image: string };
-export type TechnologyItemCms = { title: string; image: string; desc: string; wide?: boolean };
+export type TechnologyItemCms = { title: string; desc: string };
 export type FeaturedServiceCms = {
   id: string;
   name: string;

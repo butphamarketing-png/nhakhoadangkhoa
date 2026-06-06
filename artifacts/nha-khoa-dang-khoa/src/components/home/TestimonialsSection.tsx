@@ -88,15 +88,12 @@ export default function TestimonialsSection() {
                 >
                   <div className="gradient-border rounded-[28px] p-[2px] h-full">
                     <div className="card-luxury overflow-hidden !p-0 !translate-y-0 hover:!translate-y-[-6px] !rounded-[26px] h-full flex flex-col">
-                      <div className="aspect-[4/3] overflow-hidden bg-[#F8F6F1] relative">
+                      <div className="aspect-[4/3] overflow-hidden bg-[#F8F6F1]">
                         <img
                           src={cmsImageSrc(item.image)}
                           alt={item.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
-                        <span className="absolute top-3 left-3 gold-gradient text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
-                          Trước & sau
-                        </span>
                       </div>
                       <div className="p-5 bg-[#0D1B2A] text-white flex-1 flex flex-col relative">
                         <Quote className="absolute top-4 right-4 w-8 h-8 text-[#C89B3C]/15" />
