@@ -9,7 +9,7 @@ export const IMAGES = {
   aboutRangSu10000: img("about-rang-su-10000.png"),
   designReference: img("design-reference.png"),
   coverPage: img("COVER PAGE.jpg"),
-  veChungToi: img("Ve-chung-toi.jpg"),
+  veChungToi: img("Ve-chung-tôi.jpg"),
 
   /**
    * Banner hero slideshow — mỗi file là 1 ảnh ngang (~1920×720).
