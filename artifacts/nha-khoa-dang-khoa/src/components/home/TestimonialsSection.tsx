@@ -30,22 +30,24 @@ export default function TestimonialsSection() {
           CẢM NHẬN KHÁCH HÀNG
         </SectionTitle>
 
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 p-1.5 rounded-full bg-[#F8F6F1] w-fit mx-auto border border-[#C89B3C]/15">
-          {TESTIMONIAL_TABS.map((t) => (
-            <button
-              key={t.id}
-              type="button"
-              onClick={() => switchTab(t.id)}
-              className={`px-5 md:px-7 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 ${
-                tab === t.id
-                  ? "gold-gradient text-white shadow-[0_6px_20px_rgba(200,155,60,0.35)]"
-                  : "text-[#0D1B2A]/70 hover:text-[#C89B3C] bg-transparent"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
+        {/* {TESTIMONIAL_TABS.length > 1 && (
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 p-1.5 rounded-full bg-[#F8F6F1] w-fit mx-auto border border-[#C89B3C]/15">
+            {TESTIMONIAL_TABS.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => switchTab(t.id)}
+                className={`px-5 md:px-7 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 ${
+                  tab === t.id
+                    ? "gold-gradient text-white shadow-[0_6px_20px_rgba(200,155,60,0.35)]"
+                    : "text-[#0D1B2A]/70 hover:text-[#C89B3C] bg-transparent"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+        )} */}
 
         <div className="relative">
           <button

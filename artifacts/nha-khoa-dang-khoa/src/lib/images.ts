@@ -56,5 +56,8 @@ export const IMAGES = {
     implantQuyTrinh: img("blog/blog-implant-quy-trinh.jpg"),
     trongImplant: img("blog/blog-trong-implant.jpg"),
     tramRang: img("blog/blog-tram-rang.jpg"),
+    testimonial1: img("blog/1780712429213_5777623190452523323_g8951108936608082733_f90e44a47c2327636cf5c1cb5fbbf606.jpg"),
+    testimonial2: img("blog/1780712460263_5777623190452523323_g8951108936608082733_33fbda2d43f8f0dcca0a67b5373c6ddb.jpg"),
+    testimonial3: img("blog/1780712429184_5777623190452523323_g8951108936608082733_2121b59c5613abbef413d9d2a0015db2.jpg"),
   },
 } as const;
