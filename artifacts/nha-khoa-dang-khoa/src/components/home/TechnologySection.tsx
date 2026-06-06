@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useHomeCms } from "@/lib/cms-provider";
 import { fadeUp } from "@/lib/motion";
-import { Scan, Monitor, Scissors, Tooth } from "lucide-react";
+import { Scan, Monitor, Scissors, Sparkles } from "lucide-react";
 
 function TechCard({
   title,
@@ -18,8 +18,8 @@ function TechCard({
       case 0: return <Scan className="w-8 h-8 text-[#C89B3C]" />;
       case 1: return <Monitor className="w-8 h-8 text-[#C89B3C]" />;
       case 2: return <Scissors className="w-8 h-8 text-[#C89B3C]" />;
-      case 3: return <Tooth className="w-8 h-8 text-[#C89B3C]" />;
-      default: return <Tooth className="w-8 h-8 text-[#C89B3C]" />;
+      case 3: return <Sparkles className="w-8 h-8 text-[#C89B3C]" />;
+      default: return <Sparkles className="w-8 h-8 text-[#C89B3C]" />;
     }
   };
 
