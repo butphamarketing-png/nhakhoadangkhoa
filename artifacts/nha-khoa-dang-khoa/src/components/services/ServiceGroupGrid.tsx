@@ -24,16 +24,29 @@ function GroupCard({ group }: { group: ServiceGroup }) {
         onClick={() => setOpen(!open)}
         className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C]"
       >
-        <MediaFrame src={group.image} alt={group.title} aspect="video" />
-        <div className="p-5 md:p-6">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h3 className="font-display font-bold text-[#0D1B2A] text-lg mb-2">{group.title}</h3>
-              <p className="text-sm text-[#0D1B2A]/60 leading-relaxed line-clamp-2">{group.intro}</p>
-            </div>
-            <ChevronDown className={`w-5 h-5 shrink-0 text-[#C89B3C] transition-transform ${open ? "rotate-180" : ""}`} />
+        <div className="flex gap-4 p-4 sm:p-0 sm:flex-col">
+          <div className="w-[88px] h-[88px] sm:w-full sm:h-auto shrink-0 rounded-2xl sm:rounded-none overflow-hidden ring-1 ring-black/[0.06] sm:ring-0">
+            <MediaFrame
+              src={group.image}
+              alt={group.title}
+              aspect="square"
+              className="!aspect-square sm:!aspect-[16/10] h-full w-full"
+            />
           </div>
-          <p className="mt-3 text-xs font-bold text-[#C89B3C]">{group.items.length} dịch vụ</p>
+          <div className="flex-1 min-w-0 sm:p-5 md:p-6">
+            <div className="flex items-start justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#C89B3C] mb-1.5">
+                  {group.items.length} dịch vụ
+                </p>
+                <h3 className="font-display font-bold text-[#0D1B2A] text-[15px] sm:text-lg mb-1.5 leading-snug">
+                  {group.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#0D1B2A]/60 leading-relaxed line-clamp-2">{group.intro}</p>
+              </div>
+              <ChevronDown className={`w-5 h-5 shrink-0 text-[#C89B3C] transition-transform mt-1 ${open ? "rotate-180" : ""}`} />
+            </div>
+          </div>
         </div>
       </button>
 
@@ -71,7 +84,7 @@ function GroupCard({ group }: { group: ServiceGroup }) {
 
 export default function ServiceGroupGrid({ groups }: Props) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
       {groups.map((g) => (
         <GroupCard key={g.id} group={g} />
       ))}

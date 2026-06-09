@@ -208,7 +208,7 @@ export const FEATURED_SERVICE_GROUPS = SERVICE_GROUPS.map((g) => ({
   name: g.title,
   href: g.href,
   image: g.image,
-  displayName: g.title.toUpperCase(),
+  displayName: g.title,
   intro: g.intro,
   itemCount: g.items.length,
 }));

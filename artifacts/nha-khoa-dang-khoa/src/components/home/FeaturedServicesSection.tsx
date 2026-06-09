@@ -21,26 +21,40 @@ function ServiceGroupCard({
   onToggle: () => void;
 }) {
   return (
-    <article className="card-luxury overflow-hidden group h-full flex flex-col !p-0 !translate-y-0">
+    <article className="card-luxury overflow-hidden group h-full flex flex-col !p-0 !translate-y-0 hover:!translate-y-[-4px]">
       <button
         type="button"
         onClick={onToggle}
         className="text-left w-full flex flex-col flex-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] rounded-[inherit]"
         data-testid={`link-service-${group.id}`}
       >
-        <div className="relative shrink-0">
-          <MediaFrame src={group.image} alt={group.title} aspect="video" />
-          <span className="absolute top-3 left-3 z-10 text-[#E8C46A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#0D1B2A]/70">
-            {group.items.length} dịch vụ
-          </span>
+        {/* Mobile: hàng ngang — Desktop: ảnh trên */}
+        <div className="flex gap-4 p-4 sm:p-0 sm:flex-col sm:gap-0">
+          <div className="w-[88px] h-[88px] sm:w-full sm:h-auto shrink-0 rounded-2xl sm:rounded-none overflow-hidden ring-1 ring-black/[0.06] sm:ring-0">
+            <MediaFrame
+              src={group.image}
+              alt={group.title}
+              aspect="square"
+              className="!aspect-square sm:!aspect-[16/10] h-full w-full"
+            />
+          </div>
+
+          <div className="flex-1 min-w-0 sm:p-5 md:p-6 flex flex-col">
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#C89B3C] mb-1.5">
+              {group.items.length} dịch vụ
+            </p>
+            <h3 className="font-display font-bold text-[#0D1B2A] text-[15px] sm:text-lg leading-snug mb-1.5 sm:mb-2">
+              {group.displayName}
+            </h3>
+            <p className="text-xs text-[#0D1B2A]/55 leading-relaxed line-clamp-2 sm:line-clamp-3 flex-1">
+              {group.intro}
+            </p>
+          </div>
         </div>
-        <div className="p-5 md:p-6 flex flex-col flex-1 min-h-[100px]">
-          <h3 className="font-display font-bold text-[#0D1B2A] text-base md:text-lg mb-2 leading-snug">
-            {group.displayName}
-          </h3>
-          <p className="text-xs text-[#0D1B2A]/55 leading-relaxed mb-4 line-clamp-2 flex-1">{group.intro}</p>
+
+        <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 mt-auto">
           <span
-            className={`inline-flex items-center justify-center gap-1 w-full py-3 rounded-full border-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+            className={`inline-flex items-center justify-center gap-1.5 w-full py-2.5 sm:py-3 rounded-full border-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
               expanded
                 ? "gold-gradient text-white border-transparent"
                 : "border-[#C89B3C] text-[#C89B3C] group-hover:gold-gradient group-hover:text-white group-hover:border-transparent"
@@ -95,7 +109,7 @@ export default function FeaturedServicesSection() {
     const cms = featuredServices.find((f) => f.id === g.id);
     return {
       ...g,
-      displayName: cms?.displayName ?? g.title.toUpperCase(),
+      displayName: cms?.displayName ?? g.title,
       image: cms?.image ?? g.image,
     };
   });
@@ -112,7 +126,7 @@ export default function FeaturedServicesSection() {
           DỊCH VỤ NỔI BẬT
         </SectionTitle>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 items-stretch">
           {slice.map((group, i) => (
             <motion.div
               key={group.id}
