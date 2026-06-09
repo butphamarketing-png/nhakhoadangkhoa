@@ -1,8 +1,7 @@
 import { Link } from "wouter";
 import { Phone, MapPin, Globe, Mail, Clock, Facebook, Youtube, MessageCircle, Calendar } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
-import { useServiceCatalog } from "@/lib/services/use-service-catalog";
-import { categoryPath } from "@/lib/services/slug";
+import { useServiceGroups } from "@/lib/cms-provider";
 import BrandLogo from "@/components/BrandLogo";
 
 const SUPPORT_LINKS = [
@@ -15,7 +14,7 @@ const SUPPORT_LINKS = [
 
 export default function Footer() {
   const BRAND = useBrand();
-  const serviceCatalog = useServiceCatalog();
+  const serviceGroups = useServiceGroups();
   const SOCIAL = [
     { href: BRAND.facebook, label: "Facebook", icon: Facebook, testId: "link-footer-facebook" },
     { href: BRAND.zalo, label: "Zalo", zalo: true, testId: "link-footer-zalo" },
@@ -121,11 +120,11 @@ export default function Footer() {
               Dịch vụ
             </h4>
             <ul className="space-y-2.5 mt-4">
-              {serviceCatalog.categories.map((cat) => (
-                <li key={cat.slug}>
-                  <Link href={categoryPath(cat.slug)}>
-                    <span className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors cursor-pointer" data-testid={`link-footer-service-${cat.slug}`}>
-                      {cat.title}
+              {serviceGroups.map((g) => (
+                <li key={g.id}>
+                  <Link href={g.href}>
+                    <span className="text-white/70 text-sm hover:text-[#C89B3C] transition-colors cursor-pointer" data-testid={`link-footer-service-${g.id}`}>
+                      {g.title}
                     </span>
                   </Link>
                 </li>

@@ -9,6 +9,7 @@ import { DOCTORS, PROMOTIONS, SERVICES, TESTIMONIALS } from "./constants";
 import { ABOUT_SECTIONS, type AboutSection } from "./about-content";
 import { buildMainServiceCards, type MainServiceCard } from "./main-services";
 import { SERVICE_MENU_GROUPS, type ServiceMenuGroup } from "./services-menu";
+import { SERVICE_GROUPS, type ServiceGroup } from "./service-groups";
 import {
   GALLERY_PROMOTIONS,
   GALLERY_TESTIMONIALS,
@@ -132,10 +133,31 @@ export function useServiceMenu() {
   });
 }
 
+/** 10 nhóm dịch vụ — mega menu & trang chủ */
+export function useServiceGroups(): ServiceGroup[] {
+  const menu = useServiceMenu();
+  return SERVICE_GROUPS.map((def) => {
+    const fromCms = menu.find((m) => m.id === def.id);
+    if (!fromCms) return def;
+    return {
+      ...def,
+      title: fromCms.title || def.title,
+      intro: fromCms.intro || def.intro,
+      href: fromCms.href || def.href,
+      items: fromCms.items.length
+        ? fromCms.items.map((item, i) => ({
+            id: def.items[i]?.id ?? `${def.id}-${i}`,
+            name: item.label,
+            href: item.href,
+          }))
+        : def.items,
+    };
+  });
+}
+
 /** 4 dịch vụ chính — menu & trang /dich-vu */
 export function useMainServices(): MainServiceCard[] {
-  const menu = useServiceMenu();
-  return buildMainServiceCards(menu);
+  return buildMainServiceCards();
 }
 
 export function useAboutSections() {

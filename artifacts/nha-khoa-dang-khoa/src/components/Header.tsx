@@ -3,8 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
 import { MAIN_NAV } from "@/lib/navigation";
-import { useAboutSections } from "@/lib/cms-provider";
-import { useServiceCatalog } from "@/lib/services/use-service-catalog";
+import { useAboutSections, useServiceGroups } from "@/lib/cms-provider";
 import BrandLogo from "@/components/BrandLogo";
 import SiteSearchBar from "@/components/SiteSearchBar";
 import ServiceMegaMenu from "@/components/services/ServiceMegaMenu";
@@ -17,7 +16,7 @@ interface HeaderProps {
 export default function Header({ onBookingClick }: HeaderProps) {
   const BRAND = useBrand();
   const ABOUT_SECTIONS = useAboutSections();
-  const serviceCatalog = useServiceCatalog();
+  const serviceGroups = useServiceGroups();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -183,14 +182,14 @@ export default function Header({ onBookingClick }: HeaderProps) {
           {/* Mega menu dưới cả header (tránh thanh search chặn hover) */}
           <div
             className={`hidden xl:block absolute left-0 right-0 top-full z-[60] transition-all duration-200 ${
-              serviceOpen && serviceCatalog.categories.length
+              serviceOpen && serviceGroups.length
                 ? "opacity-100 visible translate-y-0 pointer-events-auto"
                 : "opacity-0 invisible -translate-y-1 pointer-events-none"
             }`}
             onMouseEnter={() => setServiceOpen(true)}
           >
             <div className="pt-1 flex justify-center px-4 pb-2">
-              <ServiceMegaMenu catalog={serviceCatalog} />
+              <ServiceMegaMenu groups={serviceGroups} />
             </div>
           </div>
         </div>
@@ -225,7 +224,7 @@ export default function Header({ onBookingClick }: HeaderProps) {
               </Link>
             ))}
             <p className="px-4 pt-3 pb-1 text-[10px] font-bold text-[#C89B3C] uppercase tracking-widest">Dịch vụ</p>
-            <ServiceMobileAccordion catalog={serviceCatalog} />
+            <ServiceMobileAccordion groups={serviceGroups} />
             {MAIN_NAV.filter((l) => !["TRANG CHỦ", "GIỚI THIỆU", "DỊCH VỤ"].includes(l.label)).map((link) => (
               <Link href={link.href} key={link.href}>
                 <div className={`px-4 py-3 rounded-xl font-bold ${isActive(link.href) ? "bg-[#F8F6F1] text-[#C89B3C]" : "text-[#0D1B2A]"}`}>

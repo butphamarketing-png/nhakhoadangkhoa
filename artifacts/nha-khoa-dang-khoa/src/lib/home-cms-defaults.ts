@@ -1,7 +1,7 @@
 import {
   ABOUT_PROMO_IMAGE,
   CLINIC_STATS,
-  FEATURED_SERVICES,
+  FEATURED_SERVICE_GROUPS,
   HERO_SLIDES,
   HOME_DOCTORS,
   SMILE_MODELS,
@@ -121,7 +121,7 @@ export const DEFAULT_HOME_CMS: HomeCmsData = {
   commitments: DEFAULT_COMMITMENTS,
   smileModels: SMILE_MODELS,
   technologyItems: TECHNOLOGY_ITEMS,
-  featuredServices: FEATURED_SERVICES.map((s) => ({
+  featuredServices: FEATURED_SERVICE_GROUPS.map((s) => ({
     id: s.id,
     name: s.name,
     href: s.href,
@@ -176,6 +176,22 @@ function mergeTechnologyItems(partial?: TechnologyItemCms[]): TechnologyItemCms[
   });
 }
 
+function mergeFeaturedServices(partial?: FeaturedServiceCms[]): FeaturedServiceCms[] {
+  const defaults = DEFAULT_HOME_CMS.featuredServices;
+  if (!partial?.length) return defaults;
+  return defaults.map((def) => {
+    const item = partial.find((p) => p.id === def.id);
+    if (!item) return def;
+    return {
+      id: def.id,
+      name: item.name || def.name,
+      href: item.href || def.href,
+      image: item.image || def.image,
+      displayName: item.displayName || def.displayName,
+    };
+  });
+}
+
 export function mergeHomeCms(partial: Partial<HomeCmsData> | null | undefined): HomeCmsData {
   if (!partial) return DEFAULT_HOME_CMS;
   return {
@@ -186,9 +202,7 @@ export function mergeHomeCms(partial: Partial<HomeCmsData> | null | undefined): 
     homeDoctors: partial.homeDoctors?.length ? partial.homeDoctors : DEFAULT_HOME_CMS.homeDoctors,
     smileModels: partial.smileModels?.length ? partial.smileModels : DEFAULT_HOME_CMS.smileModels,
     technologyItems: mergeTechnologyItems(partial.technologyItems),
-    featuredServices: partial.featuredServices?.length
-      ? partial.featuredServices
-      : DEFAULT_HOME_CMS.featuredServices,
+    featuredServices: mergeFeaturedServices(partial.featuredServices),
     testimonialTabs: partial.testimonialTabs?.length
       ? partial.testimonialTabs
       : DEFAULT_HOME_CMS.testimonialTabs,

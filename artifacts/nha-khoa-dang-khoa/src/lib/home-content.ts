@@ -173,23 +173,23 @@ export const SERVICE_IMAGES: Record<string, string> = {
 
 export const TECHNOLOGY_ITEMS = [
   {
-    title: "Máy CT Cone Beam 3D",
-    desc: "Chụp 3D toàn hàm — lập kế hoạch implant & chỉnh nha chính xác.",
+    title: "Hệ Thống Chụp CT Cone Beam 3D",
+    desc: "Chẩn đoán hình ảnh 3D chính xác, hỗ trợ lập kế hoạch điều trị hiệu quả.",
     image: IMAGES.congnghe.ctAxeos,
   },
   {
-    title: "Máy Scan iTero 5D Plus",
-    desc: "Lấy dấu răng số hóa — không đau, không khí mẫu truyền thống.",
+    title: "Hệ Thống Scan Dấu Răng Kỹ Thuật Số",
+    desc: "Lấy dấu răng nhanh chóng, chính xác, không gây khó chịu như phương pháp truyền thống.",
     image: IMAGES.congnghe.implantGuide,
   },
   {
-    title: "Piezotome nhổ răng khôn",
-    desc: "Nhổ răng khôn siêu âm — giảm đau, lành nhanh.",
+    title: "Robot Hỗ Trợ Phẫu Thuật Nha Khoa",
+    desc: "Ứng dụng công nghệ hiện đại giúp nâng cao độ chính xác và an toàn trong điều trị.",
     image: IMAGES.congnghe.xGuide,
   },
   {
-    title: "Cấy ghép Implant",
-    desc: "Trồng răng chuẩn quốc tế — phục hình ổn định lâu dài.",
+    title: "Robot Định Vị Cấy Ghép Implant",
+    desc: "Hỗ trợ cấy ghép Implant chuẩn xác theo dữ liệu số hóa, tăng tỷ lệ thành công và độ bền lâu dài.",
     image: IMAGES.congnghe.xnavImplant,
   },
 ];
@@ -201,10 +201,16 @@ export const BOOKING_BENEFITS: { icon: LucideIcon; label: string }[] = [
   { icon: Shield, label: "Bảo mật thông tin" },
 ];
 
-export const FEATURED_SERVICES = SERVICES.map((s) => ({
-  ...s,
-  image: SERVICE_IMAGES[s.id] ?? SERVICE_IMAGES.implant,
-  displayName: s.name.toUpperCase(),
+import { SERVICE_GROUPS } from "./service-groups";
+
+export const FEATURED_SERVICE_GROUPS = SERVICE_GROUPS.map((g) => ({
+  id: g.id,
+  name: g.title,
+  href: g.href,
+  image: g.image,
+  displayName: g.title.toUpperCase(),
+  intro: g.intro,
+  itemCount: g.items.length,
 }));
 
 export const HOME_PROMOTIONS = [
