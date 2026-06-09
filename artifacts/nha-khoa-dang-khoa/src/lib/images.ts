@@ -32,6 +32,14 @@ export const IMAGES = {
     itero: img("service-cong-nghe-itero.png"),
   },
 
+  /** Ảnh trang thiết bị — /public/images/congnghe/ */
+  congnghe: {
+    ctAxeos: img("congnghe/tech-ct-axeos.jpg"),
+    implantGuide: img("congnghe/tech-implant-guide.jpg"),
+    xGuide: img("congnghe/tech-xguide.jpg"),
+    xnavImplant: img("congnghe/tech-xnav-implant.jpg"),
+  },
+
   promos: {
     muaVangChinhNha: img("promo-mua-vang-chinh-nha.png"),
     chinhNha10: img("promo-chinh-nha-10.png"),

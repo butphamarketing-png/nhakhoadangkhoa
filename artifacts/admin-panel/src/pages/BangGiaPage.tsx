@@ -4,14 +4,16 @@ import { motion } from "framer-motion";
 import { Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { PRICING_CATALOG } from "@/lib/defaults";
+import { PRICING_CATALOG_ADMIN } from "@/lib/defaults";
+import { defaultPricingMap } from "@website/lib/pricing-catalog";
 import { useContent } from "@/lib/use-content";
 import { useToast } from "@/hooks/use-toast";
 
 export default function BangGiaPage() {
+  const defaults = defaultPricingMap();
   const { data: prices, setData: setPrices, loading, saving, save } = useContent<Record<string, string>>(
     "pricing",
-    {},
+    defaults,
   );
   const { toast } = useToast();
 
@@ -45,7 +47,7 @@ export default function BangGiaPage() {
           <p className="text-sm text-gray-400">Đang tải...</p>
         ) : (
           <div className="space-y-6">
-            {PRICING_CATALOG.map((group) => (
+            {PRICING_CATALOG_ADMIN.map((group) => (
               <div key={group.group} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                 <div className="px-5 py-3 bg-gray-50 border-b border-gray-100">
                   <h2 className="font-extrabold text-[#0D1B2A]">{group.group}</h2>
@@ -55,8 +57,8 @@ export default function BangGiaPage() {
                     <div key={item.id} className="px-5 py-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                       <span className="text-sm text-gray-700 flex-1">{item.name}</span>
                       <Input
-                        placeholder="VD: 15.000.000 – 35.000.000 ₫"
-                        value={prices[item.id] ?? ""}
+                        placeholder={defaults[item.id] ?? "VD: 9.800.000/trụ"}
+                        value={prices[item.id] ?? defaults[item.id] ?? ""}
                         onChange={(e) =>
                           setPrices((prev) => ({ ...prev, [item.id]: e.target.value }))
                         }

@@ -13,11 +13,12 @@ import {
   HOME_PROMOTIONS,
 } from "@website/lib/home-content";
 import { DEFAULT_SITE } from "./defaults";
+import { defaultPricingMap } from "@website/lib/pricing-catalog";
 import type { SiteContentKey } from "./cms-keys";
 
 export const WEBSITE_DEFAULTS: Record<SiteContentKey, unknown> = {
   site: DEFAULT_SITE,
-  pricing: {},
+  pricing: defaultPricingMap(),
   blog: BLOG_POSTS.map((p) => ({ ...p, status: "published" as const })),
   doctors: DOCTORS,
   testimonials: TESTIMONIALS,

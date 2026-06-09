@@ -1,30 +1,17 @@
 /**
- * Cấu trúc bảng giá theo nhóm dịch vụ — giá cập nhật qua admin (localStorage)
+ * Bảng giá website — đọc từ CMS (Supabase) hoặc giá mặc định pricing-catalog
  */
 
-import { SERVICE_MENU_GROUPS } from "./services-menu";
+import { PRICING_CATALOG, defaultPricingMap, pricingGroupsForWebsite } from "./pricing-catalog";
 
-export type PriceLine = {
-  id: string;
-  name: string;
-};
-
-export type PriceGroup = {
-  id: string;
-  service: string;
-  items: PriceLine[];
-};
+export type PriceLine = { id: string; name: string };
+export type PriceGroup = { id: string; service: string; items: PriceLine[] };
 
 const STORAGE_KEY = "dk-pricing-v1";
 
-export const PRICE_GROUPS: PriceGroup[] = SERVICE_MENU_GROUPS.map((g) => ({
-  id: g.id,
-  service: g.title,
-  items: g.items.map((item, i) => ({
-    id: `${g.id}-${i}`,
-    name: item.label,
-  })),
-}));
+export const PRICE_GROUPS: PriceGroup[] = pricingGroupsForWebsite();
+
+const DEFAULT_PRICES = defaultPricingMap();
 
 export function getStoredPrices(): Record<string, string> {
   if (typeof window === "undefined") return {};
@@ -39,16 +26,14 @@ export function getStoredPrices(): Record<string, string> {
 export function getPriceDisplay(itemId: string): string {
   const stored = getStoredPrices();
   if (stored[itemId]?.trim()) return stored[itemId];
-  return "Liên hệ";
+  return DEFAULT_PRICES[itemId] ?? "Liên hệ";
 }
 
-/** Ghi giá từ admin (API hoặc panel) */
 export function setStoredPrices(prices: Record<string, string>) {
   if (typeof window === "undefined") return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prices));
 }
 
-/** Tải giá từ API admin (Supabase) */
 export async function syncPricingFromApi(): Promise<void> {
   const base = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
   if (!base || typeof window === "undefined") return;
@@ -56,8 +41,12 @@ export async function syncPricingFromApi(): Promise<void> {
     const res = await fetch(`${base}/api/content/pricing`);
     if (!res.ok) return;
     const data = (await res.json()) as Record<string, string>;
-    if (data && typeof data === "object") setStoredPrices(data);
+    if (data && typeof data === "object" && Object.keys(data).length > 0) {
+      setStoredPrices(data);
+    }
   } catch {
-    /* giữ giá local */
+    /* giữ giá local / mặc định */
   }
 }
+
+export { PRICING_CATALOG, defaultPricingMap };

@@ -175,18 +175,22 @@ export const TECHNOLOGY_ITEMS = [
   {
     title: "Máy CT Cone Beam 3D",
     desc: "Chụp 3D toàn hàm — lập kế hoạch implant & chỉnh nha chính xác.",
+    image: IMAGES.congnghe.ctAxeos,
   },
   {
     title: "Máy Scan iTero 5D Plus",
     desc: "Lấy dấu răng số hóa — không đau, không khí mẫu truyền thống.",
+    image: IMAGES.congnghe.implantGuide,
   },
   {
     title: "Piezotome nhổ răng khôn",
     desc: "Nhổ răng khôn siêu âm — giảm đau, lành nhanh.",
+    image: IMAGES.congnghe.xGuide,
   },
   {
     title: "Cấy ghép Implant",
     desc: "Trồng răng chuẩn quốc tế — phục hình ổn định lâu dài.",
+    image: IMAGES.congnghe.xnavImplant,
   },
 ];
 

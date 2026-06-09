@@ -72,9 +72,8 @@ export default function BangGiaPage() {
                         <CheckCircle className="w-4 h-4 flex-shrink-0 text-[#C89B3C]" />
                         <span className="text-[#0D1B2A]/75 text-sm">{item.name}</span>
                       </div>
-                      <span className="font-bold text-sm whitespace-nowrap text-[#C89B3C]">
-                        {ready ? getPriceDisplay(item.id) : "Liên hệ"}
-                        {ready && getPriceDisplay(item.id) !== "Liên hệ" ? " VNĐ" : ""}
+                      <span className="font-bold text-sm whitespace-nowrap text-[#C89B3C] text-right">
+                        {ready ? getPriceDisplay(item.id) : "…"}
                       </span>
                     </div>
                   ))}
