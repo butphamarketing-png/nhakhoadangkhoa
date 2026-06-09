@@ -52,15 +52,15 @@ function ServiceGroupCard({
           </div>
         </div>
 
-        <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 mt-auto">
+        <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 mt-auto flex justify-center">
           <span
-            className={`inline-flex items-center justify-center gap-1.5 w-full py-2.5 sm:py-3 rounded-full border-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+            className={`flex items-center justify-center gap-1.5 w-full py-2.5 sm:py-3 rounded-full border-2 text-[11px] sm:text-xs font-bold tracking-wide transition-all duration-300 ${
               expanded
                 ? "gold-gradient text-white border-transparent"
                 : "border-[#C89B3C] text-[#C89B3C] group-hover:gold-gradient group-hover:text-white group-hover:border-transparent"
             }`}
           >
-            {expanded ? "Thu gọn" : "Xem danh sách"}
+            {expanded ? "Thu gọn" : "Xem dịch vụ"}
             <ChevronDown className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`} />
           </span>
         </div>
