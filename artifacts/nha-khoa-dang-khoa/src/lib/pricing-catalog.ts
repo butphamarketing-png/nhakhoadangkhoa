@@ -124,7 +124,7 @@ export const PRICING_CATALOG: PricingCatalogGroup[] = [
       { id: "tl-composite", name: "Tháo lắp Composite", defaultPrice: "600.000/răng" },
       { id: "tl-su-thuong", name: "Tháo lắp sứ thường", defaultPrice: "800.000/răng" },
       { id: "tl-su-cao-cap", name: "Tháo lắp sứ cao cấp", defaultPrice: "1.000.000 - 1.500.000/răng" },
-      { id: "tl-mac-luoi", name: "Mắc lưới", defaultPrice: "800.000" },
+      { id: "tl-mac-luoi", name: "Mắc lưới", defaultPrice: "600.000 - 800.000" },
       { id: "tl-mac-cai-don", name: "Mắc cài đơn", defaultPrice: "1.500.000/cái" },
       { id: "tl-khung-kim-loai", name: "Hàm khung kim loại", defaultPrice: "2.000.000 - 2.500.000" },
       { id: "tl-khung-titan", name: "Hàm khung titan", defaultPrice: "3.000.000 - 4.000.000" },

@@ -32,6 +32,20 @@ export const IMAGES = {
     itero: img("service-cong-nghe-itero.png"),
   },
 
+  /** Ảnh danh mục dịch vụ cấp 1 — /public/images/danh-muc/ */
+  danhMuc: {
+    cayGhepImplant: img("danh-muc/cay-ghep-implant.jpg"),
+    danSuVeneer: img("danh-muc/dan-su-veneer.png"),
+    phucHinhCoDinh: img("danh-muc/phuc-hinh-co-dinh.png"),
+    nhoRang: img("danh-muc/nho-rang.png"),
+    nhaChu: img("danh-muc/nha-chu.png"),
+    tramRangNoiNha: img("danh-muc/tram-rang-noi-nha.png"),
+    tayTrangHotXoan: img("danh-muc/tay-trang.png"),
+    niengRang: img("danh-muc/nieng-rang.png"),
+    hoLoi: img("danh-muc/ho-loi.png"),
+    phucHinhThaoLap: img("danh-muc/phuc-hinh-thao-lap.png"),
+  },
+
   /** Ảnh trang thiết bị — /public/images/congnghe/ */
   congnghe: {
     ctAxeos: img("congnghe/tech-ct-axeos.jpg"),

@@ -116,7 +116,8 @@ export function useDoctors() {
 }
 
 export function useTestimonials() {
-  return useCmsData("testimonials", TESTIMONIALS);
+  // Luôn dùng danh sách chuẩn — tránh CMS cũ (tên/avatar placeholder)
+  return TESTIMONIALS;
 }
 
 export function useServices() {

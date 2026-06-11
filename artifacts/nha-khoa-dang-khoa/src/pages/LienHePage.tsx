@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import PageHero from "@/components/PageHero";
 import { BRAND } from "@/lib/constants";
+import { CONTACT_HOURS } from "@/lib/brand-hours";
 import { fadeUp } from "@/lib/motion";
 
 const schema = z.object({
@@ -20,12 +21,6 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
-
-const HOURS = [
-  { day: "Thứ 2 – Thứ 6", time: "8:00 – 20:00" },
-  { day: "Thứ 7", time: "8:00 – 20:00" },
-  { day: "Chủ nhật", time: "8:00 – 17:00" },
-];
 
 export default function LienHePage() {
   const [submitted, setSubmitted] = useState(false);
@@ -96,7 +91,7 @@ export default function LienHePage() {
                   Giờ làm việc
                 </h3>
                 <div className="space-y-3">
-                  {HOURS.map((h) => (
+                  {CONTACT_HOURS.map((h) => (
                     <div key={h.day} className="flex justify-between items-center py-2 border-b border-black/[0.05] last:border-0">
                       <span className="text-sm text-[#0D1B2A]/60 font-medium">{h.day}</span>
                       <span className="text-sm font-bold text-[#0D1B2A]">{h.time}</span>

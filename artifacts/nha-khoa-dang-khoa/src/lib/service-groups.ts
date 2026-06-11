@@ -22,43 +22,43 @@ export type ServiceGroup = {
 const GROUP_META: Record<string, { intro: string; image: string }> = {
   "cay-ghep-implant": {
     intro: "Trụ implant chuẩn quốc tế — phục hình ổn định, thẩm mỹ và chức năng ăn nhai lâu dài.",
-    image: IMAGES.services.implant,
+    image: IMAGES.danhMuc.cayGhepImplant,
   },
   "dan-su-veneer": {
     intro: "Mặt sứ veneer mỏng — cải thiện nụ cười, bảo tồn men răng tối đa.",
-    image: IMAGES.aboutRangSu10000,
+    image: IMAGES.danhMuc.danSuVeneer,
   },
   "phuc-hinh-co-dinh": {
     intro: "Bọc sứ, cầu răng cố định — phục hồi chức năng và thẩm mỹ toàn diện.",
-    image: IMAGES.aboutRangSu10000,
+    image: IMAGES.danhMuc.phucHinhCoDinh,
   },
   "nho-rang": {
     intro: "Nhổ răng và tiểu phẫu nhẹ nhàng — an toàn, giảm đau tối đa.",
-    image: IMAGES.services.nhoRangKhon,
+    image: IMAGES.danhMuc.nhoRang,
   },
   "nha-chu": {
     intro: "Cạo vôi, điều trị viêm nướu và bệnh quanh răng — nền tảng sức khỏe răng miệng.",
-    image: IMAGES.coverClinic,
+    image: IMAGES.danhMuc.nhaChu,
   },
   "tram-rang-noi-nha": {
     intro: "Trám thẩm mỹ, chữa tủy — bảo tồn răng thật, điều trị an toàn.",
-    image: IMAGES.blog.tramRang,
+    image: IMAGES.danhMuc.tramRangNoiNha,
   },
   "tay-trang-hot-xoan": {
     intro: "Tẩy trắng răng và gắn hột xoàn — nụ cười sáng, tự tin hơn.",
-    image: IMAGES.services.itero,
+    image: IMAGES.danhMuc.tayTrangHotXoan,
   },
   "nieng-rang": {
     intro: "Mắc cài, Invisalign — chỉnh nha thẩm mỹ, cải thiện khớp cắn.",
-    image: IMAGES.services.niengRang,
+    image: IMAGES.danhMuc.niengRang,
   },
   "ho-loi": {
     intro: "Smile Design, cắt nướu — điều chỉnh cười hở lợi hài hòa.",
-    image: IMAGES.blog.implantQuyTrinh,
+    image: IMAGES.danhMuc.hoLoi,
   },
   "phuc-hinh-thao-lap": {
     intro: "Hàm tháo lắp, phục hình thay thế linh hoạt — phù hợp mọi nhu cầu.",
-    image: IMAGES.coverClinic,
+    image: IMAGES.danhMuc.phucHinhThaoLap,
   },
 };
 

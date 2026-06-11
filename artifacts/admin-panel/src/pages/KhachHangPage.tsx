@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import MediaPicker from "@/components/MediaPicker";
 import { useContent } from "@/lib/use-content";
 import { WEBSITE_DEFAULTS } from "@/lib/website-imports";
 import { useToast } from "@/hooks/use-toast";
@@ -17,7 +16,6 @@ type Testimonial = {
   name: string;
   service: string;
   rating: number;
-  avatar: string;
   text: string;
   date: string;
 };
@@ -53,7 +51,6 @@ export default function KhachHangPage() {
                 name: "",
                 service: "",
                 rating: 5,
-                avatar: "/images/testimonials/kh-1.jpg",
                 text: "",
                 date: new Date().toLocaleDateString("vi-VN", { month: "long", year: "numeric" }),
               })
@@ -109,7 +106,6 @@ export default function KhachHangPage() {
                 <Label>Dịch vụ</Label>
                 <Input value={edit.service} onChange={(e) => setEdit({ ...edit, service: e.target.value })} />
               </div>
-              <MediaPicker label="Ảnh đại diện" value={edit.avatar} onChange={(avatar) => setEdit({ ...edit, avatar })} />
               <div>
                 <Label>Nội dung</Label>
                 <Textarea value={edit.text} onChange={(e) => setEdit({ ...edit, text: e.target.value })} rows={4} />

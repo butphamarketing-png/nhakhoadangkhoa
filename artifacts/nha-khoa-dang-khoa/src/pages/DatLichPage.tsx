@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import { useBrand } from "@/lib/brand-context";
 import { useServices } from "@/lib/cms-provider";
+import { BOOKING_TIME_SLOTS_SUNDAY, BOOKING_TIME_SLOTS_WEEKDAY } from "@/lib/brand-hours";
 
 const schema = z.object({
   name: z.string().min(2, "Vui lòng nhập họ tên"),
@@ -25,8 +26,6 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const TIME_SLOTS = ["8:00 – 9:00", "9:00 – 10:00", "10:00 – 11:00", "13:00 – 14:00", "14:00 – 15:00", "15:00 – 16:00", "16:00 – 17:00", "17:00 – 18:00", "18:00 – 19:00"];
-
 export default function DatLichPage() {
   const BRAND = useBrand();
   const SERVICES = useServices();
@@ -37,6 +36,10 @@ export default function DatLichPage() {
     resolver: zodResolver(schema),
     defaultValues: { name: "", phone: "", service: "", date: "", time: "", note: "" },
   });
+
+  const selectedDate = form.watch("date");
+  const isSunday = selectedDate ? new Date(`${selectedDate}T12:00:00`).getDay() === 0 : false;
+  const timeSlots = isSunday ? BOOKING_TIME_SLOTS_SUNDAY : BOOKING_TIME_SLOTS_WEEKDAY;
 
   const onSubmit = async (values: FormValues) => {
     setSubmitError(null);
@@ -204,7 +207,23 @@ export default function DatLichPage() {
                             <FormLabel className="font-semibold text-[#0D1B2A] flex items-center gap-2">
                               <Calendar className="w-3.5 h-3.5 text-[#C89B3C]" /> Ngày hẹn *
                             </FormLabel>
-                            <FormControl><Input type="date" {...field} className="rounded-xl h-11" data-testid="input-datlich-date" /></FormControl>
+                            <FormControl>
+                              <Input
+                                type="date"
+                                {...field}
+                                className="rounded-xl h-11"
+                                data-testid="input-datlich-date"
+                                onChange={(e) => {
+                                  field.onChange(e);
+                                  const nextSunday = new Date(`${e.target.value}T12:00:00`).getDay() === 0;
+                                  const slots = nextSunday ? BOOKING_TIME_SLOTS_SUNDAY : BOOKING_TIME_SLOTS_WEEKDAY;
+                                  const current = form.getValues("time");
+                                  if (current && !slots.includes(current as (typeof slots)[number])) {
+                                    form.setValue("time", "");
+                                  }
+                                }}
+                              />
+                            </FormControl>
                             <FormMessage />
                           </FormItem>
                         )} />
@@ -218,7 +237,7 @@ export default function DatLichPage() {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {TIME_SLOTS.map((t) => (
+                                {timeSlots.map((t) => (
                                   <SelectItem key={t} value={t}>{t}</SelectItem>
                                 ))}
                               </SelectContent>
