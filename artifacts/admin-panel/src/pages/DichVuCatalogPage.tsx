@@ -482,7 +482,7 @@ export default function DichVuCatalogPage() {
             Quản lý danh mục → dịch vụ → bài SEO. Website, menu và sitemap cập nhật tự động từ database.
           </p>
           <div className="flex gap-2">
-            <Button variant="outline" className="rounded-xl gap-2" onClick={runSeed}>
+            <Button variant="outline" className="rounded-xl gap-2" onClick={() => runSeed()}>
               <Download className="w-4 h-4" />
               Import mẫu
             </Button>

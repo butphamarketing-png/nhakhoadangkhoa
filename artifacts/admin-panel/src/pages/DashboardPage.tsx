@@ -22,14 +22,16 @@ type Stats = {
 };
 
 export default function DashboardPage() {
-  const { data: stats, isLoading } = useQuery({
+  const { data: stats, isLoading, isError: statsError, error: statsErr } = useQuery({
     queryKey: ["admin-stats"],
     queryFn: () => apiFetch<Stats>("/api/admin/stats"),
+    retry: 1,
   });
 
   const { data: contentStatus } = useQuery({
     queryKey: ["content-status"],
     queryFn: () => apiFetch<Record<string, boolean>>("/api/admin/content-status"),
+    retry: 1,
   });
 
   const pending = stats?.totals.pending ?? 0;
@@ -46,6 +48,24 @@ export default function DashboardPage() {
   return (
     <AdminLayout title="Tổng quan">
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+        {statsError && (
+          <div className="bg-red-50 border border-red-200 rounded-2xl px-5 py-4 flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-red-800 space-y-1">
+              <p>
+                <strong>Không kết nối được database.</strong> {(statsErr as Error).message}
+              </p>
+              <p className="text-red-600/80 text-xs">
+                Kiểm tra SUPABASE_DB_PASSWORD trên Vercel hoặc mở{" "}
+                <a href="/api/healthz/db" target="_blank" rel="noreferrer" className="underline font-semibold">
+                  /api/healthz/db
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        )}
+
         {pending > 0 && (
           <Link href="/lich-hen">
             <div className="bg-amber-50 border border-amber-200 rounded-2xl px-5 py-4 flex items-center gap-3 hover:bg-amber-100/80 transition-colors">
