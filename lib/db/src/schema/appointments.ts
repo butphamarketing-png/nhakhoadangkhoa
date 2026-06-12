@@ -24,14 +24,20 @@ export const insertAppointmentSchema = createInsertSchema(appointmentsTable).omi
   },
 );
 
-export const createAppointmentBodySchema = z.object({
-  name: z.string().min(2),
-  phone: z.string().min(9),
-  service: z.string().min(1),
-  date: z.string().min(1),
-  time: z.string().min(1),
-  note: z.string().optional(),
-});
+export const createAppointmentBodySchema = z
+  .object({
+    name: z.string().min(2),
+    phone: z.string().min(9),
+    service: z.string().min(1),
+    date: z.string().optional(),
+    time: z.string().optional(),
+    note: z.string().optional(),
+  })
+  .transform((data) => ({
+    ...data,
+    date: data.date?.trim() || "Chờ xác nhận",
+    time: data.time?.trim() || "Chờ xác nhận",
+  }));
 
 export type InsertAppointment = z.infer<typeof insertAppointmentSchema>;
 export type Appointment = typeof appointmentsTable.$inferSelect;

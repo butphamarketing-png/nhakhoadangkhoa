@@ -17,41 +17,51 @@ router.post("/appointments", async (req, res) => {
 
   const { name, phone, service, date, time, note } = parsed.data;
 
-  const [row] = await db
-    .insert(appointmentsTable)
-    .values({
-      name,
-      phone,
-      service,
-      appointmentDate: date,
-      appointmentTime: time,
-      note: note ?? null,
-    })
-    .returning();
+  try {
+    const [row] = await db
+      .insert(appointmentsTable)
+      .values({
+        name,
+        phone,
+        service,
+        appointmentDate: date,
+        appointmentTime: time,
+        note: note ?? null,
+      })
+      .returning();
 
-  res.status(201).json({ id: row.id, status: row.status });
+    res.status(201).json({ id: row.id, status: row.status });
+  } catch (e) {
+    console.error("[appointments] POST failed:", e);
+    res.status(503).json({ error: "Không lưu được lịch hẹn. Vui lòng gọi hotline." });
+  }
 });
 
 router.get("/appointments", requireAdmin, async (_req, res) => {
-  const rows = await db
-    .select()
-    .from(appointmentsTable)
-    .orderBy(desc(appointmentsTable.createdAt))
-    .limit(100);
+  try {
+    const rows = await db
+      .select()
+      .from(appointmentsTable)
+      .orderBy(desc(appointmentsTable.createdAt))
+      .limit(100);
 
-  res.json(
-    rows.map((row) => ({
-      id: row.id,
-      name: row.name,
-      phone: row.phone,
-      service: row.service,
-      date: row.appointmentDate,
-      time: row.appointmentTime,
-      note: row.note,
-      status: row.status,
-      createdAt: row.createdAt,
-    })),
-  );
+    res.json(
+      rows.map((row) => ({
+        id: row.id,
+        name: row.name,
+        phone: row.phone,
+        service: row.service,
+        date: row.appointmentDate,
+        time: row.appointmentTime,
+        note: row.note,
+        status: row.status,
+        createdAt: row.createdAt,
+      })),
+    );
+  } catch (e) {
+    console.error("[appointments] GET failed:", e);
+    res.status(503).json({ error: "Không kết nối được database lịch hẹn." });
+  }
 });
 
 router.patch("/appointments/:id", requireAdmin, async (req, res) => {

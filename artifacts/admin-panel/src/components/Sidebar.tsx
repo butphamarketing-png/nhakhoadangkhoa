@@ -129,13 +129,13 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="px-3 pb-5 border-t border-white/10 pt-4">
+      <div className="px-3 py-2 border-t border-white/10 flex-shrink-0">
         <Link
           href="/login"
           onClick={() => localStorage.removeItem("dk-admin-token")}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/50 hover:text-red-400 hover:bg-red-500/10 transition-all text-sm font-medium w-full"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-white/45 hover:text-red-400 hover:bg-red-500/10 transition-all text-xs font-medium"
         >
-          <LogOut className="w-4 h-4" />
+          <LogOut className="w-3.5 h-3.5" />
           Đăng xuất
         </Link>
       </div>

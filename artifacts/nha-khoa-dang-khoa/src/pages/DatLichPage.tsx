@@ -45,10 +45,7 @@ export default function DatLichPage() {
     setSubmitError(null);
     setSubmitting(true);
     try {
-      const apiBase = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
-      if (!apiBase) {
-        throw new Error("Chưa cấu hình VITE_API_URL trên Vercel. Vui lòng gọi hotline.");
-      }
+      const apiBase = import.meta.env.VITE_API_URL?.replace(/\/+$/, "") || window.location.origin;
       const res = await fetch(`${apiBase}/api/appointments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

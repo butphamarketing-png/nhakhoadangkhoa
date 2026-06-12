@@ -22,9 +22,11 @@ export default function LichHenPage() {
   const { toast } = useToast();
   const qc = useQueryClient();
 
-  const { data: appointments = [], isLoading, error } = useQuery({
+  const { data: appointments = [], isLoading, isError, error, refetch } = useQuery({
     queryKey: ["appointments"],
     queryFn: () => apiFetch<AppointmentRow[]>("/api/appointments"),
+    retry: 1,
+    staleTime: 30_000,
   });
 
   const updateStatus = useMutation({
@@ -90,10 +92,16 @@ export default function LichHenPage() {
           </div>
         </div>
 
-        {error && (
-          <p className="text-sm text-red-500 bg-red-50 rounded-xl px-4 py-3">
-            {(error as Error).message}. Kiểm tra VITE_API_URL và đăng nhập admin.
-          </p>
+        {isError && (
+          <div className="text-sm text-red-600 bg-red-50 rounded-xl px-4 py-3 space-y-2">
+            <p>{(error as Error).message}</p>
+            <p className="text-red-500/80 text-xs">
+              Nếu báo lỗi database: kiểm tra SUPABASE_PROJECT_REF + SUPABASE_DB_PASSWORD trên Vercel, hoặc mở /api/healthz/db.
+            </p>
+            <button type="button" onClick={() => refetch()} className="text-xs font-semibold underline">
+              Thử tải lại
+            </button>
+          </div>
         )}
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -112,14 +120,14 @@ export default function LichHenPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {isLoading && (
+                {isLoading && !isError && (
                   <tr>
                     <td colSpan={8} className="px-4 py-8 text-center text-sm text-gray-400">
                       Đang tải...
                     </td>
                   </tr>
                 )}
-                {!isLoading && filtered.length === 0 && (
+                {!isLoading && !isError && filtered.length === 0 && (
                   <tr>
                     <td colSpan={8} className="px-4 py-8 text-center text-sm text-gray-400">
                       Chưa có lịch hẹn từ website
