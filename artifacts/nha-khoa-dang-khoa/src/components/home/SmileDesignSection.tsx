@@ -6,17 +6,20 @@ import { useHomeCms } from "@/lib/cms-provider";
 import { cmsImageSrc } from "@/lib/media-url";
 import { fadeUp } from "@/lib/motion";
 
-function ToothIcon({ active }: { active: boolean }) {
+function ModelThumb({ model, active }: { model: { title: string; image: string }; active: boolean }) {
   return (
-    <svg viewBox="0 0 64 32" className={`w-14 h-8 mx-auto ${active ? "opacity-100" : "opacity-70"}`} aria-hidden>
-      <path
-        d="M8 8 Q16 2 24 8 Q32 14 40 8 Q48 2 56 8 L54 22 Q48 28 40 24 Q32 18 24 24 Q16 28 10 22 Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        className={active ? "text-[#E8C46A]" : "text-white/80"}
+    <div
+      className={`relative mx-auto w-full max-w-[140px] aspect-[4/3] rounded-lg overflow-hidden border ${
+        active ? "border-[#E8C46A]/80" : "border-white/15"
+      }`}
+    >
+      <img
+        src={cmsImageSrc(model.image)}
+        alt={model.title}
+        className="w-full h-full object-cover object-top"
+        loading="lazy"
       />
-    </svg>
+    </div>
   );
 }
 
@@ -56,7 +59,7 @@ export default function SmileDesignSection() {
               >
                 <p className="text-[10px] font-bold text-[#E8C46A] uppercase tracking-wider mb-1">{model.tag}</p>
                 <p className="font-bold text-white text-sm uppercase leading-snug mb-2">{model.title}</p>
-                <ToothIcon active={activeId === model.id} />
+                <ModelThumb model={model} active={activeId === model.id} />
               </motion.button>
             ))}
           </div>
@@ -104,7 +107,7 @@ export default function SmileDesignSection() {
               >
                 <p className="text-[10px] font-bold text-[#E8C46A] uppercase tracking-wider mb-1">{model.tag}</p>
                 <p className="font-bold text-white text-sm uppercase leading-snug mb-2">{model.title}</p>
-                <ToothIcon active={activeId === model.id} />
+                <ModelThumb model={model} active={activeId === model.id} />
               </motion.button>
             ))}
           </div>

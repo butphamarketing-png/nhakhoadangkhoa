@@ -79,10 +79,10 @@ export const HOME_DOCTORS = [
 ];
 
 export const SMILE_MODELS = [
-  { id: "m1", tag: "Mẫu 1", title: "Răng thỏ đáng yêu", image: IMAGES.testimonials.damThiLat },
-  { id: "m2", tag: "Mẫu 2", title: "Răng nanh phá cách", image: IMAGES.testimonials.nguyenDinhPhuong },
-  { id: "m3", tag: "Mẫu 3", title: "Oval tự nhiên", image: IMAGES.testimonials.truocSau },
-  { id: "m4", tag: "Mẫu 4", title: "Vuông vắn bản lĩnh", image: IMAGES.testimonials.leThiThuy },
+  { id: "m1", tag: "Mẫu 1", title: "Răng thỏ đáng yêu", image: IMAGES.smileModels.mau1RangTho },
+  { id: "m2", tag: "Mẫu 2", title: "Răng nanh phá cách", image: IMAGES.smileModels.mau2RangNanh },
+  { id: "m3", tag: "Mẫu 3", title: "Oval tự nhiên", image: IMAGES.smileModels.mau3Oval },
+  { id: "m4", tag: "Mẫu 4", title: "Vuông vắn bản lĩnh", image: IMAGES.smileModels.mau4VuongVan },
 ];
 
 export const TESTIMONIAL_TABS = [

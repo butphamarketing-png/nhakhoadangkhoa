@@ -61,6 +61,13 @@ export const IMAGES = {
     niengRangHe: img("promo-nieng-rang-he.png"),
   },
 
+  smileModels: {
+    mau1RangTho: img("smile-models/mau-1-rang-tho-dang-yeu.png"),
+    mau2RangNanh: img("smile-models/mau-2-rang-nanh-pha-cach.png"),
+    mau3Oval: img("smile-models/mau-3-oval-tu-nhien.png"),
+    mau4VuongVan: img("smile-models/mau-4-vuong-van-ban-linh.png"),
+  },
+
   testimonials: {
     damThiLat: img("testimonial-dam-thi-lat.png"),
     nguyenDinhPhuong: img("testimonial-nguyen-dinh-phuong.png"),
