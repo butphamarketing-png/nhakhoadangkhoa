@@ -79,10 +79,38 @@ export const HOME_DOCTORS = [
 ];
 
 export const SMILE_MODELS = [
-  { id: "m1", tag: "Mẫu 1", title: "Răng thỏ đáng yêu", image: IMAGES.smileModels.mau1RangTho },
-  { id: "m2", tag: "Mẫu 2", title: "Răng nanh phá cách", image: IMAGES.smileModels.mau2RangNanh },
-  { id: "m3", tag: "Mẫu 3", title: "Oval tự nhiên", image: IMAGES.smileModels.mau3Oval },
-  { id: "m4", tag: "Mẫu 4", title: "Vuông vắn bản lĩnh", image: IMAGES.smileModels.mau4VuongVan },
+  {
+    id: "m1",
+    tag: "Mẫu 1",
+    title: "Răng thỏ đáng yêu",
+    image: IMAGES.smileModels.mau1RangTho,
+    benefits: ["Trẻ trung, dễ thương", "Nụ cười tươi, gần gũi", "Răng cửa nhỏ nhẹ"],
+    faceMatch: "Mặt tròn, trái xoan — thích nụ cười hiền, nữ tính",
+  },
+  {
+    id: "m2",
+    tag: "Mẫu 2",
+    title: "Răng nanh phá cách",
+    image: IMAGES.smileModels.mau2RangNanh,
+    benefits: ["Cá tính, khác biệt", "Điểm nhấn khi cười", "Phong cách trẻ trung"],
+    faceMatch: "Góc cạnh vừa — thích nổi bật, không theo khuôn mẫu",
+  },
+  {
+    id: "m3",
+    tag: "Mẫu 3",
+    title: "Oval tự nhiên",
+    image: IMAGES.smileModels.mau3Oval,
+    benefits: ["Hài hòa như răng thật", "Dễ phối với màu da", "An toàn, không lỗi thời"],
+    faceMatch: "Mặt oval, trung tính — phù hợp đa số khuôn mặt",
+  },
+  {
+    id: "m4",
+    tag: "Mẫu 4",
+    title: "Vuông vắn bản lĩnh",
+    image: IMAGES.smileModels.mau4VuongVan,
+    benefits: ["Tin cậy, chuyên nghiệp", "Nụ cười vững chắc", "Hình ảnh lãnh đạo"],
+    faceMatch: "Mặt vuông, hàm rõ — nam giới & người cần uy tín",
+  },
 ];
 
 export const TESTIMONIAL_TABS = [

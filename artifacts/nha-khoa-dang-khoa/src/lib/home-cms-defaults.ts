@@ -12,7 +12,14 @@ import {
 import { IMAGES } from "./images";
 
 export type HomeDoctorCms = (typeof HOME_DOCTORS)[number];
-export type SmileModelCms = { id: string; tag: string; title: string; image: string };
+export type SmileModelCms = {
+  id: string;
+  tag: string;
+  title: string;
+  image: string;
+  benefits: string[];
+  faceMatch: string;
+};
 export type TechnologyItemCms = { title: string; desc: string; image: string };
 export type FeaturedServiceCms = {
   id: string;
@@ -192,6 +199,20 @@ function mergeFeaturedServices(partial?: FeaturedServiceCms[]): FeaturedServiceC
   });
 }
 
+export function mergeSmileModels(items: SmileModelCms[] | undefined): SmileModelCms[] {
+  if (!items?.length) return DEFAULT_HOME_CMS.smileModels;
+  return DEFAULT_HOME_CMS.smileModels.map((def) => {
+    const item = items.find((m) => m.id === def.id);
+    if (!item) return def;
+    return {
+      ...def,
+      ...item,
+      benefits: item.benefits?.length ? item.benefits : def.benefits,
+      faceMatch: item.faceMatch || def.faceMatch,
+    };
+  });
+}
+
 export function mergeHomeCms(partial: Partial<HomeCmsData> | null | undefined): HomeCmsData {
   if (!partial) return DEFAULT_HOME_CMS;
   return {
@@ -200,7 +221,7 @@ export function mergeHomeCms(partial: Partial<HomeCmsData> | null | undefined): 
     heroSlides: partial.heroSlides?.length ? partial.heroSlides : DEFAULT_HOME_CMS.heroSlides,
     clinicStats: partial.clinicStats?.length ? partial.clinicStats : DEFAULT_HOME_CMS.clinicStats,
     homeDoctors: partial.homeDoctors?.length ? partial.homeDoctors : DEFAULT_HOME_CMS.homeDoctors,
-    smileModels: partial.smileModels?.length ? partial.smileModels : DEFAULT_HOME_CMS.smileModels,
+    smileModels: mergeSmileModels(partial.smileModels),
     technologyItems: mergeTechnologyItems(partial.technologyItems),
     featuredServices: mergeFeaturedServices(partial.featuredServices),
     testimonialTabs: partial.testimonialTabs?.length

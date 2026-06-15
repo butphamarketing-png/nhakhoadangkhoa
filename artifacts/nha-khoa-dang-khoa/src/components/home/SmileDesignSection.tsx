@@ -5,20 +5,28 @@ import SectionTitle from "./SectionTitle";
 import { useHomeCms } from "@/lib/cms-provider";
 import { cmsImageSrc } from "@/lib/media-url";
 import { fadeUp } from "@/lib/motion";
+import type { SmileModelCms } from "@/lib/home-cms-defaults";
 
-function ModelThumb({ model, active }: { model: { title: string; image: string }; active: boolean }) {
+function ModelDetails({ model, active }: { model: SmileModelCms; active: boolean }) {
+  const benefits = model.benefits?.length ? model.benefits : [];
   return (
-    <div
-      className={`relative mx-auto w-full max-w-[140px] aspect-[4/3] rounded-lg overflow-hidden border ${
-        active ? "border-[#E8C46A]/80" : "border-white/15"
-      }`}
-    >
-      <img
-        src={cmsImageSrc(model.image)}
-        alt={model.title}
-        className="w-full h-full object-cover object-top"
-        loading="lazy"
-      />
+    <div className={`space-y-2 text-xs leading-relaxed ${active ? "text-white/95" : "text-white/75"}`}>
+      {benefits.length > 0 && (
+        <ul className="space-y-1">
+          {benefits.map((item) => (
+            <li key={item} className="flex gap-1.5">
+              <span className="text-[#E8C46A] shrink-0">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {model.faceMatch && (
+        <p className={`pt-1 border-t ${active ? "border-[#C89B3C]/40" : "border-white/10"}`}>
+          <span className="font-semibold text-[#E8C46A]">Gương mặt phù hợp: </span>
+          {model.faceMatch}
+        </p>
+      )}
     </div>
   );
 }
@@ -30,6 +38,13 @@ export default function SmileDesignSection() {
 
   const left = SMILE_MODELS.slice(0, 2);
   const right = SMILE_MODELS.slice(2, 4);
+
+  const boxClass = (id: string) =>
+    `text-left rounded-xl p-4 border transition-all ${
+      activeId === id
+        ? "border-[#C89B3C] bg-white/10 shadow-lg"
+        : "border-white/10 bg-white/5 hover:border-[#C89B3C]/40"
+    }`;
 
   return (
     <section className="section-padding navy-gradient relative overflow-hidden">
@@ -51,15 +66,11 @@ export default function SmileDesignSection() {
                 variants={fadeUp}
                 custom={i}
                 onClick={() => setActiveId(model.id)}
-                className={`text-left rounded-xl p-4 border transition-all ${
-                  activeId === model.id
-                    ? "border-[#C89B3C] bg-white/10 shadow-lg"
-                    : "border-white/10 bg-white/5 hover:border-[#C89B3C]/40"
-                }`}
+                className={boxClass(model.id)}
               >
                 <p className="text-[10px] font-bold text-[#E8C46A] uppercase tracking-wider mb-1">{model.tag}</p>
-                <p className="font-bold text-white text-sm uppercase leading-snug mb-2">{model.title}</p>
-                <ModelThumb model={model} active={activeId === model.id} />
+                <p className="font-bold text-white text-sm uppercase leading-snug mb-3">{model.title}</p>
+                <ModelDetails model={model as SmileModelCms} active={activeId === model.id} />
               </motion.button>
             ))}
           </div>
@@ -99,15 +110,11 @@ export default function SmileDesignSection() {
                 variants={fadeUp}
                 custom={i + 2}
                 onClick={() => setActiveId(model.id)}
-                className={`text-left rounded-xl p-4 border transition-all ${
-                  activeId === model.id
-                    ? "border-[#C89B3C] bg-white/10 shadow-lg"
-                    : "border-white/10 bg-white/5 hover:border-[#C89B3C]/40"
-                }`}
+                className={boxClass(model.id)}
               >
                 <p className="text-[10px] font-bold text-[#E8C46A] uppercase tracking-wider mb-1">{model.tag}</p>
-                <p className="font-bold text-white text-sm uppercase leading-snug mb-2">{model.title}</p>
-                <ModelThumb model={model} active={activeId === model.id} />
+                <p className="font-bold text-white text-sm uppercase leading-snug mb-3">{model.title}</p>
+                <ModelDetails model={model as SmileModelCms} active={activeId === model.id} />
               </motion.button>
             ))}
           </div>
