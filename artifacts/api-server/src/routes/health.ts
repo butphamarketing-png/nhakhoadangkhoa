@@ -15,6 +15,21 @@ const REQUIRED_TABLES = [
 
 const EXPECTED_REF = "epsvwnsuirfnwtxloctd";
 
+function unwrapDbError(e: unknown): string {
+  const parts: string[] = [];
+  let cur: unknown = e;
+  for (let depth = 0; depth < 5 && cur; depth++) {
+    if (cur instanceof Error) {
+      parts.push(cur.message);
+      cur = cur.cause;
+    } else {
+      parts.push(String(cur));
+      break;
+    }
+  }
+  return parts.join(" — ");
+}
+
 router.get("/healthz", (_req, res) => {
   const data = HealthCheckResponse.parse({ status: "ok" });
   res.json(data);
@@ -26,10 +41,13 @@ router.get("/healthz/db", async (_req, res) => {
   const hasSplitEnv = Boolean(envRef && process.env.SUPABASE_DB_PASSWORD?.trim());
 
   let dbHost: string | undefined;
+  let dbPort: string | undefined;
   let resolveError: string | undefined;
   try {
     const resolved = resolveDatabaseUrl();
-    dbHost = new URL(resolved.replace(/^postgresql:/, "https:")).hostname;
+    const parsed = new URL(resolved.replace(/^postgresql:/, "https:"));
+    dbHost = parsed.hostname;
+    dbPort = parsed.port || "5432";
   } catch (e) {
     resolveError = e instanceof Error ? e.message : String(e);
   }
@@ -46,7 +64,7 @@ router.get("/healthz/db", async (_req, res) => {
     try {
       await db.execute(sql.raw("SELECT 1 AS ok"));
     } catch (e) {
-      connectionError = e instanceof Error ? e.message : String(e);
+      connectionError = unwrapDbError(e);
     }
   }
 
@@ -69,6 +87,7 @@ router.get("/healthz/db", async (_req, res) => {
     ok: missing.length === 0 && !connectionError,
     missing,
     dbHost,
+    dbPort,
     usingSplitEnv: hasSplitEnv,
     dbProjectRef,
     expectedProjectRef: EXPECTED_REF,
@@ -78,8 +97,8 @@ router.get("/healthz/db", async (_req, res) => {
       ? isDirectHost
         ? "Direct không chạy trên Vercel IPv4. Dùng pooler hoặc SUPABASE_PROJECT_REF + SUPABASE_DB_PASSWORD."
         : hasSplitEnv
-          ? "Kiểm tra SUPABASE_DB_PASSWORD (mật khẩu Database trong Supabase Settings)."
-          : "Thêm trên Vercel: SUPABASE_PROJECT_REF=epsvwnsuirfnwtxloctd và SUPABASE_DB_PASSWORD=hethongnhakhoadangkhoa.com"
+          ? "SUPABASE_DB_PASSWORD phải là mật khẩu Database (Supabase → Settings → Database), không phải ADMIN_PASSWORD."
+          : "Kiểm tra DATABASE_URL trên Vercel: mật khẩu Database (không có .com), pooler port 6543, user postgres.epsvwnsuirfnwtxloctd."
       : missing.length > 0
         ? "Chạy docs/supabase-init.sql trong Supabase SQL Editor."
         : undefined,

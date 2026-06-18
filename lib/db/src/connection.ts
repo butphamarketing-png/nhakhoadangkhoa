@@ -36,7 +36,9 @@ export function resolveDatabaseUrl(): string {
   }
 
   if (refOverride && pwdOverride) {
-    const port = (process.env.SUPABASE_DB_PORT?.trim() as "5432" | "6543") || "5432";
+    const port =
+      (process.env.SUPABASE_DB_PORT?.trim() as "5432" | "6543") ||
+      (process.env.VERCEL ? "6543" : "5432");
     const host = process.env.SUPABASE_POOLER_HOST?.trim() || DEFAULT_POOLER;
     return buildSupabasePoolerUrl(refOverride, pwdOverride, port, host);
   }
@@ -61,7 +63,7 @@ function normalizeSupabaseUrl(raw: string): string {
     let port = u.port || "5432";
     const host = u.hostname;
 
-    if (port === "6543" && host.includes("pooler.supabase.com")) {
+    if (port === "6543" && host.includes("pooler.supabase.com") && !process.env.VERCEL) {
       port = "5432";
     }
 

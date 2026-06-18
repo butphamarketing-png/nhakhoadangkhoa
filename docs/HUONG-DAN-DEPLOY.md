@@ -139,10 +139,11 @@ Sau đó mỗi lần `git push` lên `main`, Vercel tự build lại (nếu bậ
 |------|---------|
 | `VITE_API_URL` | URL API bước D (không `/` cuối), ví dụ `https://nha-khoa-api.vercel.app` |
 | `BASE_PATH` | `/` |
+| `DATABASE_URL` | **Bắt buộc nếu bỏ trống `VITE_API_URL`** — website nhúng API, cần Supabase pooler port **6543** |
 
 → **Deploy** → https://nhakhoadangkhoa.vercel.app
 
-Nếu đổi domain website, cập nhật lại `CORS_ORIGIN` trên project API và **Redeploy API**.
+Nếu dùng domain tùy chỉnh, cập nhật `CORS_ORIGIN` trên project API (nếu có API riêng) và **Redeploy**.
 
 ---
 
@@ -197,14 +198,14 @@ Chạy local: `pnpm --filter @workspace/admin-panel run dev` (port 5174)
 
 | Biến | Đặt ở đâu | Mô tả |
 |------|-----------|--------|
-| `DATABASE_URL` | Vercel **API** + file `.env` local | Supabase pooler 6543 |
+| `DATABASE_URL` | Vercel **API** hoặc **Website** (khi API nhúng) + file `.env` local | Supabase pooler 6543 |
 | `CORS_ORIGIN` | Vercel **API** | Domain website (phân tách bằng dấu phẩy) |
 | `VITE_API_URL` | Vercel **Website** + **Admin** | URL project API |
 | `ADMIN_PASSWORD` | Vercel **API** | Mật khẩu login admin |
 | `ADMIN_API_KEY` | Vercel **API** | Token Bearer sau login |
 | `PORT` | Chỉ local | `5000` khi chạy API trên máy |
 
-**Không** đặt `DATABASE_URL` trên project website — chỉ trên API.
+**Không** đặt `DATABASE_URL` trên project website **chỉ khi** đã có `VITE_API_URL` trỏ sang project API riêng.
 
 ---
 
@@ -213,7 +214,7 @@ Chạy local: `pnpm --filter @workspace/admin-panel run dev` (port 5174)
 | Vấn đề | Cách xử lý |
 |--------|------------|
 | API 500 | Kiểm tra `DATABASE_URL`, dùng pooler **6543**, redeploy API |
-| Form không gửi được | Kiểm tra `VITE_API_URL` + `CORS_ORIGIN`, redeploy cả 2 project |
+| Form không gửi được | Mở `https://<domain>/api/healthz/db` — nếu `connectionError`: sửa `SUPABASE_DB_PASSWORD` (mật khẩu Database, **không** phải `ADMIN_PASSWORD`) hoặc `DATABASE_URL` trên Vercel website → Redeploy |
 | `db:push` lỗi | Sai password hoặc chưa có file `.env` |
 | Trang 404 khi F5 | Đã có `rewrites` trong `vercel.json` website |
 

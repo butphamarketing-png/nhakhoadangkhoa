@@ -112,16 +112,23 @@ Ghi lại URL API, ví dụ: `https://nha-khoa-api.vercel.app`
 
 | Biến | Giá trị mẫu |
 |------|-------------|
-| `VITE_API_URL` | URL API bước 4, **không** có `/` cuối |
+| `VITE_API_URL` | (Tùy chọn) URL API bước 4, **không** có `/` cuối. Bỏ trống nếu dùng API nhúng cùng domain |
 | `BASE_PATH` | `/` |
+| `DATABASE_URL` | **Bắt buộc** nếu không đặt `VITE_API_URL` — website nhúng API serverless, cần kết nối Supabase |
+| `SUPABASE_PROJECT_REF` | Thay `DATABASE_URL`: `epsvwnsuirfnwtxloctd` |
+| `SUPABASE_DB_PASSWORD` | Thay `DATABASE_URL`: mật khẩu **Database** (Supabase → Settings → Database), **không** phải `ADMIN_PASSWORD` |
 
-Ví dụ:
+Ví dụ (API riêng):
 
 ```text
 VITE_API_URL=https://nha-khoa-api.vercel.app
 ```
 
-**Không** đặt `DATABASE_URL` trên project website.
+Ví dụ (API nhúng trên cùng domain — đang dùng trên nhakhoadangkhoa.vercel.app):
+
+```text
+DATABASE_URL=postgresql://postgres.epsvwnsuirfnwtxloctd:MAT_KHAU_DATABASE@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
+```
 
 → **Redeploy** website.
 
@@ -148,7 +155,9 @@ VITE_API_URL=https://nha-khoa-api.vercel.app
 
 | Biến | API | Website | Admin | File `.env` local |
 |------|:---:|:-------:|:-----:|:-----------------:|
-| `DATABASE_URL` | ✓ | | | ✓ |
+| `DATABASE_URL` | ✓ | ✓* | | ✓ |
+| `SUPABASE_PROJECT_REF` | ✓ | ✓* | | ✓ |
+| `SUPABASE_DB_PASSWORD` | ✓ | ✓* | | ✓ |
 | `CORS_ORIGIN` | ✓ | | | ✓ |
 | `ADMIN_PASSWORD` | ✓ | | | ✓ |
 | `ADMIN_API_KEY` | ✓ | | | ✓ |
@@ -156,6 +165,8 @@ VITE_API_URL=https://nha-khoa-api.vercel.app
 | `VITE_WEBSITE_URL` | | | ✓ | ✓ |
 | `BASE_PATH` | | ✓ | | ✓ |
 | `PORT` | | | | ✓ (chỉ local API) |
+
+\* Website: chỉ cần `DATABASE_URL` (hoặc `SUPABASE_*`) khi **không** đặt `VITE_API_URL` — API chạy nhúng trong project website (`api/index.mjs`).
 
 ---
 
@@ -186,7 +197,7 @@ CORS_ORIGIN=http://localhost:5173,http://localhost:5174
 | Lỗi | Cách xử lý |
 |-----|------------|
 | Admin không đăng nhập được | Kiểm tra `ADMIN_PASSWORD` + `ADMIN_API_KEY` trên **API**, redeploy API |
-| Form website không gửi | `VITE_API_URL` đúng chưa? Redeploy **website** |
+| Form website không gửi | Mở `/api/healthz/db` trên domain website. Nếu `connectionError`: sửa `DATABASE_URL` hoặc `SUPABASE_DB_PASSWORD` (mật khẩu **Database**, không phải admin) trên **website** (API nhúng) hoặc project API riêng → **Redeploy** |
 | CORS error | Thêm URL website + admin vào `CORS_ORIGIN` trên **API**, redeploy API |
 | API 500 | Sai `DATABASE_URL` hoặc chưa `pnpm run db:push` |
 | Đổi biến không có hiệu lực | **Redeploy** project đó (đặc biệt `VITE_*` chỉ áp dụng lúc build) |

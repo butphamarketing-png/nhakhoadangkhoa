@@ -2,32 +2,32 @@ import { Link } from "wouter";
 import { ChevronRight, Facebook, MapPin, MessageCircle, Phone } from "lucide-react";
 import { useBrand } from "@/lib/brand-context";
 
-const channels = [
-  {
-    id: "facebook",
-    label: "Fanpage Facebook",
-    desc: "Theo dõi để cập nhật kiến thức nha khoa mỗi ngày",
-    href: "https://facebook.com",
-    icon: Facebook,
-  },
-  {
-    id: "zalo",
-    label: "Chat Zalo",
-    desc: "Tư vấn nhanh qua Zalo",
-    href: "https://zalo.me",
-    icon: MessageCircle,
-  },
-  {
-    id: "maps",
-    label: "Google Maps",
-    desc: "Chỉ đường đến phòng khám",
-    href: "https://maps.google.com",
-    icon: MapPin,
-  },
-];
-
 export default function BookingContactChannels() {
   const brand = useBrand();
+
+  const channels = [
+    {
+      id: "facebook",
+      label: "Fanpage Facebook",
+      desc: "Theo dõi để cập nhật kiến thức nha khoa mỗi ngày",
+      href: brand.facebook,
+      icon: Facebook,
+    },
+    {
+      id: "zalo",
+      label: "Chat Zalo",
+      desc: "Tư vấn nhanh qua Zalo",
+      href: brand.zalo,
+      icon: MessageCircle,
+    },
+    {
+      id: "maps",
+      label: "Google Maps",
+      desc: "Chỉ đường đến phòng khám",
+      href: brand.mapEmbed.replace("&output=embed", "").replace("?output=embed", ""),
+      icon: MapPin,
+    },
+  ];
 
   return (
     <div className="mt-8 space-y-3">
