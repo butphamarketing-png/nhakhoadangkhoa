@@ -7,7 +7,6 @@ import CommitmentsSection from "@/components/home/CommitmentsSection";
 import StatsSection from "@/components/home/StatsSection";
 import WhyChooseSection from "@/components/home/WhyChooseSection";
 import FeaturedServicesSection from "@/components/home/FeaturedServicesSection";
-import PromotionsSection from "@/components/home/PromotionsSection";
 import DoctorTeamSection from "@/components/home/DoctorTeamSection";
 import MediaGallerySection from "@/components/home/MediaGallerySection";
 import SmileDesignSection from "@/components/home/SmileDesignSection";
@@ -29,7 +28,6 @@ export default function HomePage() {
       <StatsSection />
       <WhyChooseSection />
       <FeaturedServicesSection />
-      <PromotionsSection />
       <DoctorTeamSection />
       <MediaGallerySection />
       <SmileDesignSection />
