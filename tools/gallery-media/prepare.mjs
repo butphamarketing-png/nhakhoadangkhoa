@@ -1,6 +1,6 @@
 /**
- * Import ảnh từ public/Hinh và video từ public/Video → gallery + videos (nén web).
- * Sau đó chạy: node scripts/gen-gallery-media.mjs
+ * Import ảnh từ public/Hình* và video từ public/Video → gallery + videos (nén web).
+ * Chạy từ tools/gallery-media sau npm install. Sau đó: node scripts/gen-gallery-media.mjs
  */
 import fs from "fs";
 import path from "path";
@@ -10,10 +10,12 @@ import sharp from "sharp";
 import ffmpegPath from "ffmpeg-static";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const publicRoot = path.resolve(__dirname, "../artifacts/nha-khoa-dang-khoa/public");
+const repoRoot = path.resolve(__dirname, "../..");
+const publicRoot = path.join(repoRoot, "artifacts/nha-khoa-dang-khoa/public");
 const galleryDir = path.join(publicRoot, "images/gallery");
 const videosDir = path.join(publicRoot, "videos");
 const videoSrcDir = path.join(publicRoot, "Video");
+const titlesFile = path.join(repoRoot, "scripts/gallery-video-titles.json");
 
 const hinhDirs = fs
   .readdirSync(publicRoot)
@@ -89,8 +91,11 @@ async function main() {
     console.log("Processing videos...");
     const srcFiles = fs.readdirSync(videoSrcDir);
     for (const { src, out, title } of VIDEO_MAP) {
-      const match = srcFiles.find((f) => f.toLowerCase() === src.toLowerCase()) ??
-        srcFiles.find((f) => f.replace(/\s+/g, " ").toLowerCase().includes(src.replace(".mp4", "").toLowerCase()));
+      const match =
+        srcFiles.find((f) => f.toLowerCase() === src.toLowerCase()) ??
+        srcFiles.find((f) =>
+          f.replace(/\s+/g, " ").toLowerCase().includes(src.replace(".mp4", "").toLowerCase()),
+        );
       if (!match) {
         console.log(`  skip missing: ${src}`);
         continue;
@@ -112,7 +117,7 @@ async function main() {
     const mapped = VIDEO_MAP.find((v) => v.out === f);
     titles[f] = mapped?.title ?? (f.startsWith("1781808751116") ? "Video phòng khám" : f);
   }
-  fs.writeFileSync(path.join(__dirname, "gallery-video-titles.json"), JSON.stringify(titles, null, 2));
+  fs.writeFileSync(titlesFile, JSON.stringify(titles, null, 2));
   console.log("Done. Run: node scripts/gen-gallery-media.mjs");
 }
 

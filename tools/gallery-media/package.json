@@ -1,0 +1,9 @@
+{
+  "name": "gallery-media-tools",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "sharp": "^0.33.5"
+  }
+}
