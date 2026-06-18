@@ -5,10 +5,21 @@ const root = path.resolve("artifacts/nha-khoa-dang-khoa");
 const galleryDir = path.join(root, "public/images/gallery");
 const videoDir = path.join(root, "public/videos");
 const outFile = path.join(root, "src/lib/gallery-media.ts");
+const titlesFile = path.join(path.resolve("scripts"), "gallery-video-titles.json");
+
+const videoTitles = fs.existsSync(titlesFile) ? JSON.parse(fs.readFileSync(titlesFile, "utf8")) : {};
 
 const imgs = fs.readdirSync(galleryDir).filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).sort();
 const vids = fs.existsSync(videoDir)
-  ? fs.readdirSync(videoDir).filter((f) => /\.(mp4|webm|mov)$/i.test(f)).sort()
+  ? fs
+      .readdirSync(videoDir)
+      .filter((f) => /\.(mp4|webm|mov)$/i.test(f))
+      .sort((a, b) => {
+        const aNamed = a.startsWith("video-");
+        const bNamed = b.startsWith("video-");
+        if (aNamed !== bNamed) return aNamed ? -1 : 1;
+        return a.localeCompare(b);
+      })
   : [];
 
 const lines = [
@@ -23,7 +34,7 @@ const lines = [
   `];`,
   ``,
   `export const GALLERY_VIDEOS: GalleryVideo[] = [`,
-  ...vids.map((f, i) => `  { id: "vid-${i + 1}", src: vid(${JSON.stringify(f)}), title: "Video Nha Khoa Đăng Khoa ${i + 1}" },`),
+  ...vids.map((f, i) => `  { id: "vid-${i + 1}", src: vid(${JSON.stringify(f)}), title: ${JSON.stringify(videoTitles[f] ?? `Video Nha Khoa Đăng Khoa ${i + 1}`)} },`),
   `];`,
   ``,
   `export const GALLERY_PAGE_PATH = "/hinh-anh-video";`,

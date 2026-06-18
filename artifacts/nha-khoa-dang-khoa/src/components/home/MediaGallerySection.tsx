@@ -12,7 +12,8 @@ import { fadeUp } from "@/lib/motion";
 
 export default function MediaGallerySection() {
   const previewImages = GALLERY_IMAGES.slice(0, HOME_GALLERY_IMAGE_PREVIEW_COUNT);
-  const featuredVideo = GALLERY_VIDEOS[0];
+  const featuredVideo =
+    GALLERY_VIDEOS.find((v) => v.src.includes("video-phong-kham")) ?? GALLERY_VIDEOS[0];
 
   return (
     <section className="section-padding section-white relative overflow-hidden">
