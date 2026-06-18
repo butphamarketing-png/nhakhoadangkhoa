@@ -11,12 +11,14 @@ export const BRAND = {
   address: "345 - 347 Điện Biên Phủ, Khu Phố Ninh Phúc, Phường Ninh Thạnh, Tỉnh Tây Ninh",
   hours: BRAND_HOURS_SUMMARY,
   facebook: "https://www.facebook.com/htnhakhoadangkhoa.vn",
-  zalo: "https://zalo.me/0886868786",
+  zalo: "https://zalo.me/0968759571",
   messenger: "https://m.me/htnhakhoadangkhoa.vn",
   youtube: "https://youtube.com/@nhakhoadangkhoa",
-  tiktok: "https://www.tiktok.com/@nhakhoadangkhoa",
+  tiktok: "https://www.tiktok.com/@dangkhoadentist",
+  mapUrl:
+    "https://www.google.com/maps?q=Nha+Khoa+%C4%90%C4%83ng+Khoa,+345+%C4%90i%E1%BB%87n+Bi%C3%AAn+Ph%E1%BB%A7,+Khu+ph%E1%BB%91+Ninh+Ph%C3%BAc,+Ninh+Th%E1%BA%A1nh,+T%C3%A2y+Ninh&ftid=0x310b6a3f2265a4c9:0xada66b3baa2ad387&entry=gps",
   mapEmbed:
-    "https://maps.google.com/maps?q=345+Dien+Bien+Phu+Tay+Ninh+Vietnam&output=embed",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.118959816727!2d106.1304689!3d11.3260148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b6a3f2265a4c9%3A0xada66b3baa2ad387!2zTmhhIEtob2EgxJDEg25nIEtob2E!5e0!3m2!1svi!2s!4v1781767411397!5m2!1svi!2s",
 };
 
 export const SERVICES = [

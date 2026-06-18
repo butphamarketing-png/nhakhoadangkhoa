@@ -13,10 +13,10 @@ export const DEFAULT_SITE: SiteSettings = {
   address: "345 - 347 Điện Biên Phủ, Khu Phố Ninh Phúc, Phường Ninh Thạnh, Tỉnh Tây Ninh",
   hours: BRAND_HOURS_SUMMARY,
   facebook: "https://www.facebook.com/htnhakhoadangkhoa.vn",
-  zalo: "https://zalo.me/0886868786",
+  zalo: "https://zalo.me/0968759571",
   messenger: "https://m.me/htnhakhoadangkhoa.vn",
   youtube: "https://youtube.com/@nhakhoadangkhoa",
-  tiktok: "https://www.tiktok.com/@nhakhoadangkhoa",
+  tiktok: "https://www.tiktok.com/@dangkhoadentist",
 };
 
 /** Bảng giá 10 nhóm — khớp website /bang-gia */

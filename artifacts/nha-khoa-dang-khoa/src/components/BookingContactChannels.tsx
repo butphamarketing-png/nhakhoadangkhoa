@@ -24,7 +24,7 @@ export default function BookingContactChannels() {
       id: "maps",
       label: "Google Maps",
       desc: "Chỉ đường đến phòng khám",
-      href: brand.mapEmbed.replace("&output=embed", "").replace("?output=embed", ""),
+      href: brand.mapUrl,
       icon: MapPin,
     },
   ];

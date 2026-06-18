@@ -82,6 +82,9 @@ router.get("/healthz/db", async (_req, res) => {
   }
 
   const isDirectHost = dbHost?.startsWith("db.") && dbHost.includes(".supabase.co");
+  const isWrongPooler =
+    /tenant\/user|not found|ENOTFOUND/i.test(connectionError ?? "") &&
+    dbHost?.includes("pooler.supabase.com");
 
   res.json({
     ok: missing.length === 0 && !connectionError,
@@ -94,7 +97,9 @@ router.get("/healthz/db", async (_req, res) => {
     projectMatch,
     connectionError: connectionError?.slice(0, 240),
     hint: connectionError
-      ? isDirectHost
+      ? isWrongPooler
+        ? `Sai host pooler (${dbHost}). Vào Supabase → Settings → Database → Connection string → Transaction pooler → copy nguyên URI (có thể là aws-1-..., không phải aws-0-...).`
+        : isDirectHost
         ? "Direct không chạy trên Vercel IPv4. Dùng pooler hoặc SUPABASE_PROJECT_REF + SUPABASE_DB_PASSWORD."
         : hasSplitEnv
           ? "SUPABASE_DB_PASSWORD phải là mật khẩu Database (Supabase → Settings → Database), không phải ADMIN_PASSWORD."

@@ -220,6 +220,21 @@ export const TECHNOLOGY_ITEMS = [
     desc: "Hỗ trợ cấy ghép Implant chuẩn xác theo dữ liệu số hóa, tăng tỷ lệ thành công và độ bền lâu dài.",
     image: IMAGES.congnghe.xnavImplant,
   },
+  {
+    title: "Máy In Nội Nha 3 In 1",
+    desc: "In guide điều trị nội nha, mão tạm và phục hình theo dữ liệu số — nhanh, chính xác, tiết kiệm thời gian.",
+    image: IMAGES.congnghe.mayInNoiNha3in1,
+  },
+  {
+    title: "Máy In Shining 3D",
+    desc: "In mô hình, khay chỉnh nha và phục hình 3D chất lượng cao, hỗ trợ lập kế hoạch điều trị trực quan.",
+    image: IMAGES.congnghe.shining3d,
+  },
+  {
+    title: "Piezotom",
+    desc: "Cắt xương bằng siêu âm, nhẹ nhàng và an toàn — đặc biệt hiệu quả khi nhổ răng khôn và phẫu thuật nha khoa.",
+    image: IMAGES.congnghe.piezotom,
+  },
 ];
 
 export const BOOKING_BENEFITS: { icon: LucideIcon; label: string }[] = [

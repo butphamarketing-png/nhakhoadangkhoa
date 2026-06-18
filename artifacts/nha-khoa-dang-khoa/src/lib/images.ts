@@ -52,6 +52,9 @@ export const IMAGES = {
     implantGuide: img("congnghe/tech-implant-guide.jpg"),
     xGuide: img("congnghe/tech-xguide.jpg"),
     xnavImplant: img("congnghe/tech-xnav-implant.jpg"),
+    mayInNoiNha3in1: img("congnghe/tech-may-in-noi-nha-3in1.jpg"),
+    shining3d: img("congnghe/tech-shining-3d.jpg"),
+    piezotom: img("congnghe/tech-piezotom.jpg"),
   },
 
   promos: {

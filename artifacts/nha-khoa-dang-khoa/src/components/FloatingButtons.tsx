@@ -9,7 +9,7 @@ export default function FloatingButtons({ onBookingClick }: FloatingButtonsProps
   const items = [
     {
       label: "Địa chỉ",
-      href: "https://maps.google.com/?q=345+Dien+Bien+Phu+Tay+Ninh",
+      href: BRAND.mapUrl,
       icon: MapPin,
       testId: "button-float-map",
       external: true,
