@@ -20,6 +20,7 @@ const STATIC_PAGES: SearchResult[] = [
   { id: "pricing", title: "Bảng giá", href: "/bang-gia", type: "Trang" },
   { id: "blog", title: "Kiến thức nha khoa", href: "/kien-thuc", type: "Trang" },
   { id: "customers", title: "Khách hàng", href: "/khach-hang", type: "Trang" },
+  { id: "gallery", title: "Hình ảnh và video", href: "/hinh-anh-video", type: "Trang" },
   { id: "contact", title: "Liên hệ", href: "/lien-he", type: "Trang" },
   { id: "booking", title: "Đặt lịch hẹn", href: "/dat-lich", type: "Trang" },
   { id: "promo", title: "Ưu đãi", href: "/uu-dai", type: "Trang" },

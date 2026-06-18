@@ -9,6 +9,7 @@ import WhyChooseSection from "@/components/home/WhyChooseSection";
 import FeaturedServicesSection from "@/components/home/FeaturedServicesSection";
 import PromotionsSection from "@/components/home/PromotionsSection";
 import DoctorTeamSection from "@/components/home/DoctorTeamSection";
+import MediaGallerySection from "@/components/home/MediaGallerySection";
 import SmileDesignSection from "@/components/home/SmileDesignSection";
 import TechnologySection from "@/components/home/TechnologySection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -30,6 +31,7 @@ export default function HomePage() {
       <FeaturedServicesSection />
       <PromotionsSection />
       <DoctorTeamSection />
+      <MediaGallerySection />
       <SmileDesignSection />
       <TechnologySection />
       <TestimonialsSection />

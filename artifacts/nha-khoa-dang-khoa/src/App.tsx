@@ -34,6 +34,7 @@ import NoiNhaPage from "@/pages/services/NoiNhaPage";
 import NhoRangKhonPage from "@/pages/services/NhoRangKhonPage";
 import NhaKhoaTongQuatPage from "@/pages/services/NhaKhoaTongQuatPage";
 import ChinhSachPage from "@/pages/ChinhSachPage";
+import HinhAnhVideoPage from "@/pages/HinhAnhVideoPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ function Router() {
         <Route path="/kien-thuc/:slug" component={BlogPostPage} />
         <Route path="/kien-thuc" component={KienThucPage} />
         <Route path="/khach-hang" component={KhachHangPage} />
+        <Route path="/hinh-anh-video" component={HinhAnhVideoPage} />
         <Route path="/lien-he" component={LienHePage} />
         <Route path="/faq" component={FaqPage} />
         <Route path="/uu-dai" component={UuDaiPage} />
