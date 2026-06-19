@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { GalleryImage } from "@/lib/gallery-media";
+import LogoWatermark from "./LogoWatermark";
 
 type GalleryImageGridProps = {
   images: GalleryImage[];
@@ -35,12 +36,14 @@ export default function GalleryImageGrid({ images, columns = "3", className = ""
             onClick={() => setActiveIndex(i)}
             className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#F8F6F1] ring-1 ring-[#C89B3C]/10 hover:ring-[#C89B3C]/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C]"
           >
-            <img
-              src={item.src}
-              alt={item.alt}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
+            <LogoWatermark className="w-full h-full">
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </LogoWatermark>
             <div className="absolute inset-0 bg-[#0D1B2A]/0 group-hover:bg-[#0D1B2A]/15 transition-colors" />
           </button>
         ))}
@@ -78,7 +81,9 @@ export default function GalleryImageGrid({ images, columns = "3", className = ""
                   </button>
                 </>
               )}
-              <img src={active.src} alt={active.alt} className="w-full max-h-[85vh] object-contain bg-black" />
+              <LogoWatermark className="rounded-2xl bg-[#0D1B2A]">
+                <img src={active.src} alt={active.alt} className="w-full max-h-[85vh] object-contain bg-black" />
+              </LogoWatermark>
             </div>
           )}
         </DialogContent>

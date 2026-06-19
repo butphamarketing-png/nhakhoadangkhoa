@@ -8,12 +8,13 @@ import {
   GALLERY_PAGE_PATH,
   HOME_GALLERY_IMAGE_PREVIEW_COUNT,
 } from "@/lib/gallery-media";
+import GalleryVideoPlayer from "@/components/gallery/GalleryVideoPlayer";
+import LogoWatermark from "@/components/gallery/LogoWatermark";
 import { fadeUp } from "@/lib/motion";
 
 export default function MediaGallerySection() {
   const previewImages = GALLERY_IMAGES.slice(0, HOME_GALLERY_IMAGE_PREVIEW_COUNT);
-  const featuredVideo =
-    GALLERY_VIDEOS.find((v) => v.src.includes("video-phong-kham")) ?? GALLERY_VIDEOS[0];
+  const featuredVideo = GALLERY_VIDEOS[0];
 
   return (
     <section className="section-padding section-white relative overflow-hidden">
@@ -38,15 +39,7 @@ export default function MediaGallerySection() {
             </div>
             <div className="aspect-video bg-[#0D1B2A] flex items-center justify-center">
               {featuredVideo ? (
-                <video
-                  src={featuredVideo.src}
-                  controls
-                  playsInline
-                  className="w-full h-full object-contain"
-                  poster={featuredVideo.poster}
-                >
-                  Trình duyệt không hỗ trợ video.
-                </video>
+                <GalleryVideoPlayer video={featuredVideo} className="w-full h-full" />
               ) : (
                 <div className="text-center px-6 py-10">
                   <div className="w-16 h-16 rounded-full bg-[#C89B3C]/15 flex items-center justify-center mx-auto mb-4">
@@ -74,12 +67,12 @@ export default function MediaGallerySection() {
               {previewImages.length > 0 ? (
                 <div className="grid grid-cols-3 gap-2 md:gap-3 w-full">
                   {previewImages.map((item) => (
-                    <div
+                    <LogoWatermark
                       key={item.id}
-                      className="aspect-square overflow-hidden rounded-xl bg-[#F8F6F1] ring-1 ring-[#C89B3C]/10"
+                      className="aspect-square rounded-xl bg-[#F8F6F1] ring-1 ring-[#C89B3C]/10"
                     >
                       <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="lazy" />
-                    </div>
+                    </LogoWatermark>
                   ))}
                 </div>
               ) : (

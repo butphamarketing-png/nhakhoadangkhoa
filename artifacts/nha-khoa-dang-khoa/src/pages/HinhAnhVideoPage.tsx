@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Film, ImageIcon } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import GalleryImageGrid from "@/components/gallery/GalleryImageGrid";
+import GalleryVideoPlayer from "@/components/gallery/GalleryVideoPlayer";
 import { GALLERY_IMAGES, GALLERY_VIDEOS } from "@/lib/gallery-media";
 
 type TabId = "video" | "hinh-anh";
@@ -81,11 +82,7 @@ export default function HinhAnhVideoPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                   {GALLERY_VIDEOS.map((video) => (
                     <div key={video.id} className="card-luxury p-0 overflow-hidden !translate-y-0">
-                      <div className="aspect-video bg-[#0D1B2A]">
-                        <video src={video.src} controls playsInline className="w-full h-full object-contain" poster={video.poster}>
-                          Trình duyệt không hỗ trợ video.
-                        </video>
-                      </div>
+                      <GalleryVideoPlayer video={video} />
                       <p className="px-5 py-4 text-sm font-semibold text-[#0D1B2A]">{video.title}</p>
                     </div>
                   ))}
