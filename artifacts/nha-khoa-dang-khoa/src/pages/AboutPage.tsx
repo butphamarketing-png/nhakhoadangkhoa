@@ -30,8 +30,8 @@ const VALUES = [
   { icon: Users, title: "Tận tâm", desc: "Mỗi bệnh nhân là ưu tiên hàng đầu. Chúng tôi phục vụ như người thân." },
 ];
 
-const doctorColors = ["from-amber-400 to-amber-600", "from-blue-400 to-blue-600", "from-emerald-400 to-emerald-600"];
-const doctorInitials = ["NVA", "TTM", "LMD"];
+const doctorColors = ["from-amber-400 to-amber-600"];
+const doctorInitials = ["NDK"];
 
 export default function AboutPage() {
   const BRAND = useBrand();
@@ -228,7 +228,7 @@ export default function AboutPage() {
           <motion.div {...fadeUp} className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-[#0D1B2A] mb-3">Đội ngũ bác sĩ</h2>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
+          <div className="grid md:grid-cols-1 gap-6 mb-10 max-w-md mx-auto">
             {DOCTORS.map((doc, i) => (
               <motion.div
                 key={doc.id}

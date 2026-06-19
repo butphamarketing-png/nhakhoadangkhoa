@@ -4,6 +4,8 @@ const img = (name: string) => `/images/${name}`;
 
 export const IMAGES = {
   logo: img("logo-dang-khoa.jpg"),
+  /** Ảnh chân dung BS. Nguyễn Đăng Khoa — section đội ngũ */
+  bsNguyenDangKhoa: img("bs-nguyen-dang-khoa.jpg"),
   coverClinic: img("cover-clinic.png"),
   /** Banner 10.000+ ca răng sứ — section Giới thiệu */
   aboutRangSu10000: img("about-rang-su-10000.png"),

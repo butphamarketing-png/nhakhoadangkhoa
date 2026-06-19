@@ -80,31 +80,13 @@ export const SERVICES = [
 
 export const DOCTORS = [
   {
-    id: "nguyen-van-an",
-    name: "BS. Nguyễn Văn An",
+    id: "nguyen-dang-khoa",
+    name: "BS. Nguyễn Đăng Khoa",
     title: "Giám đốc chuyên môn",
-    specialty: "Implant & Phẫu thuật hàm mặt",
-    experience: "15 năm kinh nghiệm",
-    education: "Đại học Y Dược TP. HCM",
-    bio: "Chuyên gia hàng đầu về cấy ghép implant và phẫu thuật hàm mặt tại Tây Ninh.",
-  },
-  {
-    id: "tran-thi-mai",
-    name: "BS. Trần Thị Mai",
-    title: "Trưởng khoa Chỉnh nha",
-    specialty: "Niềng răng & Chỉnh nha",
-    experience: "12 năm kinh nghiệm",
-    education: "Đại học Y Hà Nội",
-    bio: "Chuyên gia chỉnh nha với chứng chỉ Invisalign quốc tế, đã điều trị hàng nghìn ca.",
-  },
-  {
-    id: "le-minh-duc",
-    name: "BS. Lê Minh Đức",
-    title: "Bác sĩ thẩm mỹ nha khoa",
-    specialty: "Răng sứ & Tẩy trắng",
-    experience: "10 năm kinh nghiệm",
-    education: "Đại học Y Dược Cần Thơ",
-    bio: "Chuyên gia thẩm mỹ nha khoa, thiết kế nụ cười toàn diện với công nghệ CAD/CAM.",
+    specialty: "Implant, chỉnh nha & thẩm mỹ nha khoa",
+    experience: "Hơn 10 năm kinh nghiệm",
+    education: "Bác sĩ Răng Hàm Mặt — chuyên khoa",
+    bio: "Bác sĩ Nguyễn Đăng Khoa — Giám đốc chuyên môn Nha Khoa Đăng Khoa, chuyên sâu implant, chỉnh nha và thẩm mỹ nha khoa tại Tây Ninh.",
   },
 ];
 

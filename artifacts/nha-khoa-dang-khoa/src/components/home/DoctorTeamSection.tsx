@@ -51,11 +51,9 @@ export default function DoctorTeamSection() {
                 <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-[#0D1B2A] text-white relative">
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_50%,rgba(200,155,60,0.1),transparent_55%)]" />
                   <div className="relative">
-                    {index === 0 && (
-                      <span className="inline-block gold-gradient text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-                        Trưởng khoa
+                    <span className="inline-block gold-gradient text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                        Giám đốc chuyên môn
                       </span>
-                    )}
                     <p className="text-[#C89B3C] text-sm font-semibold uppercase tracking-wider mb-2">Bác sĩ</p>
                     <h3 className="font-display text-2xl md:text-3xl font-bold mb-1">{doctor.name}</h3>
                     <p className="text-white/70 text-sm uppercase tracking-wide mb-6 pb-6 border-b border-white/10">{doctor.degree}</p>
@@ -74,8 +72,8 @@ export default function DoctorTeamSection() {
                     </Link>
                   </div>
                 </div>
-                <div className="relative bg-[#F8F6F1] p-6 md:p-8 flex items-center justify-center min-h-[280px]">
-                  <div className="gradient-border rounded-[20px] p-[2px] w-full max-w-[280px]">
+                <div className="relative bg-[#F8F6F1] p-6 md:p-8 flex items-center justify-center min-h-[320px]">
+                  <div className="gradient-border rounded-[20px] p-[2px] w-full max-w-[320px]">
                     <MediaFrame
                       src={doctor.image}
                       alt={doctor.name}
@@ -89,6 +87,7 @@ export default function DoctorTeamSection() {
           </motion.div>
         </AnimatePresence>
 
+        {count > 1 && (
         <div className="flex items-center justify-center gap-4 md:gap-6">
           <button
             type="button"
@@ -123,13 +122,16 @@ export default function DoctorTeamSection() {
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
+        )}
 
+        {count > 1 && (
         <div className="mt-6 max-w-xs mx-auto h-1 rounded-full bg-[#0D1B2A]/8 overflow-hidden">
           <div
             className="h-full gold-gradient rounded-full transition-all duration-500"
             style={{ width: `${((index + 1) / count) * 100}%` }}
           />
         </div>
+        )}
       </div>
     </section>
   );

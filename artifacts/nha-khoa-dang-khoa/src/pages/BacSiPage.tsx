@@ -6,14 +6,10 @@ import { useBrand } from "@/lib/brand-context";
 import { useDoctors } from "@/lib/cms-provider";
 
 const doctorColors: Record<string, string> = {
-  "nguyen-van-an": "from-amber-400 to-amber-600",
-  "tran-thi-mai": "from-blue-400 to-blue-600",
-  "le-minh-duc": "from-emerald-400 to-emerald-600",
+  "nguyen-dang-khoa": "from-amber-400 to-amber-600",
 };
 const doctorInitialsMap: Record<string, string> = {
-  "nguyen-van-an": "NVA",
-  "tran-thi-mai": "TTM",
-  "le-minh-duc": "LMD",
+  "nguyen-dang-khoa": "NDK",
 };
 
 export default function BacSiPage() {

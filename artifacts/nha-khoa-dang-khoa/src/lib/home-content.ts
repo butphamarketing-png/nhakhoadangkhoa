@@ -44,36 +44,12 @@ export const HOME_DOCTORS = [
     id: "nguyen-dang-khoa",
     name: "BS. Nguyễn Đăng Khoa",
     degree: "Bác sĩ Răng Hàm Mặt",
-    image: IMAGES.logo,
+    image: IMAGES.bsNguyenDangKhoa,
     credentials: [
       "Bác sĩ Răng Hàm Mặt — chuyên khoa",
       "Giám đốc chuyên môn Nha Khoa Đăng Khoa",
       "Chuyên Implant, chỉnh nha & thẩm mỹ nha khoa",
       "Đơn vị công tác: Nha Khoa Đăng Khoa — Tây Ninh",
-    ],
-  },
-  {
-    id: "nguyen-van-an",
-    name: "BS. Nguyễn Văn An",
-    degree: "Bác sĩ tốt nghiệp ĐH Y Dược",
-    image: IMAGES.coverClinic,
-    credentials: [
-      "Đại học Y Dược TP. Hồ Chí Minh",
-      "Chuyên Implant & phẫu thuật hàm mặt",
-      "Hơn 15 năm kinh nghiệm lâm sàng",
-      "Nha Khoa Đăng Khoa — Tây Ninh",
-    ],
-  },
-  {
-    id: "tran-thi-mai",
-    name: "BS. Trần Thị Mai",
-    degree: "Trưởng khoa Chỉnh nha",
-    image: IMAGES.services.niengRang,
-    credentials: [
-      "Đại học Y Hà Nội — Răng Hàm Mặt",
-      "Chuyên gia niềng răng & Invisalign",
-      "Hơn 12 năm kinh nghiệm chỉnh nha",
-      "Nha Khoa Đăng Khoa — Tây Ninh",
     ],
   },
 ];
