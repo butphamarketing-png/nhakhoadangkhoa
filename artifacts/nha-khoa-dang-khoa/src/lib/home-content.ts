@@ -211,6 +211,11 @@ export const TECHNOLOGY_ITEMS = [
     image: IMAGES.congnghe.implantGuide,
   },
   {
+    title: "Máy Scan iTero Lumina",
+    desc: "Quét hàm 3D trong miệng, mô phỏng nụ cười và lập kế hoạch chỉnh nha — chính xác, thoải mái cho bệnh nhân.",
+    image: IMAGES.congnghe.iteroLumina,
+  },
+  {
     title: "Robot Hỗ Trợ Phẫu Thuật Nha Khoa",
     desc: "Ứng dụng công nghệ hiện đại giúp nâng cao độ chính xác và an toàn trong điều trị.",
     image: IMAGES.congnghe.xGuide,

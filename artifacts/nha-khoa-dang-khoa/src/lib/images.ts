@@ -53,6 +53,7 @@ export const IMAGES = {
     xGuide: img("congnghe/tech-xguide.jpg"),
     xnavImplant: img("congnghe/tech-xnav-implant.jpg"),
     mayInNoiNha3in1: img("congnghe/tech-may-in-noi-nha-3in1.jpg"),
+    iteroLumina: img("congnghe/tech-itero-lumina.jfif"),
     shining3d: img("congnghe/tech-shining-3d.jpg"),
     piezotom: img("congnghe/tech-piezotom.jpg"),
   },

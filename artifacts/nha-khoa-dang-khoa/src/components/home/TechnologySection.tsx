@@ -34,7 +34,7 @@ function TechnologyCard({ title, desc, image, index }: TechnologyItem & { index:
 export default function TechnologySection() {
   const { technologyItems } = useHomeCms();
   const topRow = technologyItems.slice(0, 4);
-  const bottomRow = technologyItems.slice(4, 7);
+  const bottomRow = technologyItems.slice(4);
 
   return (
     <section id="cong-nghe" className="section-padding section-white relative overflow-hidden">
@@ -62,12 +62,10 @@ export default function TechnologySection() {
           </div>
 
           {bottomRow.length > 0 && (
-            <div className="flex justify-center">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 w-full md:w-3/4">
-                {bottomRow.map((item, i) => (
-                  <TechnologyCard key={`${item.title}-${i + 4}`} {...item} index={i + 4} />
-                ))}
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+              {bottomRow.map((item, i) => (
+                <TechnologyCard key={`${item.title}-${i + 4}`} {...item} index={i + 4} />
+              ))}
             </div>
           )}
         </div>
