@@ -70,17 +70,26 @@ export default function MediaGallerySection() {
               <ImageIcon className="w-4 h-4 text-[#C89B3C]" />
               <span className="text-sm font-bold text-[#0D1B2A]">Hình ảnh</span>
             </div>
-            <div className="p-4 md:p-5 flex-1">
-              <div className="grid grid-cols-3 gap-2 md:gap-3 h-full">
-                {previewImages.map((item) => (
-                  <div
-                    key={item.id}
-                    className="aspect-square overflow-hidden rounded-xl bg-[#F8F6F1] ring-1 ring-[#C89B3C]/10"
-                  >
-                    <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="lazy" />
+            <div className="p-4 md:p-5 flex-1 flex items-center justify-center">
+              {previewImages.length > 0 ? (
+                <div className="grid grid-cols-3 gap-2 md:gap-3 w-full">
+                  {previewImages.map((item) => (
+                    <div
+                      key={item.id}
+                      className="aspect-square overflow-hidden rounded-xl bg-[#F8F6F1] ring-1 ring-[#C89B3C]/10"
+                    >
+                      <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-10 px-6">
+                  <div className="w-14 h-14 rounded-full bg-[#C89B3C]/15 flex items-center justify-center mx-auto mb-3">
+                    <ImageIcon className="w-7 h-7 text-[#C89B3C]" />
                   </div>
-                ))}
-              </div>
+                  <p className="text-[#0D1B2A]/60 text-sm font-medium">Hình ảnh sẽ được cập nhật sớm</p>
+                </div>
+              )}
             </div>
           </motion.div>
         </div>

@@ -107,7 +107,17 @@ export default function HinhAnhVideoPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
             >
-              <GalleryImageGrid images={GALLERY_IMAGES} columns="4" />
+              {GALLERY_IMAGES.length > 0 ? (
+                <GalleryImageGrid images={GALLERY_IMAGES} columns="4" />
+              ) : (
+                <div className="text-center py-16 px-6 rounded-[24px] bg-[#F8F6F1] border border-[#C89B3C]/15 max-w-xl mx-auto">
+                  <div className="w-16 h-16 rounded-full bg-[#C89B3C]/15 flex items-center justify-center mx-auto mb-4">
+                    <ImageIcon className="w-8 h-8 text-[#C89B3C]" />
+                  </div>
+                  <h2 className="text-lg font-bold text-[#0D1B2A] mb-2">Hình ảnh đang được cập nhật</h2>
+                  <p className="text-[#0D1B2A]/60 text-sm">Phần hình ảnh sẽ bổ sung trong thời gian tới.</p>
+                </div>
+              )}
             </motion.div>
           )}
         </div>
