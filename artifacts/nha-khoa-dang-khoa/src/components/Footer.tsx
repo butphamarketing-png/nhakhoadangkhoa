@@ -190,10 +190,16 @@ export default function Footer() {
         href="https://butphamarketing.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="block gold-gradient text-center py-3 text-white text-sm font-medium hover:brightness-110 transition-all"
+        className="marquee-track block gold-gradient py-3 overflow-hidden whitespace-nowrap text-white text-sm font-medium hover:brightness-110 transition-all"
         data-testid="link-butpha-marketing"
       >
-        Website được thiết kế và vận hành bởi Bứt Phá Marketing
+        <span className="marquee">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <span key={i} className="px-12">
+              Website được thiết kế và vận hành bởi Bứt Phá Marketing
+            </span>
+          ))}
+        </span>
       </a>
     </footer>
   );

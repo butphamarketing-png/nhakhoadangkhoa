@@ -387,6 +387,20 @@
   transform-origin: center center;
 }
 
+/* Footer marquee — chữ chạy ngang */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+.marquee-track:hover .marquee {
+  animation-play-state: paused;
+}
+
 /* Gradient border */
 .gradient-border {
   position: relative;
