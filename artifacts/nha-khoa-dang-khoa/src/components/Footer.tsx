@@ -169,22 +169,13 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10 bg-[#0a1520]">
-        <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/45 text-sm text-center sm:text-left">
-            © 2026 Nha Khoa Đăng Khoa. All Rights Reserved. Website được thiết
-            kế và vận hành bởi{" "}
-            <a
-              href="https://butphamarketing.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#C89B3C] transition-colors"
-            >
-              Bứt Phá Marketing
-            </a>
+        <div className="container-custom py-5 relative flex items-center justify-center">
+          <p className="text-white/45 text-sm text-center">
+            © 2026 Nha Khoa Đăng Khoa. All Rights Reserved.
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="w-10 h-10 rounded-full gold-gradient text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+            className="absolute right-4 w-10 h-10 rounded-full gold-gradient text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
             data-testid="button-back-to-top"
             aria-label="Về đầu trang"
           >
@@ -194,6 +185,16 @@ export default function Footer() {
           </button>
         </div>
       </div>
+
+      <a
+        href="https://butphamarketing.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block gold-gradient text-center py-3 text-white text-sm font-medium hover:brightness-110 transition-all"
+        data-testid="link-butpha-marketing"
+      >
+        Website được thiết kế và vận hành bởi Bứt Phá Marketing
+      </a>
     </footer>
   );
 }
