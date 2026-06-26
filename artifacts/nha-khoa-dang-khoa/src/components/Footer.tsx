@@ -171,14 +171,15 @@ export default function Footer() {
       <div className="border-t border-white/10 bg-[#0a1520]">
         <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/45 text-sm text-center sm:text-left">
-            ©2026 Nha Khoa Đăng Khoa | Đơn Vị Thiết Kế Website:{" "}
+            © 2026 Nha Khoa Đăng Khoa. All Rights Reserved. Website được thiết
+            kế và vận hành bởi{" "}
             <a
               href="https://butphamarketing.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#C89B3C] transition-colors"
             >
-              butphamarketing.com
+              Bứt Phá Marketing
             </a>
           </p>
           <button
