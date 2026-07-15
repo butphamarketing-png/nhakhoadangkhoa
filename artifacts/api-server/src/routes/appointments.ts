@@ -3,6 +3,7 @@ import { db, appointmentsTable, createAppointmentBodySchema } from "@workspace/d
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { requireAdmin } from "../middleware/require-admin";
+import { notifyNewAppointment } from "../lib/notify-booking";
 
 const router: IRouter = Router();
 
@@ -29,6 +30,22 @@ router.post("/appointments", async (req, res) => {
         note: note ?? null,
       })
       .returning();
+
+    // Await email so Vercel serverless does not freeze before send completes.
+    // Booking already saved — email failure must not change the 201 response.
+    try {
+      await notifyNewAppointment({
+        id: row.id,
+        name: row.name,
+        phone: row.phone,
+        service: row.service,
+        date: row.appointmentDate,
+        time: row.appointmentTime,
+        note: row.note,
+      });
+    } catch (err) {
+      console.error("[appointments] notify email failed:", err);
+    }
 
     res.status(201).json({ id: row.id, status: row.status });
   } catch (e) {

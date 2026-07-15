@@ -95,8 +95,18 @@ Cho **mỗi** project:
 | `CORS_ORIGIN` | `https://hethongnhakhoadangkhoa.com,https://www.hethongnhakhoadangkhoa.com,https://nhakhoadangkhoa.vercel.app,https://URL-ADMIN.vercel.app` |
 | `ADMIN_PASSWORD` | Mật khẩu admin (bạn chọn) |
 | `ADMIN_API_KEY` | Chuỗi bí mật dài (ví dụ `dk-admin-xxxxxxxx`) |
+| `RESEND_API_KEY` | Key từ [resend.com](https://resend.com) (API Keys) — gửi email khi có lịch mới |
+| `NOTIFY_EMAIL` | Gmail nhận thông báo (vd. `ban@gmail.com`) |
+| `MAIL_FROM` | Tùy chọn. Mặc định: `Nha khoa Đăng Khoa <onboarding@resend.dev>` |
 
 **Không** thêm `VITE_*` vào project API.
+
+### Email Gmail khi khách đặt lịch
+
+1. Đăng ký [resend.com](https://resend.com) → **API Keys** → tạo key `re_...`
+2. Free tier: thêm đúng địa chỉ **Gmail nhận mail** vào Resend (verify email một lần)
+3. Trên Vercel (project **API**, hoặc **Website** nếu API nhúng): thêm `RESEND_API_KEY`, `NOTIFY_EMAIL`
+4. **Redeploy** → đặt lịch thử trên website → kiểm tra hộp thư + Spam
 
 Sau deploy, kiểm tra: `https://TEN-API.vercel.app/api/healthz` → JSON ok.
 
@@ -117,6 +127,7 @@ Ghi lại URL API, ví dụ: `https://nha-khoa-api.vercel.app`
 | `DATABASE_URL` | **Bắt buộc** nếu không đặt `VITE_API_URL` — website nhúng API serverless, cần kết nối Supabase |
 | `SUPABASE_PROJECT_REF` | Thay `DATABASE_URL`: `epsvwnsuirfnwtxloctd` |
 | `SUPABASE_DB_PASSWORD` | Thay `DATABASE_URL`: mật khẩu **Database** (Supabase → Settings → Database), **không** phải `ADMIN_PASSWORD` |
+| `RESEND_API_KEY` / `NOTIFY_EMAIL` | **Bắt buộc** nếu API nhúng + muốn nhận Gmail khi đặt lịch (giống project API) |
 
 Ví dụ (API riêng):
 
@@ -161,12 +172,15 @@ DATABASE_URL=postgresql://postgres.epsvwnsuirfnwtxloctd:MAT_KHAU_DATABASE@aws-0-
 | `CORS_ORIGIN` | ✓ | | | ✓ |
 | `ADMIN_PASSWORD` | ✓ | | | ✓ |
 | `ADMIN_API_KEY` | ✓ | | | ✓ |
+| `RESEND_API_KEY` | ✓ | ✓* | | ✓ |
+| `NOTIFY_EMAIL` | ✓ | ✓* | | ✓ |
+| `MAIL_FROM` | ✓ | ✓* | | ✓ |
 | `VITE_API_URL` | | ✓ | ✓ | ✓ |
 | `VITE_WEBSITE_URL` | | | ✓ | ✓ |
 | `BASE_PATH` | | ✓ | | ✓ |
 | `PORT` | | | | ✓ (chỉ local API) |
 
-\* Website: chỉ cần `DATABASE_URL` (hoặc `SUPABASE_*`) khi **không** đặt `VITE_API_URL` — API chạy nhúng trong project website (`api/index.mjs`).
+\* Website: chỉ cần `DATABASE_URL` (hoặc `SUPABASE_*`) khi **không** đặt `VITE_API_URL` — API chạy nhúng trong project website (`api/index.mjs`). Các biến email cũng đặt trên website nếu API nhúng.
 
 ---
 
