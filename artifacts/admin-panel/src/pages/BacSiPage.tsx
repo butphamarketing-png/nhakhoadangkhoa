@@ -19,6 +19,7 @@ type Doctor = {
   experience: string;
   education: string;
   bio: string;
+  image?: string;
 };
 
 const emptyDoctor = (): Doctor => ({
@@ -29,6 +30,7 @@ const emptyDoctor = (): Doctor => ({
   experience: "",
   education: "",
   bio: "",
+  image: "",
 });
 
 export default function BacSiPage() {
@@ -123,6 +125,14 @@ export default function BacSiPage() {
                   />
                 </div>
               ))}
+              <div>
+                <Label>Ảnh (đường dẫn)</Label>
+                <Input
+                  value={edit.image ?? ""}
+                  onChange={(e) => setEdit({ ...edit, image: e.target.value })}
+                  placeholder="/images/bs-pham-tran-tuyet-suong.png"
+                />
+              </div>
               <div>
                 <Label>Tiểu sử</Label>
                 <Textarea value={edit.bio} onChange={(e) => setEdit({ ...edit, bio: e.target.value })} rows={3} />

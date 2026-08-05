@@ -4,25 +4,29 @@ const img = (name: string) => `/images/${name}`;
 
 export const IMAGES = {
   logo: img("logo-dang-khoa.jpg"),
-  /** Ảnh chân dung BS. Nguyễn Đăng Khoa — section đội ngũ */
-  bsNguyenDangKhoa: img("bs-nguyen-dang-khoa.jpg"),
-  coverClinic: img("cover-clinic.png"),
-  /** Banner 10.000+ ca răng sứ — section Giới thiệu */
-  aboutRangSu10000: img("about-rang-su-10000.png"),
+  /** Ảnh bác sĩ chuyên sâu chỉnh nha — BS. Phạm Trần Tuyết Sương */
+  bsPhamTranTuyetSuong: img("bs-pham-tran-tuyet-suong.png"),
+  /** Banner ngang 16:9 dùng cho hero và các section rộng */
+  bannerBsPhamTranTuyetSuong: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+  /** @deprecated alias — giữ tương thích CMS cũ */
+  bsNguyenDangKhoa: img("bs-pham-tran-tuyet-suong.png"),
+  coverClinic: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+  /** Banner giới thiệu bác sĩ / chuyên môn — BS. Phạm Trần Tuyết Sương */
+  aboutRangSu10000: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
   designReference: img("design-reference.png"),
-  coverPage: img("COVER PAGE.jpg"),
-  veChungToi: img("Ve-chung-tôi.jpg"),
+  coverPage: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+  veChungToi: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
 
   /**
    * Banner hero slideshow — mỗi file là 1 ảnh ngang (~1920×720).
    * Chữ, nút, sidebar 4 icon nên được thiết kế sẵn trong ảnh (PNG/JPG).
    */
   heroSlides: {
-    /** Banner thương hiệu vàng — slide 1 */
-    brand: img("hero-banner-brand.png"),
-    coverPage: img("COVER PAGE.jpg"),
-    banner01: img("hero-banner-brand.png"),
-    banner02: img("cover-clinic.png"),
+    /** Banner thương hiệu ngang — BS. Phạm Trần Tuyết Sương */
+    brand: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+    coverPage: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+    banner01: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+    banner02: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
     banner03: img("promo-mua-vang-chinh-nha.png"),
     banner04: img("promo-nieng-rang-he.png"),
   },

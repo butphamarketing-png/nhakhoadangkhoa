@@ -31,7 +31,7 @@ const VALUES = [
 ];
 
 const doctorColors = ["from-amber-400 to-amber-600"];
-const doctorInitials = ["NDK"];
+const doctorInitials = ["PTS"];
 
 export default function AboutPage() {
   const BRAND = useBrand();
@@ -116,7 +116,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <img src={IMAGES.coverClinic} alt="Nha Khoa Đăng Khoa - BS. Nguyễn Đăng Khoa" className="w-full rounded-3xl shadow-2xl" />
+              <img src={IMAGES.coverClinic} alt="Nha Khoa Đăng Khoa - BS. Phạm Trần Tuyết Sương" className="w-full rounded-3xl shadow-2xl" />
             </motion.div>
           </div>
         </div>
@@ -238,8 +238,16 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
               >
-                <div className={`h-44 bg-gradient-to-br ${doctorColors[i]} flex items-center justify-center`}>
-                  <span className="text-white font-extrabold text-3xl">{doctorInitials[i]}</span>
+                <div className={`h-56 bg-gradient-to-br ${doctorColors[i]} flex items-center justify-center overflow-hidden`}>
+                  {"image" in doc && doc.image ? (
+                    <img
+                      src={String(doc.image)}
+                      alt={doc.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="text-white font-extrabold text-3xl">{doctorInitials[i]}</span>
+                  )}
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-[#0D1B2A] text-lg">{doc.name}</h3>

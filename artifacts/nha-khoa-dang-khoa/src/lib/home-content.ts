@@ -41,14 +41,14 @@ export const CLINIC_STATS = [
 
 export const HOME_DOCTORS = [
   {
-    id: "nguyen-dang-khoa",
-    name: "BS. Nguyễn Đăng Khoa",
-    degree: "Bác sĩ Răng Hàm Mặt",
-    image: IMAGES.bsNguyenDangKhoa,
+    id: "pham-tran-tuyet-suong",
+    name: "BS. Phạm Trần Tuyết Sương",
+    degree: "Bác sĩ chuyên sâu chỉnh nha",
+    image: IMAGES.bsPhamTranTuyetSuong,
     credentials: [
-      "Bác sĩ Răng Hàm Mặt — chuyên khoa",
-      "Giám đốc chuyên môn Nha Khoa Đăng Khoa",
-      "Chuyên Implant, chỉnh nha & thẩm mỹ nha khoa",
+      "BSCKII Răng Hàm Mặt — ĐH Y Dược Cần Thơ",
+      "Chứng chỉ chỉnh hình răng mặt — BV RHM TP.HCM",
+      "Bác sĩ chuyên sâu chỉnh nha",
       "Đơn vị công tác: Nha Khoa Đăng Khoa — Tây Ninh",
     ],
   },
@@ -138,7 +138,7 @@ export const ABOUT_FEATURES: { icon: LucideIcon; title: string; desc: string }[]
   {
     icon: Award,
     title: "Bác sĩ chuyên môn cao",
-    desc: "BS. Nguyễn Đăng Khoa – chuyên khoa Răng Hàm Mặt.",
+    desc: "BS. Phạm Trần Tuyết Sương – chuyên sâu chỉnh nha.",
   },
   {
     icon: Wrench,

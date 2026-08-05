@@ -6,17 +6,21 @@ import { useBrand } from "@/lib/brand-context";
 import { useDoctors } from "@/lib/cms-provider";
 
 const doctorColors: Record<string, string> = {
+  "pham-tran-tuyet-suong": "from-amber-400 to-amber-600",
   "nguyen-dang-khoa": "from-amber-400 to-amber-600",
 };
 const doctorInitialsMap: Record<string, string> = {
-  "nguyen-dang-khoa": "NDK",
+  "pham-tran-tuyet-suong": "PTS",
+  "nguyen-dang-khoa": "PTS",
 };
 
 export default function BacSiPage() {
   const BRAND = useBrand();
   const DOCTORS = useDoctors();
   const params = useParams<{ id: string }>();
-  const doctor = DOCTORS.find((d) => d.id === params.id);
+  const doctor =
+    DOCTORS.find((d) => d.id === params.id) ??
+    (params.id === "nguyen-dang-khoa" ? DOCTORS.find((d) => d.id === "pham-tran-tuyet-suong") : undefined);
 
   if (!doctor) {
     return (
@@ -61,8 +65,16 @@ export default function BacSiPage() {
               className="md:col-span-1"
             >
               <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-lg sticky top-28">
-                <div className={`h-56 bg-gradient-to-br ${color} flex items-center justify-center`}>
-                  <span className="text-white font-extrabold text-4xl">{initials}</span>
+                <div className={`h-56 bg-gradient-to-br ${color} flex items-center justify-center overflow-hidden`}>
+                  {"image" in doctor && doctor.image ? (
+                    <img
+                      src={String(doctor.image)}
+                      alt={doctor.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="text-white font-extrabold text-4xl">{initials}</span>
+                  )}
                 </div>
                 <div className="p-5">
                   <h1 className="font-extrabold text-[#0D1B2A] text-xl mb-1">{doctor.name}</h1>

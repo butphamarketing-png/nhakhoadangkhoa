@@ -50,7 +50,7 @@ export default function AboutSection() {
             <div className="gradient-border rounded-[24px] p-[2px] overflow-hidden hero-image-glow">
               <MediaFrame
                 src={aboutImage}
-                alt="10.000+ ca răng sứ thành công — BS Nguyễn Đăng Khoa"
+                alt="Đội ngũ bác sĩ chuyên môn — BS. Phạm Trần Tuyết Sương"
                 aspect="wide"
                 className="rounded-[22px]"
               />

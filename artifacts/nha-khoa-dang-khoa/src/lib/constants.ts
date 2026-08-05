@@ -80,13 +80,14 @@ export const SERVICES = [
 
 export const DOCTORS = [
   {
-    id: "nguyen-dang-khoa",
-    name: "BS. Nguyễn Đăng Khoa",
-    title: "Giám đốc chuyên môn",
-    specialty: "Implant, chỉnh nha & thẩm mỹ nha khoa",
-    experience: "Hơn 10 năm kinh nghiệm",
-    education: "Bác sĩ Răng Hàm Mặt — chuyên khoa",
-    bio: "Bác sĩ Nguyễn Đăng Khoa — Giám đốc chuyên môn Nha Khoa Đăng Khoa, chuyên sâu implant, chỉnh nha và thẩm mỹ nha khoa tại Tây Ninh.",
+    id: "pham-tran-tuyet-suong",
+    name: "BS. Phạm Trần Tuyết Sương",
+    title: "Bác sĩ chuyên sâu chỉnh nha",
+    specialty: "Chỉnh nha, chỉnh hình răng mặt",
+    experience: "Nhiều năm kinh nghiệm lâm sàng",
+    education: "BSCKII Răng Hàm Mặt — ĐH Y Dược Cần Thơ",
+    image: "/images/bs-pham-tran-tuyet-suong.png",
+    bio: "Bác sĩ Phạm Trần Tuyết Sương — bác sĩ chuyên sâu chỉnh nha tại Nha Khoa Đăng Khoa. Có bằng chuyên khoa cấp II Răng Hàm Mặt (Đại học Y Dược Cần Thơ) và chứng chỉ đào tạo liên tục chỉnh hình răng mặt tại Bệnh viện Răng Hàm Mặt TP.HCM.",
   },
 ];
 
