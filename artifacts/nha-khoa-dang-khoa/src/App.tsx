@@ -8,6 +8,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
+import MaintenanceScreen from "@/components/MaintenanceScreen";
+import { shouldBlockVisitors } from "@/lib/maintenance";
 
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
@@ -81,6 +83,9 @@ function Router() {
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [blocked] = useState(shouldBlockVisitors);
+
+  if (blocked) return <MaintenanceScreen />;
 
   return (
     <QueryClientProvider client={queryClient}>
