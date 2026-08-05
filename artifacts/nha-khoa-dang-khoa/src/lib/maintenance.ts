@@ -1,9 +1,10 @@
 /**
  * Chế độ bảo trì — ẩn website với khách trong lúc chỉnh sửa.
  *
- * SITE_OPEN_TO_PUBLIC = false → khách thấy trang "đang nâng cấp"
- * Bật lại website: đổi thành true, hoặc VITE_MAINTENANCE_MODE=0 + Redeploy
- * Xem trước khi đang bảo trì: /?xem=<VITE_MAINTENANCE_KEY> — thoát: /?xem=off
+ * Production: SITE_OPEN_TO_PUBLIC = false → khách thấy trang "đang nâng cấp"
+ * Bật lại website công khai: đổi SITE_OPEN_TO_PUBLIC = true rồi push/redeploy
+ * Local (dev): vẫn mở bình thường trừ khi VITE_MAINTENANCE_MODE=1
+ * Xem trước production khi bảo trì: /?xem=<VITE_MAINTENANCE_KEY> — thoát: /?xem=off
  * Admin /adminbp không bị chặn.
  */
 
@@ -15,6 +16,12 @@ const BYPASS_PARAM = "xem";
 const BYPASS_OFF = "off";
 
 export function isMaintenanceEnabled(): boolean {
+  // Local: ưu tiên chỉnh sửa — chỉ chặn nếu bật MODE=1 trong .env
+  if (import.meta.env.DEV) {
+    const flag = import.meta.env.VITE_MAINTENANCE_MODE?.trim().toLowerCase();
+    return flag === "1" || flag === "true" || flag === "on";
+  }
+
   if (!SITE_OPEN_TO_PUBLIC) return true;
 
   const flag = import.meta.env.VITE_MAINTENANCE_MODE?.trim().toLowerCase();
