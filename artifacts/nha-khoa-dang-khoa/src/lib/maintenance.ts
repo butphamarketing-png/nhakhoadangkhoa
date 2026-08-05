@@ -9,7 +9,7 @@
  */
 
 /** false = ẩn website công khai (đang chỉnh sửa). true = mở lại cho khách. */
-export const SITE_OPEN_TO_PUBLIC = false;
+export const SITE_OPEN_TO_PUBLIC = true;
 
 const BYPASS_STORAGE_KEY = "dk-maintenance-bypass";
 const BYPASS_PARAM = "xem";
