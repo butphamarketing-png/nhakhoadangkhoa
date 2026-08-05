@@ -33,7 +33,7 @@ export default function DoctorTeamSection() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="container-custom container-narrow">
-        <SectionTitle label="Đội ngũ" subtitle="Bác sĩ Răng Hàm Mặt — kinh nghiệm lâu năm">
+        <SectionTitle label="Đội ngũ" subtitle="Bác sĩ chuyên sâu chỉnh nha — chuẩn y khoa">
           ĐỘI NGŨ BÁC SĨ CHUYÊN MÔN CAO
         </SectionTitle>
 
@@ -52,7 +52,7 @@ export default function DoctorTeamSection() {
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_50%,rgba(200,155,60,0.1),transparent_55%)]" />
                   <div className="relative">
                     <span className="inline-block gold-gradient text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-                        Giám đốc chuyên môn
+                        Chuyên sâu chỉnh nha
                       </span>
                     <p className="text-[#C89B3C] text-sm font-semibold uppercase tracking-wider mb-2">Bác sĩ</p>
                     <h3 className="font-display text-2xl md:text-3xl font-bold mb-1">{doctor.name}</h3>

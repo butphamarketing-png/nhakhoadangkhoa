@@ -84,7 +84,7 @@ const DEFAULT_ABOUT_SECTION: AboutSectionCms = {
   eyebrow: "Giới thiệu",
   titleLine1: "VỀ NHA KHOA",
   titleHighlight: "ĐĂNG KHOA",
-  body: "Hệ thống nha khoa uy tín tại Tây Ninh — đội ngũ bác sĩ giàu kinh nghiệm, trang thiết bị hiện đại và quy trình chuẩn y khoa quốc tế.",
+  body: "Hệ thống nha khoa uy tín tại Tây Ninh — đội ngũ bác sĩ chuyên môn cao, trang thiết bị hiện đại và quy trình chuẩn y khoa quốc tế.",
   tags: ["ISO vô trùng", "Vật liệu chính hãng", "Bảo hành dài hạn"],
   ctaLabel: "TÌM HIỂU THÊM",
   ctaHref: "/gioi-thieu",

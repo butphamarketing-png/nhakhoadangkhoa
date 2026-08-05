@@ -59,7 +59,7 @@ export default function BlogPostPage() {
           <div className="prose prose-lg max-w-none text-[#0D1B2A]/80 leading-relaxed space-y-4">
             <p className="text-lg font-medium text-[#0D1B2A]">{post.excerpt}</p>
             <p>
-              Nội dung chuyên sâu được biên soạn từ kinh nghiệm điều trị tại Nha Khoa Đăng Khoa – Tây Ninh.
+              Nội dung chuyên sâu được biên soạn từ thực tiễn điều trị tại Nha Khoa Đăng Khoa – Tây Ninh.
               Nếu bạn cần tư vấn cụ thể cho tình trạng của mình, hãy đặt lịch thăm khám miễn phí.
             </p>
           </div>

@@ -16,7 +16,6 @@ type Doctor = {
   name: string;
   title: string;
   specialty: string;
-  experience: string;
   education: string;
   bio: string;
   image?: string;
@@ -27,7 +26,6 @@ const emptyDoctor = (): Doctor => ({
   name: "",
   title: "",
   specialty: "",
-  experience: "",
   education: "",
   bio: "",
   image: "",
@@ -113,7 +111,6 @@ export default function BacSiPage() {
                   ["name", "Họ tên"],
                   ["title", "Chức danh"],
                   ["specialty", "Chuyên khoa"],
-                  ["experience", "Kinh nghiệm"],
                   ["education", "Đào tạo"],
                 ] as const
               ).map(([key, label]) => (
@@ -130,7 +127,7 @@ export default function BacSiPage() {
                 <Input
                   value={edit.image ?? ""}
                   onChange={(e) => setEdit({ ...edit, image: e.target.value })}
-                  placeholder="/images/bs-pham-tran-tuyet-suong.png"
+                  placeholder="/images/poster-bs-tuyet-suong-3x4.png"
                 />
               </div>
               <div>

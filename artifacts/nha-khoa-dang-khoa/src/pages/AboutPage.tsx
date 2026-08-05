@@ -254,7 +254,7 @@ export default function AboutPage() {
                   <div className="text-[#C89B3C] text-sm font-semibold mb-1">{doc.specialty}</div>
                   <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
                     <Award className="w-3.5 h-3.5 text-[#C89B3C]" />
-                    {doc.experience} • {doc.education}
+                    {doc.education}
                   </div>
                   <p className="text-gray-500 text-sm">{doc.bio}</p>
                 </div>

@@ -23,7 +23,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     id: "cover-page",
     src: IMAGES.heroSlides.coverPage,
-    alt: "Nha Khoa Đăng Khoa — Địa chỉ nha khoa uy tín hàng đầu Tây Ninh",
+    alt: "BS. Phạm Trần Tuyết Sương — Bác sĩ chuyên sâu chỉnh nha",
   },
 ];
 
@@ -33,7 +33,7 @@ export const FAMILY_IMG = IMAGES.testimonials.nguyenThiKimHanh;
 export const DENTIST_IMG = IMAGES.info.anhHuongSucKhoe;
 
 export const CLINIC_STATS = [
-  { value: "10+", label: "Năm kinh nghiệm đội ngũ bác sĩ" },
+  { value: "BSCKII", label: "Trình độ chuyên khoa Răng Hàm Mặt" },
   { value: "100%", label: "Trang thiết bị & vật liệu chính hãng" },
   { value: "5.000+", label: "Khách hàng tin tưởng điều trị" },
   { value: "24/7", label: "Hỗ trợ tư vấn qua hotline" },

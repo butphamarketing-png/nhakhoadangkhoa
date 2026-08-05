@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link, useParams } from "wouter";
-import { ChevronRight, Award, Clock, GraduationCap } from "lucide-react";
+import { ChevronRight, Award, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useBrand } from "@/lib/brand-context";
 import { useDoctors } from "@/lib/cms-provider";
@@ -81,7 +81,6 @@ export default function BacSiPage() {
                   <div className="text-[#C89B3C] font-semibold text-sm mb-3">{doctor.title}</div>
                   <div className="space-y-2 text-sm text-gray-600 mb-5">
                     <div className="flex items-center gap-2"><Award className="w-4 h-4 text-[#C89B3C]" />{doctor.specialty}</div>
-                    <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#C89B3C]" />{doctor.experience}</div>
                     <div className="flex items-center gap-2"><GraduationCap className="w-4 h-4 text-[#C89B3C]" />{doctor.education}</div>
                   </div>
                   <Link href="/dat-lich">

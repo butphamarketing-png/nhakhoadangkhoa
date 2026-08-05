@@ -32,7 +32,7 @@ export function enrichServiceItem(
 
   const intro =
     item.intro ??
-    `${item.title} tại Nha Khoa Đăng Khoa được thực hiện theo quy trình chuẩn y khoa, trang thiết bị hiện đại và đội ngũ bác sĩ giàu kinh nghiệm. ${item.shortDesc}`;
+    `${item.title} tại Nha Khoa Đăng Khoa được thực hiện theo quy trình chuẩn y khoa, trang thiết bị hiện đại và đội ngũ bác sĩ chuyên môn cao. ${item.shortDesc}`;
 
   return {
     ...item,

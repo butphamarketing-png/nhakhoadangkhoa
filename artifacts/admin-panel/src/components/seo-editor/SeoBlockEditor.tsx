@@ -65,7 +65,7 @@ const SEO_TEMPLATE = (name: string) => `
 <h2>Bảng giá tham khảo</h2>
 <p>Xem chi tiết tại <a href="/bang-gia">bảng giá</a>.</p>
 <h2>Vì sao chọn Nha Khoa Đăng Khoa</h2>
-<p>Uy tín — trang thiết bị — bác sĩ giàu kinh nghiệm.</p>
+<p>Uy tín — trang thiết bị — bác sĩ chuyên môn cao.</p>
 <h2>Câu hỏi thường gặp</h2>
 <p></p>
 `.trim();

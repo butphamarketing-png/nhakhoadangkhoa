@@ -28,11 +28,11 @@ export const ABOUT_SECTIONS: AboutSection[] = [
     subtitle: "Bác sĩ có trình độ chuyên môn cao, tận tâm với từng ca điều trị",
     paragraphs: [
       "Đội ngũ bác sĩ tại Nha Khoa Đăng Khoa là yếu tố then chốt tạo nên uy tín và chất lượng dịch vụ. Các bác sĩ được đào tạo bài bản, thường xuyên cập nhật kỹ thuật mới trong implant, chỉnh nha và thẩm mỹ nha khoa.",
-      "Chúng tôi tự hào với đội ngũ có kinh nghiệm thực hành lâm sàng tại Tây Ninh, luôn lắng nghe và đồng hành cùng khách hàng trong suốt quá trình điều trị.",
+      "Chúng tôi tự hào với đội ngũ bác sĩ chuyên môn cao tại Tây Ninh, luôn lắng nghe và đồng hành cùng khách hàng trong suốt quá trình điều trị.",
     ],
     highlights: [
-      "Bác sĩ Răng Hàm Mặt — chuyên khoa",
-      "Kinh nghiệm implant, chỉnh nha, răng sứ",
+      "Bác sĩ chuyên sâu chỉnh nha — BSCKII",
+      "Chuyên môn implant, chỉnh nha, răng sứ",
       "Tư vấn trung thực — không ép dịch vụ",
       "Theo dõi tái khám định kỳ",
     ],

@@ -142,7 +142,7 @@ export default function NhoRangKhonPage() {
       <section className="py-16 gold-gradient">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-extrabold text-white mb-4">Nhổ răng khôn không còn đáng sợ</h2>
-          <p className="text-white/80 mb-8">Đội ngũ bác sĩ giàu kinh nghiệm, quy trình nhanh, không đau.</p>
+          <p className="text-white/80 mb-8">Đội ngũ bác sĩ chuyên môn cao, quy trình nhanh, không đau.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/dat-lich">
               <Button className="bg-white text-[#C89B3C] rounded-xl h-12 px-8 font-bold hover:shadow-xl" data-testid="button-nho-cta">

@@ -84,9 +84,8 @@ export const DOCTORS = [
     name: "BS. Phạm Trần Tuyết Sương",
     title: "Bác sĩ chuyên sâu chỉnh nha",
     specialty: "Chỉnh nha, chỉnh hình răng mặt",
-    experience: "Nhiều năm kinh nghiệm lâm sàng",
     education: "BSCKII Răng Hàm Mặt — ĐH Y Dược Cần Thơ",
-    image: "/images/bs-pham-tran-tuyet-suong.png",
+    image: "/images/poster-bs-tuyet-suong-3x4.png",
     bio: "Bác sĩ Phạm Trần Tuyết Sương — bác sĩ chuyên sâu chỉnh nha tại Nha Khoa Đăng Khoa. Có bằng chuyên khoa cấp II Răng Hàm Mặt (Đại học Y Dược Cần Thơ) và chứng chỉ đào tạo liên tục chỉnh hình răng mặt tại Bệnh viện Răng Hàm Mặt TP.HCM.",
   },
 ];
