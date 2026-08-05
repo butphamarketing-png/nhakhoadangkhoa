@@ -31,7 +31,7 @@ export function isMaintenanceEnabled(): boolean {
 }
 
 function bypassKey(): string {
-  return import.meta.env.VITE_MAINTENANCE_KEY?.trim() ?? "";
+  return import.meta.env.VITE_MAINTENANCE_KEY?.trim() || "xemtruoc2026";
 }
 
 /**
