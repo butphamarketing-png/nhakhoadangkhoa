@@ -46,7 +46,6 @@ export type DoctorAdmin = {
   name: string;
   title: string;
   specialty: string;
-  experience?: string;
   cases: string;
   rating: number;
   phone: string;

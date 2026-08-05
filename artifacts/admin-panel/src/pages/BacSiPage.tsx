@@ -127,7 +127,7 @@ export default function BacSiPage() {
                 <Input
                   value={edit.image ?? ""}
                   onChange={(e) => setEdit({ ...edit, image: e.target.value })}
-                  placeholder="/images/poster-bs-tuyet-suong-3x4.png"
+                  placeholder="/images/bs-pham-tran-tuyet-suong.png"
                 />
               </div>
               <div>

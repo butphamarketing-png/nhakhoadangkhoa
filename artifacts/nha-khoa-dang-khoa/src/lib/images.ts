@@ -4,27 +4,31 @@ const img = (name: string) => `/images/${name}`;
 
 export const IMAGES = {
   logo: img("logo-dang-khoa.jpg"),
-  /** Poster dọc 3:4 — hồ sơ / đội ngũ BS. Phạm Trần Tuyết Sương */
-  bsPhamTranTuyetSuong: img("poster-bs-tuyet-suong-3x4.png"),
-  /** Banner ngang 1920×720 — hero slideshow */
-  bannerBsPhamTranTuyetSuong: img("hero-slideshow-tuyet-suong-1920x720.png"),
+  /** Ảnh bác sĩ chuyên sâu chỉnh nha — BS. Phạm Trần Tuyết Sương */
+  bsPhamTranTuyetSuong: img("bs-pham-tran-tuyet-suong.png"),
+  /** Banner ngang 16:9 dùng cho hero và các section rộng */
+  bannerBsPhamTranTuyetSuong: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+  /** Banner slideshow đúng kích thước thiết kế 1920×720 */
+  slideshowBsPhamTranTuyetSuong: img("slideshow-bs-pham-tran-tuyet-suong-1920x720.png"),
   /** @deprecated alias — giữ tương thích CMS cũ */
-  bsNguyenDangKhoa: img("poster-bs-tuyet-suong-3x4.png"),
-  coverClinic: img("hero-slideshow-tuyet-suong-1920x720.png"),
-  /** Banner giới thiệu bác sĩ / chuyên môn */
-  aboutRangSu10000: img("hero-slideshow-tuyet-suong-1920x720.png"),
+  bsNguyenDangKhoa: img("bs-pham-tran-tuyet-suong.png"),
+  coverClinic: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+  /** Banner giới thiệu bác sĩ / chuyên môn — BS. Phạm Trần Tuyết Sương */
+  aboutRangSu10000: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
   designReference: img("design-reference.png"),
-  coverPage: img("hero-slideshow-tuyet-suong-1920x720.png"),
-  veChungToi: img("hero-slideshow-tuyet-suong-1920x720.png"),
+  coverPage: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
+  veChungToi: img("banner-bs-pham-tran-tuyet-suong-16x9.png"),
 
   /**
-   * Banner hero slideshow — mỗi ảnh ngang ~1920×720.
+   * Banner hero slideshow — mỗi file là 1 ảnh ngang (~1920×720).
+   * Chữ, nút, sidebar 4 icon nên được thiết kế sẵn trong ảnh (PNG/JPG).
    */
   heroSlides: {
-    brand: img("hero-slideshow-tuyet-suong-1920x720.png"),
-    coverPage: img("hero-slideshow-tuyet-suong-1920x720.png"),
-    banner01: img("hero-slideshow-tuyet-suong-1920x720.png"),
-    banner02: img("hero-slideshow-tuyet-suong-1920x720.png"),
+    /** Banner slideshow 1920×720 — BS. Phạm Trần Tuyết Sương */
+    brand: img("slideshow-bs-pham-tran-tuyet-suong-1920x720.png"),
+    coverPage: img("slideshow-bs-pham-tran-tuyet-suong-1920x720.png"),
+    banner01: img("slideshow-bs-pham-tran-tuyet-suong-1920x720.png"),
+    banner02: img("slideshow-bs-pham-tran-tuyet-suong-1920x720.png"),
     banner03: img("promo-mua-vang-chinh-nha.png"),
     banner04: img("promo-nieng-rang-he.png"),
   },
