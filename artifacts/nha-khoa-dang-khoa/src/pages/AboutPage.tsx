@@ -64,7 +64,14 @@ export default function AboutPage() {
               <motion.div key={s.slug} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                 <Link href={s.href}>
                   <div className="card-luxury overflow-hidden !p-0 !translate-y-0 hover:!translate-y-[-6px] group cursor-pointer h-full flex flex-col">
-                    {s.image && <MediaFrame src={s.image} alt={s.label} aspect="video" />}
+                    {s.image && (
+                      <MediaFrame
+                        src={s.image}
+                        alt={s.label}
+                        aspect={s.imageAspect ?? "video"}
+                        fit={s.imageFit ?? "cover"}
+                      />
+                    )}
                     <div className="p-5 flex flex-col flex-1">
                       <p className="text-[10px] font-bold text-[#C89B3C] uppercase tracking-wider mb-1">{s.eyebrow}</p>
                       <h3 className="font-display font-bold text-lg text-[#0D1B2A] mb-2 group-hover:text-[#C89B3C] transition-colors">{s.label}</h3>

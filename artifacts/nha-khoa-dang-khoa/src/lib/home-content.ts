@@ -171,7 +171,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "nieng-rang": IMAGES.services.niengRang,
   "rang-su": IMAGES.services.implant,
   "tay-trang": IMAGES.services.itero,
-  "noi-nha": IMAGES.services.nhoRangKhon,
+  "noi-nha": IMAGES.congnghe.metaEndo,
   "nho-rang-khon": IMAGES.services.nhoRangKhon,
 };
 
@@ -192,9 +192,9 @@ export const TECHNOLOGY_ITEMS = [
     image: IMAGES.congnghe.iteroLumina,
   },
   {
-    title: "Robot Hỗ Trợ Phẫu Thuật Nha Khoa",
-    desc: "Ứng dụng công nghệ hiện đại giúp nâng cao độ chính xác và an toàn trong điều trị.",
-    image: IMAGES.congnghe.xGuide,
+    title: "Công Nghệ Định Vị X-Guide",
+    desc: "Định vị cấy ghép Implant theo thời gian thực — chính xác, an toàn, có răng chỉ sau 1 giờ.",
+    image: IMAGES.congnghe.xGuideNxt,
   },
   {
     title: "Robot Định Vị Cấy Ghép Implant",

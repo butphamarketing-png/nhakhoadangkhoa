@@ -14,6 +14,9 @@ export type AboutSection = {
   paragraphs: string[];
   highlights?: string[];
   image?: string;
+  /** Hiển thị infographic (vd. MELAG) — không crop */
+  imageFit?: "cover" | "contain";
+  imageAspect?: "square" | "video" | "portrait" | "wide";
   ctaLabel?: string;
   ctaHref?: string;
 };
@@ -72,11 +75,14 @@ export const ABOUT_SECTIONS: AboutSection[] = [
       "Hệ thống vô trùng chuẩn kép giúp giảm thiểu rủi ro nhiễm trùng, đặc biệt quan trọng với implant và phẫu thuật nhổ răng khôn.",
     ],
     highlights: [
+      "Thành viên MELAG — Chuẩn Vô Trùng Thông Minh",
       "Khử khuẩn & hấp tiệt trùng dụng cụ",
       "Găng tay, khẩu trang, váy chống khuẩn",
       "Vùng điều trị được bảo vệ riêng biệt",
     ],
-    image: IMAGES.services.itero,
+    image: IMAGES.melagMember,
+    imageFit: "contain",
+    imageAspect: "wide",
   },
   {
     slug: "he-thong-labo",

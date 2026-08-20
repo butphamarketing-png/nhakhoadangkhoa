@@ -19,7 +19,7 @@ function TechnologyCard({ title, desc, image, index }: TechnologyItem & { index:
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
       </div>

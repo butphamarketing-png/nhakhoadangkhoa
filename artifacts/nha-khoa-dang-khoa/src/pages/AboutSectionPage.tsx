@@ -60,7 +60,13 @@ export default function AboutSectionPage() {
             </div>
             {section.image && (
               <div className="gradient-border rounded-[24px] p-[2px]">
-                <MediaFrame src={section.image} alt={section.label} aspect="video" className="rounded-[22px]" />
+                <MediaFrame
+                  src={section.image}
+                  alt={section.label}
+                  aspect={section.imageAspect ?? "video"}
+                  fit={section.imageFit ?? "cover"}
+                  className="rounded-[22px]"
+                />
               </div>
             )}
           </div>

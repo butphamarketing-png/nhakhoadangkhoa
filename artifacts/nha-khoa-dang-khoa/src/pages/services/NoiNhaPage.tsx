@@ -4,6 +4,7 @@ import { ChevronRight, CheckCircle, ArrowRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/constants";
+import { IMAGES } from "@/lib/images";
 
 const SIGNS = [
   "Đau nhức răng kéo dài, đặc biệt khi nhai",
@@ -15,9 +16,9 @@ const SIGNS = [
 ];
 
 const FAQS = [
-  { q: "Lấy tủy có đau không?", a: "Không. Điều trị tủy được thực hiện dưới gây tê cục bộ. Hiện đại với máy Rotary, quy trình nhanh hơn và êm hơn." },
+  { q: "Lấy tủy có đau không?", a: "Không. Điều trị tủy được thực hiện dưới gây tê cục bộ. Với công nghệ Meta Endo, quy trình nhanh hơn và êm hơn." },
   { q: "Sau lấy tủy có cần bọc sứ không?", a: "Nên bọc sứ bảo vệ sau lấy tủy vì răng sau khi điều trị tủy dễ gãy vỡ hơn." },
-  { q: "Điều trị tủy mất bao nhiêu buổi?", a: "Thường 1–3 buổi tùy phức tạp. Với công nghệ Rotary hiện đại, nhiều ca chỉ cần 1 buổi." },
+  { q: "Điều trị tủy mất bao nhiêu buổi?", a: "Thường 1–3 buổi tùy phức tạp. Với công nghệ Meta Endo, nhiều ca chỉ cần 1 buổi." },
   { q: "Tủy đã lấy có đau lại không?", a: "Sau khi điều trị tủy đúng chuẩn, răng không còn cảm giác đau do đã loại bỏ dây thần kinh." },
 ];
 
@@ -36,9 +37,27 @@ export default function NoiNhaPage() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
             Điều Trị <span className="text-[#C89B3C]">Nội Nha</span>
           </h1>
-          <p className="text-white/70 text-lg">Chữa tủy răng chuyên sâu với máy Rotary hiện đại — không đau, phục hồi nhanh.</p>
+          <p className="text-white/70 text-lg">Chữa tủy răng chuyên sâu với công nghệ Meta Endo — nhẹ nhàng, chính xác và an toàn.</p>
         </div>
       </div>
+
+      <section className="section-padding bg-gradient-to-br from-amber-50/80 to-white border-b border-[#C89B3C]/10">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="gradient-border rounded-[24px] p-[2px] max-w-5xl mx-auto"
+          >
+            <img
+              src={IMAGES.congnghe.metaEndo}
+              alt="Công nghệ Meta Endo — điều trị tủy tại Nha Khoa Đăng Khoa"
+              className="w-full rounded-[22px] bg-white"
+              loading="lazy"
+            />
+          </motion.div>
+        </div>
+      </section>
 
       <section className="section-padding bg-white">
         <div className="container-custom">
@@ -65,7 +84,7 @@ export default function NoiNhaPage() {
                 {[
                   { step: "01", title: "Chụp X-quang & chẩn đoán", desc: "Xác định mức độ tổn thương và số ống tủy." },
                   { step: "02", title: "Gây tê & mở tủy", desc: "Gây tê hoàn toàn, mở buồng tủy tiếp cận ống tủy." },
-                  { step: "03", title: "Nạo sạch ống tủy", desc: "Dùng máy Rotary để làm sạch và tạo hình ống tủy." },
+                  { step: "03", title: "Nạo sạch ống tủy", desc: "Dùng hệ thống Meta Endo để làm sạch và tạo hình ống tủy." },
                   { step: "04", title: "Trám bít ống tủy", desc: "Bít kín ống tủy bằng vật liệu Gutta-percha." },
                   { step: "05", title: "Phục hồi thân răng", desc: "Trám tạm hoặc bọc sứ bảo vệ thân răng." },
                 ].map((s, i) => (

@@ -110,4 +110,35 @@ router.get("/healthz/db", async (_req, res) => {
   });
 });
 
+/** Kiểm tra cấu hình email — mở /api/healthz/mail để xem Vercel đã nhận biến chưa */
+router.get("/healthz/mail", (_req, res) => {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const notifyEmail = process.env.NOTIFY_EMAIL?.trim();
+
+  const hasApiKey = Boolean(apiKey);
+  const hasNotifyEmail = Boolean(notifyEmail);
+  const apiKeyLooksValid = apiKey?.startsWith("re_") ?? false;
+
+  const missing: string[] = [];
+  if (!hasApiKey) missing.push("RESEND_API_KEY");
+  if (!hasNotifyEmail) missing.push("NOTIFY_EMAIL");
+
+  res.json({
+    ok: missing.length === 0 && apiKeyLooksValid,
+    missing,
+    hasApiKey,
+    apiKeyLooksValid,
+    // Chỉ hiện 4 ký tự cuối để đối chiếu, không lộ key
+    apiKeyTail: apiKey ? `...${apiKey.slice(-4)}` : undefined,
+    notifyEmail,
+    mailFrom: process.env.MAIL_FROM?.trim() || "(mặc định onboarding@resend.dev)",
+    hint:
+      missing.length > 0
+        ? `Thiếu ${missing.join(", ")} trên Vercel. Thêm vào project đang chạy API này (Settings → Environment Variables) rồi Redeploy.`
+        : !apiKeyLooksValid
+          ? "RESEND_API_KEY không bắt đầu bằng 're_' — có thể bị copy thiếu hoặc lẫn dấu cách."
+          : undefined,
+  });
+});
+
 export default router;

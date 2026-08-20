@@ -59,11 +59,14 @@ export const IMAGES = {
     ctAxeos: img("congnghe/tech-ct-axeos.jpg"),
     implantGuide: img("congnghe/tech-implant-guide.jpg"),
     xGuide: img("congnghe/tech-xguide.jpg"),
+    /** Banner X-Guide NXT — công nghệ định vị implant */
+    xGuideNxt: img("congnghe/tech-xguide-nxt.png"),
     xnavImplant: img("congnghe/tech-xnav-implant.jpg"),
     mayInNoiNha3in1: img("congnghe/tech-may-in-noi-nha-3in1.jpg"),
     iteroLumina: img("congnghe/tech-itero-lumina.jfif"),
     shining3d: img("congnghe/tech-shining-3d.jpg"),
     piezotom: img("congnghe/tech-piezotom.jpg"),
+    metaEndo: img("congnghe/tech-meta-endo.png"),
   },
 
   promos: {
@@ -91,6 +94,9 @@ export const IMAGES = {
   info: {
     anhHuongSucKhoe: img("info-anh-huong-suc-khoe.png"),
   },
+
+  /** MELAG Member — Chuẩn Vô Trùng Thông Minh (774×455) */
+  melagMember: img("melag-member.png"),
 
   /** Ảnh bài viết kiến thức — /public/images/blog/ */
   blog: {

@@ -6,6 +6,7 @@ type MediaFrameProps = {
   alt: string;
   className?: string;
   aspect?: "square" | "video" | "portrait" | "wide";
+  fit?: "cover" | "contain";
 };
 
 const aspectClass = {
@@ -15,7 +16,8 @@ const aspectClass = {
   wide: "aspect-[16/10]",
 };
 
-export default function MediaFrame({ src, alt, className = "", aspect = "video" }: MediaFrameProps) {
+export default function MediaFrame({ src, alt, className = "", aspect = "video", fit = "cover" }: MediaFrameProps) {
+  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
   return (
     <div
       className={`relative overflow-hidden bg-[#F0EDE6] ${aspectClass[aspect]} ${className}`}
@@ -23,7 +25,7 @@ export default function MediaFrame({ src, alt, className = "", aspect = "video" 
       <img
         src={cmsImageSrc(src)}
         alt={alt}
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className={`absolute inset-0 w-full h-full ${fitClass} object-center`}
         loading="lazy"
         decoding="async"
       />

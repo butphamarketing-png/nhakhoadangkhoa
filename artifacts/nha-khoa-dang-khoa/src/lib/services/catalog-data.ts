@@ -5,7 +5,7 @@ import { slugify } from "./slug";
 
 const CAT_IMAGES: Record<string, string> = {
   "nha-khoa-tong-quat": IMAGES.coverClinic,
-  "dieu-tri-noi-nha": IMAGES.services.nhoRangKhon,
+  "dieu-tri-noi-nha": IMAGES.congnghe.metaEndo,
   "nho-rang": IMAGES.services.nhoRangKhon,
   "tham-my-nha-khoa": IMAGES.aboutRangSu10000,
   "phuc-hinh-rang": IMAGES.aboutRangSu10000,
