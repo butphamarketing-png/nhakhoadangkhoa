@@ -175,10 +175,15 @@ function mergeTechnologyItems(partial?: TechnologyItemCms[]): TechnologyItemCms[
   return defaults.map((def, i) => {
     const item = partial[i];
     if (!item) return def;
+    const cmsImage = item.image?.trim();
+    const useDefaultImage =
+      !cmsImage ||
+      (def.title === "Máy In Nội Nha 3 In 1" &&
+        cmsImage.includes("tech-may-in-noi-nha-3in1.jpg"));
     return {
       title: item.title || def.title,
       desc: item.desc || def.desc,
-      image: item.image || def.image,
+      image: useDefaultImage ? def.image : cmsImage,
     };
   });
 }
