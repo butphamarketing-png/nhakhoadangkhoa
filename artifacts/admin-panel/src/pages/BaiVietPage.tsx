@@ -73,7 +73,7 @@ export default function BaiVietPage() {
       excerpt: "",
       date: new Date().toLocaleDateString("vi-VN"),
       readTime: "5 phút",
-      image: "/images/blog/blog-implant-quy-trinh.jpg",
+      image: "/images/blog/blog-implant-quy-trinh.png",
       status: "draft",
     });
   };

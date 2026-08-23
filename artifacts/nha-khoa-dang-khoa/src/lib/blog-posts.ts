@@ -45,7 +45,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Implant tại Tây Ninh được xem là tiểu phẩu nhỏ trong nha khoa; bài viết mô tả quy trình, thời gian và lưu ý để ca cấy ghép thành công, an toàn.",
     date: "09/04/2025",
     readTime: "6 phút",
-    image: blogImg("blog-implant-quy-trinh.jpg"),
+    image: blogImg("blog-implant-quy-trinh.png"),
     sourceUrl: `${SOURCE}/implant-tai-tay-ninh-uy-tin/`,
   },
   {
@@ -58,7 +58,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Răng mất ảnh hưởng chức năng ăn nhai và thẩm mỹ. Trồng implant là giải pháp phục hình ổn định, được nhiều khách hàng tại Tây Ninh lựa chọn.",
     date: "11/04/2025",
     readTime: "7 phút",
-    image: blogImg("blog-trong-implant.jpg"),
+    image: blogImg("blog-trong-implant.png"),
     sourceUrl: `${SOURCE}/trong-implant-tai-tay-ninh/`,
   },
   {
@@ -84,7 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Những điều cần chuẩn bị trước khi cấy ghép implant: chỉ định, chụp CT, lựa chọn trụ implant và chăm sóc sau phẫu thuật.",
     date: "22/03/2023",
     readTime: "6 phút",
-    image: blogImg("blog-cay-ghep-implant.jpg"),
+    image: blogImg("blog-cay-ghep-implant.png"),
     sourceUrl: `${SOURCE}/cay-ghep-rang-implant/`,
   },
   {
