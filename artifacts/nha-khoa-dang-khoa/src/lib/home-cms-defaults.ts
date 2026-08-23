@@ -175,14 +175,17 @@ function mergeTechnologyItems(partial?: TechnologyItemCms[]): TechnologyItemCms[
   return defaults.map((def, i) => {
     const item = partial[i];
     if (!item) return def;
+    const stalePrinterTitle = "Máy In Nội Nha 3 In 1";
     const cmsImage = item.image?.trim();
     const useDefaultImage =
       !cmsImage ||
-      (def.title === "Máy In Nội Nha 3 In 1" &&
-        cmsImage.includes("tech-may-in-noi-nha-3in1.jpg"));
+      (def.title === "Công Nghệ Meta Endo" &&
+        cmsImage.includes("tech-may-in-noi-nha-3in1"));
+    const useDefaultTitle =
+      !item.title?.trim() || item.title === stalePrinterTitle;
     return {
-      title: item.title || def.title,
-      desc: item.desc || def.desc,
+      title: useDefaultTitle ? def.title : item.title,
+      desc: useDefaultTitle ? def.desc : item.desc || def.desc,
       image: useDefaultImage ? def.image : cmsImage,
     };
   });

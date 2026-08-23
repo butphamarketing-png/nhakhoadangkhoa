@@ -202,9 +202,9 @@ export const TECHNOLOGY_ITEMS = [
     image: IMAGES.congnghe.xnavImplant,
   },
   {
-    title: "Máy In Nội Nha 3 In 1",
-    desc: "In guide điều trị nội nha, mão tạm và phục hình theo dữ liệu số — nhanh, chính xác, tiết kiệm thời gian.",
-    image: IMAGES.congnghe.mayInNoiNha3in1,
+    title: "Công Nghệ Meta Endo",
+    desc: "Điều trị tủy nhẹ nhàng, chính xác — làm sạch ống tủy hiệu quả, trám bít kín và bảo tồn răng thật lâu dài.",
+    image: IMAGES.congnghe.metaEndo,
   },
   {
     title: "Máy In Shining 3D",
