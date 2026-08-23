@@ -42,7 +42,7 @@ export const IMAGES = {
 
   /** Ảnh danh mục dịch vụ cấp 1 — /public/images/danh-muc/ */
   danhMuc: {
-    cayGhepImplant: img("danh-muc/cay-ghep-implant.jpg"),
+    cayGhepImplant: img("danh-muc/cay-ghep-implant.png"),
     danSuVeneer: img("danh-muc/dan-su-veneer.png"),
     phucHinhCoDinh: img("danh-muc/phuc-hinh-co-dinh.png"),
     nhoRang: img("danh-muc/nho-rang.png"),
