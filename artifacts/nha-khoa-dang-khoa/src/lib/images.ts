@@ -62,7 +62,7 @@ export const IMAGES = {
     /** Banner X-Guide NXT — công nghệ định vị implant */
     xGuideNxt: img("congnghe/tech-xguide-nxt.png"),
     xnavImplant: img("congnghe/tech-xnav-implant.jpg"),
-    mayInNoiNha3in1: img("congnghe/tech-may-in-noi-nha-3in1.jpg"),
+    mayInNoiNha3in1: img("congnghe/tech-may-in-noi-nha-3in1.png"),
     iteroLumina: img("congnghe/tech-itero-lumina.jfif"),
     shining3d: img("congnghe/tech-shining-3d.jpg"),
     piezotom: img("congnghe/tech-piezotom.jpg"),
