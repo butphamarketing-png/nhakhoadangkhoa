@@ -24,10 +24,40 @@ type FormValues = z.infer<typeof schema>;
 
 export default function LienHePage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { name: "", phone: "", email: "", subject: "", message: "" },
   });
+
+  const onSubmit = async (values: FormValues) => {
+    setSubmitError(null);
+    setSubmitting(true);
+    try {
+      const apiBase = import.meta.env.VITE_API_URL?.replace(/\/+$/, "") || window.location.origin;
+      const noteParts = [
+        values.email?.trim() ? `Email khách: ${values.email.trim()}` : null,
+        values.message.trim(),
+      ].filter(Boolean);
+      const res = await fetch(`${apiBase}/api/appointments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          phone: values.phone,
+          service: values.subject,
+          note: noteParts.join("\n"),
+        }),
+      });
+      if (!res.ok) throw new Error("fail");
+      setSubmitted(true);
+    } catch {
+      setSubmitError(`Không gửi được. Vui lòng gọi ${BRAND.hotline}`);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div>
@@ -125,7 +155,7 @@ export default function LienHePage() {
                     </div>
                   ) : (
                     <Form {...form}>
-                      <form onSubmit={form.handleSubmit(() => setSubmitted(true))} className="space-y-4">
+                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                         <div className="grid sm:grid-cols-2 gap-4">
                           <FormField control={form.control} name="name" render={({ field }) => (
                             <FormItem>
@@ -163,8 +193,16 @@ export default function LienHePage() {
                             <FormMessage />
                           </FormItem>
                         )} />
-                        <button type="submit" className="btn-gold w-full !h-12" data-testid="button-contact-submit">
-                          Gửi tin nhắn
+                        {submitError && (
+                          <p className="text-red-500 text-sm">{submitError}</p>
+                        )}
+                        <button
+                          type="submit"
+                          disabled={submitting}
+                          className="btn-gold w-full !h-12 disabled:opacity-70"
+                          data-testid="button-contact-submit"
+                        >
+                          {submitting ? "Đang gửi..." : "Gửi tin nhắn"}
                         </button>
                       </form>
                     </Form>
