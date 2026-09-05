@@ -18,7 +18,7 @@ function escapeHtml(text: string): string {
     .replaceAll('"', "&quot;");
 }
 
-const PRIMARY_NOTIFY_EMAIL = "nhakhoadangkhoatn2026@gmail.com";
+const NOTIFY_EMAIL = "nhakhoadangkhoatn2026@gmail.com";
 
 function buildMail(booking: BookingNotifyPayload): { subject: string; text: string; html: string } {
   const subject = `Lịch hẹn mới #${booking.id}: ${booking.name} — ${booking.phone}`;
@@ -56,79 +56,32 @@ function buildMail(booking: BookingNotifyPayload): { subject: string; text: stri
   return { subject, text, html };
 }
 
-function notifyTo(): string {
-  return process.env.NOTIFY_EMAIL?.trim() || PRIMARY_NOTIFY_EMAIL;
-}
-
-async function sendViaGmail(booking: BookingNotifyPayload, mail: ReturnType<typeof buildMail>): Promise<boolean> {
-  const user = process.env.GMAIL_USER?.trim();
+/**
+ * Gửi thông báo lịch hẹn / form liên hệ tới Gmail phòng khám qua SMTP.
+ * Không làm fail đặt lịch nếu gửi mail lỗi.
+ */
+export async function notifyNewAppointment(booking: BookingNotifyPayload): Promise<void> {
+  const user = process.env.GMAIL_USER?.trim() || NOTIFY_EMAIL;
   const pass = process.env.GMAIL_APP_PASSWORD?.trim();
-  if (!user || !pass) return false;
+  const to = process.env.NOTIFY_EMAIL?.trim() || NOTIFY_EMAIL;
+  const mail = buildMail(booking);
 
-  await sendGmailSmtp({
-    user,
-    pass,
-    to: notifyTo(),
-    subject: mail.subject,
-    text: mail.text,
-    html: mail.html,
-  });
-  console.info(`[notify-booking] Đã gửi Gmail SMTP lịch #${booking.id} tới ${notifyTo()}`);
-  return true;
-}
+  if (!pass) {
+    console.warn("[notify-booking] Thiếu GMAIL_APP_PASSWORD trên môi trường.");
+    return;
+  }
 
-async function sendViaResend(booking: BookingNotifyPayload, mail: ReturnType<typeof buildMail>): Promise<boolean> {
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  if (!apiKey) return false;
-
-  const from =
-    process.env.MAIL_FROM?.trim() || "Nha khoa Đăng Khoa <onboarding@resend.dev>";
-  const to = notifyTo();
-
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
+  try {
+    await sendGmailSmtp({
+      user,
+      pass,
+      to,
       subject: mail.subject,
       text: mail.text,
       html: mail.html,
-    }),
-  });
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    console.error(`[notify-booking] Resend lỗi ${res.status} tới ${to}: ${body}`);
-    return false;
-  }
-
-  console.info(`[notify-booking] Đã gửi Resend lịch #${booking.id} tới ${to}`);
-  return true;
-}
-
-/**
- * Gửi thông báo lịch hẹn mới tới Gmail.
- * Ưu tiên Gmail SMTP (App Password); Resend chỉ là dự phòng.
- * Không làm fail đặt lịch nếu gửi mail lỗi / chưa cấu hình.
- */
-export async function notifyNewAppointment(booking: BookingNotifyPayload): Promise<void> {
-  const mail = buildMail(booking);
-
-  try {
-    if (await sendViaGmail(booking, mail)) return;
+    });
+    console.info(`[notify-booking] Đã gửi Gmail SMTP lịch #${booking.id} tới ${to}`);
   } catch (err) {
     console.error("[notify-booking] Gmail SMTP lỗi:", err);
   }
-
-  try {
-    if (await sendViaResend(booking, mail)) return;
-  } catch (err) {
-    console.error("[notify-booking] Resend lỗi:", err);
-  }
-
-  console.warn("[notify-booking] Không gửi được email thông báo lịch hẹn.");
 }

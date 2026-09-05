@@ -103,9 +103,7 @@ export async function sendGmailSmtp(input: SendGmailInput): Promise<void> {
     const hello = await greeting;
     if (hello.code !== 220) throw new Error(`SMTP ${hello.code}: ${hello.text}`);
     await expect(socket, 250, "EHLO nhakhoadangkhoa.local");
-    await expect(socket, 334, "AUTH LOGIN");
-    await expect(socket, 334, toBase64(user));
-    await expect(socket, 235, toBase64(pass));
+    await expect(socket, 235, `AUTH PLAIN ${toBase64(`\0${user}\0${pass}`)}`);
     await expect(socket, 250, `MAIL FROM:<${user}>`);
     await expect(socket, 250, `RCPT TO:<${to}>`);
     await expect(socket, 354, "DATA");

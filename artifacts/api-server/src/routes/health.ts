@@ -112,37 +112,23 @@ router.get("/healthz/db", async (_req, res) => {
 
 /** Kiểm tra cấu hình email — mở /api/healthz/mail để xem Vercel đã nhận biến chưa */
 router.get("/healthz/mail", (_req, res) => {
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  const notifyEmail = process.env.NOTIFY_EMAIL?.trim();
-  const gmailUser = process.env.GMAIL_USER?.trim();
+  const notifyEmail = process.env.NOTIFY_EMAIL?.trim() || "nhakhoadangkhoatn2026@gmail.com";
+  const gmailUser = process.env.GMAIL_USER?.trim() || notifyEmail;
   const hasGmailPass = Boolean(process.env.GMAIL_APP_PASSWORD?.trim());
 
-  const hasApiKey = Boolean(apiKey);
-  const hasNotifyEmail = Boolean(notifyEmail);
-  const apiKeyLooksValid = apiKey?.startsWith("re_") ?? false;
-  const hasGmail = Boolean(gmailUser && hasGmailPass);
-
   const missing: string[] = [];
-  if (!hasGmail) {
-    if (!gmailUser) missing.push("GMAIL_USER");
-    if (!hasGmailPass) missing.push("GMAIL_APP_PASSWORD");
-    if (!hasApiKey) missing.push("RESEND_API_KEY");
-    if (!hasNotifyEmail) missing.push("NOTIFY_EMAIL");
-  }
+  if (!hasGmailPass) missing.push("GMAIL_APP_PASSWORD");
 
   res.json({
-    ok: hasGmail || (hasApiKey && apiKeyLooksValid && hasNotifyEmail),
-    transport: hasGmail ? "gmail-smtp" : hasApiKey ? "resend" : "none",
+    ok: hasGmailPass,
+    transport: hasGmailPass ? "gmail-smtp" : "none",
     missing,
-    hasGmail,
-    gmailUser: gmailUser || undefined,
-    hasApiKey,
-    apiKeyLooksValid,
-    apiKeyTail: apiKey ? `...${apiKey.slice(-4)}` : undefined,
-    notifyEmail: notifyEmail || gmailUser || undefined,
+    hasGmail: hasGmailPass,
+    gmailUser,
+    notifyEmail,
     hint:
       missing.length > 0
-        ? `Thiếu ${missing.join(", ")} trên Vercel. Thêm vào Settings → Environment Variables rồi Redeploy.`
+        ? "Thiếu GMAIL_APP_PASSWORD trên Vercel. Thêm vào Settings → Environment Variables rồi Redeploy."
         : undefined,
   });
 });
